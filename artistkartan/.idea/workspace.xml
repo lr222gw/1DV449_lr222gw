@@ -26,37 +26,44 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="21" selection-start="401" selection-end="413" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="612">
+            <state line="18" column="59" selection-start="904" selection-end="904" vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="612">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="statusChecker.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="statusChecker.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="52" selection-start="218" selection-end="218" vertical-scroll-proportion="0.42713568" vertical-offset="0" max-vertical-offset="597">
+            <state line="45" column="10" selection-start="1277" selection-end="1366" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="952">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getstuff.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="getstuff.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/getstuff.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="19" selection-start="268" selection-end="268" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="391">
+            <state line="37" column="0" selection-start="867" selection-end="867" vertical-scroll-proportion="0.5055402" vertical-offset="264" max-vertical-offset="1292">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login.php">
+      <file leaf-file-name="json.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/json.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="53" selection-start="354" selection-end="354" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="850">
-              <folding>
-                <element signature="e#6#86#0" expanded="true" />
-              </folding>
+            <state line="8" column="21" selection-start="328" selection-end="328" vertical-scroll-proportion="95.23077" vertical-offset="5088" max-vertical-offset="5865">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logout.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/logout.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="15" selection-start="117" selection-end="121" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="357">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -64,7 +71,7 @@
       <file leaf-file-name="getLogin.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getLogin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="13" selection-start="1844" selection-end="1858" vertical-scroll-proportion="-5.9038463" vertical-offset="577" max-vertical-offset="1122">
+            <state line="47" column="96" selection-start="1575" selection-end="1587" vertical-scroll-proportion="-5.576923" vertical-offset="509" max-vertical-offset="1156">
               <folding />
             </state>
           </provider>
@@ -121,22 +128,24 @@
         <option value="$PROJECT_DIR$/authorization_code/public/index.html" />
         <option value="$PROJECT_DIR$/api/login.php" />
         <option value="$PROJECT_DIR$/api/skit.js" />
-        <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/getAccess.php" />
         <option value="$PROJECT_DIR$/JSON.json" />
-        <option value="$PROJECT_DIR$/getLogin.php" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/src/logout.php" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/getstuff.php" />
+        <option value="$PROJECT_DIR$/getLogin.php" />
         <option value="$PROJECT_DIR$/src/statusChecker.js" />
+        <option value="$PROJECT_DIR$/json.json" />
+        <option value="$PROJECT_DIR$/getstuff.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="-1288" />
     <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="width" value="1296" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -210,6 +219,7 @@
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="FullScreen" value="false" />
     <property name="LayoutCode.rearrangeEntriesJavaScript" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJSON" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -266,10 +276,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-1288" y="-8" width="1296" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16599733" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13611417" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977304" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -280,7 +290,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12772785" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16074313" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="92" y="92" width="1416" height="676" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -397,15 +407,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getAccess.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="2" selection-start="91" selection-end="91" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="272">
-          <folding>
-            <element signature="e#6#86#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="477">
@@ -415,37 +416,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="53" selection-start="354" selection-end="354" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="850">
+        <state line="7" column="2" selection-start="89" selection-end="89" vertical-scroll-proportion="0.21326165" vertical-offset="0" max-vertical-offset="850">
           <folding>
             <element signature="e#6#86#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getLogin.php">
+    <entry file="file://$PROJECT_DIR$/getAccess.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="13" selection-start="1844" selection-end="1858" vertical-scroll-proportion="-5.9038463" vertical-offset="577" max-vertical-offset="1122">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getstuff.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="19" selection-start="268" selection-end="268" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="391">
-          <folding />
+        <state line="9" column="2" selection-start="91" selection-end="91" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="272">
+          <folding>
+            <element signature="e#6#86#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="21" selection-start="401" selection-end="413" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="612">
+        <state line="18" column="59" selection-start="904" selection-end="904" vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getLogin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="96" selection-start="1575" selection-end="1587" vertical-scroll-proportion="-5.576923" vertical-offset="509" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="15" selection-start="117" selection-end="121" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="357">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="52" selection-start="218" selection-end="218" vertical-scroll-proportion="0.42713568" vertical-offset="0" max-vertical-offset="597">
+        <state line="45" column="10" selection-start="1277" selection-end="1366" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="952">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="21" selection-start="328" selection-end="328" vertical-scroll-proportion="95.23077" vertical-offset="5088" max-vertical-offset="5865">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getstuff.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="0" selection-start="867" selection-end="867" vertical-scroll-proportion="0.5055402" vertical-offset="264" max-vertical-offset="1292">
           <folding />
         </state>
       </provider>

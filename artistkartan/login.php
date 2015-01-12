@@ -5,7 +5,7 @@
  * Date: 2015-01-11
  * Time: 18:47
  */
-use \SpotifyWebAPI;
+//use \SpotifyWebAPI;
 
 $curl = curl_init();
 $myClientIDForSpotify = "32d69ac656814a37bc890e0840076720";

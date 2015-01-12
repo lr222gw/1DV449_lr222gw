@@ -7,6 +7,8 @@
  */
     session_start();
 
+
+
     $grant_type = "authorization_code";
     $code = $_GET["code"];
     $redirect_uri = "http://konsertkartan.com/getLogin.php";
@@ -18,7 +20,7 @@
         "code" => $code,
         "redirect_uri" => $redirect_uri,
         "client_id" =>$client_id,
-        "client_secret" => $client_secret
+        "client_secret" => $client_secret,
     );
 
     //Påbörjar att hämta accesstoken för en användares inloggning.
@@ -50,7 +52,7 @@
     $userResultDecoded = json_decode($userResult,true);
     curl_close($cu);
 
-    $_SESSION["OnlineUser"] = $userResultDecoded["display_name"];
+    $_SESSION["OnlineUser"] = $userResultDecoded["id"];
     $_SESSION["UserData"] = $userResultDecoded;
     $_SESSION["AccessData"] = $accessData;
 
