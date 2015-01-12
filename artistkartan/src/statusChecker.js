@@ -36,7 +36,7 @@ $.ajax({
     type: "get",
     url: "getstuff.php",
     async: true,
-    data: {function: "getUserPlaylists"},
+    data: {function: "getUsersArtists"},
     success: function(data){
         console.log(data);
         var div = document.createElement("div");
