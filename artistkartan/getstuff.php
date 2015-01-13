@@ -5,6 +5,7 @@
  * Date: 2015-01-08
  * Time: 23:15
  */
+
 session_start();
 
 
@@ -16,6 +17,124 @@ if($_GET["function"] == "isUserOnline"){
     }
 }
 
+
+if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) && isset($_GET["latitude"])){
+    $locationData = getSonkickLocationByLngNLat($_GET["longtidue"],$_GET["latitude"]);
+
+    $metroId = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["id"];
+
+    $songkickConcertOnSpecificArea = getSongkickEventsBySongkickLocation($metroId);
+    $eventsInArea = $songkickConcertOnSpecificArea["resultsPage"]["results"]["event"];
+
+    echo json_encode($eventsInArea, JSON_UNESCAPED_SLASHES);
+
+}
+function getSongkickEventsBySongkickLocation($metroLocationID){
+    $url = "http://api.songkick.com/api/3.0/metro_areas/{$metroLocationID}/calendar.json?apikey=O2uaF4oPnY6ujGCJ";
+
+    $cu = curl_init();
+
+    curl_setopt($cu, CURLOPT_URL, $url);
+    curl_setopt($cu, CURLOPT_RETURNTRANSFER, TRUE); // ser till att resultatet kommer ner istället för om det lyckades eller ej
+
+    $userResult = curl_exec($cu);
+    $userResultDecoded = json_decode($userResult,true);
+    curl_close($cu);
+
+    return $userResultDecoded;
+}
+function getSonkickLocationByLngNLat($lng, $lat){
+
+    $url = "http://api.songkick.com/api/3.0/search/locations.json?location=geo:{$lat},{$lng}&apikey=O2uaF4oPnY6ujGCJ";
+
+    $cu = curl_init();
+
+    curl_setopt($cu, CURLOPT_URL, $url);
+    curl_setopt($cu, CURLOPT_RETURNTRANSFER, TRUE); // ser till att resultatet kommer ner istället för om det lyckades eller ej
+
+    $userResult = curl_exec($cu);
+    $userResultDecoded = json_decode($userResult,true);
+    curl_close($cu);
+
+    return $userResultDecoded;
+}
+
+if($_GET["function"] == "getArtistConcertData"){ // TILLFÄLLIGT DÖD!
+
+
+    if(isset($_SESSION["ArtistList"])){
+    // notis: först hämtade jag ut artister från spotify och hämtade konsertdata till
+    //dessa problemet var att det tar cirka 4 min att hämta data från 700 artister... Så nu försöker jag lösa det på annat vis
+        //Konsertdata ska nu istället hämtas från en plats, sen visas de artister man har på spotify med Tjockare text (eller annat..)
+
+
+        $artistIDListFromSongKick = [];
+        $artistConceretInfoListFromSonkick = [];
+        for($i=0;$i<count($_SESSION["ArtistList"]);$i++){ //Loopen hämtar ut artisternas ID från Sonkick
+
+            //$artistResult = searchArtistOnSonkick($_SESSION["ArtistList"][$i][0]);
+            if($i == 100){
+                var_dump($artistResult);
+                die();
+            }
+            if($artistResult["resultsPage"]["status"] == "ok"){
+                array_push($artistIDListFromSongKick, $artistResult["resultsPage"]["results"]["artist"][0]["id"]);
+            }
+
+
+        }
+
+
+
+        for($i=0;$i<count($artistIDListFromSongKick); $i++){// Loopen hämtar ut artisternas Concertdata baserat på deras ID'n...
+            $artistConcertResult = getArtistConcertDataFromArtistID($artistIDListFromSongKick[$i]);
+            array_push($artistConceretInfoListFromSonkick, $artistConcertResult);
+        }
+
+        $_SESSION["ArtistsConcertList"] = $artistConceretInfoListFromSonkick;
+
+    }
+}
+
+function getArtistConcertDataFromArtistID($ArtistID){
+    $url = "http://api.songkick.com/api/3.0/artists/{$ArtistID}/calendar.json";
+    $key = "?apikey=O2uaF4oPnY6ujGCJ";
+
+    $cu = curl_init();
+    $url .=  $key;
+
+    curl_setopt($cu, CURLOPT_URL, $url);
+    curl_setopt($cu, CURLOPT_RETURNTRANSFER, TRUE); // ser till att resultatet kommer ner istället för om det lyckades eller ej
+
+    $userResult = curl_exec($cu);
+    $userResultDecoded = json_decode($userResult,true);
+    curl_close($cu);
+
+    return $userResultDecoded;
+}
+
+function searchArtistOnSonkick($ArtistToCheck){
+    $url = "http://api.songkick.com/api/3.0/search/artists.json";
+    $key = "O2uaF4oPnY6ujGCJ";
+
+    $cu = curl_init();
+    /*$url = http_build_url($url,
+                        array(
+                        "query" => $ArtistToCheck,
+                        "key" => $key
+                        ));*/
+    $url = "http://api.songkick.com/api/3.0/search/artists.json?query=".$ArtistToCheck."&apikey=". $key;
+    $url = str_replace(" ","%20",$url);
+
+    curl_setopt($cu, CURLOPT_URL, $url);
+    curl_setopt($cu, CURLOPT_RETURNTRANSFER, TRUE); // ser till att resultatet kommer ner istället för om det lyckades eller ej
+
+    $userResult = curl_exec($cu);
+    $userResultDecoded = json_decode($userResult,true);
+    curl_close($cu);
+
+    return $userResultDecoded;
+}
 
 if($_GET["function"] == "getUsersArtists"){ //Artister på användarens listor blir hämtade och returnerade med Echo.. (för js-ajax)
     $allPlaylists = [];
@@ -54,7 +173,7 @@ if($_GET["function"] == "getUsersArtists"){ //Artister på användarens listor b
         }
     }
 
-
+    $_SESSION["ArtistList"] = $ArtistList;
     echo json_encode($ArtistList,JSON_UNESCAPED_SLASHES);
     //header("Location: index.html");
 }
