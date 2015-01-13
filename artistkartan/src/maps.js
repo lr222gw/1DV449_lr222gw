@@ -13,6 +13,7 @@ var objects = {
 }
 
 
+
 function init(){
 
     objects.mapOptions = {
@@ -44,6 +45,16 @@ function init(){
     }
 
     google.maps.event.addDomListener(window,  'load', init);
+
+    google.maps.event.addListener(objects.map, "rightclick", function(event) {
+        var lat = event.latLng.lat();
+        var lng = event.latLng.lng();
+        // populate yor box/field with lat, lng
+        getConcertsNearYourLocation(lat,lng);
+    });
+
+
+
 
 }
 

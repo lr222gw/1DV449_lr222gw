@@ -1,3 +1,19 @@
 html, body, #mapcanvas{
     height: 100%;
 }
+
+a.concertPlus {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    text-decoration: underline;
+    display: block;
+}
+a.concertPlus:hover {
+    cursor: pointer;
+    color: rgb(65, 69, 157);
+}
+
+.content {
+    width: 500px;
+
+}
