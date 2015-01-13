@@ -7,6 +7,7 @@ var objects = {
     mapOption: "",
     userPosition: null,
     markers : [],
+    MultiMarkers : [],
     lastUsedMarker : null,
     lastOpenWindow : null
 }
@@ -16,7 +17,7 @@ function init(){
 
     objects.mapOptions = {
         center: { lat: 61.481394783060125, lng: 17.419128417968746}, //Sweden som standard...
-        zoom: 5,
+        zoom: 12,
         styles: getMapStyle()
     };
 
@@ -53,8 +54,8 @@ window.onload = function(){
 function getMapStyle(){
     //https://snazzymaps.com/style/30/cobalt
     //
-    //return [{"featureType":"all","elementType":"all","stylers":[{"invert_lightness":true},{"saturation":10},{"lightness":30},{"gamma":0.5},{"hue":"#435158"}]}];
-    return [
+    return [{"featureType":"all","elementType":"all","stylers":[{"invert_lightness":true},{"saturation":10},{"lightness":30},{"gamma":0.5},{"hue":"#435158"}]}];
+    /*return [
         {
             "featureType": "landscape",
             "elementType": "all",
@@ -238,5 +239,5 @@ function getMapStyle(){
                 }
             ]
         }
-    ] ;
+    ];*/
 }

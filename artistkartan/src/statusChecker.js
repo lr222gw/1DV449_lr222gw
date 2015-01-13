@@ -47,35 +47,186 @@ getConcertsNearYourLocation = function(){
 
 placeConcertsOnMap = function(ConcertData){
 
+    var positionsLat = [];
+    var positionsLng = [];
+    var positions = [];
+    var ConcertThatHasSameLatNLng = [];
+    var ConcertThatDoesNotHaveSameLatNLng = [];
+    var sameLatNLngID = 840; // används för att identifera Konsärer som har samma Lng och Lat... (används i funktionen MultiMakeMarkerAndInfoWindowOfConcertData)...
     for(var i = 0; i < ConcertData.length;i++){ //Ska hitta om det finns Konsärer på Samma Position.. Om det finns = ska lösas..
+
+        var Counter = 0;
+        for(var j=0; j < ConcertData.length; j++){
+
+            if(ConcertData[i].location.lat == ConcertData[j].location.lat && ConcertData[i].location.lng == ConcertData[j].location.lng){
+                Counter++;// Räknar hur många gånger konserter med samma lat och lng finns i Arrayen
+            }
+
+        }
+        if(Counter >= 2){
+            //Finns det 2 eller mer så läggs de in i en egen array
+
+            if(positionsLat.indexOf(ConcertData[i].location.lat) == -1 && positionsLng.indexOf(ConcertData[i].location.lng) == -1){
+                sameLatNLngID = sameLatNLngID + i;
+                positionsLat.push(ConcertData[i].location.lat);
+                positionsLng.push(ConcertData[i].location.lng);
+                positions.push([ConcertData[i].location.lat, ConcertData[i].location.lng, sameLatNLngID]);
+            }
+            ConcertData[i].sameLatNLngID = sameLatNLngID;
+            ConcertThatHasSameLatNLng.push(ConcertData[i]);
+
+        }else{
+            //Finns det bara 1 så läggs dom i en egen array...
+            ConcertThatDoesNotHaveSameLatNLng.push(ConcertData[i]);
+        }
 
     }
 
-    for(var i = 0; i < ConcertData.length;i++){
+    for(var i = 0; i < ConcertThatDoesNotHaveSameLatNLng.length;i++){
         //Notera att om jag hade kört koden i denna loop så hade saker skitit sig:
         //om man tryckt på en marker så skulle bara Data från den sista markern att skrivas ut, på dens possition..
         //genoom att jag låter en annan funktion ta  hand om det så försvinner problemet.. hur?
-        MakeMarkerAndInfoWindowOfConcertData(ConcertData[i]);
+        Single_MakeMarkerAndInfoWindowOfConcertData(ConcertThatDoesNotHaveSameLatNLng[i]);
+    }
+
+    for(var i = 0; i < positions.length; i++){
+        MakeMultiMarker(positions[i]);
+    }
+
+    for(var i = 0; i < ConcertThatHasSameLatNLng.length;i++){
+        Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertThatHasSameLatNLng[i]);
     }
 
 }
 
-function MakeMarkerAndInfoWindowOfConcertData(ConcertData){
+function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
+
+    //hitta Rätt MultiMarker att anvädna...
+    var markerToUse;
+    for(var i = 0; i < objects.MultiMarkers.length; i++){
+        /*if(ConcertData.location.lat == objects.MultiMarkers[i].position.k && ConcertData.location.lng == objects.MultiMarkers[i].position.D){
+            markerToUse = objects.MultiMarkers[i];
+            break;
+        }*/
+        if(ConcertData.sameLatNLngID == objects.MultiMarkers[i].sameLatNLngID){
+            markerToUse = objects.MultiMarkers[i];
+            break;
+        }
+    }
+    var ContentForInfoWindow = createInfoWindowWithConcertData(ConcertData); //Hämta ut relevant visningsdata för denna konsär...
+
+    var infoWindowForOtherInfoWindow = new google.maps.InfoWindow({ // Lägg in den i ett InfoWindow
+        content: ContentForInfoWindow
+    });
+
+    var newWindowButton = document.createElement("input");
+    newWindowButton.setAttribute("type", "submit");
+    newWindowButton.setAttribute("value", ConcertData.displayName);
+    newWindowButton.infoWindow = infoWindowForOtherInfoWindow;
+    newWindowButton.marker = markerToUse;
+
+
+
+    markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
+        newWindowButton +
+        "<a href='"+ConcertData.displayName+"'>ConcertData.displayName</a>");
+
+    newWindowButton.onclick = function (e){
+
+        if(objects.lastOpenWindow != null){
+            objects.lastOpenWindow.close();
+        }
+
+        e.target.infoWindow.open(objects.map, e.target.marker);
+
+        objects.lastUsedMarker = newWindowButton;
+        objects.lastOpenWindow = newWindowButton.infoWindow;
+
+    };
+
+    document.body.appendChild(newWindowButton);
+
+}
+
+function MakeMultiMarker(positions){
+
+    var InfoWindowContent =
+        '<div id="preContent">'+
+            '<h1>Samtliga event händer här:</h1>'
+        '</div>';
+
+    var infoWindowForMarker = new google.maps.InfoWindow({
+        content: InfoWindowContent
+    });
+
+    var image = 'pic/extraMarker.png';
+    var myLatLng = new google.maps.LatLng(positions[0], positions[1]);
+    var ConcertMarker = new google.maps.Marker({
+        position: myLatLng,
+        map: objects.map,
+        icon: image,
+        infoWindow : infoWindowForMarker,
+        sameLatNLngID : positions[2]
+    });
+    objects.MultiMarkers.push(ConcertMarker);
+
+    google.maps.event.addListener(ConcertMarker, 'click', function(){
+
+        if(objects.lastOpenWindow != null){
+            objects.lastOpenWindow.close();
+        }
+
+        ConcertMarker.infoWindow.open(objects.map, ConcertMarker);
+
+        objects.lastUsedMarker = ConcertMarker;
+        objects.lastOpenWindow = ConcertMarker.infoWindow;
+
+    });
+
+}
+
+function createInfoWindowWithConcertData(ConcertData){
+    var displayName;
     var preformances = "";
 
     for(var j=0;j<ConcertData.performance.length;j++){//Tar fram en sträng med artister/band per konsert...
         preformances += "<a href='"+ConcertData.performance[j].artist.uri+"'>"+"<p>"+ConcertData.performance[j].displayName+"</p></a>";
     }
 
+
+    if(ConcertData.displayName.indexOf(" (") == -1){
+        displayName = ConcertData.displayName;
+    }else{
+        displayName = ConcertData.displayName.substr(0,ConcertData.displayName.indexOf(" ("));
+    }
+
+    var time = ConcertData.start.time;
+    if(time == null){
+        time = "";
+    }
+
+    var eventContent;
+    if(preformances.length == 0){
+        eventContent = "<h3>Inga bestämda uppträdanden</h3>";
+    }else{
+        eventContent = '<h3>Uppträdanden:</h3>'+ preformances;
+    }
+
     var InfoWindowContent =
-        '<div id="content">'+
-            '<h1 id="firstHeading" class="firstHeading">'+ConcertData.displayName+'</h1>'+
+        '<div id="content" style="width: 50%">'+
+            '<h1 id="firstHeading" class="firstHeading">'+displayName+'</h1>'+
             '<div id="bodyContent">'+
-            '<h3>Uppträdanden</h3>'+
-            preformances
+            '<h2>Tid och Datum: '+ConcertData.start.date + ' ' +time +'</h2>'+
+            eventContent +
     '<a href='+ConcertData.uri+'>Biljetter och mer info här!</a>'
     '</div>'+
     '</div>';
+    return InfoWindowContent;
+}
+
+function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om Konsärer som inte har unika positioner
+
+    var InfoWindowContent = createInfoWindowWithConcertData(ConcertData);
 
     var infoWindowForMarker = new google.maps.InfoWindow({
         content: InfoWindowContent
