@@ -9,7 +9,8 @@ var objects = {
     markers : [],
     MultiMarkers : [],
     lastUsedMarker : null,
-    lastOpenWindow : null
+    lastOpenWindow : null,
+    LocationMapMetroIDOnMap : []
 }
 
 
@@ -50,6 +51,7 @@ function init(){
         var lat = event.latLng.lat();
         var lng = event.latLng.lng();
         // populate yor box/field with lat, lng
+        objects.map.setOptions({draggableCursor: 'wait'});
         getConcertsNearYourLocation(lat,lng);
     });
 

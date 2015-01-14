@@ -6,7 +6,7 @@
  * Time: 23:15
  */
 
-session_start();
+//session_start();
 
 
 if($_GET["function"] == "isUserOnline"){
@@ -18,19 +18,78 @@ if($_GET["function"] == "isUserOnline"){
 }
 
 
+
 if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) && isset($_GET["latitude"])){
     $locationData = getSonkickLocationByLngNLat($_GET["longtidue"],$_GET["latitude"]);
 
     $metroId = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["id"];
 
-    $songkickConcertOnSpecificArea = getSongkickEventsBySongkickLocation($metroId);
-    $eventsInArea = $songkickConcertOnSpecificArea["resultsPage"]["results"]["event"];
+    if(in_array($metroId, json_decode($_GET["metroArr"])) == false ){//För att undvika onödiga request..
 
-    echo json_encode($eventsInArea, JSON_UNESCAPED_SLASHES);
+        $songkickConcertOnSpecificArea = getSongkickEventsBySongkickLocation($metroId);
 
+        $eventArray = [];
+        $counter = 1;
+        do{
+            $songkickConcertOnSpecificArea = getSongkickEventsBySongkickLocation($metroId,$counter);
+            $counter++;
+            $toAdd = $songkickConcertOnSpecificArea["resultsPage"]["results"];
+
+
+            if(count($toAdd) >= 1){
+                for($j = 0; $j <count($toAdd["event"]); $j++ ){
+
+                    if($toAdd["event"][$j]["location"]["lng"] == null && $toAdd["event"][$j]["location"]["lat"] == null){
+                    //Om positionen lng och lat är null så får vi hämta dem på nytt... (orsakade att, tex, inga konserter från köpenhamn kunde visas...)
+                        $cityGeo = getSongkickLocationByName($toAdd["event"][$j]["location"]["city"]);
+                        $toAdd["event"][$j]["location"]["lat"] = $cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lat"];
+                        $toAdd["event"][$j]["location"]["lng"] = $cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lng"];
+
+                        if($cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lat"] != null &&
+                            $cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lng"] != null){
+                            // Om inga kordinater hittas så ignoreras denna konsert.
+                            array_push($eventArray, $toAdd["event"][$j]);
+                        }
+
+                    }else{
+                        //om inga problem, så läggs den till som vanligt
+                        array_push($eventArray, $toAdd["event"][$j]);
+                    }
+
+
+                }
+            }
+
+        }while(count($toAdd) != 0);
+
+
+
+
+        //$eventsInArea = $songkickConcertOnSpecificArea["resultsPage"]["results"]["event"];
+        array_push($eventArray,$metroId); //sista i arrayen är metroID....
+        echo json_encode($eventArray, JSON_UNESCAPED_SLASHES);
+    }
 }
-function getSongkickEventsBySongkickLocation($metroLocationID){
-    $url = "http://api.songkick.com/api/3.0/metro_areas/{$metroLocationID}/calendar.json?apikey=O2uaF4oPnY6ujGCJ";
+
+function getSongkickLocationByName($name, $urlPage = 1){
+
+    $url = "http://api.songkick.com/api/3.0/search/locations.json?query={$name}&apikey=O2uaF4oPnY6ujGCJ&page=".$urlPage;
+
+
+    $cu = curl_init();
+
+    curl_setopt($cu, CURLOPT_URL, $url);
+    curl_setopt($cu, CURLOPT_RETURNTRANSFER, TRUE); // ser till att resultatet kommer ner istället för om det lyckades eller ej
+
+    $userResult = curl_exec($cu);
+    $userResultDecoded = json_decode($userResult,true);
+    curl_close($cu);
+
+    return $userResultDecoded;
+}
+
+function getSongkickEventsBySongkickLocation($metroLocationID,$page=1){
+    $url = "http://api.songkick.com/api/3.0/metro_areas/{$metroLocationID}/calendar.json?apikey=O2uaF4oPnY6ujGCJ&page=".$page;
 
     $cu = curl_init();
 
@@ -226,3 +285,57 @@ function getUserPlaylist($custom = ""){ // hämtar ut 50 playlists åt gången
     return $userResultDecoded;
 
 }
+
+
+
+//Kod som inte kan användas pga begränsning. Koden är för krävande och datan blir för stor. Annan lösning ska implementeras...
+/*if($_GET["function"] == "getLocationForConcertsOverCountry" && isset($_GET["longtidue"]) && isset($_GET["latitude"])){
+    $locationData = getSonkickLocationByLngNLat($_GET["longtidue"],$_GET["latitude"]);
+
+    $Country = $locationData["resultsPage"]["results"]["location"][0]["city"]["country"]["displayName"];
+    $counter = 1;
+    $arryOfLocationsMetroID = [];
+    do{
+        $SongKickEventsOverCountry = getSongkickLocationByName($Country,$counter);
+        $counter++;
+        $toAdd = $SongKickEventsOverCountry["resultsPage"]["results"];
+
+        if(count($toAdd) >= 1){
+            for($i = 0; $i <count($toAdd["location"]); $i++ ){
+                array_push($arryOfLocationsMetroID, $toAdd["location"][$i]["metroArea"]["id"]);
+
+
+            }
+        }
+
+    }while(count($toAdd) != 0); // När ToAdd inte har några resultat så är den 0. så håll på tills den blir 0...
+
+    $arrOfLocations = [];
+    //$timeStart = microtime(true);
+    //$resultsss = microtime(true) - $timeStart; ($resultsss/60 = svaret i minuter...)
+    //Tar ungefär 1.2 minuter att hämta 300 Locations med MetroID...
+    for($i=0; $i<count($arryOfLocationsMetroID);$i++ ){ // här hämtas datan för alla platsers konsärer  (från tex sverige)
+        $counter = 1;
+        do{
+            $LocationsPerPage = getSongkickEventsBySongkickLocation($arryOfLocationsMetroID[$i],$counter);
+            $toAdd = $LocationsPerPage["resultsPage"]["results"];
+            $counter++;
+
+            if(count($toAdd) >= 1){
+                for($j = 0; $j <count($toAdd["event"]); $j++ ){
+                    array_push($arrOfLocations, $toAdd["event"][$j]);
+                }
+            }
+            if($i == 3){
+                var_dump($arrOfLocations);
+                die();
+            }
+
+        }while(count($toAdd) != 0);
+    }
+
+    var_dump($arrOfLocations);
+    die();
+
+
+}*/

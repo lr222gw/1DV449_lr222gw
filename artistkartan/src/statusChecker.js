@@ -27,6 +27,34 @@ $.ajax({
     }
 });
 
+// Icke användbart, ny lösning ska implementeras... Denna är för krävande
+/*getConcertsFromYourCountry = function(lat, lng){
+
+    if(objects.userPosition != null){
+
+        if(lat != null && lng != null){
+            lat = lat;
+            lng = lng;
+        }else{
+            lat = objects.userPosition.k;
+            lng = objects.userPosition.D;
+        }
+
+        $.ajax({
+            type: "get",
+            url: "getstuff.php",
+            async: true,
+            data: {function: "getLocationForConcertsOverCountry", longtidue: lng ,latitude: lat},
+            success: function(data){
+                console.log(data);
+                placeConcertsOnMap(JSON.parse(data));
+            }
+        });
+    }else{
+        alert("För att hitta artister nära dig så måste du godkänna GeoLocation...");
+    }
+
+}*/
 getConcertsNearYourLocation = function(lat, lng){
 
     if(objects.userPosition != null){
@@ -43,70 +71,81 @@ getConcertsNearYourLocation = function(lat, lng){
             type: "get",
             url: "getstuff.php",
             async: true,
-            data: {function: "getLocationForConcerts", longtidue: lng ,latitude: lat},
+            data: {function: "getLocationForConcerts", longtidue: lng ,latitude: lat, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
             success: function(data){
-                console.log(data);
-                placeConcertsOnMap(JSON.parse(data));
+                if(data != ""){
+                    console.log(data);
+                    placeConcertsOnMap(JSON.parse(data));
+                }
+                objects.map.setOptions({draggableCursor: 'url(http://maps.google.com/mapfiles/openhand.cur), move'});
             }
         });
+
     }else{
         alert("För att hitta artister nära dig så måste du godkänna GeoLocation...");
     }
+
 
 }
 
 placeConcertsOnMap = function(ConcertData){
 
-    var positionsLat = [];
-    var positionsLng = [];
-    var positions = [];
-    var ConcertThatHasSameLatNLng = [];
-    var ConcertThatDoesNotHaveSameLatNLng = [];
-    var sameLatNLngID;// = 840; // används för att identifera Konsärer som har samma Lng och Lat... (används i funktionen MultiMakeMarkerAndInfoWindowOfConcertData)...
-    for(var i = 0; i < ConcertData.length;i++){ //Ska hitta om det finns Konsärer på Samma Position.. Om det finns = ska lösas..
+    if(objects.LocationMapMetroIDOnMap.indexOf(ConcertData[ConcertData.length]) == -1){
+        //Om det är första gången denna location trycts på så ska den läggas in, nästa gång så ska den ej skrivas ut..
+        objects.LocationMapMetroIDOnMap.push(ConcertData[ConcertData.length-1]);
+        //delete ConcertData.LocationMapMetroID;
+        ConcertData.pop(ConcertData.length); //Tar bort sista i arrayen, alltså MetroID't...
 
-        var Counter = 0;
-        for(var j=0; j < ConcertData.length; j++){
+        var positionsLat = [];
+        var positionsLng = [];
+        var positions = [];
+        var ConcertThatHasSameLatNLng = [];
+        var ConcertThatDoesNotHaveSameLatNLng = [];
+        var sameLatNLngID;// = 840; // används för att identifera Konsärer som har samma Lng och Lat... (används i funktionen MultiMakeMarkerAndInfoWindowOfConcertData)...
+        for(var i = 0; i < ConcertData.length;i++){ //Ska hitta om det finns Konsärer på Samma Position.. Om det finns = ska lösas..
 
-            if(ConcertData[i].location.lat == ConcertData[j].location.lat && ConcertData[i].location.lng == ConcertData[j].location.lng){
-                Counter++;// Räknar hur många gånger konserter med samma lat och lng finns i Arrayen
+            var Counter = 0;
+            for(var j=0; j < ConcertData.length; j++){
+
+                if(ConcertData[i].location.lat == ConcertData[j].location.lat && ConcertData[i].location.lng == ConcertData[j].location.lng){
+                    Counter++;// Räknar hur många gånger konserter med samma lat och lng finns i Arrayen
+                }
+
+            }
+            if(Counter >= 2){
+                //Finns det 2 eller mer så läggs de in i en egen array
+
+                if(positionsLat.indexOf(ConcertData[i].location.lat) == -1 && positionsLng.indexOf(ConcertData[i].location.lng) == -1){
+                    sameLatNLngID = (ConcertData[i].location.lat.toString() + ConcertData[i].location.lng.toString());
+                    positionsLat.push(ConcertData[i].location.lat);
+                    positionsLng.push(ConcertData[i].location.lng);
+                    positions.push([ConcertData[i].location.lat, ConcertData[i].location.lng, sameLatNLngID]);
+                }
+                ConcertData[i].sameLatNLngID = (ConcertData[i].location.lat.toString() + ConcertData[i].location.lng.toString());
+                ConcertThatHasSameLatNLng.push(ConcertData[i]);
+
+            }else{
+                //Finns det bara 1 så läggs dom i en egen array...
+                ConcertThatDoesNotHaveSameLatNLng.push(ConcertData[i]);
             }
 
         }
-        if(Counter >= 2){
-            //Finns det 2 eller mer så läggs de in i en egen array
 
-            if(positionsLat.indexOf(ConcertData[i].location.lat) == -1 && positionsLng.indexOf(ConcertData[i].location.lng) == -1){
-                sameLatNLngID = (ConcertData[i].location.lat.toString() + ConcertData[i].location.lng.toString());
-                positionsLat.push(ConcertData[i].location.lat);
-                positionsLng.push(ConcertData[i].location.lng);
-                positions.push([ConcertData[i].location.lat, ConcertData[i].location.lng, sameLatNLngID]);
-            }
-            ConcertData[i].sameLatNLngID = (ConcertData[i].location.lat.toString() + ConcertData[i].location.lng.toString());
-            ConcertThatHasSameLatNLng.push(ConcertData[i]);
-
-        }else{
-            //Finns det bara 1 så läggs dom i en egen array...
-            ConcertThatDoesNotHaveSameLatNLng.push(ConcertData[i]);
+        for(var i = 0; i < ConcertThatDoesNotHaveSameLatNLng.length;i++){
+            //Notera att om jag hade kört koden i denna loop så hade saker skitit sig:
+            //om man tryckt på en marker så skulle bara Data från den sista markern att skrivas ut, på dens possition..
+            //genoom att jag låter en annan funktion ta  hand om det så försvinner problemet.. hur?
+            Single_MakeMarkerAndInfoWindowOfConcertData(ConcertThatDoesNotHaveSameLatNLng[i]);
         }
 
-    }
+        for(var i = 0; i < positions.length; i++){
+            MakeMultiMarker(positions[i]);
+        }
 
-    for(var i = 0; i < ConcertThatDoesNotHaveSameLatNLng.length;i++){
-        //Notera att om jag hade kört koden i denna loop så hade saker skitit sig:
-        //om man tryckt på en marker så skulle bara Data från den sista markern att skrivas ut, på dens possition..
-        //genoom att jag låter en annan funktion ta  hand om det så försvinner problemet.. hur?
-        Single_MakeMarkerAndInfoWindowOfConcertData(ConcertThatDoesNotHaveSameLatNLng[i]);
+        for(var i = 0; i < ConcertThatHasSameLatNLng.length;i++){
+            Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertThatHasSameLatNLng[i]);
+        }
     }
-
-    for(var i = 0; i < positions.length; i++){
-        MakeMultiMarker(positions[i]);
-    }
-
-    for(var i = 0; i < ConcertThatHasSameLatNLng.length;i++){
-        Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertThatHasSameLatNLng[i]);
-    }
-
 }
 
 function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
@@ -172,7 +211,16 @@ function MakeMultiMarker(positions){
         maxWidth: 500
     });
 
-    var image = 'pic/extraMarker.png';
+
+    var image = new google.maps.MarkerImage(
+        "pic/extraMarker.png",
+        null, /* size is determined at runtime */
+        null, /* origin is 0,0 */
+        null, /* anchor is bottom center of the scaled image */
+        new google.maps.Size(42, 48)
+    );
+
+    //var image = 'pic/extraMarker.png';
     var myLatLng = new google.maps.LatLng(positions[0], positions[1]);
     var ConcertMarker = new google.maps.Marker({
         position: myLatLng,
@@ -246,7 +294,14 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
         maxWidth: 500
     });
 
-    var image = 'pic/marker.png';
+    var image = new google.maps.MarkerImage( //Konstig formel för att göra Markern större...
+        "pic/marker.png",
+        null, /* size is determined at runtime */
+        null, /* origin is 0,0 */
+        null, /* anchor is bottom center of the scaled image */
+        new google.maps.Size(42, 48)
+    );
+    //var image = 'pic/marker.png';
     var myLatLng = new google.maps.LatLng(ConcertData.location.lat, ConcertData.location.lng);
     var ConcertMarker = new google.maps.Marker({
         position: myLatLng,
