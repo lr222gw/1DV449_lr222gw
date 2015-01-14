@@ -1,5 +1,9 @@
 
 
+
+
+
+
 $.ajax({
     type: "get",
     url: "getstuff.php",
@@ -20,8 +24,9 @@ $.ajax({
             var logoutButton = document.createElement("input");
             logoutButton.setAttribute("value", "Logga ut, " + data);
             logoutButton.setAttribute("type", "submit");
+            logoutButton.setAttribute("id", "logout");
             logout.appendChild(logoutButton);
-            body.insertBefore(logout, body.firstChild);
+            document.getElementById("logga").insertBefore(logout, document.getElementById("loginspotify"));
 
         }
     }

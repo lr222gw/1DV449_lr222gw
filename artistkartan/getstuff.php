@@ -51,20 +51,13 @@ if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) &&
                             // Om inga kordinater hittas så ignoreras denna konsert.
                             array_push($eventArray, $toAdd["event"][$j]);
                         }
-
                     }else{
                         //om inga problem, så läggs den till som vanligt
                         array_push($eventArray, $toAdd["event"][$j]);
                     }
-
-
                 }
             }
-
         }while(count($toAdd) != 0);
-
-
-
 
         //$eventsInArea = $songkickConcertOnSpecificArea["resultsPage"]["results"]["event"];
         array_push($eventArray,$metroId); //sista i arrayen är metroID....

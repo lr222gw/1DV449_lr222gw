@@ -1,5 +1,12 @@
 html, body, #mapcanvas{
     height: 100%;
+    margin: 0px;
+
+}
+#mapcanvas{
+    position: relative;
+    z-index: 20;
+    margin-top: -10px;
 }
 
 a.concertPlus {
@@ -16,4 +23,63 @@ a.concertPlus:hover {
 .content {
     width: 500px;
 
+}
+div#logga {
+    box-shadow: 0px 0px 15px 4px rgb(0, 0, 0);
+    margin-bottom: 10px;
+}
+
+div#songkickstuff img {
+    width: 15%;
+    margin: 0 auto;
+    display: table-caption;
+}
+
+#logga img {
+    margin: 0 auto;
+    width: 60%;
+    display: block;
+    max-width: 40%;
+}
+/*div#loginspotify {
+    position: absolute;
+}*/
+input#loginButton:hover {
+    background-color: rgb(100, 143, 0);
+    border-color: rgb(100, 143, 0);
+}
+
+div#topBanner {
+    box-shadow: 0px 0px 15px 4px rgb(0, 0, 0);
+    position: relative;
+    z-index: 50;
+}
+
+
+input#loginButton, #logout {
+    background-color: rgb(132, 189, 0);
+    border: rgb(132, 189, 0);
+    height: 50px;
+    width: 27%;
+    color: rgb(255, 255, 255);
+    font-family: sans-serif;
+    font-weight: 600;
+    font-variant-ligatures: inherit;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    height: 5vw;
+    font-size: 1.4vw;
+    max-height: 55px;
+    position: absolute;
+    max-width: 300px;
+    border-radius: 500px;
+    transition: background-color .15s ease,border-color .15s ease;
+}
+
+@media all and   (min-width: 1123px) {
+    input#loginButton{
+        font-size: 15px;
+    }
 }
