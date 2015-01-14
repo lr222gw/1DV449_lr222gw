@@ -2,6 +2,51 @@
 
 
 
+var hideOrShow = document.createElement("div");
+hideOrShow.setAttribute("id", "hideOrShow");
+hideOrShow.setAttribute("status", "show");
+hideOrShow.innerText = "DÖLJ";
+document.getElementById("logga").appendChild(hideOrShow);
+
+window.onresize = function(){
+    var topBanner = document.getElementById("topBanner");
+    var mapcanvas = document.getElementById("mapcanvas");
+
+    if(hideOrShow.innerText == "DÖLJ"){
+        hideOrShow.innerText = "DÖLJ";
+        topBanner.style.transition = "bottom 1s linear 0s";
+        mapcanvas.style.transition = "bottom 1s linear 0s";
+        topBanner.style.bottom = "0" + "px";
+        mapcanvas.style.bottom = "0" + "px";
+    }else{
+        hideOrShow.innerText = "DÖLJ";
+        topBanner.style.transition = "bottom 1s linear 0s";
+        mapcanvas.style.transition = "bottom 1s linear 0s";
+        topBanner.style.bottom = "0" + "px";
+        mapcanvas.style.bottom = "0" + "px";
+    }
+
+}
+
+hideOrShow.onclick = function(e){
+
+    if(e.target.innerText == "DÖLJ"){
+        e.target.innerText = "VISA";
+        topBanner.style.transition = "bottom 1s linear 0s";
+        mapcanvas.style.transition = "bottom 1s linear 0s";
+        topBanner.style.bottom = topBanner.clientHeight + "px";
+        mapcanvas.style.bottom = topBanner.clientHeight + "px";
+    }else{
+        e.target.innerText = "DÖLJ";
+        topBanner.style.transition = "bottom 1s linear 0s";
+        mapcanvas.style.transition = "bottom 1s linear 0s";
+        topBanner.style.bottom = "0%";
+        mapcanvas.style.bottom = "0%";
+    }
+
+
+
+}
 
 
 $.ajax({

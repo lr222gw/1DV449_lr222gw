@@ -7,6 +7,11 @@ html, body, #mapcanvas{
     position: relative;
     z-index: 20;
     margin-top: -10px;
+    bottom: 0%;
+/*    animation: hideMe 1s;
+    -webkit-animation: hideMe 1s
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;*/
 }
 
 a.concertPlus {
@@ -29,13 +34,27 @@ div#logga {
     margin-bottom: 10px;
 }
 
-div#songkickstuff img {
-    width: 15%;
+div#songkickstuff {
+    display: flex;
+}
+#songkickstuff a {
     margin: 0 auto;
-    display: table-caption;
 }
 
-#logga img {
+div#songkickstuff img {
+    margin: 0 auto;
+    display: table-caption;
+    width: 15vw;
+}
+
+/*#logga img {
+    margin: 0 auto;
+    width: 60%;
+    display: block;
+    max-width: 40%;
+}*/
+
+img#loggaimg {
     margin: 0 auto;
     width: 60%;
     display: block;
@@ -53,6 +72,12 @@ div#topBanner {
     box-shadow: 0px 0px 15px 4px rgb(0, 0, 0);
     position: relative;
     z-index: 50;
+    bottom: 0%;
+/*    animation: hideMe 1s;
+    -webkit-animation: hideMe 1s;
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+    -webkit-animation-fill-mode: forwards;*/
 }
 
 
@@ -66,6 +91,7 @@ input#loginButton, #logout {
     font-weight: 600;
     font-variant-ligatures: inherit;
     text-align: center;
+    margin: 2% 1%;
     text-transform: uppercase;
     letter-spacing: 1.2px;
     cursor: pointer;
@@ -78,8 +104,35 @@ input#loginButton, #logout {
     transition: background-color .15s ease,border-color .15s ease;
 }
 
+/*@keyframes hideMe{
+    from{bottom: 0%;}
+    to{bottom: 36%;}
+}
+@-webkit-keyframes hideMe {
+    from{bottom: 0%;}
+    to{bottom: 36%;}
+}*/
+
 @media all and   (min-width: 1123px) {
     input#loginButton{
         font-size: 15px;
     }
+}
+div#hideOrShow {
+    background-color: rgb(192, 192, 192);
+    background: -moz-linear-gradient(top, rgba(226,226,226,0) 0%, rgba(226,226,226,1) 28%, rgba(226,226,226,1) 47%, rgba(226,226,226,1) 99%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(226,226,226,0)), color-stop(28%,rgba(226,226,226,1)), color-stop(125%,rgba(226,226,226,1)), color-stop(99%,rgba(204, 204, 204, 1)));
+    width: 38px;
+    height: 20px;
+    border-radius: 0px 0px 10px 10px;
+    position: absolute;
+    margin-top: -20px;
+    display: block;
+    right: 100px;
+    font-family: sans-serif;
+    font-size: 0.7em;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 45px;
+    cursor: pointer;
 }
