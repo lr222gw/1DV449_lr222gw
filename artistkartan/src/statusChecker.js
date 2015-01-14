@@ -73,7 +73,7 @@ getConcertsNearYourLocation = function(lat, lng){
             async: true,
             data: {function: "getLocationForConcerts", longtidue: lng ,latitude: lat, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
             success: function(data){
-                if(data != ""){
+                if(data != "" && data != "[null]"){
                     console.log(data);
                     placeConcertsOnMap(JSON.parse(data));
                 }

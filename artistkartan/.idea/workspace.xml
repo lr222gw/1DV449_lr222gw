@@ -22,7 +22,7 @@
     <favorites_list name="artistkartan" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5134788">
+    <splitter split-orientation="horizontal" split-proportion="0.3279846">
       <split-first>
         <leaf>
           <file leaf-file-name="maps.js" pinned="false" current="false" current-in-tab="false">
@@ -34,10 +34,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="statusChecker.js" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="statusChecker.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="79" column="117" selection-start="2461" selection-end="2461" vertical-scroll-proportion="0.43367347" vertical-offset="1088" max-vertical-offset="6681">
+                <state line="75" column="37" selection-start="2234" selection-end="2234" vertical-scroll-proportion="0.41975307" vertical-offset="1037" max-vertical-offset="6681">
                   <folding />
                 </state>
               </provider>
@@ -46,7 +46,7 @@
           <file leaf-file-name="getstuff.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/getstuff.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="22" column="62" selection-start="442" selection-end="442" vertical-scroll-proportion="-6.5384617" vertical-offset="204" max-vertical-offset="5882">
+                <state line="22" column="62" selection-start="440" selection-end="440" vertical-scroll-proportion="-6.5384617" vertical-offset="204" max-vertical-offset="5899">
                   <folding>
                     <element signature="e#6#86#0" expanded="true" />
                   </folding>
@@ -117,10 +117,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="getstuff.php" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="getstuff.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/getstuff.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="25" column="0" selection-start="558" selection-end="558" vertical-scroll-proportion="0.34991422" vertical-offset="136" max-vertical-offset="5797">
+                <state line="27" column="145" selection-start="792" selection-end="792" vertical-scroll-proportion="0.34991422" vertical-offset="170" max-vertical-offset="5814">
                   <folding />
                 </state>
               </provider>
@@ -157,8 +157,8 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/style.css" />
         <option value="$PROJECT_DIR$/src/maps.js" />
-        <option value="$PROJECT_DIR$/getstuff.php" />
         <option value="$PROJECT_DIR$/src/statusChecker.js" />
+        <option value="$PROJECT_DIR$/getstuff.php" />
       </list>
     </option>
   </component>
@@ -421,9 +421,7 @@
     <entry file="file://$PROJECT_DIR$/getstuff.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="40" selection-start="147" selection-end="147" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="3961">
-          <folding>
-            <element signature="e#6#86#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -442,9 +440,7 @@
     <entry file="file://$PROJECT_DIR$/getstuff.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="0" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0" vertical-offset="729" max-vertical-offset="1938">
-          <folding>
-            <element signature="e#6#86#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -498,9 +494,7 @@
     <entry file="file://$PROJECT_DIR$/getstuff.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="0" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="221">
-          <folding>
-            <element signature="e#6#86#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -552,18 +546,14 @@
     <entry file="file://$PROJECT_DIR$/getstuff.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="4" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
-          <folding>
-            <element signature="e#6#86#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getstuff.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="4" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
-          <folding>
-            <element signature="e#6#86#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -636,18 +626,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getstuff.php">
+    <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="62" selection-start="442" selection-end="442" vertical-scroll-proportion="-6.5384617" vertical-offset="204" max-vertical-offset="5882">
-          <folding>
-            <element signature="e#6#86#0" expanded="true" />
-          </folding>
+        <state line="75" column="37" selection-start="2234" selection-end="2234" vertical-scroll-proportion="0.41975307" vertical-offset="1037" max-vertical-offset="6681">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
+    <entry file="file://$PROJECT_DIR$/getstuff.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="117" selection-start="2461" selection-end="2461" vertical-scroll-proportion="0.43367347" vertical-offset="1088" max-vertical-offset="6681">
+        <state line="27" column="145" selection-start="792" selection-end="792" vertical-scroll-proportion="0.34991422" vertical-offset="170" max-vertical-offset="5814">
           <folding />
         </state>
       </provider>

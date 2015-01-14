@@ -6,7 +6,7 @@
  * Time: 23:15
  */
 
-//session_start();
+session_start();
 
 
 if($_GET["function"] == "isUserOnline"){
@@ -24,7 +24,8 @@ if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) &&
 
     $metroId = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["id"];
 
-    if(in_array($metroId, json_decode($_GET["metroArr"])) == false ){//För att undvika onödiga request..
+    if(in_array($metroId, json_decode($_GET["metroArr"])) == false && $metroId != NULL ){
+    //För att undvika onödiga request.. Är metroID null så finns inget metro = onödig request... om den redan finns på klienten = onödig request.
 
         $songkickConcertOnSpecificArea = getSongkickEventsBySongkickLocation($metroId);
 
