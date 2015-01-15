@@ -11,7 +11,8 @@ var objects = {
     lastUsedMarker : null,
     lastOpenWindow : null,
     LocationMapMetroIDOnMap : [],
-    timer : null
+    timer : null,
+    geoLocationIsOn : false
 
 }
 
@@ -44,12 +45,15 @@ function init(){
             objects.userPosition = pos; // sätter så att jag har användarens position...
             objects.map.setCenter(pos);
             objects.map.setZoom(12);
+            objects.geoLocationIsOn = true;
 
             //Om användaren tillåter geoLocation vill vi genast fylla på data där den befinner sig
             getConcertsNearYourLocation();
 
         }, function() {
-            handleNoGeolocation(true);
+            if(objects.geoLocationIsOn){
+                handleNoGeolocation(true);
+            }
         });
 
     }
@@ -66,34 +70,39 @@ function init(){
 
     //För mobil, för att lägga till .. Håll in i 1,5 sekunder för att släppa markör.. drar du i 1,5 sekunder så
     //kommer markör släppas där du släpper..
+    //↓DENNA LÖSNING  FUNGERAR (Härifrån ner till slutet av funktionen)↓
+
+    //Koden nedan ska bara köras om det är touch, (de två raderna under hjälper till o kolla om de e touch)
+    var msTouchEnabled = window.navigator.msMaxTouchPoints;
+    var generalTouchEnabled = "ontouchstart" in document.createElement("div");
 
     function LongClick( map, length) {
         this.length_ = length;
         var me = this;
         me.map_ = map;
-        google.maps.event.addListener(map, 'mouseup', function(e) { me.onMouseDown_(e) });
-        google.maps.event.addListener(map, 'mousedown', function(e) { me.onMouseUp_(e) });
+        google.maps.event.addListener(map, 'mousedown', function(e) { me.onMouseDown_(e) });
+        google.maps.event.addListener(map, 'mouseup', function(e) { me.onMouseUp_(e) });
     }
-    LongClick.prototype.onMouseUp_ = function(e) {
-        var now = +new Date;
-        if (now - this.down_ > this.length_) {
-            google.maps.event.trigger(this.map_, 'longpress', e);
+
+    if(msTouchEnabled || generalTouchEnabled){
+
+        LongClick.prototype.onMouseUp_ = function(e) {
+            var now = +new Date;
+            if (now - this.down_ > this.length_) {
+                google.maps.event.trigger(this.map_, 'longpress', e);
+            }
         }
+        LongClick.prototype.onMouseDown_ = function() {
+            this.down_ = +new Date;
+        }
+        new LongClick(objects.map, 1500);
+        google.maps.event.addListener(objects.map, 'longpress', function(event) {
+            var lat = event.latLng.lat();
+            var lng = event.latLng.lng();
+            getConcertsNearYourLocation(lat,lng);
+
+        });
     }
-    LongClick.prototype.onMouseDown_ = function() {
-        this.down_ = +new Date;
-    }
-    new LongClick(objects.map, 1500);
-    google.maps.event.addListener(objects.map, 'longpress', function(event) {
-        var lat = event.latLng.lat();
-        var lng = event.latLng.lng();
-        getConcertsNearYourLocation(lat,lng);
-
-    });
-
-
-
-
 
 }
 

@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 5
+# rev 16
 
 CACHE:
 /favicon.ico
@@ -14,19 +14,16 @@ CACHE:
 /src/maps.js
 /src/statusChecker.js
 /src/style.css
-http://maps.googleapis.com/maps/api/js?key=AIzaSyCTuUr4lXyaXvZAuSLQJah1DWNmDxuyDb4
-http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/main.js
-http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/map.js
-http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/common.js
-http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/util.js
-http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/stats.js
-http://maps.gstatic.com/mapfiles/openhand_8_8.cur
-http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/onion.js
-http://maps.gstatic.com/mapfiles/openhand_8_8.cur
-http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/controls.js
-http://maps.gstatic.com/mapfiles/transparent.png
+
+
 
 NETWORK:
+/dbstuff.php
+/getAccess.php
+/getLogin.php
+/getstuff.php
+/login.php
+/logout.php
 http://maps.gstatic.com/
 http://maps.google.com/
 http://maps.googleapis.com/
@@ -40,6 +37,7 @@ http://cbk0.googleapis.com/
 http://cbk1.googleapis.com/
 http://www.google-analytics.com/
 http://gg.google.com/
+http://csi.gstatic.com/
 *
 FALLBACK:
 # tomt 

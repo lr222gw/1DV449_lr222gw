@@ -156,57 +156,54 @@ setLastCheckedLocationName = function(){
 getConcertsNearYourLocation = function(lat, lng){
 //namenet är lite missvisande, det den gör är att den hämtar Konserter för en viss location,
 //Om inget annat anges hämtas location från geolocation...
-    if(objects.userPosition != null){
 
-        if(lat != null && lng != null){
-            lat = lat;
-            lng = lng;
-        }else{
-            lat = objects.userPosition.k;
-            lng = objects.userPosition.D;
-        }
-
-        $.ajax({
-            type: "get",
-            url: "getstuff.php",
-            async: true,
-            data: {function: "getLocationForConcerts", longtidue: lng ,latitude: lat, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
-            success: function(data){
-                setLastCheckedLocationName();
-                if( data == "nope"){
-                    console.log("Cant update until later! :< ");
-                }else{
-                    if(data != "" && data != "[null]"){
-                        //console.log(data);
-                        if(JSON.parse(data).length !=  1){
-                            // Om JSON.parse(data) blir 1 så innerbär det att den bara innehåller MetroID,
-                            // Då vill vi inte skriva ut något, utan bara berätta att det ej finns några konserter här.
-                        placeConcertsOnMap(JSON.parse(data));
-
-                        }else{
-                            var pos = new google.maps.LatLng(
-                                lat,
-                                lng);
-
-                            var infowindow = new InfoBubble({
-                                map: objects.map,
-                                position: pos,
-                                content: 'Tyvärr, inga uppkommande event här :('
-                            });
-                            infowindow.open();
-
-                        }
-                        console.log("Location Populated! :D ");
-                    }
-                }
-                objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
-
-            }
-        });
-
+    if(lat != null && lng != null){
+        lat = lat;
+        lng = lng;
     }else{
-        alert("För att hitta artister nära dig så måste du godkänna GeoLocation...");
+        lat = objects.userPosition.k;
+        lng = objects.userPosition.D;
     }
+
+    $.ajax({
+        type: "get",
+        url: "getstuff.php",
+        async: true,
+        data: {function: "getLocationForConcerts", longtidue: lng ,latitude: lat, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
+        success: function(data){
+            setLastCheckedLocationName();
+            if( data == "nope"){
+                console.log("Cant update until later! :< ");
+            }else{
+                if(data != "" && data != "[null]"){
+                    //console.log(data);
+                    if(JSON.parse(data).length !=  1){
+                        // Om JSON.parse(data) blir 1 så innerbär det att den bara innehåller MetroID,
+                        // Då vill vi inte skriva ut något, utan bara berätta att det ej finns några konserter här.
+                    placeConcertsOnMap(JSON.parse(data));
+
+                    }else{
+                        var pos = new google.maps.LatLng(
+                            lat,
+                            lng);
+
+                        var infowindow = new InfoBubble({
+                            map: objects.map,
+                            position: pos,
+                            content: 'Tyvärr, inga uppkommande event här :('
+                        });
+                        infowindow.open();
+
+                    }
+                    console.log("Location Populated! :D ");
+                }
+            }
+            objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
+
+        }
+    });
+
+
 
 
 }
@@ -218,18 +215,19 @@ getConcertsFromCache = function(){
         async: true,
         data: {function: "getLocationsFromCache"},
         success: function(data){
+            localStorage["CachadeKonserter"] = data;
             var ArrayOfLocationsWithConcerts = JSON.parse(data);
-
-            for(var i = 0; i < ArrayOfLocationsWithConcerts.length; i++){
-                var ConcertArrayData = JSON.parse(ArrayOfLocationsWithConcerts[i].LocationJson);
-                localStorage["CachadeKonserter"][i] = ArrayOfLocationsWithConcerts[i].LocationJson;
-                placeConcertsOnMap(ConcertArrayData);
-            }
-
+            FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
         }
     });
 }
-
+FastPlaceConcertWithArrayOfLocationsWithConcerts = function(ArrayOfLocationsWithConcerts){
+    //Larvigt namn, jag vet... denna funkion är bara en liten utbrytning...
+    for(var i = 0; i < ArrayOfLocationsWithConcerts.length; i++){
+        var ConcertArrayData = JSON.parse(ArrayOfLocationsWithConcerts[i].LocationJson);
+        placeConcertsOnMap(ConcertArrayData);
+    }
+}
 placeConcertsOnMap = function(ConcertData){
 
     if(objects.LocationMapMetroIDOnMap.indexOf(ConcertData[ConcertData.length]) == -1){ // ConcertData[ConcertData.length] == MetroID
