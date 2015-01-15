@@ -258,7 +258,7 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
     }
     var ContentForInfoWindow = createInfoWindowWithConcertData(ConcertData); //Hämta ut relevant visningsdata för denna konsär...
 
-    var infoWindowForOtherInfoWindow = new google.maps.InfoWindow({ // Lägg in den i ett InfoWindow
+    var infoWindowForOtherInfoWindow = new InfoBubble({ // Lägg in den i ett InfoWindow
         content: ContentForInfoWindow,
         maxWidth: 500
     });
@@ -300,7 +300,7 @@ function MakeMultiMarker(positions){
             '<h1>Samtliga event händer här:</h1>'
         '</div>';
 
-    var infoWindowForMarker = new google.maps.InfoWindow({
+    var infoWindowForMarker = new InfoBubble({
         content: InfoWindowContent,
         maxWidth: 500
     });
@@ -383,7 +383,7 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
 
     var InfoWindowContent = createInfoWindowWithConcertData(ConcertData);
 
-    var infoWindowForMarker = new google.maps.InfoWindow({
+    var infoWindowForMarker = new InfoBubble({
         content: InfoWindowContent,
         maxWidth: 500
     });

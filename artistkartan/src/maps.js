@@ -32,11 +32,12 @@ function init(){
             var pos = new google.maps.LatLng(position.coords.latitude,
                 position.coords.longitude);
 
-            var infowindow = new google.maps.InfoWindow({
+            var infowindow = new InfoBubble({
                 map: objects.map,
                 position: pos,
                 content: 'Du är här'
             });
+            infowindow.open();
             objects.userPosition = pos; // sätter så att jag har användarens position...
             objects.map.setCenter(pos);
 
