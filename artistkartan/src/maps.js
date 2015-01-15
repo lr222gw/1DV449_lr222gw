@@ -20,8 +20,8 @@ var objects = {
 function init(){
 
     objects.mapOptions = {
-        center: { lat: 61.481394783060125, lng: 17.419128417968746}, //Sweden som standard...
-        zoom: 12,
+        center: { lat: 17.714230406408745, lng: -23.53286520000005 }, //Hela världen (typ) som standard...
+        zoom: 3,
         styles: getMapStyle()
     };
 
@@ -40,8 +40,10 @@ function init(){
                 content: 'Du är här'
             });
             infowindow.open();
+            localStorage["userPosition"] = pos;
             objects.userPosition = pos; // sätter så att jag har användarens position...
             objects.map.setCenter(pos);
+            objects.map.setZoom(12);
 
             //Om användaren tillåter geoLocation vill vi genast fylla på data där den befinner sig
             getConcertsNearYourLocation();
@@ -69,8 +71,8 @@ function init(){
         this.length_ = length;
         var me = this;
         me.map_ = map;
-        google.maps.event.addListener(map, 'mousedown', function(e) { me.onMouseDown_(e) });
-        google.maps.event.addListener(map, 'mouseup', function(e) { me.onMouseUp_(e) });
+        google.maps.event.addListener(map, 'mouseup', function(e) { me.onMouseDown_(e) });
+        google.maps.event.addListener(map, 'mousedown', function(e) { me.onMouseUp_(e) });
     }
     LongClick.prototype.onMouseUp_ = function(e) {
         var now = +new Date;

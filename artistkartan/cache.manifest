@@ -1,0 +1,45 @@
+CACHE MANIFEST
+# rev 5
+
+CACHE:
+/favicon.ico
+/pic/extraMarker.png
+/pic/favicon.png
+/pic/KonsertKartanPSD.png
+/pic/marker.png
+/pic/openhand.ico
+/pic/songkick.png
+/src/infobubble.js
+/src/jquery.min.js
+/src/maps.js
+/src/statusChecker.js
+/src/style.css
+http://maps.googleapis.com/maps/api/js?key=AIzaSyCTuUr4lXyaXvZAuSLQJah1DWNmDxuyDb4
+http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/main.js
+http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/map.js
+http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/common.js
+http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/util.js
+http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/stats.js
+http://maps.gstatic.com/mapfiles/openhand_8_8.cur
+http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/onion.js
+http://maps.gstatic.com/mapfiles/openhand_8_8.cur
+http://maps.gstatic.com/maps-api-v3/api/js/19/6/intl/sv_ALL/controls.js
+http://maps.gstatic.com/mapfiles/transparent.png
+
+NETWORK:
+http://maps.gstatic.com/
+http://maps.google.com/
+http://maps.googleapis.com/
+http://mt0.googleapis.com/
+http://mt1.googleapis.com/
+http://mt2.googleapis.com/
+http://mt3.googleapis.com/
+http://khm0.googleapis.com/
+http://khm1.googleapis.com/
+http://cbk0.googleapis.com/
+http://cbk1.googleapis.com/
+http://www.google-analytics.com/
+http://gg.google.com/
+*
+FALLBACK:
+# tomt 

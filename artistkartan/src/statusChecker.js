@@ -9,21 +9,21 @@ if(localStorage["CachadeKonserter"] == undefined){
 var hideOrShow = document.createElement("div");
 hideOrShow.setAttribute("id", "hideOrShow");
 hideOrShow.setAttribute("status", "show");
-hideOrShow.innerText = "DÖLJ";
+hideOrShow.innerHTML = "DÖLJ";
 document.getElementById("logga").appendChild(hideOrShow);
 
 window.onresize = function(){
     var topBanner = document.getElementById("topBanner");
     var mapcanvas = document.getElementById("mapcanvas");
 
-    if(hideOrShow.innerText == "DÖLJ"){
-        hideOrShow.innerText = "DÖLJ";
+    if(hideOrShow.innerHTML == "DÖLJ"){
+        hideOrShow.innerHTML = "DÖLJ";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
         mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
         topBanner.style.bottom = "0" + "px";
         mapcanvas.style.bottom = "0" + "px";
     }else{
-        hideOrShow.innerText = "DÖLJ";
+        hideOrShow.innerHTML = "DÖLJ";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
         mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
         topBanner.style.bottom = "0" + "px";
@@ -36,14 +36,14 @@ window.onresize = function(){
 
 hideOrShow.onclick = function(e){
 
-    if(e.target.innerText == "DÖLJ"){
-        e.target.innerText = "VISA";
+    if(e.target.innerHTML == "DÖLJ"){
+        e.target.innerHTML = "VISA";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
         mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
         topBanner.style.bottom = topBanner.clientHeight + "px";
         mapcanvas.style.bottom = topBanner.clientHeight + "px";
     }else{
-        e.target.innerText = "DÖLJ";
+        e.target.innerHTML = "DÖLJ";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
         mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
         topBanner.style.bottom = "0%";
@@ -125,10 +125,10 @@ setLastCheckedLocationName = function(){
             if(document.getElementById("LastChecked") == null){
                 var LastChecked = document.createElement("div");
                 LastChecked.setAttribute("id", "LastChecked");
-                LastChecked.innerText = data;
+                LastChecked.innerHTML = data;
                 document.getElementById("logga").appendChild(LastChecked);
             }else{
-                document.getElementById("LastChecked").innerText = data;
+                document.getElementById("LastChecked").innerHTML = data;
 
 
 
