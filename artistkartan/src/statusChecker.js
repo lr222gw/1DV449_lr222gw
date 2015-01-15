@@ -2,6 +2,9 @@
 //Obs vissa saker finns i maps.js, maps.js kör vissa funktioner på statusChecker.js! :D
 //Onload functionen finns där :3
 
+if(localStorage["CachadeKonserter"] == undefined){
+    localStorage["CachadeKonserter"] = [];
+}
 
 var hideOrShow = document.createElement("div");
 hideOrShow.setAttribute("id", "hideOrShow");
@@ -76,6 +79,7 @@ $.ajax({
             logoutButton.setAttribute("id", "logout");
             logout.appendChild(logoutButton);
             document.getElementById("logga").insertBefore(logout, document.getElementById("loginspotify"));
+            localStorage["UserID"] = data;
 
         }
     }
@@ -125,6 +129,23 @@ setLastCheckedLocationName = function(){
                 document.getElementById("logga").appendChild(LastChecked);
             }else{
                 document.getElementById("LastChecked").innerText = data;
+
+
+
+                document.getElementById("LastChecked").style.transition = "padding-top 0.4s ease-in 0s";
+                document.getElementById("LastChecked").style.paddingTop = "45" + "px";
+                /*setTimeout(function(){
+                    document.getElementById("LastChecked").style.transition = "padding-top 0.1s ease-in-out 0s";
+                    document.getElementById("LastChecked").style.paddingTop = "55" + "px";
+                },400);*/
+                setTimeout(function(){
+                    document.getElementById("LastChecked").style.transition = "padding-top 0.4s ease-out 0s";
+                    document.getElementById("LastChecked").style.paddingTop = "25" + "px";
+                },400);
+
+
+
+
             }
 
 
@@ -201,6 +222,7 @@ getConcertsFromCache = function(){
 
             for(var i = 0; i < ArrayOfLocationsWithConcerts.length; i++){
                 var ConcertArrayData = JSON.parse(ArrayOfLocationsWithConcerts[i].LocationJson);
+                localStorage["CachadeKonserter"][i] = ArrayOfLocationsWithConcerts[i].LocationJson;
                 placeConcertsOnMap(ConcertArrayData);
             }
 
@@ -461,6 +483,8 @@ populateUserWithArtistData = function(){
                 console.log("Cant update until later! :< ");
             }else{
                 console.log("Artist Populated! :D ");
+                localStorage[localStorage["UserID"]]["artists"] = data;
+
             }
 
             //var div = document.createElement("div");
