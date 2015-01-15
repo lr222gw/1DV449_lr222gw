@@ -140,17 +140,18 @@ getConcertsNearYourLocation = function(lat, lng){
                                 lat,
                                 lng);
 
-                            var infowindow = new google.maps.InfoWindow({
+                            var infowindow = new InfoBubble({
                                 map: objects.map,
                                 position: pos,
                                 content: 'Tyvärr, inga uppkommande event här :('
                             });
+                            infowindow.open();
 
                         }
                         console.log("Location Populated! :D ");
                     }
                 }
-                objects.map.setOptions({draggableCursor: 'url(http://maps.google.com/mapfiles/openhand.cur), move'});
+                objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
 
             }
         });
