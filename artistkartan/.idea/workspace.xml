@@ -22,7 +22,7 @@
     <favorites_list name="artistkartan" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.28317901">
+    <splitter split-orientation="horizontal" split-proportion="0.1">
       <split-first>
         <leaf>
           <file leaf-file-name="maps.js" pinned="false" current="false" current-in-tab="false">
@@ -34,10 +34,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="statusChecker.js" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="statusChecker.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="126" column="22" selection-start="3969" selection-end="3969" vertical-scroll-proportion="0.5765766" vertical-offset="1758" max-vertical-offset="7616">
+                <state line="132" column="21" selection-start="4268" selection-end="4268" vertical-scroll-proportion="0.9064748" vertical-offset="1740" max-vertical-offset="7718">
                   <folding />
                 </state>
               </provider>
@@ -55,7 +55,7 @@
           <file leaf-file-name="getstuff.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/getstuff.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="22" column="62" selection-start="468" selection-end="468" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="6052">
+                <state line="22" column="62" selection-start="468" selection-end="468" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="6409">
                   <folding />
                 </state>
               </provider>
@@ -92,27 +92,31 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="getstuff.php" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="getstuff.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/getstuff.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="242" column="10" selection-start="9036" selection-end="9036" vertical-scroll-proportion="-19.5" vertical-offset="3607" max-vertical-offset="6052">
+                <state line="77" column="13" selection-start="3537" selection-end="3537" vertical-scroll-proportion="0.3240469" vertical-offset="1088" max-vertical-offset="6409">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="dbstuff.php" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="dbstuff.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dbstuff.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="66" column="79" selection-start="2177" selection-end="2177" vertical-scroll-proportion="0.7122302" vertical-offset="627" max-vertical-offset="2397">
+                <state line="138" column="0" selection-start="4971" selection-end="4971" vertical-scroll-proportion="-22.557692" vertical-offset="1173" max-vertical-offset="4148">
                   <folding>
                     <element signature="e#6#86#0" expanded="true" />
-                    <marker date="1421286271028" expanded="true" signature="654:719" placeholder="SELECT UserI..Users..." />
-                    <marker date="1421286271028" expanded="true" signature="1658:1739" placeholder="SELECT UserA..Users..." />
-                    <marker date="1421286271028" expanded="true" signature="1664:1739" placeholder="UPDATE Users..." />
-                    <marker date="1421286271028" expanded="true" signature="3058:3159" placeholder="UPDATE Users..." />
-                    <marker date="1421286271028" expanded="true" signature="3064:3159" placeholder="INSERT INTO ..." />
-                    <marker date="1421286271028" expanded="true" signature="4348:4395" placeholder="INSERT INTO ..." />
+                    <marker date="1421289819373" expanded="true" signature="654:719" placeholder="SELECT UserI..Users..." />
+                    <marker date="1421289819373" expanded="true" signature="1596:1691" placeholder="UPDATE Locat..." />
+                    <marker date="1421289819373" expanded="true" signature="2904:2987" placeholder="Insert INTO ..." />
+                    <marker date="1421289819373" expanded="true" signature="2915:2980" placeholder="UPDATE Locat..." />
+                    <marker date="1421289819373" expanded="true" signature="4098:4172" placeholder="SELECT BestB..Location..." />
+                    <marker date="1421289819373" expanded="true" signature="5628:5709" placeholder="SELECT UserA..Users..." />
+                    <marker date="1421289819373" expanded="true" signature="5634:5709" placeholder="UPDATE Users..." />
+                    <marker date="1421289819373" expanded="true" signature="7028:7129" placeholder="UPDATE Users..." />
+                    <marker date="1421289819373" expanded="true" signature="7034:7129" placeholder="INSERT INTO ..." />
+                    <marker date="1421289819373" expanded="true" signature="8318:8365" placeholder="INSERT INTO ..." />
                   </folding>
                 </state>
               </provider>
@@ -158,9 +162,9 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/style.css" />
         <option value="$PROJECT_DIR$/getLogin.php" />
-        <option value="$PROJECT_DIR$/getstuff.php" />
-        <option value="$PROJECT_DIR$/dbstuff.php" />
         <option value="$PROJECT_DIR$/src/statusChecker.js" />
+        <option value="$PROJECT_DIR$/dbstuff.php" />
+        <option value="$PROJECT_DIR$/getstuff.php" />
       </list>
     </option>
   </component>
@@ -693,6 +697,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="132" column="21" selection-start="4268" selection-end="4268" vertical-scroll-proportion="0.9064748" vertical-offset="1740" max-vertical-offset="7718">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/getLogin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="55" column="33" selection-start="1900" selection-end="1900" vertical-scroll-proportion="-14.269231" vertical-offset="564" max-vertical-offset="1462">
@@ -700,31 +711,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getstuff.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="62" selection-start="468" selection-end="468" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="6052">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dbstuff.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="79" selection-start="2177" selection-end="2177" vertical-scroll-proportion="0.7122302" vertical-offset="627" max-vertical-offset="2397">
+        <state line="138" column="0" selection-start="4971" selection-end="4971" vertical-scroll-proportion="-22.557692" vertical-offset="1173" max-vertical-offset="4148">
           <folding>
             <element signature="e#6#86#0" expanded="true" />
-            <marker date="1421286271028" expanded="true" signature="654:719" placeholder="SELECT UserI..Users..." />
-            <marker date="1421286271028" expanded="true" signature="1658:1739" placeholder="SELECT UserA..Users..." />
-            <marker date="1421286271028" expanded="true" signature="1664:1739" placeholder="UPDATE Users..." />
-            <marker date="1421286271028" expanded="true" signature="3058:3159" placeholder="UPDATE Users..." />
-            <marker date="1421286271028" expanded="true" signature="3064:3159" placeholder="INSERT INTO ..." />
-            <marker date="1421286271028" expanded="true" signature="4348:4395" placeholder="INSERT INTO ..." />
+            <marker date="1421289819373" expanded="true" signature="654:719" placeholder="SELECT UserI..Users..." />
+            <marker date="1421289819373" expanded="true" signature="1596:1691" placeholder="UPDATE Locat..." />
+            <marker date="1421289819373" expanded="true" signature="2904:2987" placeholder="Insert INTO ..." />
+            <marker date="1421289819373" expanded="true" signature="2915:2980" placeholder="UPDATE Locat..." />
+            <marker date="1421289819373" expanded="true" signature="4098:4172" placeholder="SELECT BestB..Location..." />
+            <marker date="1421289819373" expanded="true" signature="5628:5709" placeholder="SELECT UserA..Users..." />
+            <marker date="1421289819373" expanded="true" signature="5634:5709" placeholder="UPDATE Users..." />
+            <marker date="1421289819373" expanded="true" signature="7028:7129" placeholder="UPDATE Users..." />
+            <marker date="1421289819373" expanded="true" signature="7034:7129" placeholder="INSERT INTO ..." />
+            <marker date="1421289819373" expanded="true" signature="8318:8365" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
+    <entry file="file://$PROJECT_DIR$/getstuff.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="22" selection-start="3969" selection-end="3969" vertical-scroll-proportion="0.5765766" vertical-offset="1758" max-vertical-offset="7616">
+        <state line="77" column="13" selection-start="3537" selection-end="3537" vertical-scroll-proportion="0.3240469" vertical-offset="1088" max-vertical-offset="6409">
           <folding />
         </state>
       </provider>

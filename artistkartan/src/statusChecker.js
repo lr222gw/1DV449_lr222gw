@@ -123,11 +123,17 @@ getConcertsNearYourLocation = function(lat, lng){
             async: true,
             data: {function: "getLocationForConcerts", longtidue: lng ,latitude: lat, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
             success: function(data){
-                if(data != "" && data != "[null]"){
-                    //console.log(data);
-                    placeConcertsOnMap(JSON.parse(data));
+                if( data == "nope"){
+                    console.log("Cant update until later! :< ");
+                }else{
+                    if(data != "" && data != "[null]"){
+                        //console.log(data);
+                        placeConcertsOnMap(JSON.parse(data));
+                        console.log("Location Populated! :D ");
+                    }
+                    objects.map.setOptions({draggableCursor: 'url(http://maps.google.com/mapfiles/openhand.cur), move'});
                 }
-                objects.map.setOptions({draggableCursor: 'url(http://maps.google.com/mapfiles/openhand.cur), move'});
+
             }
         });
 

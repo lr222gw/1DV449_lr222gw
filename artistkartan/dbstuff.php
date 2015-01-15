@@ -43,6 +43,107 @@ class DOA_dbMaster{
 
     }
 
+    public function updateLocationDataToDB($metroID, $locationJSON)
+    {
+        try{//För säkerhet
+            $databasHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databasHandler->beginTransaction();
+            $databasHandler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $queryString = "
+            UPDATE Location
+            SET LocationJSON = ?, BestBefore = ?
+            where  MetroID = ?";
+
+            $todaysDate = date("Y-m-d H:i:s");
+            $dateForAvailbeUpdate = date("Y-m-d H:i:s", strtotime($todaysDate . " + 4 hours"));
+            // ^ " + 4 hours" berättar hur många timmar datan ska anävndas från Cachen!
+
+            $paramArr = [$locationJSON, $dateForAvailbeUpdate, $metroID];
+
+            $stmt = $databasHandler->prepare($queryString);
+            $result = $stmt->execute($paramArr);
+
+            $databasHandler->commit();
+
+        }catch (PDOException $e){
+            $databasHandler->rollBack();
+            throw new \Exception("Could Not Update LocationData in Database..." . $e->getMessage());
+            die();
+        }
+    }
+
+    public function addLocationDataToDB($metroID, $locationJSON){
+        try{//För säkerhet
+            $databasHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databasHandler->beginTransaction(); // Ifall någåt fel händer vill vi backa..
+            $databasHandler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // för error Reporting..
+
+            //Föörbereder queryn, vad som ska göras. lägg till användare med dess "intresserade artister"
+            $queryString = "
+            Insert INTO Location (MetroID, LocationJSON, BestBefore)
+            Values (?,?,?)";
+
+            $todaysDate = date("Y-m-d H:i:s");
+            $dateForAvailbeUpdate = date("Y-m-d H:i:s", strtotime($todaysDate . " + 4 hours"));
+            // ^ " + 4 hours" berättar hur många timmar datan ska anävndas från Cachen!
+
+            $paramArr = [$metroID, $locationJSON, $dateForAvailbeUpdate];
+
+            $stmt = $databasHandler->prepare($queryString);
+            $result = $stmt->execute($paramArr);
+
+            $databasHandler->commit();
+
+        }catch (PDOException $e){
+            $databasHandler->rollBack();
+            throw new \Exception("Could Not add LocationData to Database..." . $e->getMessage());
+            die();
+        }
+    }
+
+    public function checkIfLocationNeedsUpdate($metroID){
+        try{//För säkerhet
+            $databasHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databasHandler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // för error Reporting..
+
+            //Föörbereder queryn, vad som ska göras. lägg till användare med dess "intresserade artister"
+            $queryString = "
+            SELECT BestBefore
+            from Location
+            where  MetroID = ?";
+
+            $paramArr = [$metroID];
+
+            $stmt = $databasHandler->prepare($queryString);
+
+            if($stmt->execute($paramArr)){
+                $date = $stmt->fetchColumn(0);
+                $dateFromDatabase = new DateTime($date);
+                $dateNow = new DateTime();
+
+                if($date == null){
+                    //Om date == null så har LocationData ej hämtats för platsen!
+                    // Då hämtas ny data och platsen kan LÄGGAS in på databasen.
+                    // Om platsen är tillagd så kan vi UPPDATERA den i databasen.
+                    return "new";
+                }
+
+                if($dateFromDatabase < $dateNow){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
+
+        }catch (PDOException $e){
+            $databasHandler->rollBack();
+            throw new \Exception("Could not Check if needed to update LocationData..." . $e->getMessage());
+            die();
+        }
+    }
+
     public function canUserUpdateArtistJSON($userId){
         try{//För säkerhet
             $databasHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
@@ -131,6 +232,8 @@ class DOA_dbMaster{
             die();
         }
     }
+
+
 
 
 }
