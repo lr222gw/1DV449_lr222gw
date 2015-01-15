@@ -1,5 +1,6 @@
 
-
+//Obs vissa saker finns i maps.js, maps.js kör vissa funktioner på statusChecker.js! :D
+//Onload functionen finns där :3
 
 
 var hideOrShow = document.createElement("div");
@@ -47,6 +48,7 @@ hideOrShow.onclick = function(e){
 
 
 }
+
 
 
 $.ajax({
@@ -128,11 +130,28 @@ getConcertsNearYourLocation = function(lat, lng){
                 }else{
                     if(data != "" && data != "[null]"){
                         //console.log(data);
+                        if(JSON.parse(data).length !=  1){
+                            // Om JSON.parse(data) blir 1 så innerbär det att den bara innehåller MetroID,
+                            // Då vill vi inte skriva ut något, utan bara berätta att det ej finns några konserter här.
                         placeConcertsOnMap(JSON.parse(data));
+
+                        }else{
+                            var pos = new google.maps.LatLng(
+                                lat,
+                                lng);
+
+                            var infowindow = new google.maps.InfoWindow({
+                                map: objects.map,
+                                position: pos,
+                                content: 'Tyvärr, inga uppkommande event här :('
+                            });
+                            objects.userPosition = pos; // sätter så att jag har användarens position...
+                            objects.map.setCenter(pos);
+                        }
                         console.log("Location Populated! :D ");
                     }
-                    objects.map.setOptions({draggableCursor: 'url(http://maps.google.com/mapfiles/openhand.cur), move'});
                 }
+                objects.map.setOptions({draggableCursor: 'url(http://maps.google.com/mapfiles/openhand.cur), move'});
 
             }
         });
@@ -144,9 +163,27 @@ getConcertsNearYourLocation = function(lat, lng){
 
 }
 
+getConcertsFromCache = function(){
+    $.ajax({
+        type: "get",
+        url: "getstuff.php",
+        async: true,
+        data: {function: "getLocationsFromCache"},
+        success: function(data){
+            var ArrayOfLocationsWithConcerts = JSON.parse(data);
+
+            for(var i = 0; i < ArrayOfLocationsWithConcerts.length; i++){
+                var ConcertArrayData = JSON.parse(ArrayOfLocationsWithConcerts[i].LocationJson);
+                placeConcertsOnMap(ConcertArrayData);
+            }
+
+        }
+    });
+}
+
 placeConcertsOnMap = function(ConcertData){
 
-    if(objects.LocationMapMetroIDOnMap.indexOf(ConcertData[ConcertData.length]) == -1){
+    if(objects.LocationMapMetroIDOnMap.indexOf(ConcertData[ConcertData.length]) == -1){ // ConcertData[ConcertData.length] == MetroID
         //Om det är första gången denna location trycts på så ska den läggas in, nästa gång så ska den ej skrivas ut..
         objects.LocationMapMetroIDOnMap.push(ConcertData[ConcertData.length-1]);
         //delete ConcertData.LocationMapMetroID;
@@ -202,6 +239,7 @@ placeConcertsOnMap = function(ConcertData){
             Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertThatHasSameLatNLng[i]);
         }
     }
+
 }
 
 function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){

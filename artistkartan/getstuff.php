@@ -17,6 +17,11 @@ if($_GET["function"] == "isUserOnline"){
     }
 }
 
+if($_GET["function"] == "getLocationsFromCache"){
+    $db = new DOA_dbMaster();
+    $ConcertsFromDB = $db->getLocationsConcerts();
+    echo json_encode($ConcertsFromDB, JSON_UNESCAPED_SLASHES);
+}
 
 
 if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) && isset($_GET["latitude"])){
@@ -75,7 +80,7 @@ if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) &&
 
             //Här bästmmer jag om jag uppdaterar eller lägger till ny.
             if($LocationStatus === "new"){
-             
+
                 $db->addLocationDataToDB($metroId ,$eventJSON);
             }elseif($LocationStatus === true){
                 $db->updateLocationDataToDB($metroId ,$eventJSON);
