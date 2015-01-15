@@ -39,6 +39,10 @@ function init(){
             });
             objects.userPosition = pos; // sätter så att jag har användarens position...
             objects.map.setCenter(pos);
+
+            //Om användaren tillåter geoLocation vill vi genast fylla på data där den befinner sig
+            getConcertsNearYourLocation();
+
         }, function() {
             handleNoGeolocation(true);
         });
@@ -63,6 +67,7 @@ function init(){
 window.onload = function(){
     init();
     // Körs när man laddar sidan; vill hämta datan! :D
+
     getConcertsFromCache();
 }
 

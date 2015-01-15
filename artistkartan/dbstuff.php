@@ -77,9 +77,15 @@ class DOA_dbMaster{
             SET LocationJSON = ?, BestBefore = ?
             where  MetroID = ?";
 
+
             $todaysDate = date("Y-m-d H:i:s");
-            $dateForAvailbeUpdate = date("Y-m-d H:i:s", strtotime($todaysDate . " + 4 hours"));
-            // ^ " + 4 hours" berättar hur många timmar datan ska anävndas från Cachen!
+
+            if(count(json_decode($locationJSON)) === 1){
+                $dateForAvailbeUpdate = date("Y-m-d H:i:s", strtotime($todaysDate . " - 1 hours"));
+            }else{
+                $dateForAvailbeUpdate = date("Y-m-d H:i:s", strtotime($todaysDate . " + 4 hours"));
+                // ^ " + 4 hours" berättar hur många timmar datan ska anävndas från Cachen!
+            }
 
             $paramArr = [$locationJSON, $dateForAvailbeUpdate, $metroID];
 
@@ -107,8 +113,20 @@ class DOA_dbMaster{
             Values (?,?,?)";
 
             $todaysDate = date("Y-m-d H:i:s");
-            $dateForAvailbeUpdate = date("Y-m-d H:i:s", strtotime($todaysDate . " + 4 hours"));
-            // ^ " + 4 hours" berättar hur många timmar datan ska anävndas från Cachen!
+
+
+            //Denna if-sats är till för att ändra tiden man får kolla om ny data kommit till ett ställe
+            //Som inte har några konserter alls. Detta för att jag vill kunna berätta för en användare
+            //att det inte finns någon data där.
+            //Sen är det bra då det hela tiden låter användare kolla om det kommit in något nytt, utan att
+            //Behöva vänta 4 timmar.
+            if(count(json_decode($locationJSON)) === 1){
+                $dateForAvailbeUpdate = date("Y-m-d H:i:s", strtotime($todaysDate . " - 1 hours"));
+            }else{
+                $dateForAvailbeUpdate = date("Y-m-d H:i:s", strtotime($todaysDate . " + 4 hours"));
+                // ^ " + 4 hours" berättar hur många timmar datan ska anävndas från Cachen!
+            }
+
 
             $paramArr = [$metroID, $locationJSON, $dateForAvailbeUpdate];
 
@@ -116,6 +134,7 @@ class DOA_dbMaster{
             $result = $stmt->execute($paramArr);
 
             $databasHandler->commit();
+
 
         }catch (PDOException $e){
             $databasHandler->rollBack();

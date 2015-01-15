@@ -145,8 +145,7 @@ getConcertsNearYourLocation = function(lat, lng){
                                 position: pos,
                                 content: 'Tyvärr, inga uppkommande event här :('
                             });
-                            objects.userPosition = pos; // sätter så att jag har användarens position...
-                            objects.map.setCenter(pos);
+
                         }
                         console.log("Location Populated! :D ");
                     }
