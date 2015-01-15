@@ -197,42 +197,53 @@ function searchArtistOnSonkick($ArtistToCheck){
 if($_GET["function"] == "getUsersArtists"){ //Artister på användarens listor blir hämtade och returnerade med Echo.. (för js-ajax)
     $allPlaylists = [];
     $custom = "";
-    do{
-        $playlists = getUserPlaylist($custom);
-        $custom = $playlists["next"];
+    $db = new DOA_dbMaster();
 
-        for($i = 0; $i < count($playlists["items"]); $i++){
-            array_push($allPlaylists, $playlists["items"][$i]);
-        }
+    if($db->canUserUpdateArtistJSON($_SESSION["OnlineUser"])){
+        do{
+            $playlists = getUserPlaylist($custom);
+            $custom = $playlists["next"];
 
-    }while($playlists["next"] != null);
+            for($i = 0; $i < count($playlists["items"]); $i++){
+                array_push($allPlaylists, $playlists["items"][$i]);
+            }
+
+        }while($playlists["next"] != null);
 
 
-    $userID = $_SESSION["OnlineUser"];
-    $ArtistList = [];
-    $artistNameTempList = [];
-    $artist;
+        $userID = $_SESSION["OnlineUser"];
+        $ArtistList = [];
+        $artistNameTempList = [];
+        $artist;
 
-    for($i = 0; $i < count($allPlaylists);$i++){
-        if($allPlaylists[$i]["owner"]["id"] == $userID){
-           $songsOnPlaylist = getUserSongsFromPlaylist($allPlaylists[$i]);
+        for($i = 0; $i < count($allPlaylists);$i++){
+            if($allPlaylists[$i]["owner"]["id"] == $userID){
+               $songsOnPlaylist = getUserSongsFromPlaylist($allPlaylists[$i]);
 
-            for($j=0;$j< count($songsOnPlaylist["items"]); $j++){
-                $artist = $songsOnPlaylist["items"][$j]["track"]["artists"][0]["name"];
+                for($j=0;$j< count($songsOnPlaylist["items"]); $j++){
+                    $artist = $songsOnPlaylist["items"][$j]["track"]["artists"][0]["name"];
 
-                if(in_array($artist, $artistNameTempList) == false){//Om artisten ej finns, lägg till artisten
-                    array_push($artistNameTempList, $artist);
+                    if(in_array($artist, $artistNameTempList) == false){//Om artisten ej finns, lägg till artisten
+                        array_push($artistNameTempList, $artist);
 
-                    $artistId = $songsOnPlaylist["items"][$j]["track"]["artists"][0]["id"];
-                    $artistAndID = [$artist, $artistId];
-                    array_push($ArtistList, $artistAndID); // lägger in Artisten och artistID't i arrayen...
+                        $artistId = $songsOnPlaylist["items"][$j]["track"]["artists"][0]["id"];
+                        $artistAndID = [$artist, $artistId];
+                        array_push($ArtistList, $artistAndID); // lägger in Artisten och artistID't i arrayen...
+                    }
                 }
             }
         }
+
+        $_SESSION["ArtistList"] = $ArtistList;
+        $ArtistListJson = json_encode($ArtistList,JSON_UNESCAPED_SLASHES);
+
+        $db->addArtistJSONToUser($userID, $ArtistListJson);
+        echo $ArtistListJson;
+
+    }else{
+        echo "nope";
     }
 
-    $_SESSION["ArtistList"] = $ArtistList;
-    echo json_encode($ArtistList,JSON_UNESCAPED_SLASHES);
     //header("Location: index.html");
 }
 function getUserSongsFromPlaylist($playList){ //returnerar alla låstar från en playlist

@@ -59,7 +59,7 @@
 
     $db = new DOA_dbMaster();
 
-    if($_SESSION["OnlineUser"] != null){ // om $_SESSION["OnlineUser"] är null så har användaren loggat ut.. (?)
+    if($_SESSION["OnlineUser"] != null){ // om $_SESSION["OnlineUser"] är null så har användaren loggat ut..
         if($db->checkIfUserIsInDB($_SESSION["OnlineUser"]) == false){
             //Om användaren ej finns så ska den läggas till
             $db->addUser($_SESSION["OnlineUser"]);
@@ -68,6 +68,8 @@
             /*var_dump("Användare hittas");
             die();*/
         }
+    }else{
+        //Farväl meddelanden går att sätta här.. hehe
     }
 
 

@@ -124,7 +124,7 @@ getConcertsNearYourLocation = function(lat, lng){
             data: {function: "getLocationForConcerts", longtidue: lng ,latitude: lat, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
             success: function(data){
                 if(data != "" && data != "[null]"){
-                    console.log(data);
+                    //console.log(data);
                     placeConcertsOnMap(JSON.parse(data));
                 }
                 objects.map.setOptions({draggableCursor: 'url(http://maps.google.com/mapfiles/openhand.cur), move'});
@@ -386,15 +386,20 @@ populateUserWithArtistData = function(){
         async: true,
         data: {function: "getUsersArtists"},
         success: function(data){
-            console.log(data);
-            var div = document.createElement("div");
+            if( data == "nope"){
+                console.log("Cant update until later! :< ");
+            }else{
+                console.log("Artist Populated! :D ");
+            }
+
+            //var div = document.createElement("div");
             //div.setAttribute("")
 
-            div.innerHTML = data;
+            //div.innerHTML = data;
             /*for(var i = 0; i < data.length; i++){
              div.innerHTML += data[i];
              }*/
-            document.body.insertBefore(div, document.body.firstChild);
+            //document.body.insertBefore(div, document.body.firstChild);
         }
     });
 }
