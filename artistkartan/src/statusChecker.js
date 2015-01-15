@@ -29,6 +29,8 @@ window.onresize = function(){
 
 }
 
+
+
 hideOrShow.onclick = function(e){
 
     if(e.target.innerText == "DÖLJ"){
@@ -107,8 +109,32 @@ $.ajax({
     }
 
 }*/
-getConcertsNearYourLocation = function(lat, lng){
 
+setLastCheckedLocationName = function(){
+    $.ajax({
+        type: "get",
+        url: "getstuff.php",
+        async: true,
+        data: {function: "getLastCheckedLocationName"},
+        success: function(data){
+
+            if(document.getElementById("LastChecked") == null){
+                var LastChecked = document.createElement("div");
+                LastChecked.setAttribute("id", "LastChecked");
+                LastChecked.innerText = data;
+                document.getElementById("logga").appendChild(LastChecked);
+            }else{
+                document.getElementById("LastChecked").innerText = data;
+            }
+
+
+        }
+    });
+}
+
+getConcertsNearYourLocation = function(lat, lng){
+//namenet är lite missvisande, det den gör är att den hämtar Konserter för en viss location,
+//Om inget annat anges hämtas location från geolocation...
     if(objects.userPosition != null){
 
         if(lat != null && lng != null){
@@ -125,6 +151,7 @@ getConcertsNearYourLocation = function(lat, lng){
             async: true,
             data: {function: "getLocationForConcerts", longtidue: lng ,latitude: lat, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
             success: function(data){
+                setLastCheckedLocationName();
                 if( data == "nope"){
                     console.log("Cant update until later! :< ");
                 }else{

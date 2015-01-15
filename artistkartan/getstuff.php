@@ -23,10 +23,14 @@ if($_GET["function"] == "getLocationsFromCache"){
     echo json_encode($ConcertsFromDB, JSON_UNESCAPED_SLASHES);
 }
 
+if($_GET["function"] == "getLastCheckedLocationName"){
+    echo $_SESSION["LatestCheckedLocationName"];
+}
 
 if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) && isset($_GET["latitude"])){
-    $locationData = getSonkickLocationByLngNLat($_GET["longtidue"],$_GET["latitude"]);
+    $locationData = getSonkickLocationByLngNLat($_GET["longtidue"],$_GET["latitude"]); // haha "getSonKick <- kick Son xD ;)
     $db = new DOA_dbMaster();
+    $_SESSION["LatestCheckedLocationName"] = $locationData["resultsPage"]["results"]["location"][0]["city"]["displayName"];
     $metroId = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["id"];
 
     $LocationStatus = $db->checkIfLocationNeedsUpdate($metroId);
