@@ -14,14 +14,14 @@ window.onresize = function(){
 
     if(hideOrShow.innerText == "DÖLJ"){
         hideOrShow.innerText = "DÖLJ";
-        topBanner.style.transition = "bottom 1s linear 0s";
-        mapcanvas.style.transition = "bottom 1s linear 0s";
+        topBanner.style.transition = "bottom 1s ease-in-out 0s";
+        mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
         topBanner.style.bottom = "0" + "px";
         mapcanvas.style.bottom = "0" + "px";
     }else{
         hideOrShow.innerText = "DÖLJ";
-        topBanner.style.transition = "bottom 1s linear 0s";
-        mapcanvas.style.transition = "bottom 1s linear 0s";
+        topBanner.style.transition = "bottom 1s ease-in-out 0s";
+        mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
         topBanner.style.bottom = "0" + "px";
         mapcanvas.style.bottom = "0" + "px";
     }
@@ -32,14 +32,14 @@ hideOrShow.onclick = function(e){
 
     if(e.target.innerText == "DÖLJ"){
         e.target.innerText = "VISA";
-        topBanner.style.transition = "bottom 1s linear 0s";
-        mapcanvas.style.transition = "bottom 1s linear 0s";
+        topBanner.style.transition = "bottom 1s ease-in-out 0s";
+        mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
         topBanner.style.bottom = topBanner.clientHeight + "px";
         mapcanvas.style.bottom = topBanner.clientHeight + "px";
     }else{
         e.target.innerText = "DÖLJ";
-        topBanner.style.transition = "bottom 1s linear 0s";
-        mapcanvas.style.transition = "bottom 1s linear 0s";
+        topBanner.style.transition = "bottom 1s ease-in-out 0s";
+        mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
         topBanner.style.bottom = "0%";
         mapcanvas.style.bottom = "0%";
     }

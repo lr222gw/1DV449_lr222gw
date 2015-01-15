@@ -5,7 +5,7 @@
  * Date: 2015-01-08
  * Time: 23:15
  */
-
+require_once("dbstuff.php");
 session_start();
 
 
@@ -61,9 +61,14 @@ if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) &&
 
         //$eventsInArea = $songkickConcertOnSpecificArea["resultsPage"]["results"]["event"];
         array_push($eventArray,$metroId); //sista i arrayen är metroID....
-        echo json_encode($eventArray, JSON_UNESCAPED_SLASHES);
+
+        $eventJSON = json_encode($eventArray, JSON_UNESCAPED_SLASHES);
+
+        echo $eventJSON;
     }
 }
+
+
 
 function getSongkickLocationByName($name, $urlPage = 1){
 
