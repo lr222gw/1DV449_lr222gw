@@ -12,7 +12,8 @@ var objects = {
     lastOpenWindow : null,
     LocationMapMetroIDOnMap : [],
     timer : null,
-    geoLocationIsOn : false
+    geoLocationIsOn : false,
+    sameLatNLngIDArr : []
 
 }
 var mouse = {x: 0, y: 0}; //HÄR
@@ -216,7 +217,7 @@ window.onload = function(){
     init();
     // Körs när man laddar sidan; vill hämta datan! :D
     prepareLoadingScreen();
-    getConcertsFromCache();
+    getLocationFromCache();
 }
 
 function getMapStyle(){

@@ -15,13 +15,61 @@ class DOA_dbMaster{
 
     }
 
-    public function getLocationsConcerts(){
+    public function getLocationEventsByLocationEventID($id)
+    {
         try{
             $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
             $databaseHandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
             $query= "
-            SELECT LocationJson
+            SELECT LocationEventJSON
+            FROM LocationEvents
+            WHERE LocationEventsID = ?
+            ";
+            $param = [$id];
+            $stmt = $databaseHandler->prepare($query);
+
+            if($stmt->execute($param)){
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return $result;
+
+        }catch (PDOException $e){
+            throw new \Exception("Sorry Could not getLocationEventsByLocationEventID..." . $e->getMessage());
+        }
+    }
+
+    public function getLocationEventsIDsByMetroID($id)
+    {
+        try{
+            $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databaseHandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            $query= "
+            SELECT LocationEventsID
+            FROM LocationEvents
+            WHERE MetroID = ?
+            ";
+            $param = [$id];
+            $stmt = $databaseHandler->prepare($query);
+
+            if($stmt->execute($param)){
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return $result;
+
+        }catch (PDOException $e){
+            throw new \Exception("Sorry Could not getLocationEventsIDsByMetroID..." . $e->getMessage());
+        }
+    }
+
+    public function getNewlyCachedLocationsMetroID(){
+        try{
+            $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databaseHandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            $query= "
+            SELECT MetroID
             FROM Location
             WHERE BestBefore > NOW()
             ";
@@ -33,9 +81,10 @@ class DOA_dbMaster{
             return $result;
 
         }catch (PDOException $e){
-            throw new \Exception("Sorry Could check if your'e in Database..." . $e->getMessage());
+            throw new \Exception("Sorry Could not getNewlyCachedLocationsMetroID..." . $e->getMessage());
         }
     }
+
 
     public function checkIfUserIsInDB($userId){
         try{
@@ -65,8 +114,8 @@ class DOA_dbMaster{
 
     }
 
-    public function updateLocationDataToDB($metroID, $locationJSON)
-    {
+    public function updateLocationDataToDB($metroID)
+    {//Sätter ett nytt cachedatum
         try{//För säkerhet
             $databasHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
             $databasHandler->beginTransaction();
@@ -74,20 +123,20 @@ class DOA_dbMaster{
 
             $queryString = "
             UPDATE Location
-            SET LocationJSON = ?, BestBefore = ?
+            SET BestBefore = ?
             where  MetroID = ?";
 
 
             $todaysDate = date("Y-m-d H:i:s");
 
-            if(count(json_decode($locationJSON)) === 1){
+            if(false){//count(json_decode($locationJSON)) === 1
                 $dateForAvailbeUpdate = date("Y-m-d H:i:s", strtotime($todaysDate . " - 1 hours"));
             }else{
                 $dateForAvailbeUpdate = date("Y-m-d H:i:s", strtotime($todaysDate . " + 4 hours"));
                 // ^ " + 4 hours" berättar hur många timmar datan ska anävndas från Cachen!
             }
 
-            $paramArr = [$locationJSON, $dateForAvailbeUpdate, $metroID];
+            $paramArr = [$dateForAvailbeUpdate, $metroID];
 
             $stmt = $databasHandler->prepare($queryString);
             $result = $stmt->execute($paramArr);
@@ -101,7 +150,8 @@ class DOA_dbMaster{
         }
     }
 
-    public function addLocationDataToDB($metroID, $locationJSON){
+    public function addLocationEventDataToDB($metroID, $locationJSON)
+    {
         try{//För säkerhet
             $databasHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
             $databasHandler->beginTransaction(); // Ifall någåt fel händer vill vi backa..
@@ -109,8 +159,35 @@ class DOA_dbMaster{
 
             //Föörbereder queryn, vad som ska göras. lägg till användare med dess "intresserade artister"
             $queryString = "
-            Insert INTO Location (MetroID, LocationJSON, BestBefore)
-            Values (?,?,?)";
+            Insert INTO LocationEvents (MetroID, LocationEventJSON)
+            Values (?,?)";
+
+
+            $paramArr = [$metroID, $locationJSON];
+
+            $stmt = $databasHandler->prepare($queryString);
+            $result = $stmt->execute($paramArr);
+
+            $databasHandler->commit();
+
+
+        }catch (PDOException $e){
+            $databasHandler->rollBack();
+            throw new \Exception("Could Not add LocationEventData to Database..." . $e->getMessage());
+            die();
+        }
+    }
+
+    public function addLocationDataToDB($metroID){
+        try{//För säkerhet
+            $databasHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databasHandler->beginTransaction(); // Ifall någåt fel händer vill vi backa..
+            $databasHandler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // för error Reporting..
+
+            //Föörbereder queryn, vad som ska göras. lägg till användare med dess "intresserade artister"
+            $queryString = "
+            Insert INTO Location (MetroID, BestBefore)
+            Values (?,?)";
 
             $todaysDate = date("Y-m-d H:i:s");
 
@@ -120,7 +197,10 @@ class DOA_dbMaster{
             //att det inte finns någon data där.
             //Sen är det bra då det hela tiden låter användare kolla om det kommit in något nytt, utan att
             //Behöva vänta 4 timmar.
-            if(count(json_decode($locationJSON)) === 1){
+
+            //OBS! Detta måste lösas!:
+            //Om ett ställe inte innehåller några konserter så ska vi ändra datumet som är satt, detta får göras senare
+            if(false){//count(json_decode($locationJSON)) === 1
                 $dateForAvailbeUpdate = date("Y-m-d H:i:s", strtotime($todaysDate . " - 1 hours"));
             }else{
                 $dateForAvailbeUpdate = date("Y-m-d H:i:s", strtotime($todaysDate . " + 4 hours"));
@@ -128,7 +208,7 @@ class DOA_dbMaster{
             }
 
 
-            $paramArr = [$metroID, $locationJSON, $dateForAvailbeUpdate];
+            $paramArr = [$metroID, $dateForAvailbeUpdate];
 
             $stmt = $databasHandler->prepare($queryString);
             $result = $stmt->execute($paramArr);
