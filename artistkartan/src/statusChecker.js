@@ -2,6 +2,8 @@
 //Obs vissa saker finns i maps.js, maps.js kör vissa funktioner på statusChecker.js! :D
 //Onload functionen finns där :3
 
+
+
 if(localStorage["CachadeKonserter"] == undefined){
     localStorage["CachadeKonserter"] = [];
 }
