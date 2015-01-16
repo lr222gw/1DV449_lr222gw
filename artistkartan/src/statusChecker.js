@@ -22,12 +22,20 @@ window.onresize = function(){
         hideOrShow.innerHTML = "DÖLJ";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
         mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
+        if(document.getElementById("loadOverlay") != null){
+            document.getElementById("loadOverlay").style.transition = "margin-top 1s ease-in-out 0s";
+            document.getElementById("loadOverlay").style.marginTop = "-5px";
+        }
         topBanner.style.bottom = "0" + "px";
         mapcanvas.style.bottom = "0" + "px";
     }else{
         hideOrShow.innerHTML = "DÖLJ";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
         mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
+        if(document.getElementById("loadOverlay") != null){
+            document.getElementById("loadOverlay").style.transition = "margin-top 1s ease-in-out 0s";
+            document.getElementById("loadOverlay").style.marginTop = "-5px";
+        }
         topBanner.style.bottom = "0" + "px";
         mapcanvas.style.bottom = "0" + "px";
     }
@@ -42,14 +50,26 @@ hideOrShow.onclick = function(e){
         e.target.innerHTML = "VISA";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
         mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
+        if(document.getElementById("loadOverlay") != null){
+            document.getElementById("loadOverlay").style.transition = "margin-top 1s ease-in-out 0s";
+            document.getElementById("loadOverlay").style.marginTop = "-"+ (topBanner.clientHeight + 5) + "px";
+        }
         topBanner.style.bottom = topBanner.clientHeight + "px";
         mapcanvas.style.bottom = topBanner.clientHeight + "px";
+
+
     }else{
         e.target.innerHTML = "DÖLJ";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
         mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
+        if(document.getElementById("loadOverlay") != null){
+            document.getElementById("loadOverlay").style.transition = "margin-top 1s ease-in-out 0s";
+            document.getElementById("loadOverlay").style.marginTop = "-5px";
+        }
         topBanner.style.bottom = "0%";
         mapcanvas.style.bottom = "0%";
+
+
     }
 
 
@@ -116,6 +136,32 @@ $.ajax({
 
 }*/
 
+prepareLoadingScreen = function(){
+    if(document.getElementById("loadOverlay") == null){
+        var overlay = document.createElement("div");
+        overlay.id = "loadOverlay";
+        var overlayimg = document.createElement("div");
+        overlayimg.id = "overlayImg";
+        var img = document.createElement("img");
+        img.src = "pic/LoadingNormalSpeed.gif";
+        img.id = "loadImg";
+        overlayimg.appendChild(img);
+        overlay.appendChild(overlayimg);
+        document.body.insertBefore(overlay, document.getElementById("mapcanvas"));
+        if(document.getElementById("hideOrShow").innerHTML === "VISA"){
+            document.getElementById("loadOverlay").style.marginTop = "-"+ (document.getElementById("topBanner").clientHeight + 5) + "px";
+        }
+    }else{
+        if(document.getElementById("loadOverlay").style.display == "none"){
+
+            document.getElementById("loadOverlay").style.display = "block";
+        }else{
+            document.getElementById("loadOverlay").style.display = "none";
+        }
+    }
+
+}
+
 setLastCheckedLocationName = function(){
     $.ajax({
         type: "get",
@@ -158,7 +204,7 @@ setLastCheckedLocationName = function(){
 getConcertsNearYourLocation = function(lat, lng){
 //namenet är lite missvisande, det den gör är att den hämtar Konserter för en viss location,
 //Om inget annat anges hämtas location från geolocation...
-
+    prepareLoadingScreen();
     if(lat != null && lng != null){
         lat = lat;
         lng = lng;
@@ -201,6 +247,7 @@ getConcertsNearYourLocation = function(lat, lng){
                 }
             }
             objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
+            prepareLoadingScreen();
 
         }
     });
@@ -218,6 +265,7 @@ getConcertsFromCache = function(){
         data: {function: "getLocationsFromCache"},
         success: function(data){
             localStorage["CachadeKonserter"] = data;
+            prepareLoadingScreen();
             var ArrayOfLocationsWithConcerts = JSON.parse(data);
             FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
         }

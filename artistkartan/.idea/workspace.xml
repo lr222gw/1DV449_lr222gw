@@ -22,22 +22,40 @@
     <favorites_list name="artistkartan" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.8124031">
+    <splitter split-orientation="horizontal" split-proportion="0.3612403">
       <split-first>
         <leaf>
-          <file leaf-file-name="maps.js" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="maps.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/maps.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="116" column="44" selection-start="4211" selection-end="4211" vertical-scroll-proportion="0.62279296" vertical-offset="1584" max-vertical-offset="5015">
+                <state line="207" column="39" selection-start="8421" selection-end="8448" vertical-scroll-proportion="0.0" vertical-offset="3063" max-vertical-offset="5015">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="statusChecker.js" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="statusChecker.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="44" column="55" selection-start="1458" selection-end="1471" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="9231">
+                <state line="249" column="35" selection-start="8992" selection-end="8992" vertical-scroll-proportion="0.8973384" vertical-offset="3761" max-vertical-offset="10047">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DHTML.js" pinned="false" current="false" current-in-tab="false">
+            <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="973" column="0" selection-start="15060" selection-end="15081" vertical-scroll-proportion="0.0" vertical-offset="16881" max-vertical-offset="64821">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/style.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="180" column="1" selection-start="4194" selection-end="4194" vertical-scroll-proportion="-20.846153" vertical-offset="2518" max-vertical-offset="3162">
                   <folding />
                 </state>
               </provider>
@@ -97,32 +115,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/style.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="126" column="37" selection-start="2733" selection-end="2733" vertical-scroll-proportion="0.0" vertical-offset="1885" max-vertical-offset="2720">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="getstuff.php" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="getstuff.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/getstuff.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="264" column="9" selection-start="10207" selection-end="10207" vertical-scroll-proportion="0.4375" vertical-offset="4236" max-vertical-offset="6562">
+                <state line="264" column="9" selection-start="10207" selection-end="10207" vertical-scroll-proportion="-9.692307" vertical-offset="4236" max-vertical-offset="6562">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="dbstuff.php" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="dbstuff.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/dbstuff.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="17" column="31" selection-start="394" selection-end="405" vertical-scroll-proportion="0.0" vertical-offset="71" max-vertical-offset="4845">
+                <state line="122" column="56" selection-start="4414" selection-end="4414" vertical-scroll-proportion="0.62144053" vertical-offset="1618" max-vertical-offset="4760">
                   <folding>
                     <marker date="1421297593767" expanded="true" signature="650:732" placeholder="SELECT Locat..Location..." />
                     <marker date="1421297593767" expanded="true" signature="1372:1437" placeholder="SELECT UserI..Users..." />
@@ -180,11 +189,11 @@
         <option value="$PROJECT_DIR$/src/infobubble.js" />
         <option value="$PROJECT_DIR$/dbstuff.php" />
         <option value="$PROJECT_DIR$/getstuff.php" />
-        <option value="$PROJECT_DIR$/src/style.css" />
         <option value="$PROJECT_DIR$/cache.manifest" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/src/statusChecker.js" />
         <option value="$PROJECT_DIR$/src/maps.js" />
+        <option value="$PROJECT_DIR$/src/statusChecker.js" />
+        <option value="$PROJECT_DIR$/src/style.css" />
       </list>
     </option>
   </component>
@@ -408,13 +417,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/getAccess.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="2" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="272">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="15" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="2431">
@@ -663,25 +665,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbstuff.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="31" selection-start="394" selection-end="405" vertical-scroll-proportion="0.0" vertical-offset="71" max-vertical-offset="4845">
-          <folding>
-            <marker date="1421297593767" expanded="true" signature="650:732" placeholder="SELECT Locat..Location..." />
-            <marker date="1421297593767" expanded="true" signature="1372:1437" placeholder="SELECT UserI..Users..." />
-            <marker date="1421297593767" expanded="true" signature="2314:2409" placeholder="UPDATE Locat..." />
-            <marker date="1421297593767" expanded="true" signature="3822:3905" placeholder="Insert INTO ..." />
-            <marker date="1421297593767" expanded="true" signature="3833:3898" placeholder="UPDATE Locat..." />
-            <marker date="1421297593767" expanded="true" signature="5618:5692" placeholder="SELECT BestB..Location..." />
-            <marker date="1421297593767" expanded="true" signature="7148:7229" placeholder="SELECT UserA..Users..." />
-            <marker date="1421297593767" expanded="true" signature="7154:7229" placeholder="UPDATE Users..." />
-            <marker date="1421297593767" expanded="true" signature="8548:8649" placeholder="UPDATE Users..." />
-            <marker date="1421297593767" expanded="true" signature="8554:8649" placeholder="INSERT INTO ..." />
-            <marker date="1421297593767" expanded="true" signature="9838:9885" placeholder="INSERT INTO ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1342" column="0" selection-start="23543" selection-end="23568" vertical-scroll-proportion="0.33285713" vertical-offset="22581" max-vertical-offset="37060" />
@@ -706,16 +689,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="37" selection-start="2733" selection-end="2733" vertical-scroll-proportion="0.0" vertical-offset="1885" max-vertical-offset="2720">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/getstuff.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="62" selection-start="770" selection-end="770" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="6562">
+        <state line="264" column="9" selection-start="10207" selection-end="10207" vertical-scroll-proportion="-9.692307" vertical-offset="4236" max-vertical-offset="6562">
           <folding />
         </state>
       </provider>
@@ -734,13 +710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="55" selection-start="1458" selection-end="1471" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="9231">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/infobubble.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="0" selection-start="1139" selection-end="1139" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="30311">
@@ -748,10 +717,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="973" column="0" selection-start="15060" selection-end="15081" vertical-scroll-proportion="0.0" vertical-offset="16881" max-vertical-offset="64821">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/maps.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="44" selection-start="4211" selection-end="4211" vertical-scroll-proportion="0.62279296" vertical-offset="1584" max-vertical-offset="5015">
+        <state line="207" column="39" selection-start="8421" selection-end="8448" vertical-scroll-proportion="0.0" vertical-offset="3063" max-vertical-offset="5015">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="180" column="1" selection-start="4194" selection-end="4194" vertical-scroll-proportion="-20.846153" vertical-offset="2518" max-vertical-offset="3162">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="249" column="35" selection-start="8992" selection-end="8992" vertical-scroll-proportion="0.8973384" vertical-offset="3761" max-vertical-offset="10047">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbstuff.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="56" selection-start="4414" selection-end="4414" vertical-scroll-proportion="0.62144053" vertical-offset="1618" max-vertical-offset="4760">
+          <folding>
+            <marker date="1421297593767" expanded="true" signature="650:732" placeholder="SELECT Locat..Location..." />
+            <marker date="1421297593767" expanded="true" signature="1372:1437" placeholder="SELECT UserI..Users..." />
+            <marker date="1421297593767" expanded="true" signature="2314:2409" placeholder="UPDATE Locat..." />
+            <marker date="1421297593767" expanded="true" signature="3822:3905" placeholder="Insert INTO ..." />
+            <marker date="1421297593767" expanded="true" signature="3833:3898" placeholder="UPDATE Locat..." />
+            <marker date="1421297593767" expanded="true" signature="5618:5692" placeholder="SELECT BestB..Location..." />
+            <marker date="1421297593767" expanded="true" signature="7148:7229" placeholder="SELECT UserA..Users..." />
+            <marker date="1421297593767" expanded="true" signature="7154:7229" placeholder="UPDATE Users..." />
+            <marker date="1421297593767" expanded="true" signature="8548:8649" placeholder="UPDATE Users..." />
+            <marker date="1421297593767" expanded="true" signature="8554:8649" placeholder="INSERT INTO ..." />
+            <marker date="1421297593767" expanded="true" signature="9838:9885" placeholder="INSERT INTO ..." />
+          </folding>
         </state>
       </provider>
     </entry>
