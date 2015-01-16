@@ -12,7 +12,8 @@ var objects = {
     lastOpenWindow : null,
     LocationMapMetroIDOnMap : [],
     timer : null,
-    geoLocationIsOn : false
+    geoLocationIsOn : false,
+    sameLatNLngIDArr : []
 
 }
 var mouse = {x: 0, y: 0}; //HÄR

@@ -19,9 +19,34 @@ if($_GET["function"] == "isUserOnline"){
 
 if($_GET["function"] == "getLocationsFromCache"){
     $db = new DOA_dbMaster();
-    $ConcertsFromDB = $db->getLocationsConcerts();
-    echo json_encode($ConcertsFromDB, JSON_UNESCAPED_SLASHES);
+    $LocationsMetroIDFromDB = $db->getNewlyCachedLocationsMetroID();
+
+    $arrayToReturn = [];
+    for($i=0;$i< count($LocationsMetroIDFromDB); $i++){
+        array_push($arrayToReturn, $db->getLocationEventsByMetroID($LocationsMetroIDFromDB[$i]["MetroID"]));
+    }
+
+    echo json_encode($arrayToReturn, JSON_UNESCAPED_SLASHES);
 }
+
+
+
+
+if($_GET["function"] == "getLocationEventsIDsFromCache" && isset($_GET["id"])){
+    $db = new DOA_dbMaster();
+    $LocationsEventIDs = $db->getLocationEventsIDsByMetroID($_GET["id"]);
+    echo json_encode($LocationsEventIDs, JSON_UNESCAPED_SLASHES);
+}
+
+if($_GET["function"] == "getConcertsFromCache" && isset($_GET["id"])){
+    $db = new DOA_dbMaster();
+    $LocationsEvents = $db->getLocationEventsByLocationEventID($_GET["id"]);
+    echo json_encode($LocationsEvents, JSON_UNESCAPED_SLASHES);
+}
+
+
+
+
 
 if($_GET["function"] == "getLastCheckedLocationName"){
     echo $_SESSION["LatestCheckedLocationName"];
@@ -48,11 +73,12 @@ if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) &&
 
             $eventArray = [];
             $counter = 1;
+            $counterForDb = 0;
             do{
                 $songkickConcertOnSpecificArea = getSongkickEventsBySongkickLocation($metroId,$counter);
                 $counter++;
+                $counterForDb++;
                 $toAdd = $songkickConcertOnSpecificArea["resultsPage"]["results"];
-
 
                 if(count($toAdd) >= 1){
                     for($j = 0; $j <count($toAdd["event"]); $j++ ){
@@ -74,23 +100,52 @@ if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) &&
                         }
                     }
                 }
+
+                //När $counterForDb är 10 så har 500 event hämtats! De skickas in i databasen så arrayen kan tömmas (sparar minne..)
+                //Om $toAdd är 0 så har all data hämtats, då ska det också skickas upp till databasen
+                if($counterForDb == 10 || count($toAdd) == 0){
+
+                    //Först tar vi hand om platsen, vi ser också till att vi inte behöver ta hand om den
+                    //mer än 1 gång genom att ändra LocationStatus till set...
+                    if($LocationStatus === "new" && $LocationStatus !== "set"){
+
+                        $db->addLocationDataToDB($metroId);
+                        $LocationStatus = "set";
+                    }elseif($LocationStatus === true && $LocationStatus !== "set"){
+                        $db->updateLocationDataToDB($metroId);
+                        $LocationStatus = "set";
+                    }
+
+                    $eventJSON = json_encode($eventArray, JSON_UNESCAPED_SLASHES);
+                    //Send to Db
+                    $db->addLocationEventDataToDB($metroId ,$eventJSON);
+                    //Empty Array
+                    $eventArray = [];
+                    //Carry on...
+
+                }
+
+
+
             }while(count($toAdd) != 0);
 
             //$eventsInArea = $songkickConcertOnSpecificArea["resultsPage"]["results"]["event"];
-            array_push($eventArray,$metroId); //sista i arrayen är metroID....
+            //array_push($eventArray,$metroId); //sista i arrayen är metroID....
 
-            $eventJSON = json_encode($eventArray, JSON_UNESCAPED_SLASHES);
+            //$eventJSON = json_encode($eventArray, JSON_UNESCAPED_SLASHES);
 
 
             //Här bästmmer jag om jag uppdaterar eller lägger till ny.
-            if($LocationStatus === "new"){
+            /*if($LocationStatus === "new"){
 
                 $db->addLocationDataToDB($metroId ,$eventJSON);
             }elseif($LocationStatus === true){
                 $db->updateLocationDataToDB($metroId ,$eventJSON);
-            }
+            }*/
 
-            echo $eventJSON;
+            //Vi kommer inte att eko ut detta längre,
+            //Vi får se till att hämta från databasen...
+            echo "success";// $eventJSON;
         }
     }else{
         echo "nope";
@@ -327,6 +382,28 @@ function getUserPlaylist($custom = ""){ // hämtar ut 50 playlists åt gången
 }
 
 
+
+//Kod inte används pågrund av dålig
+/*
+if($_GET["function"] == "getLocationsFromCache"){
+    $db = new DOA_dbMaster();
+    $LocationsMetroIDFromDB = $db->getNewlyCachedLocationsMetroID();
+    echo json_encode($LocationsMetroIDFromDB, JSON_UNESCAPED_SLASHES);
+}
+
+if($_GET["function"] == "getLocationEventsIDsFromCache" && isset($_GET["id"])){
+    $db = new DOA_dbMaster();
+    $LocationsEventIDs = $db->getLocationEventsIDsByMetroID($_GET["id"]);
+    echo json_encode($LocationsEventIDs, JSON_UNESCAPED_SLASHES);
+}
+
+if($_GET["function"] == "getConcertsFromCache" && isset($_GET["id"])){
+    $db = new DOA_dbMaster();
+    $LocationsEvents = $db->getLocationEventsByLocationEventID($_GET["id"]);
+    echo json_encode($LocationsEvents, JSON_UNESCAPED_SLASHES);
+}
+
+*/
 
 //Kod som inte kan användas pga begränsning. Koden är för krävande och datan blir för stor. Annan lösning ska implementeras...
 /*if($_GET["function"] == "getLocationForConcertsOverCountry" && isset($_GET["longtidue"]) && isset($_GET["latitude"])){

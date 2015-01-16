@@ -257,20 +257,9 @@ getConcertsNearYourLocation = function(lat, lng){
 
 }
 
-getConcertsFromCache = function(){
-    $.ajax({
-        type: "get",
-        url: "getstuff.php",
-        async: true,
-        data: {function: "getLocationsFromCache"},
-        success: function(data){
-            localStorage["CachadeKonserter"] = data;
-            prepareLoadingScreen();
-            var ArrayOfLocationsWithConcerts = JSON.parse(data);
-            FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
-        }
-    });
-}
+
+
+
 FastPlaceConcertWithArrayOfLocationsWithConcerts = function(ArrayOfLocationsWithConcerts){
     //Larvigt namn, jag vet... denna funkion är bara en liten utbrytning...
     for(var i = 0; i < ArrayOfLocationsWithConcerts.length; i++){
@@ -278,65 +267,92 @@ FastPlaceConcertWithArrayOfLocationsWithConcerts = function(ArrayOfLocationsWith
         placeConcertsOnMap(ConcertArrayData);
     }
 }
-placeConcertsOnMap = function(ConcertData){
 
-    if(objects.LocationMapMetroIDOnMap.indexOf(ConcertData[ConcertData.length]) == -1){ // ConcertData[ConcertData.length] == MetroID
-        //Om det är första gången denna location trycts på så ska den läggas in, nästa gång så ska den ej skrivas ut..
-        objects.LocationMapMetroIDOnMap.push(ConcertData[ConcertData.length-1]);
-        //delete ConcertData.LocationMapMetroID;
-        ConcertData.pop(ConcertData.length); //Tar bort sista i arrayen, alltså MetroID't...
 
-        var positionsLat = [];
-        var positionsLng = [];
-        var positions = [];
-        var ConcertThatHasSameLatNLng = [];
-        var ConcertThatDoesNotHaveSameLatNLng = [];
-        var sameLatNLngID;// = 840; // används för att identifera Konsärer som har samma Lng och Lat... (används i funktionen MultiMakeMarkerAndInfoWindowOfConcertData)...
-        for(var i = 0; i < ConcertData.length;i++){ //Ska hitta om det finns Konsärer på Samma Position.. Om det finns = ska lösas..
+/*placeConcertsOnMap = function(ConcertData){
 
-            var Counter = 0;
-            for(var j=0; j < ConcertData.length; j++){
+    if(objects.LocationMapMetroIDOnMap.indexOf(ConcertData.MetroID + ConcertData.id) == -1){ // ConcertData[ConcertData.length] == MetroID
+        //Om det är första gången denna locations Events hämtats så ska den läggas in, nästa gång så ska den ej skrivas ut..
+        objects.LocationMapMetroIDOnMap.push(ConcertData.MetroID + ConcertData.id);
 
-                if(ConcertData[i].location.lat == ConcertData[j].location.lat && ConcertData[i].location.lng == ConcertData[j].location.lng){
-                    Counter++;// Räknar hur många gånger konserter med samma lat och lng finns i Arrayen
-                }
+        ConcertData.sameLatNLngID = ConcertData.location.lat.toString() + ConcertData.location.lng.toString();
 
-            }
-            if(Counter >= 2){
-                //Finns det 2 eller mer så läggs de in i en egen array
-
-                if(positionsLat.indexOf(ConcertData[i].location.lat) == -1 && positionsLng.indexOf(ConcertData[i].location.lng) == -1){
-                    sameLatNLngID = (ConcertData[i].location.lat.toString() + ConcertData[i].location.lng.toString());
-                    positionsLat.push(ConcertData[i].location.lat);
-                    positionsLng.push(ConcertData[i].location.lng);
-                    positions.push([ConcertData[i].location.lat, ConcertData[i].location.lng, sameLatNLngID]);
-                }
-                ConcertData[i].sameLatNLngID = (ConcertData[i].location.lat.toString() + ConcertData[i].location.lng.toString());
-                ConcertThatHasSameLatNLng.push(ConcertData[i]);
-
-            }else{
-                //Finns det bara 1 så läggs dom i en egen array...
-                ConcertThatDoesNotHaveSameLatNLng.push(ConcertData[i]);
-            }
-
+        if(objects.sameLatNLngIDArr.indexOf(ConcertData.sameLatNLngID) == -1){
+            objects.sameLatNLngIDArr.push(ConcertData.sameLatNLngID);
+            Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData);
+        }else{
+            var posistions = [ConcertData.location.lat, ConcertData.location.lng, ConcertData.sameLatNLngID];
+            MakeMultiMarker(posistions);
+            moveSingleMarkerToMultiMarkerIfNeeded();
         }
 
-        for(var i = 0; i < ConcertThatDoesNotHaveSameLatNLng.length;i++){
-            //Notera att om jag hade kört koden i denna loop så hade saker skitit sig:
-            //om man tryckt på en marker så skulle bara Data från den sista markern att skrivas ut, på dens possition..
-            //genoom att jag låter en annan funktion ta  hand om det så försvinner problemet.. hur?
-            Single_MakeMarkerAndInfoWindowOfConcertData(ConcertThatDoesNotHaveSameLatNLng[i]);
-        }
+    }else{
 
-        for(var i = 0; i < positions.length; i++){
-            MakeMultiMarker(positions[i]);
-        }
-
-        for(var i = 0; i < ConcertThatHasSameLatNLng.length;i++){
-            Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertThatHasSameLatNLng[i]);
-        }
     }
 
+}*/
+
+/*
+function moveSingleMarkerToMultiMarkerIfNeeded(){
+    for(var i = 0; i < objects.markers.length; i++){ // -1 här. varför ska den behöva vara där ? :< :(
+
+
+        for(var j= 0; j < objects.MultiMarkers.length; j++){
+
+            if(objects.markers[i].sameLatNLngID == objects.MultiMarkers[j].sameLatNLngID){
+                //Om detta är true så ska SingelMarken försvinna från kartan och flyttas in i MultiMarkern
+                Multi_MakeMarkerAndInfoWindowOfConcertData(objects.markers[i].concertData);
+                objects.markers[i].map = "";
+                objects.markers.splice(i, 1);
+                break;
+            }
+
+        }
+    }
+}
+*/
+
+function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om Konsärer som inte har unika positioner
+
+    var InfoWindowContent = createInfoWindowWithConcertData(ConcertData);
+
+    var infoWindowForMarker = new InfoBubble({
+        content: InfoWindowContent,
+        maxWidth: 500
+    });
+
+    var image = new google.maps.MarkerImage( //Konstig formel för att göra Markern större...
+        "pic/marker.png",
+        null, /* size is determined at runtime */
+        null, /* origin is 0,0 */
+        null, /* anchor is bottom center of the scaled image */
+        new google.maps.Size(42, 48)
+    );
+    //var image = 'pic/marker.png';
+    var myLatLng = new google.maps.LatLng(ConcertData.location.lat, ConcertData.location.lng);
+    var ConcertMarker = new google.maps.Marker({
+        position: myLatLng,
+        map: objects.map,
+        icon: image,
+        infoWindow : infoWindowForMarker,
+        sameLatNLngID : ConcertData.sameLatNLngID,
+        concertData : ConcertData
+    });
+    objects.markers.push(ConcertMarker);
+
+
+    google.maps.event.addListener(ConcertMarker, 'click', function(){
+
+        if(objects.lastOpenWindow != null){
+            objects.lastOpenWindow.close();
+        }
+
+        ConcertMarker.infoWindow.open(objects.map, ConcertMarker);
+
+        objects.lastUsedMarker = ConcertMarker;
+        objects.lastOpenWindow = ConcertMarker.infoWindow;
+
+    });
 }
 
 function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
@@ -369,24 +385,28 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
     newWindowButton.infoWindow = infoWindowForOtherInfoWindow;
     newWindowButton.marker = markerToUse;
 
+    if(markerToUse != undefined){
+        //Om markernToUse är undifned här nere, så har något gått snätt t
+        markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
+            '<a class="concertPlus" onclick="document.getElementById(\''+ id +'\').click();return false;" >'+ConcertData.displayName+'</a>');
 
-    markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
-        '<a class="concertPlus" onclick="document.getElementById(\''+ id +'\').click();return false;" >'+ConcertData.displayName+'</a>');
+        newWindowButton.onclick = function (e){
 
-    newWindowButton.onclick = function (e){
+            if(objects.lastOpenWindow != null){
+                objects.lastOpenWindow.close();
+            }
 
-        if(objects.lastOpenWindow != null){
-            objects.lastOpenWindow.close();
-        }
+            e.target.infoWindow.open(objects.map, e.target.marker);
 
-        e.target.infoWindow.open(objects.map, e.target.marker);
+            objects.lastUsedMarker = newWindowButton;
+            objects.lastOpenWindow = newWindowButton.infoWindow;
 
-        objects.lastUsedMarker = newWindowButton;
-        objects.lastOpenWindow = newWindowButton.infoWindow;
+        };
 
-    };
+        document.body.appendChild(newWindowButton);
+    }
 
-    document.body.appendChild(newWindowButton);
+
 
 }
 
@@ -476,46 +496,7 @@ function createInfoWindowWithConcertData(ConcertData){
     return InfoWindowContent;
 }
 
-function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om Konsärer som inte har unika positioner
 
-    var InfoWindowContent = createInfoWindowWithConcertData(ConcertData);
-
-    var infoWindowForMarker = new InfoBubble({
-        content: InfoWindowContent,
-        maxWidth: 500
-    });
-
-    var image = new google.maps.MarkerImage( //Konstig formel för att göra Markern större...
-        "pic/marker.png",
-        null, /* size is determined at runtime */
-        null, /* origin is 0,0 */
-        null, /* anchor is bottom center of the scaled image */
-        new google.maps.Size(42, 48)
-    );
-    //var image = 'pic/marker.png';
-    var myLatLng = new google.maps.LatLng(ConcertData.location.lat, ConcertData.location.lng);
-    var ConcertMarker = new google.maps.Marker({
-        position: myLatLng,
-        map: objects.map,
-        icon: image,
-        infoWindow : infoWindowForMarker
-    });
-    objects.markers.push(ConcertMarker);
-
-
-    google.maps.event.addListener(ConcertMarker, 'click', function(){
-
-        if(objects.lastOpenWindow != null){
-            objects.lastOpenWindow.close();
-        }
-
-        ConcertMarker.infoWindow.open(objects.map, ConcertMarker);
-
-        objects.lastUsedMarker = ConcertMarker;
-        objects.lastOpenWindow = ConcertMarker.infoWindow;
-
-    });
-}
 
 /*var PopulatePlaylistButton = document.createElement("input");
 PopulatePlaylistButton.setAttribute("value", "Logga ut, ");
@@ -546,6 +527,135 @@ populateUserWithArtistData = function(){
         }
     });
 }
+
+
+//BACKUP2:
+/*
+ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
+
+ //hitta Rätt MultiMarker att anvädna...
+ var markerToUse;
+ for(var i = 0; i < objects.MultiMarkers.length; i++){
+ /*if(ConcertData.location.lat == objects.MultiMarkers[i].position.k && ConcertData.location.lng == objects.MultiMarkers[i].position.D){
+ markerToUse = objects.MultiMarkers[i];
+ break;
+ }*/ /* <- obs ska bort sen.. liksom är bara så att allt ska bli en kommentar
+if(ConcertData.sameLatNLngID == objects.MultiMarkers[i].sameLatNLngID){
+    markerToUse = objects.MultiMarkers[i];
+    break;
+}
+}
+var ContentForInfoWindow = createInfoWindowWithConcertData(ConcertData); //Hämta ut relevant visningsdata för denna konsär...
+
+var infoWindowForOtherInfoWindow = new InfoBubble({ // Lägg in den i ett InfoWindow
+    content: ContentForInfoWindow,
+    maxWidth: 500
+});
+
+var newWindowButton = document.createElement("input");
+newWindowButton.setAttribute("type", "submit");
+var id = ConcertData.id;
+newWindowButton.setAttribute("id", id);
+newWindowButton.style.display = "none";
+newWindowButton.setAttribute("value", ConcertData.displayName);
+newWindowButton.infoWindow = infoWindowForOtherInfoWindow;
+newWindowButton.marker = markerToUse;
+
+if(markerToUse != undefined){
+    //Om markernToUse är undifned här nere, så har något gått snätt t
+    markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
+        '<a class="concertPlus" onclick="document.getElementById(\''+ id +'\').click();return false;" >'+ConcertData.displayName+'</a>');
+
+    newWindowButton.onclick = function (e){
+
+        if(objects.lastOpenWindow != null){
+            objects.lastOpenWindow.close();
+        }
+
+        e.target.infoWindow.open(objects.map, e.target.marker);
+
+        objects.lastUsedMarker = newWindowButton;
+        objects.lastOpenWindow = newWindowButton.infoWindow;
+
+    };
+
+    document.body.appendChild(newWindowButton);
+}
+
+
+
+}
+*/
+
+
+//BACKUP:
+/*
+ placeConcertsOnMap = function(ConcertData){
+
+ if(objects.LocationMapMetroIDOnMap.indexOf(ConcertData.MetroID + ConcertData.sameLatNLngID) == -1){ // ConcertData[ConcertData.length] == MetroID
+ //Om det är första gången denna locations Events hämtats så ska den läggas in, nästa gång så ska den ej skrivas ut..
+ objects.LocationMapMetroIDOnMap.push(ConcertData.MetroID + ConcertData.sameLatNLngID);
+ //delete ConcertData.LocationMapMetroID;
+ //Gammalt... ->//ConcertData.pop(ConcertData.length); //Tar bort sista i arrayen, alltså MetroID't...
+
+ var positionsLat = [];
+ var positionsLng = [];
+ var positions = [];
+ var ConcertThatHasSameLatNLng = [];
+ var ConcertThatDoesNotHaveSameLatNLng = [];
+ var sameLatNLngID;// = 840; // används för att identifera Konsärer som har samma Lng och Lat... (används i funktionen MultiMakeMarkerAndInfoWindowOfConcertData)...
+ for(var i = 0; i < ConcertData.length;i++){ //Ska hitta om det finns Konsärer på Samma Position.. Om det finns = ska lösas..
+
+ var Counter = 0;
+ for(var j=0; j < ConcertData.length; j++){
+
+ if(ConcertData[i].location.lat == ConcertData[j].location.lat && ConcertData[i].location.lng == ConcertData[j].location.lng){
+ Counter++;// Räknar hur många gånger konserter med samma lat och lng finns i Arrayen
+ }
+
+ }
+ if(Counter >= 2){
+ //Finns det 2 eller mer så läggs de in i en egen array
+
+ if(positionsLat.indexOf(ConcertData[i].location.lat) == -1 && positionsLng.indexOf(ConcertData[i].location.lng) == -1){
+ sameLatNLngID = (ConcertData[i].location.lat.toString() + ConcertData[i].location.lng.toString());
+ positionsLat.push(ConcertData[i].location.lat);
+ positionsLng.push(ConcertData[i].location.lng);
+ positions.push([ConcertData[i].location.lat, ConcertData[i].location.lng, sameLatNLngID]);
+ }
+ ConcertData[i].sameLatNLngID = (ConcertData[i].location.lat.toString() + ConcertData[i].location.lng.toString());
+ ConcertThatHasSameLatNLng.push(ConcertData[i]);
+
+ }else{
+ //Finns det bara 1 så läggs dom i en egen array...
+ ConcertThatDoesNotHaveSameLatNLng.push(ConcertData[i]);
+ }
+
+ }
+
+ for(var i = 0; i < ConcertThatDoesNotHaveSameLatNLng.length;i++){
+ //Notera att om jag hade kört koden i denna loop så hade saker skitit sig:
+ //om man tryckt på en marker så skulle bara Data från den sista markern att skrivas ut, på dens possition..
+ //genoom att jag låter en annan funktion ta  hand om det så försvinner problemet.. hur?
+ Single_MakeMarkerAndInfoWindowOfConcertData(ConcertThatDoesNotHaveSameLatNLng[i]);
+ }
+
+ for(var i = 0; i < positions.length; i++){
+ MakeMultiMarker(positions[i]);
+ }
+
+ for(var i = 0; i < ConcertThatHasSameLatNLng.length;i++){
+ Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertThatHasSameLatNLng[i]);
+ }
+ }
+
+ }
+
+*/
+
+
+
+
 
 /*
 
@@ -583,3 +693,65 @@ objects.markers.push(ConcertMarker);
 google.maps.event.addListener(ConcertMarker, 'click', function(){
     ConcertMarker.infoWindow.open(objects.map, ConcertMarker);
 });*/
+
+//backup:
+
+/*
+
+ getLocationFromCache = function(){
+ $.ajax({
+ type: "get",
+ url: "getstuff.php",
+ async: true,
+ data: {function: "getLocationsFromCache"},
+ success: function(data){
+ //localStorage["CachadeKonserter"] = data;
+ prepareLoadingScreen();
+ var ArrayOfLocationsWithConcerts = JSON.parse(data);
+
+ for(var i=0; i< ArrayOfLocationsWithConcerts.length;i++){
+ getLocationEventsIDsFromCache(ArrayOfLocationsWithConcerts[0].MetroID);
+ }
+
+
+ //FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
+ }
+ });
+ }
+ getLocationEventsIDsFromCache = function($metroID){
+ $.ajax({
+ type: "get",
+ url: "getstuff.php",
+ async: true,
+ data: {function: "getLocationEventsIDsFromCache", id : $metroID},
+ success: function(data){
+ var locationEventsIDs = JSON.parse(data);
+ for(var i = 0; i< locationEventsIDs.length; i++){
+ getConcertsFromCache(locationEventsIDs[i].LocationEventsID, $metroID);
+ }
+ }
+ });
+ }
+
+ getConcertsFromCache = function($locationEventID, $metroID){
+ var $metroID = $metroID;
+ $.ajax({
+ type: "get",
+ url: "getstuff.php",
+ async: true,
+ data: {function: "getConcertsFromCache", id : $locationEventID},
+ success: function(data){
+ var LocationsConcertsJSON = JSON.parse(data);
+ var LocationConcerts = JSON.parse(LocationsConcertsJSON[0].LocationEventJSON);
+
+ for(var i = 0; i < LocationConcerts.length; i++){
+ var ConcertData = (LocationConcerts[i]);
+ ConcertData.MetroID = $metroID;
+ placeConcertsOnMap(ConcertData);
+ }
+
+ }
+ });
+ }
+
+*/

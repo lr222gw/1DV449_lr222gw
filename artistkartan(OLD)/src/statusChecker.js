@@ -71,7 +71,7 @@ hideOrShow.onclick = function(e){
 
 
     }
-
+///
 
 
 }
@@ -264,17 +264,20 @@ getConcertsFromCache = function(){
         async: true,
         data: {function: "getLocationsFromCache"},
         success: function(data){
-            localStorage["CachadeKonserter"] = data;
+            //localStorage["CachadeKonserter"] = data;
             prepareLoadingScreen();
             var ArrayOfLocationsWithConcerts = JSON.parse(data);
-            FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
+            for(var i = 0; i< ArrayOfLocationsWithConcerts.length;i++){
+                FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts[i]);
+            }
+
         }
     });
 }
 FastPlaceConcertWithArrayOfLocationsWithConcerts = function(ArrayOfLocationsWithConcerts){
     //Larvigt namn, jag vet... denna funkion är bara en liten utbrytning...
     for(var i = 0; i < ArrayOfLocationsWithConcerts.length; i++){
-        var ConcertArrayData = JSON.parse(ArrayOfLocationsWithConcerts[i].LocationJson);
+        var ConcertArrayData = JSON.parse(ArrayOfLocationsWithConcerts[i].LocationEventJSON);
         placeConcertsOnMap(ConcertArrayData);
     }
 }
@@ -369,24 +372,26 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
     newWindowButton.infoWindow = infoWindowForOtherInfoWindow;
     newWindowButton.marker = markerToUse;
 
+    if(markerToUse !== undefined){
+        markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
+            '<a class="concertPlus" onclick="document.getElementById(\''+ id +'\').click();return false;" >'+ConcertData.displayName+'</a>');
 
-    markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
-        '<a class="concertPlus" onclick="document.getElementById(\''+ id +'\').click();return false;" >'+ConcertData.displayName+'</a>');
+        newWindowButton.onclick = function (e){
 
-    newWindowButton.onclick = function (e){
+            if(objects.lastOpenWindow != null){
+                objects.lastOpenWindow.close();
+            }
 
-        if(objects.lastOpenWindow != null){
-            objects.lastOpenWindow.close();
-        }
+            e.target.infoWindow.open(objects.map, e.target.marker);
 
-        e.target.infoWindow.open(objects.map, e.target.marker);
+            objects.lastUsedMarker = newWindowButton;
+            objects.lastOpenWindow = newWindowButton.infoWindow;
 
-        objects.lastUsedMarker = newWindowButton;
-        objects.lastOpenWindow = newWindowButton.infoWindow;
+        };
 
-    };
+        document.body.appendChild(newWindowButton);
+    }
 
-    document.body.appendChild(newWindowButton);
 
 }
 

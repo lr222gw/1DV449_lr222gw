@@ -1,0 +1,43 @@
+CACHE MANIFEST
+# rev 19
+
+CACHE:
+/favicon.ico
+/pic/extraMarker.png
+/pic/favicon.png
+/pic/KonsertKartanPSD.png
+/pic/marker.png
+/pic/openhand.ico
+/pic/songkick.png
+/src/infobubble.js
+/src/jquery.min.js
+/src/maps.js
+/src/statusChecker.js
+/src/style.css
+
+
+
+NETWORK:
+/dbstuff.php
+/getAccess.php
+/getLogin.php
+/getstuff.php
+/login.php
+/logout.php
+http://maps.gstatic.com/
+http://maps.google.com/
+http://maps.googleapis.com/
+http://mt0.googleapis.com/
+http://mt1.googleapis.com/
+http://mt2.googleapis.com/
+http://mt3.googleapis.com/
+http://khm0.googleapis.com/
+http://khm1.googleapis.com/
+http://cbk0.googleapis.com/
+http://cbk1.googleapis.com/
+http://www.google-analytics.com/
+http://gg.google.com/
+http://csi.gstatic.com/
+*
+FALLBACK:
+# tomt 

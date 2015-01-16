@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html> <!--manifest="/cache.manifest"-->
+<head>
+    <title>KonsertKartan</title>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCTuUr4lXyaXvZAuSLQJah1DWNmDxuyDb4" ></script>
+    <link rel="stylesheet" href="src/style.css">
+    <script src="src/jquery.min.js"></script>
+    <script src="src/infobubble.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body id="body">
+<div id="topBanner">
+    <div id="logga">
+        <div id="loginspotify">
+            <form action="https://accounts.spotify.com/authorize/" method="get">
+                <input type="hidden" name="client_id" value="32d69ac656814a37bc890e0840076720">
+                <input type="hidden" name="redirect_uri" value="http://konsertkartan.com/getLogin.php">
+                <input type="hidden" name="response_type" value="code">
+                <input type="hidden" name="scope" value="user-read-private user-read-email">
+                <input type="hidden" name="state" value="34fFs29kd09">
+                <input type="hidden" name="show_dialog" value="true">
+
+                <input type="submit" value="Login With Spotify" id="loginButton">
+            </form>
+        </div>
+        <img id="loggaimg" src="pic/KonsertKartanPSD.png">
+        <div id="songkickstuff"><a href="http://www.songkick.com"><img src="pic/songkick.png"></a></div>
+    </div>
+
+
+
+
+
+</div>
+
+
+<div id="mapcanvas">
+
+</div>
+<script src="src/statusChecker.js" ></script>
+<script src="src/maps.js"></script>
+</body>
+</html>
