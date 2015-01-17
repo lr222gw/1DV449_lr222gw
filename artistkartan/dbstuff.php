@@ -38,6 +38,29 @@ class DOA_dbMaster{
         }
     }
 
+    public function getLocationsConcertsByMetroID($metroID){
+        try{
+            $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databaseHandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            $query= "
+            SELECT LocationJson
+            FROM Location
+            WHERE  MetroID = ?
+            "; // BestBefore > NOW() AND
+            $param = [$metroID];
+            $stmt = $databaseHandler->prepare($query);
+
+            if($stmt->execute($param)){
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return $result;
+
+        }catch (PDOException $e){
+            throw new \Exception("Sorry Could check if your'e in Database..." . $e->getMessage());
+        }
+    }
+
     public function checkIfUserIsInDB($userId){
         try{
             $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);

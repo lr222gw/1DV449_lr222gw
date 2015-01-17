@@ -214,7 +214,7 @@ getConcertsNearYourLocation = function(lat, lng){
     }
 
     $.ajax({
-        type: "get",
+        type: "post",
         url: "getstuff.php",
         async: true,
         data: {function: "getLocationForConcerts", longtidue: lng ,latitude: lat, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
@@ -225,10 +225,11 @@ getConcertsNearYourLocation = function(lat, lng){
             }else{
                 if(data != "" && data != "[null]"){
                     //console.log(data);
-                    if(JSON.parse(data).length !=  1){
+                    var parsedData = JSON.parse(data);
+                    if(parsedData.length !=  1){
                         // Om JSON.parse(data) blir 1 så innerbär det att den bara innehåller MetroID,
                         // Då vill vi inte skriva ut något, utan bara berätta att det ej finns några konserter här.
-                    placeConcertsOnMap(JSON.parse(data));
+                    placeConcertsOnMap(parsedData);
 
                     }else{
                         var pos = new google.maps.LatLng(

@@ -100,8 +100,8 @@ function getSongkickApiStatus(){
 }
 
 //Bättra namn hade vart getConcertsForLocation... hehe <- eller? jag minns inte xD
-if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) && isset($_GET["latitude"])){
-    $locationData = getSonkickLocationByLngNLat($_GET["longtidue"],$_GET["latitude"]); // haha "getSonKick <- kick Son xD ;)
+if($_POST["function"] == "getLocationForConcerts" && isset($_POST["longtidue"]) && isset($_POST["latitude"])){
+    $locationData = getSonkickLocationByLngNLat($_POST["longtidue"],$_POST["latitude"]); // haha "getSonKick <- kick Son xD ;)
     $db = new DOA_dbMaster();
     $_SESSION["LatestCheckedLocationName"] = $locationData["resultsPage"]["results"]["location"][0]["city"]["displayName"];
     $metroId = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["id"];
@@ -116,7 +116,7 @@ if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) &&
         // $LocationStatus == TRUE  : Platsen fanns och ska UPPDATERAS
         // $LocationStatus == "new"  : Platsen fanns inte innan och ska LÄGGAS till
 
-        if(in_array($metroId, json_decode($_GET["metroArr"])) == false && $metroId != NULL ){ // denna är lite gammal, den kanske hjälper mot något fortfarande.. typ om något blir null(?)
+        if(in_array($metroId, json_decode($_POST["metroArr"])) == false && $metroId != NULL ){ // denna är lite gammal, den kanske hjälper mot något fortfarande.. typ om något blir null(?)
             //För att undvika onödiga request.. Är metroID null så finns inget metro = onödig request... om den redan finns på klienten = onödig request.
 
             $songkickConcertOnSpecificArea = getSongkickEventsBySongkickLocation($metroId);
@@ -176,7 +176,22 @@ if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) &&
             echo $eventJSON;
         }
     }else{
-        echo "nope";
+        //echo "nope";
+        //Eftersom pplikationen är ändrd här så ska vi istället se till att hämta ner datan på nytt...
+        //Vi behöver tänka igenom det här men vi testar oss fram.. ändå! <- vi måste ju på något sätt
+        //Inte hätma data varje gång.. liksom.. öhm.. ah.. hmm..
+
+        $MetroIDArr = json_decode($_POST["metroArr"]);
+
+        if(in_array($metroId, $MetroIDArr) == false){
+
+            $LocationEventData = $db->getLocationsConcertsByMetroID($metroId);//Hämta från databas...
+
+            echo $LocationEventData[0]["LocationJson"];//json_encode($LocationEventData["LocationJson"], JSON_UNESCAPED_SLASHES);
+        }else{
+            echo "nope";
+        }
+
     }
 
 }
@@ -258,7 +273,7 @@ if($_GET["function"] == "getArtistConcertData"){ // TILLFÄLLIGT DÖD!
 
 
         for($i=0;$i<count($artistIDListFromSongKick); $i++){// Loopen hämtar ut artisternas Concertdata baserat på deras ID'n...
-            $artistConcertResult = getArtistConcertDataFromArtistID($artistIDListFromSongKick[$i]);
+            ////////////////////////////$artistConcertResult = getArtistConcertDataFromArtistID($artistIDListFromSongKick[$i]);
             array_push($artistConceretInfoListFromSonkick, $artistConcertResult);
         }
 
