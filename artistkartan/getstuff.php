@@ -27,6 +27,7 @@ if($_GET["function"] == "getLastCheckedLocationName"){
     echo $_SESSION["LatestCheckedLocationName"];
 }
 
+//Bättra namn hade vart getConcertsForLocation... hehe <- eller? jag minns inte xD
 if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) && isset($_GET["latitude"])){
     $locationData = getSonkickLocationByLngNLat($_GET["longtidue"],$_GET["latitude"]); // haha "getSonKick <- kick Son xD ;)
     $db = new DOA_dbMaster();
@@ -73,6 +74,14 @@ if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) &&
                             array_push($eventArray, $toAdd["event"][$j]);
                         }
                     }
+                }
+                if($counter == 10){
+                    //om $Counter har gått upp till 10, Då har vi hämtat 10 sidor med data
+                    //Det är ungefär konserter en månad frammåt.
+                    // För att Servern inte ska krascha så begränsar vi oss här, vi kör en break
+                    // Och Låter det vara den hämtade datan
+                    // Inget går ju förlorat då Data hämtas varrje dag (eller var 4 timme om trycks på, rättare sagt..)
+                    break;
                 }
             }while(count($toAdd) != 0);
 
