@@ -67,7 +67,8 @@ function init(){
         var lat = event.latLng.lat();
         var lng = event.latLng.lng();
         // populate yor box/field with lat, lng
-        objects.map.setOptions({draggableCursor: 'wait'});
+        //objects.map.setOptions({draggableCursor: 'wait'});
+
         getConcertsNearYourLocation(lat,lng);
     });
 
@@ -205,6 +206,7 @@ function init(){
 
             var lat = event.latLng.lat();
             var lng = event.latLng.lng();
+            //getConcertsFromCache();
             getConcertsNearYourLocation(lat,lng);
 
         });

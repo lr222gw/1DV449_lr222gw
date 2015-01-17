@@ -246,7 +246,7 @@ getConcertsNearYourLocation = function(lat, lng){
                     console.log("Location Populated! :D ");
                 }
             }
-            objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
+            //objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
             prepareLoadingScreen();
 
         }
@@ -256,17 +256,37 @@ getConcertsNearYourLocation = function(lat, lng){
 
 
 }
+apiIsDownErrorScreen = function(){
+    var overlay = document.createElement("div");
+    overlay.id = "ApiErroOverlay";
 
+    document.body.insertBefore(overlay, document.getElementById("mapcanvas"));
+
+}
 getConcertsFromCache = function(){
+
+    //Hämtar Från data från cache och kontrollerar
+    //Så att Apierna är uppe och tillgängliga
+    prepareLoadingScreen();
     $.ajax({
         type: "get",
         url: "getstuff.php",
         async: true,
-        data: {function: "getLocationsFromCache"},
+        data: {function: "getLocationsFromCache", AlternateFunction: "checkStatusOnApi"},
         success: function(data){
+            var parsedData = JSON.parse(data);
+            if(parsedData.spotifyStatus == "fail" || parsedData.songKickStatus == "fail" || !(typeof google === 'object') || !(typeof google.maps === 'object')){
+                //här kontrollerar vi så att våra Apier är som de ska.
+                //Kontrollerar Sonkick och Google..
+                apiIsDownErrorScreen();
+                throw new Error("Något är fel på songkick eller google!");
+
+            }
+
+            data = parsedData.data;
             localStorage["CachadeKonserter"] = data;
-            prepareLoadingScreen();
-            var ArrayOfLocationsWithConcerts = JSON.parse(data);
+
+            var ArrayOfLocationsWithConcerts = data;//JSON.parse(data);
             FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
         }
     });

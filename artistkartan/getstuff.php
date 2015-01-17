@@ -17,14 +17,66 @@ if($_GET["function"] == "isUserOnline"){
     }
 }
 
+if($_GET["AlternateFunction"] == "checkStatusOnApi"){
+    $ArrayWithStatusAndData = [];
+    $songkickStatus = getSongkickApiStatus();
+    if($songkickStatus["resultsPage"]["status"] !== "ok"){
+        $ArrayWithStatusAndData["songKickStatus"] = "fail";
+    }else{
+        $ArrayWithStatusAndData["songKickStatus"] = "ok";
+    }
+
+     $spotifyStatus = getSpotifyApiStatus();
+
+    if($spotifyStatus["id"] !== "grayfish"){
+        $ArrayWithStatusAndData["spotifyStatus"] = "fail";
+    }else{
+        $ArrayWithStatusAndData["spotifyStatus"] = "ok";
+    }
+
+}
+
 if($_GET["function"] == "getLocationsFromCache"){
     $db = new DOA_dbMaster();
     $ConcertsFromDB = $db->getLocationsConcerts();
-    echo json_encode($ConcertsFromDB, JSON_UNESCAPED_SLASHES);
+    $ArrayWithStatusAndData["data"] = $ConcertsFromDB;
+
+    echo json_encode($ArrayWithStatusAndData, JSON_UNESCAPED_SLASHES);
 }
 
 if($_GET["function"] == "getLastCheckedLocationName"){
     echo $_SESSION["LatestCheckedLocationName"];
+}
+function getSpotifyApiStatus(){
+    $url = "https://api.spotify.com/v1/users/grayfish";
+
+
+    $cu = curl_init();
+
+    curl_setopt($cu, CURLOPT_URL, $url);
+    curl_setopt($cu, CURLOPT_RETURNTRANSFER, TRUE); // ser till att resultatet kommer ner istället för om det lyckades eller ej
+
+    $userResult = curl_exec($cu);
+    $userResultDecoded = json_decode($userResult,true);
+    curl_close($cu);
+
+    return $userResultDecoded;
+}
+function getSongkickApiStatus(){
+
+    $url = "http://api.songkick.com/api/3.0/search/locations.json?query=null&apikey=O2uaF4oPnY6ujGCJ";
+
+
+    $cu = curl_init();
+
+    curl_setopt($cu, CURLOPT_URL, $url);
+    curl_setopt($cu, CURLOPT_RETURNTRANSFER, TRUE); // ser till att resultatet kommer ner istället för om det lyckades eller ej
+
+    $userResult = curl_exec($cu);
+    $userResultDecoded = json_decode($userResult,true);
+    curl_close($cu);
+
+    return $userResultDecoded;
 }
 
 //Bättra namn hade vart getConcertsForLocation... hehe <- eller? jag minns inte xD
