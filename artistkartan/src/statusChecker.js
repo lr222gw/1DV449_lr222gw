@@ -369,24 +369,29 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
     newWindowButton.infoWindow = infoWindowForOtherInfoWindow;
     newWindowButton.marker = markerToUse;
 
+    //Om markern är undefined så har det skett ett allvarligt fel,
+    //, det kan vara att det är omöjligt att få tag på en exakt location av en spelning
+    //Möjligtvis är det ett event som inte fått all nödvändig data,
+    //Vi hoppar över sådanna event genom att använda denna if-sats..
+    if(markerToUse != undefined){
+        markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
+            '<a class="concertPlus" onclick="document.getElementById(\''+ id +'\').click();return false;" >'+ConcertData.displayName+'</a>');
 
-    markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
-        '<a class="concertPlus" onclick="document.getElementById(\''+ id +'\').click();return false;" >'+ConcertData.displayName+'</a>');
+        newWindowButton.onclick = function (e){
 
-    newWindowButton.onclick = function (e){
+            if(objects.lastOpenWindow != null){
+                objects.lastOpenWindow.close();
+            }
 
-        if(objects.lastOpenWindow != null){
-            objects.lastOpenWindow.close();
-        }
+            e.target.infoWindow.open(objects.map, e.target.marker);
 
-        e.target.infoWindow.open(objects.map, e.target.marker);
+            objects.lastUsedMarker = newWindowButton;
+            objects.lastOpenWindow = newWindowButton.infoWindow;
 
-        objects.lastUsedMarker = newWindowButton;
-        objects.lastOpenWindow = newWindowButton.infoWindow;
+        };
 
-    };
-
-    document.body.appendChild(newWindowButton);
+        document.body.appendChild(newWindowButton);
+    }
 
 }
 
