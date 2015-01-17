@@ -99,8 +99,19 @@ $.ajax({
             logoutButton.setAttribute("value", "Logga ut, " + data);
             logoutButton.setAttribute("type", "submit");
             logoutButton.setAttribute("id", "logout");
+
             logout.appendChild(logoutButton);
+
             document.getElementById("logga").insertBefore(logout, document.getElementById("loginspotify"));
+
+            var showMeArtists = document.createElement("button");
+            showMeArtists.innerHTML = "Visa relevanta artister";
+            showMeArtists.setAttribute("id", "relevantArtists");
+            showMeArtists.onclick = function(){
+                spotifyFunctionSomething();
+            }
+            document.getElementById("logga").insertBefore(showMeArtists, document.getElementById("loginspotify"));
+
             localStorage["UserID"] = data;
 
         }
@@ -340,10 +351,11 @@ getConcertsFromCache = function(){
             async: true,
             data: {function: "getLocationsFromCache", top:TopOfCircle, bottom:BottomOfCircle,left:LeftOfCircle, right:rightOfCircle},//, lat: objects.userPosition.k, lng : objects.userPosition.D},
             success: function(data){
+                localStorage["CachadeKonserter"] = data;
+
                 var parsedData = JSON.parse(data);
 
                 data = parsedData;//.data; <- onödigt men bara omskriven kod..
-                localStorage["CachadeKonserter"] = data;
 
                 var ArrayOfLocationsWithConcerts = data;//JSON.parse(data);
                 FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
@@ -457,6 +469,10 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
     //Möjligtvis är det ett event som inte fått all nödvändig data,
     //Vi hoppar över sådanna event genom att använda denna if-sats..
     if(markerToUse != undefined){
+
+        markerToUse.arrOfArtists.push(ConcertData.performance);
+
+
         markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
             '<a class="concertPlus" onclick="document.getElementById(\''+ id +'\').click();return false;" >'+ConcertData.displayName+'</a>');
 
@@ -506,7 +522,8 @@ function MakeMultiMarker(positions){
         map: objects.map,
         icon: image,
         infoWindow : infoWindowForMarker,
-        sameLatNLngID : positions[2]
+        sameLatNLngID : positions[2],
+        arrOfArtists : []
     });
     objects.MultiMarkers.push(ConcertMarker);
 
@@ -586,7 +603,8 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
         position: myLatLng,
         map: objects.map,
         icon: image,
-        infoWindow : infoWindowForMarker
+        infoWindow : infoWindowForMarker,
+        arrOfArtists : ConcertData.performance
     });
     objects.markers.push(ConcertMarker);
 
@@ -619,7 +637,8 @@ populateUserWithArtistData = function(){
                 console.log("Cant update until later! :< ");
             }else{
                 console.log("Artist Populated! :D ");
-                localStorage[localStorage["UserID"]]["artists"] = data;
+                var name = localStorage["UserID"];
+                localStorage[name + "ArtistArr"] = data;
 
             }
 
@@ -633,6 +652,70 @@ populateUserWithArtistData = function(){
             //document.body.insertBefore(div, document.body.firstChild);
         }
     });
+}
+
+function spotifyFunctionSomething(){
+    var artistsFromSpotify = JSON.parse(localStorage[localStorage["UserID"] + "ArtistArr"]);
+    //var artistsFromCache = JSON.parse(localStorage["CachadeKonserter"]);
+
+    var IntrestingArtistArr = [];
+
+    var artistEventJSonList;
+
+    for(var i = 0; i < objects.markers.length; i++){
+
+        for(var j=0; j< objects.markers[i].arrOfArtists.length;j++){
+            for(var k =0; k< artistsFromSpotify.length;k++){
+                if(objects.markers[i].arrOfArtists[j].displayName == artistsFromSpotify[k][0]){
+                    //alert(objects.markers[i].arrOfArtists[j].displayName);
+                    objects.markers[0].setAnimation(google.maps.Animation.BOUNCE)
+                }
+            }
+        }
+
+    }
+
+    for(var i = 0; i < objects.MultiMarkers.length;i++){
+        for(var j=0; j< objects.MultiMarkers[i].arrOfArtists.length;j++){
+            for(var l = 0; l < objects.MultiMarkers[i].arrOfArtists[j].length; l++){
+                for(var k =0; k< artistsFromSpotify.length;k++){
+                    if(objects.MultiMarkers[i].arrOfArtists[j][l].displayName == artistsFromSpotify[k][0]){
+                        //alert(objects.MultiMarkers[i].arrOfArtists[j][l].displayName);
+                        objects.MultiMarkers[i].setAnimation(google.maps.Animation.BOUNCE);
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+    /*for(var i = 0 ; i < artistsFromCache.length; i++ ){
+     artistEventJSonList = JSON.parse(artistsFromCache[i].LocationJson);
+     for(var j = 0; j< artistEventJSonList.length;j++ ){
+     var eventToCheck = artistEventJSonList[j];
+
+     if(!(typeof(eventToCheck) == "number")){
+     for(var k=0; k< eventToCheck.performance.length; k++){
+
+     var artistToCheck = eventToCheck.performance[k].displayName;
+
+     for(var l=0;l< artistsFromSpotify.length; l++){
+     if(artistToCheck === artistsFromSpotify[l][0]){
+     alert(artistToCheck);
+     }
+     }
+     }
+     }
+
+
+
+     }
+     }*/
+
+
 }
 
 /*

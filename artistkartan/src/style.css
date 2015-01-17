@@ -81,8 +81,11 @@ div#topBanner {
     -webkit-animation-fill-mode: forwards;*/
 }
 
+button#relevantArtists{
+    right: 0px;
+}
 
-input#loginButton, #logout {
+input#loginButton, #logout, button#relevantArtists {
     background-color: rgb(132, 189, 0);
     border: rgb(132, 189, 0);
     height: 50px;
