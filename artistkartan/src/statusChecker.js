@@ -263,16 +263,13 @@ apiIsDownErrorScreen = function(){
     document.body.insertBefore(overlay, document.getElementById("mapcanvas"));
 
 }
-getConcertsFromCache = function(){
 
-    //Hämtar Från data från cache och kontrollerar
-    //Så att Apierna är uppe och tillgängliga
-    prepareLoadingScreen();
+checkApiStatus = function(){
     $.ajax({
         type: "get",
         url: "getstuff.php",
         async: true,
-        data: {function: "getLocationsFromCache", AlternateFunction: "checkStatusOnApi"},
+        data: {function: "checkStatusOnApi"},
         success: function(data){
             var parsedData = JSON.parse(data);
             if(parsedData.spotifyStatus == "fail" || parsedData.songKickStatus == "fail" || !(typeof google === 'object') || !(typeof google.maps === 'object')){
@@ -283,13 +280,37 @@ getConcertsFromCache = function(){
 
             }
 
-            data = parsedData.data;
-            localStorage["CachadeKonserter"] = data;
-
-            var ArrayOfLocationsWithConcerts = data;//JSON.parse(data);
-            FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
         }
     });
+}
+
+getConcertsFromCache = function(){
+
+    if(objects.userPosition !== null){
+    //Cache hämtas bara om geoLocation är satt. Då kan vi räkna ut ett område att hämta datan från..
+
+        //Hämtar Från data från cache och kontrollerar
+        //Så att Apierna är uppe och tillgängliga
+        prepareLoadingScreen();
+        $.ajax({
+            type: "get",
+            url: "getstuff.php",
+            async: true,
+            data: {function: "getLocationsFromCache", lat: objects.userPosition.k, lng : objects.userPosition.D},
+            success: function(data){
+                var parsedData = JSON.parse(data);
+
+                data = parsedData;//.data; <- onödigt men bara omskriven kod..
+                localStorage["CachadeKonserter"] = data;
+
+                var ArrayOfLocationsWithConcerts = data;//JSON.parse(data);
+                FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
+            }
+        });
+    }else{
+        prepareLoadingScreen();
+    }
+
 }
 FastPlaceConcertWithArrayOfLocationsWithConcerts = function(ArrayOfLocationsWithConcerts){
     //Larvigt namn, jag vet... denna funkion är bara en liten utbrytning...

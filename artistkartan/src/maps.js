@@ -216,6 +216,7 @@ function init(){
 
 window.onload = function(){
     init();
+    checkApiStatus();
     // Körs när man laddar sidan; vill hämta datan! :D
     prepareLoadingScreen();
     getConcertsFromCache();

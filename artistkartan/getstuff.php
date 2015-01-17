@@ -17,7 +17,7 @@ if($_GET["function"] == "isUserOnline"){
     }
 }
 
-if($_GET["AlternateFunction"] == "checkStatusOnApi"){
+if($_GET["function"] == "checkStatusOnApi"){
     $ArrayWithStatusAndData = [];
     $songkickStatus = getSongkickApiStatus();
     if($songkickStatus["resultsPage"]["status"] !== "ok"){
@@ -33,15 +33,16 @@ if($_GET["AlternateFunction"] == "checkStatusOnApi"){
     }else{
         $ArrayWithStatusAndData["spotifyStatus"] = "ok";
     }
+    echo json_encode($ArrayWithStatusAndData, JSON_UNESCAPED_SLASHES);
 
 }
 
 if($_GET["function"] == "getLocationsFromCache"){
     $db = new DOA_dbMaster();
     $ConcertsFromDB = $db->getLocationsConcerts();
-    $ArrayWithStatusAndData["data"] = $ConcertsFromDB;
+    //$ArrayWithStatusAndData["data"] = $ConcertsFromDB;
 
-    echo json_encode($ArrayWithStatusAndData, JSON_UNESCAPED_SLASHES);
+    echo json_encode($ConcertsFromDB, JSON_UNESCAPED_SLASHES); //$ArrayWithStatusAndData
 }
 
 if($_GET["function"] == "getLastCheckedLocationName"){
