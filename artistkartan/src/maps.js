@@ -12,7 +12,9 @@ var objects = {
     lastOpenWindow : null,
     LocationMapMetroIDOnMap : [],
     timer : null,
-    geoLocationIsOn : false
+    geoLocationIsOn : false,
+    myPositionMarker : null,
+    myPositionCicle : null
 
 }
 var mouse = {x: 0, y: 0}; //HÄR
@@ -51,6 +53,7 @@ function init(){
             objects.geoLocationIsOn = true;
 
             //Om användaren tillåter geoLocation vill vi genast fylla på data där den befinner sig
+            getConcertsFromCache();
             getConcertsNearYourLocation();
 
         }, function() {
@@ -219,7 +222,9 @@ window.onload = function(){
     checkApiStatus();
     // Körs när man laddar sidan; vill hämta datan! :D
     prepareLoadingScreen();
-    getConcertsFromCache();
+
+    //↓Är flyttat till geolocation funktionen, då den bara anropas om geolocation är igång..
+    //getConcertsFromCache();
 }
 
 function getMapStyle(){

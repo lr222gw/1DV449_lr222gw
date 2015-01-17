@@ -289,14 +289,55 @@ getConcertsFromCache = function(){
     if(objects.userPosition !== null){
     //Cache hämtas bara om geoLocation är satt. Då kan vi räkna ut ett område att hämta datan från..
 
-        //Hämtar Från data från cache och kontrollerar
-        //Så att Apierna är uppe och tillgängliga
+        //Med google maps skapar vien cirkel som ska sträcka sig över en viss radie,
+        //Då kan vi hämta ut data som kan hjälpa oss att hämta data som är indom den radien (radie, är det rätt ord?)
+
+
+        objects.myPositionMarker = new google.maps.Marker({
+            map: objects.map,
+            position: new google.maps.LatLng(objects.userPosition.k, objects.userPosition.D),
+            title: 'Norrköping'
+        });
+
+        objects.myPositionCicle = new google.maps.Circle({
+            map: objects.map,
+            radius: 1000 * 200,    // 20mil
+            fillColor: '#AA0000'
+        });
+        objects.myPositionCicle.bindTo('center', objects.myPositionMarker, 'position');
+
+        var bounds = objects.myPositionCicle.getBounds()
+
+        var TopOfCircle = bounds.Ea.j;
+        var BottomOfCircle = bounds.Ea.k;
+        var LeftOfCircle = bounds.wa.j;
+        var rightOfCircle = bounds.wa.k;
+
+        objects.myPositionMarker.setVisible(false);
+        objects.myPositionCicle.setMap(null);
+
+        google.maps.event.addListener(objects.myPositionCicle, "rightclick", function(event){
+
+            google.maps.event.trigger(objects.map, 'rightclick', event);
+        });
+
+        //exempel för uträkning av "Vad finns inne i cirkeln"
+        /*var XnrkLat = 58.43048192568003;
+        var YnrkLng = 15.66375732421875;
+
+        if(XnrkLat <  TopOfCircle    && YnrkLng <  rightOfCircle &&
+           XnrkLat >  BottomOfCircle && YnrkLng >  LeftOfCircle){
+
+                alert();
+
+        }*/
+
         prepareLoadingScreen();
         $.ajax({
             type: "get",
             url: "getstuff.php",
             async: true,
-            data: {function: "getLocationsFromCache", lat: objects.userPosition.k, lng : objects.userPosition.D},
+            data: {function: "getLocationsFromCache", top:TopOfCircle, bottom:BottomOfCircle,left:LeftOfCircle, right:rightOfCircle},//, lat: objects.userPosition.k, lng : objects.userPosition.D},
             success: function(data){
                 var parsedData = JSON.parse(data);
 

@@ -15,13 +15,14 @@ class DOA_dbMaster{
 
     }
 
+
     public function getLocationsConcerts(){
         try{
             $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
             $databaseHandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
             $query= "
-            SELECT LocationJson
+            SELECT LocationJson,latitude,longitude
             FROM Location
             WHERE BestBefore > NOW()
             ";
@@ -101,7 +102,7 @@ class DOA_dbMaster{
         }
     }
 
-    public function addLocationDataToDB($metroID, $locationJSON){
+    public function addLocationDataToDB($metroID, $locationJSON, $lat, $lng){
         try{//För säkerhet
             $databasHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
             $databasHandler->beginTransaction(); // Ifall någåt fel händer vill vi backa..
@@ -109,8 +110,8 @@ class DOA_dbMaster{
 
             //Föörbereder queryn, vad som ska göras. lägg till användare med dess "intresserade artister"
             $queryString = "
-            Insert INTO Location (MetroID, LocationJSON, BestBefore)
-            Values (?,?,?)";
+            Insert INTO Location (MetroID, LocationJSON, BestBefore, latitude, longitude)
+            Values (?,?,?, ?, ?)";
 
             $todaysDate = date("Y-m-d H:i:s");
 
@@ -128,7 +129,7 @@ class DOA_dbMaster{
             }
 
 
-            $paramArr = [$metroID, $locationJSON, $dateForAvailbeUpdate];
+            $paramArr = [$metroID, $locationJSON, $dateForAvailbeUpdate, $lat, $lng];
 
             $stmt = $databasHandler->prepare($queryString);
             $result = $stmt->execute($paramArr);
@@ -274,7 +275,30 @@ class DOA_dbMaster{
         }
     }
 
-
-
-
 }
+
+
+/*
+/*    public function getLocationsMetroIDs(){
+        try{
+            $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databaseHandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            $query= "
+            SELECT MetroID
+            FROM Location
+            WHERE BestBefore > NOW()
+            ";
+            $stmt = $databaseHandler->prepare($query);
+
+            if($stmt->execute()){
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return $result;
+
+        }catch (PDOException $e){
+            throw new \Exception("Sorry Could check if your'e in Database..." . $e->getMessage());
+        }
+    }*/
+
+

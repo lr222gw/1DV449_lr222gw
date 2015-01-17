@@ -37,12 +37,31 @@ if($_GET["function"] == "checkStatusOnApi"){
 
 }
 
-if($_GET["function"] == "getLocationsFromCache"){
-    $db = new DOA_dbMaster();
-    $ConcertsFromDB = $db->getLocationsConcerts();
-    //$ArrayWithStatusAndData["data"] = $ConcertsFromDB;
+if($_GET["function"] == "getLocationsFromCache" &&
+    isset($_GET["top"]) &&
+    isset($_GET["bottom"]) &&
+    isset($_GET["left"]) &&
+    isset($_GET["right"])){
 
-    echo json_encode($ConcertsFromDB, JSON_UNESCAPED_SLASHES); //$ArrayWithStatusAndData
+    $db = new DOA_dbMaster();
+
+    $ConcertsFromDB = $db->getLocationsConcerts();
+    $arrayToReturn = [];
+
+
+    for($i=0; $i<count($ConcertsFromDB); $i++){
+
+        if((float)$ConcertsFromDB[$i]["latitude"]  <  (float)$_GET["top"]    && (float)$ConcertsFromDB[$i]["longitude"] <  (float)$_GET["right"]
+            &&
+            (float)$ConcertsFromDB[$i]["latitude"] >  (float)$_GET["bottom"] && (float)$ConcertsFromDB[$i]["longitude"] >  (float)$_GET["left"]){
+
+            array_push($arrayToReturn,$ConcertsFromDB[$i]);
+
+        }
+    }
+
+    //$ArrayWithStatusAndData["data"] = $ConcertsFromDB;
+    echo json_encode($arrayToReturn, JSON_UNESCAPED_SLASHES); //$ArrayWithStatusAndData
 }
 
 if($_GET["function"] == "getLastCheckedLocationName"){
@@ -86,6 +105,8 @@ if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) &&
     $db = new DOA_dbMaster();
     $_SESSION["LatestCheckedLocationName"] = $locationData["resultsPage"]["results"]["location"][0]["city"]["displayName"];
     $metroId = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["id"];
+    $metroAreaLat = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["lat"];
+    $metroAreaLng = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["lng"];
 
     $LocationStatus = $db->checkIfLocationNeedsUpdate($metroId);
 
@@ -147,7 +168,7 @@ if($_GET["function"] == "getLocationForConcerts" && isset($_GET["longtidue"]) &&
             //Här bästmmer jag om jag uppdaterar eller lägger till ny.
             if($LocationStatus === "new"){
 
-                $db->addLocationDataToDB($metroId ,$eventJSON);
+                $db->addLocationDataToDB($metroId ,$eventJSON, $metroAreaLat, $metroAreaLng);
             }elseif($LocationStatus === true){
                 $db->updateLocationDataToDB($metroId ,$eventJSON);
             }
