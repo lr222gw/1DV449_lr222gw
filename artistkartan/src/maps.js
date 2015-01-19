@@ -14,7 +14,8 @@ var objects = {
     timer : null,
     geoLocationIsOn : false,
     myPositionMarker : null,
-    myPositionCicle : null
+    myPositionCicle : null,
+    myPosWindow : null
 
 }
 var mouse = {x: 0, y: 0}; //HÄR
@@ -36,16 +37,19 @@ function init(){
 
     if(navigator.geolocation){ // om användaren tillåter GeoLocation så går kartan direkt dit användaren befinner sig...
 
+
         navigator.geolocation.getCurrentPosition(function(position) { //kod från google...
             var pos = new google.maps.LatLng(position.coords.latitude,
                 position.coords.longitude);
 
-            var infowindow = new InfoBubble({
+            objects.myPosWindow = new InfoBubble({
                 map: objects.map,
                 position: pos,
                 content: 'Du är här'
             });
-            infowindow.open();
+
+
+            objects.myPosWindow.open();
             localStorage["userPosition"] = pos;
             objects.userPosition = pos; // sätter så att jag har användarens position...
             objects.map.setCenter(pos);
@@ -53,8 +57,11 @@ function init(){
             objects.geoLocationIsOn = true;
 
             //Om användaren tillåter geoLocation vill vi genast fylla på data där den befinner sig
+            //getConcertsNearYourLocation();
             getConcertsFromCache();
-            getConcertsNearYourLocation();
+            // getConcertsNearYourLocation() Körs i slutet på getConcertsFromCache-metoden...
+            // i FastPlaceConcertWithArrayOfLocationsWithConcerts-metoden...
+
 
         }, function() {
             if(objects.geoLocationIsOn){

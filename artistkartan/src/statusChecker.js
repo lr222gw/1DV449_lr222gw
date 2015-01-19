@@ -104,12 +104,19 @@ $.ajax({
 
             document.getElementById("logga").insertBefore(logout, document.getElementById("loginspotify"));
 
-            var showMeArtists = document.createElement("button");
-            showMeArtists.innerHTML = "Visa relevanta artister";
+            var showMeArtists = document.createElement("a");
             showMeArtists.setAttribute("id", "relevantArtists");
+            showMeArtists.setAttribute("href", "#")
             showMeArtists.onclick = function(){
                 spotifyFunctionSomething();
             }
+            var pTagg = document.createElement("p");
+            pTagg.innerHTML = "Visa relevanta artister";
+            showMeArtists.appendChild(pTagg);
+
+            var toolTipSpan = document.createElement("span");
+            toolTipSpan.innerHTML = "<p>Visar konserter av dina intressen.</p> <p>(av dom som syns på kartan)</p><p>Hämta konserter genom att <b>högerklicka</b> på plats av intresse.</p> <p>:)</p>";
+            showMeArtists.appendChild(toolTipSpan);
             document.getElementById("logga").insertBefore(showMeArtists, document.getElementById("loginspotify"));
 
             localStorage["UserID"] = data;
@@ -372,6 +379,11 @@ FastPlaceConcertWithArrayOfLocationsWithConcerts = function(ArrayOfLocationsWith
         var ConcertArrayData = JSON.parse(ArrayOfLocationsWithConcerts[i].LocationJson);
         placeConcertsOnMap(ConcertArrayData);
     }
+
+    //När denna är klar så har alla markers skrivit ut på kartan,
+    // om det inte finns något på din position så ska det hämtas.
+    getConcertsNearYourLocation();
+
 }
 placeConcertsOnMap = function(ConcertData){
 

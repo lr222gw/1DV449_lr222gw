@@ -81,11 +81,70 @@ div#topBanner {
     -webkit-animation-fill-mode: forwards;*/
 }
 
-button#relevantArtists{
+#relevantArtists{
     right: 0px;
 }
 
-input#loginButton, #logout, button#relevantArtists {
+#relevantArtists {
+    position: relative;
+    display: inline;
+}
+#relevantArtists span {
+    position: absolute;
+    width: 200px;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    margin-left: -55px;
+    border: 2px solid rgb(132, 189, 0);
+    height: 70px;
+    line-height: 40px;
+    text-align: center;
+    visibility: hidden;
+    border-radius: 13px;
+}
+#relevantArtists span:before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -12px;
+    width: 0; height: 0;
+    border-bottom: 12px solid rgb(132, 189, 0);
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+}
+#relevantArtists span:after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -8px;
+    width: 0; height: 0;
+    border-bottom: 8px solid #FFFFFF;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+}
+#relevantArtists:hover#relevantArtists span {
+    visibility: visible;
+    opacity: 1;
+    left: 40%;
+    margin-top: 10px;
+    line-height: 15px;
+    font-family: sans-serif;
+    padding: 10px;
+    height: 150px;
+    text-align: -webkit-center;
+    padding-top: 10px;
+    font-size: .8em;
+    margin-left: -76px;
+    z-index: 999;
+    text-transform: initial;
+}
+a#relevantArtists {
+    text-decoration: none;
+}
+
+input#loginButton, #logout, #relevantArtists {
     background-color: rgb(132, 189, 0);
     border: rgb(132, 189, 0);
     height: 50px;
