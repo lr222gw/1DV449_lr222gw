@@ -33,6 +33,7 @@ AboutButton.onclick = function(){
         "<p class='thanksTo'>Songkick.com, För datan om konserter och event som dom står för.</p>" +
         "<p class='thanksTo'>Nicolas Mollet, För ikonen till kartmarkören.</p>" +
         "<p class='thanksTo'>Google Maps, För kartan och dess funktioner.</p>" +
+        "<p class='thanksTo'>Spotify, För att ta fram intressanta artister till användare.</p>" +
         "<p class='contactMe'>Vill du kontakta mig av någon anledning är min Email här: <address><a href='mailto:lowe.raivio@gmail.com'>lowe.raivio@gmail.com</a></address></p>" +
         "</div>";
 
@@ -145,7 +146,9 @@ $.ajax({
             showMeArtists.setAttribute("id", "relevantArtists");
             showMeArtists.setAttribute("href", "#")
             showMeArtists.onclick = function(){
+                populateUserWithArtistData();
                 spotifyFunctionSomething();
+                objects.map.setZoom(5);
             }
             var pTagg = document.createElement("p");
             pTagg.innerHTML = "Visa relevanta artister";
@@ -607,6 +610,11 @@ function createInfoWindowWithConcertData(ConcertData){
     }
 
     var time = ConcertData.start.time;
+    var endtime = (ConcertData.end !== undefined) ? ConcertData.end.time : "inget bestämt";
+    var endDate = (ConcertData.end !== undefined) ? ConcertData.end.date : "inget bestämt";
+    if(endtime == null || endtime === "inget bestämt"){
+        endtime = "";
+    }
     if(time == null){
         time = "";
     }
@@ -618,11 +626,22 @@ function createInfoWindowWithConcertData(ConcertData){
         eventContent = '<h3>Uppträdanden:</h3>'+ preformances;
     }
 
+    var eventTyp = (ConcertData.type === "Concert") ? "Konsert" :  ConcertData.type;
+    var status = (ConcertData.status === "ok") ? "Fortfarande planerat" : (ConcertData.status === "cancelled")  ? "Avbokad" : "Okänt..";
+    var ageRestriction = (ConcertData.ageRestriction === null) ? "Ingen gräns (enligt Songkick)" :  ConcertData.ageRestriction;
+    var plats = ConcertData.venue.displayName = (ConcertData.venue.displayName == null) ? "okänt för närvarande" : ConcertData.venue.displayName;
+
+    var EventTyp = "<h2>Eventtyp: "+ "" +"</h2>"
+
     var InfoWindowContent =
         '<div class="content">'+
             '<h1 id="firstHeading" class="firstHeading">'+displayName+'</h1>'+
             /*'<div id="bodyContent">'+*/
-            '<h2>Tid och Datum: '+ConcertData.start.date + ' ' +time +'</h2>'+
+            '<h2>Eventtyp: '+eventTyp+'</h2>' +
+            '<h2>Åldersgräns: '+ageRestriction+'</h2>' +
+            '<h2>Status: '+status+'</h2>' +
+            '<h2>Plats: '+plats+'</h2>'+
+            '<h2>Tid och Datum: '+ConcertData.start.date + ' ' +time +' till ' + endDate + ' ' + endtime + '</h2>' +
             eventContent +
     '<h3><a href='+ConcertData.uri+'>Biljetter och mer info här!</a></h3>'
     /*'</div>'+*/

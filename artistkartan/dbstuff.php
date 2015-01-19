@@ -274,7 +274,7 @@ class DOA_dbMaster{
         }
     }
 
-    public function addUser($userId){
+    public function addUser($userId, $userDisplayName, $userMail){
         try{//För säkerhet
             $databasHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
             $databasHandler->beginTransaction(); // Ifall någåt fel händer vill vi backa..
@@ -282,9 +282,9 @@ class DOA_dbMaster{
 
             //Föörbereder queryn, vad som ska göras. lägg till användare med dess "intresserade artister"
             $queryString = "
-            INSERT INTO Users(userID)
-            values(?)";
-            $paramArr = [$userId];
+            INSERT INTO Users(userID,DisplayName,Email)
+            values(?,?,?)";
+            $paramArr = [$userId, $userDisplayName, $userMail];
 
             $stmt = $databasHandler->prepare($queryString);
             $result = $stmt->execute($paramArr);

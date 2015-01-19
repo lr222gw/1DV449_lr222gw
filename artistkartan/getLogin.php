@@ -54,6 +54,8 @@
     curl_close($cu);
 
     $_SESSION["OnlineUser"] = $userResultDecoded["id"];
+    $_SESSION["UserDisplayName"] = $userResultDecoded["display_name"];
+    $_SESSION["UserEmail"] = $userResultDecoded["email"];
     $_SESSION["UserData"] = $userResultDecoded;
     $_SESSION["AccessData"] = $accessData;
 
@@ -62,7 +64,7 @@
     if($_SESSION["OnlineUser"] != null){ // om $_SESSION["OnlineUser"] är null så har användaren loggat ut..
         if($db->checkIfUserIsInDB($_SESSION["OnlineUser"]) == false){
             //Om användaren ej finns så ska den läggas till
-            $db->addUser($_SESSION["OnlineUser"]);
+            $db->addUser($_SESSION["OnlineUser"],$_SESSION["UserDisplayName"],$_SESSION["UserEmail"]);
         }else{
             //Om användaren hittas i databasen efter att blivit inlagd så kan man kontrollera det här...
             /*var_dump("Användare hittas");
