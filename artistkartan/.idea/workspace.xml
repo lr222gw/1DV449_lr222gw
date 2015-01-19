@@ -22,13 +22,13 @@
     <favorites_list name="artistkartan" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48028675">
+    <splitter split-orientation="horizontal" split-proportion="0.6200717">
       <split-first>
         <leaf>
-          <file leaf-file-name="maps.js" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="maps.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/maps.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="62" column="73" selection-start="1878" selection-end="1878" vertical-scroll-proportion="0.8226601" vertical-offset="553" max-vertical-offset="5270">
+                <state line="74" column="5" selection-start="2223" selection-end="2223" vertical-scroll-proportion="0.83809525" vertical-offset="730" max-vertical-offset="5338">
                   <folding />
                 </state>
               </provider>
@@ -92,7 +92,7 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="statusChecker.js" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="statusChecker.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="379" column="45" selection-start="13689" selection-end="13689" vertical-scroll-proportion="0.6705298" vertical-offset="6038" max-vertical-offset="13158">
@@ -721,14 +721,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/getstuff.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="46" selection-start="940" selection-end="961" vertical-scroll-proportion="-15.692307" vertical-offset="255" max-vertical-offset="8313">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/maps.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="73" selection-start="1878" selection-end="1878" vertical-scroll-proportion="0.8226601" vertical-offset="553" max-vertical-offset="5270">
+        <state line="103" column="63" selection-start="3042" selection-end="3042" vertical-scroll-proportion="0.0" vertical-offset="6915" max-vertical-offset="8313">
           <folding />
         </state>
       </provider>
@@ -736,6 +729,13 @@
     <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="379" column="45" selection-start="13689" selection-end="13689" vertical-scroll-proportion="0.6705298" vertical-offset="6038" max-vertical-offset="13158">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/maps.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="5" selection-start="2223" selection-end="2223" vertical-scroll-proportion="0.83809525" vertical-offset="730" max-vertical-offset="5338">
           <folding />
         </state>
       </provider>

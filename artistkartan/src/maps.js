@@ -67,9 +67,13 @@ function init(){
             if(objects.geoLocationIsOn){
                 handleNoGeolocation(true);
             }
+            prepareLoadingScreen();// Om användaren ej tillåter geolocation så stänger vi av laddning här...
         });
 
+    }else{
+        prepareLoadingScreen();// Om geolocation inte finns för webbläsaren...
     }
+
 
     google.maps.event.addDomListener(window,  'load', init);
 
