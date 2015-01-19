@@ -14,6 +14,43 @@ hideOrShow.setAttribute("status", "show");
 hideOrShow.innerHTML = "DÖLJ";
 document.getElementById("logga").appendChild(hideOrShow);
 
+
+var AboutButton = document.createElement("button");
+AboutButton.id = "aboutSite";
+AboutButton.innerHTML = "<p>Om Sidan</p>";
+
+AboutButton.onclick = function(){
+    var AboutDiv = document.createElement("div");
+    AboutDiv.id = "aboutSiteDiv";
+    AboutDiv.innerHTML = "" +
+        "<div id='AboutContentBox'><h1>Om Sidan</h1>" +
+        "<p>Konsertkartan.com är en gratis tjänst byggd med GoogleMaps Api och Songkicks Api.</p>" +
+        "<p>Konsertkartan.com är till för att hjälpa dig att hitta ett musikevent (konsert, festival, etc) i närheten av dig,</p>" +
+        "<p>eller på ett ställe där du är nyfiken att kika efter event på. Kanske ska du åka utomlands och snabbt vill se exakt vart</p>" +
+        "<p>du kan hitta festivaler och konserter i närheten av ditt hotell.</p>" +
+        "<p>Vad ska jag mer skriva här? Hoppas du har kul med sidan! :)</p>" +
+        "<p class='thanksTo'>Tack till, för följande resurser:</p>" +
+        "<p class='thanksTo'>Songkick.com, För datan om konserter och event som dom står för.</p>" +
+        "<p class='thanksTo'>Nicolas Mollet, För ikonen till kartmarkören.</p>" +
+        "<p class='thanksTo'>Google Maps, För kartan och dess funktioner.</p>" +
+        "<p class='contactMe'>Vill du kontakta mig av någon anledning är min Email här: <address><a href='mailto:lowe.raivio@gmail.com'>lowe.raivio@gmail.com</a></address></p>" +
+        "</div>";
+
+    var CloseButton = document.createElement("button");
+    CloseButton.id = "closeAboutScreen";
+    CloseButton.innerHTML = "Stäng mig";
+    CloseButton.onclick = function(){
+        document.getElementById("aboutSiteDiv").parentNode.removeChild(document.getElementById("aboutSiteDiv"));
+    }
+    AboutDiv.appendChild(CloseButton);
+
+
+    document.body.insertBefore(AboutDiv, document.body.firstChild);
+}
+
+document.body.appendChild(AboutButton);
+
+
 window.onresize = function(){
     var topBanner = document.getElementById("topBanner");
     var mapcanvas = document.getElementById("mapcanvas");
