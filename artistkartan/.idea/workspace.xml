@@ -22,13 +22,13 @@
     <favorites_list name="artistkartan" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.1749104">
+    <splitter split-orientation="horizontal" split-proportion="0.3263839">
       <split-first>
         <leaf>
           <file leaf-file-name="maps.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/maps.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="74" column="5" selection-start="2223" selection-end="2223" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5338">
+                <state line="74" column="5" selection-start="2223" selection-end="2223" vertical-scroll-proportion="0.0" vertical-offset="1258" max-vertical-offset="5338">
                   <folding />
                 </state>
               </provider>
@@ -37,7 +37,7 @@
           <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="323" column="12" selection-start="7358" selection-end="7358" vertical-scroll-proportion="0.4144621" vertical-offset="5256" max-vertical-offset="5865">
+                <state line="323" column="12" selection-start="7358" selection-end="7358" vertical-scroll-proportion="0.55172414" vertical-offset="5155" max-vertical-offset="5865">
                   <folding />
                 </state>
               </provider>
@@ -95,7 +95,7 @@
           <file leaf-file-name="statusChecker.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="615" column="21" selection-start="23527" selection-end="23527" vertical-scroll-proportion="0.2793651" vertical-offset="10279" max-vertical-offset="14110">
+                <state line="370" column="50" selection-start="13886" selection-end="13886" vertical-scroll-proportion="0.4888889" vertical-offset="5982" max-vertical-offset="14110">
                   <folding />
                 </state>
               </provider>
@@ -104,7 +104,7 @@
           <file leaf-file-name="getstuff.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/getstuff.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="128" column="22" selection-start="4526" selection-end="4529" vertical-scroll-proportion="-3.6923077" vertical-offset="1984" max-vertical-offset="8313">
+                <state line="136" column="65" selection-start="5053" selection-end="5053" vertical-scroll-proportion="-0.0" vertical-offset="2312" max-vertical-offset="8313">
                   <folding />
                 </state>
               </provider>
@@ -113,7 +113,7 @@
           <file leaf-file-name="dbstuff.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dbstuff.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="284" column="55" selection-start="10775" selection-end="10775" vertical-scroll-proportion="-17.653847" vertical-offset="4284" max-vertical-offset="5576">
+                <state line="284" column="55" selection-start="10775" selection-end="10775" vertical-scroll-proportion="0.0" vertical-offset="4828" max-vertical-offset="5661">
                   <folding>
                     <marker date="1421663206354" expanded="true" signature="651:752" placeholder="SELECT Locat..Location..." />
                     <marker date="1421663206354" expanded="true" signature="1405:1481" placeholder="SELECT Locat..Location..." />
@@ -132,7 +132,7 @@
           <file leaf-file-name="getLogin.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/getLogin.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="66" column="100" selection-start="2514" selection-end="2514" vertical-scroll-proportion="-19.153847" vertical-offset="624" max-vertical-offset="1496">
+                <state line="66" column="100" selection-start="2514" selection-end="2514" vertical-scroll-proportion="0.0" vertical-offset="624" max-vertical-offset="1496">
                   <folding />
                 </state>
               </provider>
@@ -339,7 +339,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.104621306" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1071887" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -648,9 +648,7 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="973" column="0" selection-start="15060" selection-end="15060" vertical-scroll-proportion="0.0" vertical-offset="16337" max-vertical-offset="64821">
-          <folding />
-        </state>
+        <state line="973" column="0" selection-start="15060" selection-end="15060" vertical-scroll-proportion="0.0" vertical-offset="16337" max-vertical-offset="64821" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cache.manifest">
@@ -683,9 +681,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/infobubble.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="1139" selection-end="1139" vertical-scroll-proportion="-0.080314964" vertical-offset="493" max-vertical-offset="30260">
-          <folding />
-        </state>
+        <state line="29" column="0" selection-start="1139" selection-end="1139" vertical-scroll-proportion="-0.080314964" vertical-offset="493" max-vertical-offset="30260" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/maps.js">
@@ -697,28 +693,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="323" column="12" selection-start="7358" selection-end="7358" vertical-scroll-proportion="0.4144621" vertical-offset="5256" max-vertical-offset="5865">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getstuff.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="22" selection-start="4526" selection-end="4529" vertical-scroll-proportion="-3.6923077" vertical-offset="1984" max-vertical-offset="8313">
+        <state line="323" column="12" selection-start="7358" selection-end="7358" vertical-scroll-proportion="0.55172414" vertical-offset="5155" max-vertical-offset="5865">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getLogin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="100" selection-start="2514" selection-end="2514" vertical-scroll-proportion="-19.153847" vertical-offset="624" max-vertical-offset="1496">
+        <state line="66" column="100" selection-start="2514" selection-end="2514" vertical-scroll-proportion="0.0" vertical-offset="624" max-vertical-offset="1496">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dbstuff.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="284" column="55" selection-start="10775" selection-end="10775" vertical-scroll-proportion="-17.653847" vertical-offset="4284" max-vertical-offset="5576">
+        <state line="284" column="55" selection-start="10775" selection-end="10775" vertical-scroll-proportion="0.0" vertical-offset="4828" max-vertical-offset="5661">
           <folding>
             <marker date="1421663206354" expanded="true" signature="651:752" placeholder="SELECT Locat..Location..." />
             <marker date="1421663206354" expanded="true" signature="1405:1481" placeholder="SELECT Locat..Location..." />
@@ -733,9 +722,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/getstuff.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="136" column="65" selection-start="5053" selection-end="5053" vertical-scroll-proportion="0.0" vertical-offset="2312" max-vertical-offset="8313">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="615" column="21" selection-start="23527" selection-end="23527" vertical-scroll-proportion="0.2793651" vertical-offset="10279" max-vertical-offset="14110">
+        <state line="370" column="50" selection-start="13886" selection-end="13886" vertical-scroll-proportion="0.4888889" vertical-offset="5982" max-vertical-offset="14110">
           <folding />
         </state>
       </provider>

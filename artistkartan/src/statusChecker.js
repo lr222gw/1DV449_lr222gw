@@ -367,10 +367,10 @@ getConcertsFromCache = function(){
 
         var bounds = objects.myPositionCicle.getBounds()
 
-        var TopOfCircle = bounds.Ea.j;
-        var BottomOfCircle = bounds.Ea.k;
-        var LeftOfCircle = bounds.wa.j;
-        var rightOfCircle = bounds.wa.k;
+        var TopOfCircle = bounds.getNorthEast().k;
+        var BottomOfCircle = bounds.getSouthWest().k;
+        var LeftOfCircle = bounds.getSouthWest().D;
+        var rightOfCircle = bounds.getNorthEast().D;
 
         objects.myPositionMarker.setVisible(false);
         objects.myPositionCicle.setMap(null);
