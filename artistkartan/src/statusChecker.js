@@ -14,6 +14,22 @@ hideOrShow.setAttribute("status", "show");
 hideOrShow.innerHTML = "DÖLJ";
 document.getElementById("logga").appendChild(hideOrShow);
 
+var ShowTodaysConcertButton = document.createElement("button");
+ShowTodaysConcertButton.setAttribute("id", "showConcertsPlayingToday");
+ShowTodaysConcertButton.innerHTML = "Visa konserter som spelar idag";
+ShowTodaysConcertButton.onclick = function(){
+    showAllTodaysConcerts();
+}
+document.getElementById("logga").appendChild(ShowTodaysConcertButton);
+
+var ShowFestivalsButton = document.createElement("button");
+ShowFestivalsButton.setAttribute("id", "ShowFestivals");
+ShowFestivalsButton.innerHTML = "Visa Festivalevent på kartan";
+ShowFestivalsButton.onclick = function(){
+    showAllFestivals();
+}
+document.getElementById("logga").appendChild(ShowFestivalsButton);
+
 
 var AboutButton = document.createElement("button");
 AboutButton.id = "aboutSite";
@@ -504,7 +520,12 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
 
     var infoWindowForOtherInfoWindow = new InfoBubble({ // Lägg in den i ett InfoWindow
         content: ContentForInfoWindow,
-        maxWidth: 500
+        maxWidth: 500,
+        minWidth: 500,
+        maxHeight: 320,
+        minHeight: 100,
+        backgroundColor: "rgb(156, 193, 211)"
+
     });
 
     var newWindowButton = document.createElement("input");
@@ -521,12 +542,40 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
     //Möjligtvis är det ett event som inte fått all nödvändig data,
     //Vi hoppar över sådanna event genom att använda denna if-sats..
     if(markerToUse != undefined){
-
+        markerToUse.infoWindow.eventTypes.push(ConcertData.type);
         markerToUse.arrOfArtists.push(ConcertData.performance);
 
+        var strToAddToEnd = "</div></div>"; //Detta görs för att Sätta innehållet inom en divtagg...
+        if(markerToUse.infoWindow.content.slice(markerToUse.infoWindow.content.length-12) === "</div></div>"){
+            markerToUse.infoWindow.content = markerToUse.infoWindow.content.slice(0, markerToUse.infoWindow.content.length-12);
+        }
+
+        //Vill inte ha med datum om datum finns...
+        if(ConcertData.displayName.indexOf(" (") == -1){
+            displayName = ConcertData.displayName;
+        }else{
+            displayName = ConcertData.displayName.substr(0,ConcertData.displayName.indexOf(" ("));
+        }
+        //få ut eventtypen
+        var eventTyp = (ConcertData.type === "Concert") ? "Konsert" :  ConcertData.type;
+
+       var dateToUse = isDateTodayOrNear(ConcertData.start.date)
+
+        var DateMark;
+        if(dateToUse === "IDAG!!! "){
+            DateMark = "style='background-color: rgb(252, 79, 79)'"
+            markerToUse.setAnimation(google.maps.Animation.BOUNCE);
+            objects.ConcertsTodayMarkers.push(markerToUse);
+        }else if(dateToUse === "Imorgon! "){
+            DateMark = "style='background-color: rgb(221, 255, 68)'"
+        }else{
+            DateMark = "";
+        }
 
         markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
-            '<a class="concertPlus" onclick="document.getElementById(\''+ id +'\').click();return false;" >'+ConcertData.displayName+'</a>');
+            '<div class="eventOfBox" ><a class="concertPlus" '+DateMark+' onclick="document.getElementById(\''+ id +'\').click();return false;" >'+displayName+' <p class="eventType">Typ av event: '+ eventTyp + '</p>' +
+            '<p class="DateOfEvent">'+'Eventstart: '+dateToUse + ' ' +ConcertData.start.time+'</p>' +
+            '</a></div>'+strToAddToEnd);
 
         newWindowButton.onclick = function (e){
 
@@ -546,16 +595,42 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
 
 }
 
+function isDateTodayOrNear(dateTocheckAgainst){
+    var today = new Date();//Skrev denna och undre raden själv, lite stolt... hehe. Nu kan jag jämföra med datan från ConcertData! :D
+    var todayDate = today.getFullYear().toString() + "-" + ((today.getMonth() +1 < 10) ? "0" + (today.getMonth()+1).toString() : (today.getMonth()+1).toString()) + "-" + ((today.getDate() < 10) ? "0" + today.getDate().toString() : today.getDate()).toString();
+    var Tomorrow = new Date(today);
+    Tomorrow = new Date(Tomorrow.setDate(today.getDate()+1));
+    var tomorrowDate = Tomorrow.getFullYear().toString() + "-" + ((Tomorrow.getMonth() +1 < 10) ? "0" + (Tomorrow.getMonth()+1).toString() : (Tomorrow.getMonth()+1).toString()) + "-" + ((Tomorrow.getDate() < 10) ? "0" + Tomorrow.getDate().toString() : Tomorrow.getDate()).toString();
+    //om det är dagens dag
+    var dayToUse;
+    if((dateTocheckAgainst === todayDate)){
+        dayToUse = "IDAG!!! "
+    }else if(dateTocheckAgainst === tomorrowDate){
+        dayToUse = "Imorgon! "
+    }else{
+        dayToUse = dateTocheckAgainst;
+    }
+    return dayToUse;
+}
+
 function MakeMultiMarker(positions){
 
     var InfoWindowContent =
-        '<div class="content">'+
-            '<h1>Samtliga event händer här:</h1>'
-        '</div>';
+        '<div class="MultiBoxHeader">' +
+            '<h1>Samtliga event händer här:</h1>' +
+        '</div>'+
+        '<div class="content">' +
+            '<div class="insideContent">'; //Konstigt? hm, ne. Detta är så att jag lättare kan schystera CSS...
 
     var infoWindowForMarker = new InfoBubble({
         content: InfoWindowContent,
-        maxWidth: 500
+        maxWidth: 500,
+        minWidth: 500,
+        maxHeight: 320,
+        minHeight: 100,
+        paddingLeft: 20,
+        backgroundColor: "rgb(156, 193, 211)",
+        eventTypes : []
     });
 
 
@@ -599,7 +674,7 @@ function createInfoWindowWithConcertData(ConcertData){
     var preformances = "";
 
     for(var j=0;j<ConcertData.performance.length;j++){//Tar fram en sträng med artister/band per konsert...
-        preformances += "<a href='"+ConcertData.performance[j].artist.uri+"'>"+"<p>"+ConcertData.performance[j].displayName+"</p></a>";
+        preformances += "<div class='ArtistBox'><a href='"+ConcertData.performance[j].artist.uri+"'>"+"<p>"+ConcertData.performance[j].displayName+"</p></a></div>";
     }
 
 
@@ -630,19 +705,41 @@ function createInfoWindowWithConcertData(ConcertData){
     var status = (ConcertData.status === "ok") ? "Fortfarande planerat" : (ConcertData.status === "cancelled")  ? "Avbokad" : "Okänt..";
     var ageRestriction = (ConcertData.ageRestriction === null) ? "Ingen gräns (enligt Songkick)" :  ConcertData.ageRestriction;
     var plats = ConcertData.venue.displayName = (ConcertData.venue.displayName == null) ? "okänt för närvarande" : ConcertData.venue.displayName;
+    var dateToUse = isDateTodayOrNear(ConcertData.start.date);
+
+    var DateMark;
+    if(dateToUse === "IDAG!!! "){
+        DateMark = "style='background-color: rgb(252, 79, 79)'"
+    }else if(dateToUse === "Imorgon! "){
+        DateMark = "style='background-color: rgb(221, 255, 68)'"
+    }else{
+        DateMark = "";
+    }
+
+    if(status !== "cancelled"){
+        eventStatus = "/pic/onGoing.png"
+    }else{
+        eventStatus = "/pic/Cancelled.png"
+    }
 
     var EventTyp = "<h2>Eventtyp: "+ "" +"</h2>"
 
     var InfoWindowContent =
         '<div class="content">'+
-            '<h1 id="firstHeading" class="firstHeading">'+displayName+'</h1>'+
+            '<div class="EventHeader">'+
+            '<h1 id="firstHeading" class="firstHeading">'+displayName+'</h1>' +
+            '</div>'+
             /*'<div id="bodyContent">'+*/
-            '<h2>Eventtyp: '+eventTyp+'</h2>' +
-            '<h2>Åldersgräns: '+ageRestriction+'</h2>' +
-            '<h2>Status: '+status+'</h2>' +
-            '<h2>Plats: '+plats+'</h2>'+
-            '<h2>Tid och Datum: '+ConcertData.start.date + ' ' +time +' till ' + endDate + ' ' + endtime + '</h2>' +
-            eventContent +
+            '<div class="eventInfo">'+
+                '<div class="EventInfoBoxes">'+
+                '<div class="EventContent" ><h2>Eventtyp: '+'</h2><p>'+eventTyp+'</p></div>' +
+                '<div class="EventContent"><h2>Åldersgräns: </h2><p>'+ageRestriction+'</p></div>' +
+                '<div class="EventContent" ><h2>Status: </h2><p>'+status+'</p></div>' +
+                '<div class="EventContent"><h2>Plats: </h2><p>'+plats+'</p></div>'+
+                '<div class="EventContent" '+DateMark+'><h2>Tid och Datum: </h2><p>'+dateToUse + ' ' +time +' till ' + endDate + ' ' + endtime + '</p></div>' +
+                '</div>' +
+            '</div>'+
+            '<div class="preformances">' + eventContent + '</div>' +
     '<h3><a href='+ConcertData.uri+'>Biljetter och mer info här!</a></h3>'
     /*'</div>'+*/
     '</div>';
@@ -655,8 +752,15 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
 
     var infoWindowForMarker = new InfoBubble({
         content: InfoWindowContent,
-        maxWidth: 500
+        maxWidth: 500,
+        minWidth: 500,
+        maxHeight: 320,
+        minHeight: 100,
+        paddingLeft: 20,
+        backgroundColor: "rgb(156, 193, 211)",
+        eventType : ConcertData.type
     });
+
 
     var image = new google.maps.MarkerImage( //Konstig formel för att göra Markern större...
         "pic/marker.png",
@@ -675,6 +779,19 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
         arrOfArtists : ConcertData.performance
     });
     objects.markers.push(ConcertMarker);
+
+    var dateToUse = isDateTodayOrNear(ConcertData.start.date)
+
+    var DateMark;
+    if(dateToUse === "IDAG!!! "){
+        DateMark = "style='background-color: rgb(252, 79, 79)'"
+        ConcertMarker.setAnimation(google.maps.Animation.BOUNCE);
+        objects.ConcertsTodayMarkers.push(ConcertMarker);
+    }else if(dateToUse === "Imorgon! "){
+        DateMark = "style='background-color: rgb(221, 255, 68)'"
+    }else{
+        DateMark = "";
+    }
 
 
     google.maps.event.addListener(ConcertMarker, 'click', function(){
@@ -720,6 +837,28 @@ populateUserWithArtistData = function(){
             //document.body.insertBefore(div, document.body.firstChild);
         }
     });
+}
+
+function showAllFestivals(){
+    for(var i = 0; i < objects.MultiMarkers.length; i++){
+        for(var j = 0; j < objects.MultiMarkers[i].infoWindow.eventTypes.length; j++){
+            if(objects.MultiMarkers[i].infoWindow.eventTypes[j] === "Festival"){
+                objects.MultiMarkers[i].setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
+
+    }
+    for(var i = 0; i < objects.markers.length; i++){
+        if(objects.markers[i].infoWindow.eventType === "Festival"){
+            objects.markers[i].setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+}
+
+function showAllTodaysConcerts(){
+    for(var i = 0; i < objects.ConcertsTodayMarkers.length; i++){
+        objects.ConcertsTodayMarkers[i].setAnimation(google.maps.Animation.BOUNCE);
+    }
 }
 
 function spotifyFunctionSomething(){

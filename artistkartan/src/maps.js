@@ -15,7 +15,8 @@ var objects = {
     geoLocationIsOn : false,
     myPositionMarker : null,
     myPositionCicle : null,
-    myPosWindow : null
+    myPosWindow : null,
+    ConcertsTodayMarkers : []
 
 }
 var mouse = {x: 0, y: 0}; //HÄR

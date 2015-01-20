@@ -42,6 +42,7 @@ function InfoBubble(opt_options) {
   this.baseZIndex_ = 100;
   this.isOpen_ = false;
 
+
   var options = opt_options || {};
 
   if (options['backgroundColor'] == undefined) {
@@ -95,6 +96,7 @@ function InfoBubble(opt_options) {
   this.buildDom_();
 
   this.setValues(options);
+
 }
 window['InfoBubble'] = InfoBubble;
 
@@ -212,12 +214,15 @@ InfoBubble.prototype.buildDom_ = function() {
   // Close button
   var close = this.close_ = document.createElement('IMG');
   close.style['position'] = 'absolute';
-  close.style['width'] = this.px(12);
-  close.style['height'] = this.px(12);
+  close.style['width'] = this.px(20);
+  close.style['height'] = this.px(20);
+    close.style['paddingRight'] = this.px(0);
+    close.style['boxShadow'] = "rgb(0, 0, 0) 0px 0px 5px 0px";
+    close.style['borderRadius'] = "10px";
   close.style['border'] = 0;
-  close.style['zIndex'] = this.baseZIndex_ + 1;
+  close.style['zIndex'] = this.baseZIndex_ + 600;
   close.style['cursor'] = 'pointer';
-  close.src = 'http://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif';
+    close.src = 'pic/CloseButton.png';
 
   var that = this;
   google.maps.event.addDomListener(close, 'click', function() {
