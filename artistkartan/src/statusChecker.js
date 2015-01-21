@@ -18,7 +18,10 @@ var ShowTodaysConcertButton = document.createElement("button");
 ShowTodaysConcertButton.setAttribute("id", "showConcertsPlayingToday");
 ShowTodaysConcertButton.innerHTML = "Visa konserter som spelar idag";
 ShowTodaysConcertButton.onclick = function(){
-    showAllTodaysConcerts();
+    stopAllAnimations();
+    setTimeout(function(){
+        showAllTodaysConcerts();
+    },200)
 }
 document.getElementById("logga").appendChild(ShowTodaysConcertButton);
 
@@ -26,7 +29,11 @@ var ShowFestivalsButton = document.createElement("button");
 ShowFestivalsButton.setAttribute("id", "ShowFestivals");
 ShowFestivalsButton.innerHTML = "Visa Festivalevent på kartan";
 ShowFestivalsButton.onclick = function(){
-    showAllFestivals();
+    stopAllAnimations();
+    setTimeout(function(){
+        showAllFestivals();
+    },200)
+
 }
 document.getElementById("logga").appendChild(ShowFestivalsButton);
 
@@ -524,7 +531,7 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
         minWidth: 500,
         maxHeight: 320,
         minHeight: 100,
-        backgroundColor: "rgb(156, 193, 211)"
+        backgroundColor: "rgb(162, 200, 236)"
 
     });
 
@@ -572,9 +579,15 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
             DateMark = "";
         }
 
+        var arrWithTimes = getTimeFromConcertData(ConcertData);
+
+        var time = arrWithTimes[0];
+        var endtime = arrWithTimes[2];
+        var endDate = arrWithTimes[1];
+
         markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
-            '<div class="eventOfBox" ><a class="concertPlus" '+DateMark+' onclick="document.getElementById(\''+ id +'\').click();return false;" >'+displayName+' <p class="eventType">Typ av event: '+ eventTyp + '</p>' +
-            '<p class="DateOfEvent">'+'Eventstart: '+dateToUse + ' ' +ConcertData.start.time+'</p>' +
+            '<div class="eventOfBox" ><a class="concertPlus" '+DateMark+' onclick="document.getElementById(\''+ id +'\').click();return false;" ><div class="eventHeaderMultiMarker">'+displayName+'</div> <div class="eventType"><p class="eventTypeHeader">Typ av event: </p><p class="eventTypeContent">'+ eventTyp + '</p></div>' +
+            '<div class="DateOfEvent"><p class="eventContentHeader">'+'Eventstart: </p><p class="JustDateFrom">'+dateToUse + ' ' +time+ '</p> <p class="ToOwnLine">till</p> <p class="JustDateFrom">'+endDate +' '+ endtime+'</p></div>' +
             '</a></div>'+strToAddToEnd);
 
         newWindowButton.onclick = function (e){
@@ -629,7 +642,7 @@ function MakeMultiMarker(positions){
         maxHeight: 320,
         minHeight: 100,
         paddingLeft: 20,
-        backgroundColor: "rgb(156, 193, 211)",
+        backgroundColor: "rgb(162, 200, 236)",
         eventTypes : []
     });
 
@@ -684,15 +697,12 @@ function createInfoWindowWithConcertData(ConcertData){
         displayName = ConcertData.displayName.substr(0,ConcertData.displayName.indexOf(" ("));
     }
 
-    var time = ConcertData.start.time;
-    var endtime = (ConcertData.end !== undefined) ? ConcertData.end.time : "inget bestämt";
-    var endDate = (ConcertData.end !== undefined) ? ConcertData.end.date : "inget bestämt";
-    if(endtime == null || endtime === "inget bestämt"){
-        endtime = "";
-    }
-    if(time == null){
-        time = "";
-    }
+    var arrWithTimes = getTimeFromConcertData(ConcertData);
+
+    var time = arrWithTimes[0];
+    var endtime = arrWithTimes[2];
+    var endDate = arrWithTimes[1];
+
 
     var eventContent;
     if(preformances.length == 0){
@@ -746,6 +756,19 @@ function createInfoWindowWithConcertData(ConcertData){
     return InfoWindowContent;
 }
 
+function getTimeFromConcertData(ConcertData){
+    var time = ConcertData.start.time;
+    var endtime = (ConcertData.end !== undefined) ? ConcertData.end.time : "inget bestämt";
+    var endDate = (ConcertData.end !== undefined) ? ConcertData.end.date : "inget bestämt";
+    if(endtime == null || endtime === "inget bestämt"){
+        endtime = "";
+    }
+    if(time == null){
+        time = "";
+    }
+    return [time, endDate, endtime];
+}
+
 function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om Konsärer som inte har unika positioner
 
     var InfoWindowContent = createInfoWindowWithConcertData(ConcertData);
@@ -757,7 +780,7 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
         maxHeight: 320,
         minHeight: 100,
         paddingLeft: 20,
-        backgroundColor: "rgb(156, 193, 211)",
+        backgroundColor: "rgb(162, 200, 236)",
         eventType : ConcertData.type
     });
 
@@ -837,6 +860,17 @@ populateUserWithArtistData = function(){
             //document.body.insertBefore(div, document.body.firstChild);
         }
     });
+}
+
+function stopAllAnimations(){
+    for(var i = 0; i < objects.MultiMarkers.length; i++){
+        objects.MultiMarkers[i].setAnimation(null);
+
+    }
+    for(var i = 0; i < objects.markers.length; i++){
+
+        objects.markers[i].setAnimation(null);
+    }
 }
 
 function showAllFestivals(){
