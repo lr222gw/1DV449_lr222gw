@@ -16,7 +16,8 @@ var objects = {
     myPositionMarker : null,
     myPositionCicle : null,
     myPosWindow : null,
-    ConcertsTodayMarkers : []
+    ConcertsTodayMarkers : [],
+    lastMultiMarker : null
 
 }
 var mouse = {x: 0, y: 0}; //HÄR

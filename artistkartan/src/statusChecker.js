@@ -574,7 +574,7 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
             markerToUse.setAnimation(google.maps.Animation.BOUNCE);
             objects.ConcertsTodayMarkers.push(markerToUse);
         }else if(dateToUse === "Imorgon! "){
-            DateMark = "style='background-color: rgb(221, 255, 68)'"
+            DateMark = "style='background-color: rgb(187, 155, 0)'"
         }else{
             DateMark = "";
         }
@@ -586,7 +586,7 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
         var endDate = arrWithTimes[1];
 
         markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
-            '<div class="eventOfBox" ><a class="concertPlus" '+DateMark+' onclick="document.getElementById(\''+ id +'\').click();return false;" ><div class="eventHeaderMultiMarker">'+displayName+'</div> <div class="eventType"><p class="eventTypeHeader">Typ av event: </p><p class="eventTypeContent">'+ eventTyp + '</p></div>' +
+            '<div class="eventOfBox" ><a class="concertPlus" '+DateMark+' onclick="document.getElementById(\''+ id +'\').click();  return false;" ><div class="eventHeaderMultiMarker">'+displayName+'</div> <div class="eventType"><p class="eventTypeHeader">Typ av event: </p><p class="eventTypeContent">'+ eventTyp + '</p></div>' +
             '<div class="DateOfEvent"><p class="eventContentHeader">'+'Eventstart: </p><p class="JustDateFrom">'+dateToUse + ' ' +time+ '</p> <p class="ToOwnLine">till</p> <p class="JustDateFrom">'+endDate +' '+ endtime+'</p></div>' +
             '</a></div>'+strToAddToEnd);
 
@@ -598,8 +598,44 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
 
             e.target.infoWindow.open(objects.map, e.target.marker);
 
-            objects.lastUsedMarker = newWindowButton;
+            objects.lastUsedMarker = newWindowButton.marker;
             objects.lastOpenWindow = newWindowButton.infoWindow;
+
+            //backbuttonstuff
+            var goBackButton = document.createElement("button");
+            goBackButton.setAttribute("id", "goBackButton");
+            goBackButton.setAttribute("style", "display:none");
+            goBackButton.parentMarker = markerToUse;
+            goBackButton.windwoToClose = e.target.infoWindow;
+            //goBackButton.windwoToOpen = e.target.infoWindowForClose;
+            goBackButton.onclick = function(e){
+                //e.target.windwoToClose.close();
+                if(objects.lastOpenWindow != null){
+                    objects.lastOpenWindow.close();
+                }
+
+                e.target.windwoToClose = e.target.contentWithoutButton;
+
+                e.target.parentMarker.infoWindow.open(objects.map, e.target.parentMarker)
+                //ConcertMarker.infoWindow.open(objects.map, ConcertMarker);
+                document.getElementById("goBackButton").parentNode.removeChild(document.getElementById("goBackButton"));
+                document.getElementById("goBackButtonHref").parentNode.removeChild(document.getElementById("goBackButtonHref"));
+                objects.lastOpenWindow.content = e.target.contentWithoutButton;
+
+                objects.lastUsedMarker = e.target.parentMarker;
+                objects.lastOpenWindow = e.target.parentMarker.infoWindow;
+                //e.target.windwoToOpen.open();
+            }
+            document.body.appendChild(goBackButton);
+
+            var goBackButtonOnWindow = document.createElement("button");
+
+            goBackButtonOnWindow.setAttribute("onclick",'document.getElementById(\''+ 'goBackButton' +'\').click();  return false;');
+            goBackButtonOnWindow.setAttribute("id", "goBackButtonHref");
+            goBackButtonOnWindow.innerHTML = "Tillbaka";
+            e.target.infoWindow.contentWithoutButton = e.target.infoWindow.content;
+            goBackButton.contentWithoutButton = e.target.infoWindow.content;
+            e.target.infoWindow.content += goBackButtonOnWindow.outerHTML;
 
         };
 
@@ -672,7 +708,7 @@ function MakeMultiMarker(positions){
         if(objects.lastOpenWindow != null){
             objects.lastOpenWindow.close();
         }
-
+        objects.lastMultiMarker = ConcertMarker;
         ConcertMarker.infoWindow.open(objects.map, ConcertMarker);
 
         objects.lastUsedMarker = ConcertMarker;
@@ -995,3 +1031,41 @@ objects.markers.push(ConcertMarker);
 google.maps.event.addListener(ConcertMarker, 'click', function(){
     ConcertMarker.infoWindow.open(objects.map, ConcertMarker);
 });*/
+
+//BackButton
+/*
+var goBackButton = document.createElement("button");
+ goBackButton.setAttribute("id", "goBackButton");
+ goBackButton.setAttribute("style", "display:none");
+ goBackButton.parentMarker = markerToUse;
+ //goBackButton.marker = e.target.marker;
+
+ goBackButton.innerHTML = "Gå tillbaka";
+
+ goBackButton.onclick = function(e){
+ document.getElementById("goBackButton").parentNode.removeChild(document.getElementById("goBackButton"));
+ document.getElementById("goBackButtonHref").parentNode.removeChild(document.getElementById("goBackButtonHref"));
+ objects.lastOpenWindow.content = e.target.contentWithoutButton;
+ objects.lastOpenWindow.close();
+ e.target.parentMarker.infoWindow.open();
+ //objects.lastMultiMarker.click();
+ //document.getElementById("goBackButton").remove();
+ if(objects.lastOpenWindow != null){
+ objects.lastOpenWindow.close();
+ }
+ objects.lastMultiMarker = ConcertMarker;
+ ConcertMarker.infoWindow.open(objects.map, ConcertMarker);
+
+ objects.lastUsedMarker = ConcertMarker;
+ objects.lastOpenWindow = ConcertMarker.infoWindow;
+ }
+ document.body.appendChild(goBackButton);
+ var goBackButtonOnWindow = document.createElement("button");
+
+ goBackButtonOnWindow.setAttribute("onclick",'document.getElementById(\''+ 'goBackButton' +'\').click();  return false;');
+ goBackButtonOnWindow.setAttribute("id", "goBackButtonHref");
+ goBackButtonOnWindow.innerHTML = "Tillbaka";
+ e.target.infoWindow.contentWithoutButton = e.target.infoWindow.content;
+ goBackButton.contentWithoutButton = e.target.infoWindow.content;
+ e.target.infoWindow.content += goBackButtonOnWindow.outerHTML;
+*/

@@ -22,22 +22,22 @@
     <favorites_list name="artistkartan" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.53496754">
+    <splitter split-orientation="horizontal" split-proportion="0.1">
       <split-first>
         <leaf>
           <file leaf-file-name="maps.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/maps.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="18" column="29" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="5355">
+                <state line="238" column="29" selection-start="9265" selection-end="9265" vertical-scroll-proportion="0.0" vertical-offset="3750" max-vertical-offset="5372">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="355" column="40" selection-start="7962" selection-end="7962" vertical-scroll-proportion="0.44863012" vertical-offset="5773" max-vertical-offset="9452">
+                <state line="526" column="30" selection-start="11437" selection-end="11437" vertical-scroll-proportion="-8.769231" vertical-offset="8714" max-vertical-offset="9469">
                   <folding />
                 </state>
               </provider>
@@ -88,11 +88,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="infobubble.js" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="infobubble.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/infobubble.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="226" column="18" selection-start="5085" selection-end="5085" vertical-scroll-proportion="0.0" vertical-offset="3077" max-vertical-offset="30345">
-                  <folding />
+                <state line="1000" column="48" selection-start="26357" selection-end="26357" vertical-scroll-proportion="0.6462882" vertical-offset="16704" max-vertical-offset="30515">
+                  <folding>
+                    <element signature="n#!!doc" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -101,10 +103,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="statusChecker.js" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="statusChecker.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="533" column="44" selection-start="20877" selection-end="20877" vertical-scroll-proportion="0.5008264" vertical-offset="8758" max-vertical-offset="17051">
+                <state line="576" column="65" selection-start="22931" selection-end="22931" vertical-scroll-proportion="0.40661156" vertical-offset="9546" max-vertical-offset="18292">
                   <folding />
                 </state>
               </provider>
@@ -179,10 +181,10 @@
         <option value="$PROJECT_DIR$/getstuff.php" />
         <option value="$PROJECT_DIR$/getLogin.php" />
         <option value="$PROJECT_DIR$/dbstuff.php" />
-        <option value="$PROJECT_DIR$/src/infobubble.js" />
         <option value="$PROJECT_DIR$/src/maps.js" />
-        <option value="$PROJECT_DIR$/src/statusChecker.js" />
         <option value="$PROJECT_DIR$/src/style.css" />
+        <option value="$PROJECT_DIR$/src/infobubble.js" />
+        <option value="$PROJECT_DIR$/src/statusChecker.js" />
       </list>
     </option>
   </component>
@@ -714,35 +716,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/getstuff.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="63" selection-start="3042" selection-end="3042" vertical-scroll-proportion="0.0" vertical-offset="6915" max-vertical-offset="8313">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/maps.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="29" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="5355">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/infobubble.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="226" column="18" selection-start="5085" selection-end="5085" vertical-scroll-proportion="0.0" vertical-offset="3077" max-vertical-offset="30345">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="533" column="44" selection-start="20877" selection-end="20877" vertical-scroll-proportion="0.5008264" vertical-offset="8758" max-vertical-offset="17051">
+        <state line="136" column="65" selection-start="5053" selection-end="5053" vertical-scroll-proportion="0.0" vertical-offset="2312" max-vertical-offset="8313">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="355" column="40" selection-start="7962" selection-end="7962" vertical-scroll-proportion="0.44863012" vertical-offset="5773" max-vertical-offset="9452">
+        <state line="526" column="30" selection-start="11437" selection-end="11437" vertical-scroll-proportion="-8.769231" vertical-offset="8714" max-vertical-offset="9469">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/maps.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="238" column="29" selection-start="9265" selection-end="9265" vertical-scroll-proportion="0.0" vertical-offset="3750" max-vertical-offset="5372">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/infobubble.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1000" column="48" selection-start="26357" selection-end="26357" vertical-scroll-proportion="0.6462882" vertical-offset="16704" max-vertical-offset="30515">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="576" column="65" selection-start="22931" selection-end="22931" vertical-scroll-proportion="0.40661156" vertical-offset="9546" max-vertical-offset="18292">
           <folding />
         </state>
       </provider>
