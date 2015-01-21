@@ -527,6 +527,20 @@ p.eventTypeContent {
     color: rgb(244, 244, 244);
 }
 
+button#goBackButtonHref {
+    position: absolute;
+    top: 0;
+    z-index: 500;
+    background-color: rgb(27, 231, 39);
+    border: none;
+    border-radius: 0 0 5px 3px;
+    font-family: Oswald;
+    line-height: 0px;
+    cursor: pointer;
+    box-shadow: rgb(0, 0, 0) 0 0 20px -2px;
+    height: 15px;
+}
+
 /* ej min kod, har bar modifierat den :3 */
 /* Let's get this party started */
 ::-webkit-scrollbar {

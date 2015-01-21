@@ -15,6 +15,29 @@ class DOA_dbMaster{
 
     }
 
+    public function searchCityInDB($searchTerm)
+    {
+        try{
+            $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databaseHandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            $query= "
+            SELECT MetroID, BestBefore,LocationJSON
+            FROM Location
+            WHERE LocationName LIKE ?
+            ";
+            $param = [$searchTerm];
+            $stmt = $databaseHandler->prepare($query);
+
+            if($stmt->execute($param)){
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            }
+            return $result;
+
+        }catch (PDOException $e){
+            throw new \Exception("Sorry Could search for City in Database..." . $e->getMessage());
+        }
+    }
 
     public function getLocationsConcerts(){
         try{
@@ -125,7 +148,7 @@ class DOA_dbMaster{
         }
     }
 
-    public function addLocationDataToDB($metroID, $locationJSON, $lat, $lng){
+    public function addLocationDataToDB($metroID, $locationJSON, $lat, $lng, $locationName){
         try{//För säkerhet
             $databasHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
             $databasHandler->beginTransaction(); // Ifall någåt fel händer vill vi backa..
@@ -133,8 +156,8 @@ class DOA_dbMaster{
 
             //Föörbereder queryn, vad som ska göras. lägg till användare med dess "intresserade artister"
             $queryString = "
-            Insert INTO Location (MetroID, LocationJSON, BestBefore, latitude, longitude)
-            Values (?,?,?, ?, ?)";
+            Insert INTO Location (MetroID, LocationJSON, BestBefore, latitude, longitude, LocationName)
+            Values (?,?,?, ?, ?,?)";
 
             $todaysDate = date("Y-m-d H:i:s");
 
@@ -152,7 +175,7 @@ class DOA_dbMaster{
             }
 
 
-            $paramArr = [$metroID, $locationJSON, $dateForAvailbeUpdate, $lat, $lng];
+            $paramArr = [$metroID, $locationJSON, $dateForAvailbeUpdate, $lat, $lng, $locationName];
 
             $stmt = $databasHandler->prepare($queryString);
             $result = $stmt->execute($paramArr);
@@ -297,6 +320,8 @@ class DOA_dbMaster{
             die();
         }
     }
+
+
 
 }
 

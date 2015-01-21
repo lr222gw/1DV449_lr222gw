@@ -37,6 +37,26 @@ ShowFestivalsButton.onclick = function(){
 }
 document.getElementById("logga").appendChild(ShowFestivalsButton);
 
+var searchBox = document.createElement("input");
+searchBox.setAttribute("id", "searchBox");
+searchBox.setAttribute("type", "search");
+searchBox.innerHTML = "Sök Platser";
+
+
+document.getElementById("logga").appendChild(searchBox);
+
+var searchLocationButton = document.createElement("button");
+searchLocationButton.setAttribute("id", "searchLocationButton");
+searchLocationButton.innerHTML = "Sök Platser";
+searchLocationButton.onclick = function(){
+    var searchBoxContent = document.getElementById("searchBox").value;
+    if(searchBoxContent.trim() !== "" ){
+        searchLocation(searchBoxContent);
+    }
+
+}
+document.getElementById("logga").appendChild(searchLocationButton);
+
 
 var AboutButton = document.createElement("button");
 AboutButton.id = "aboutSite";
@@ -216,6 +236,57 @@ $.ajax({
     }
 
 }*/
+
+searchLocation = function(searchTerm){
+    prepareLoadingScreen();
+    $.ajax({
+        type: "post",
+        url: "getstuff.php",
+        async: true,
+        data: {function: "searchCity", searchTerm: searchTerm, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
+        success: function(data){
+            setLastCheckedLocationName();
+            if( data == "nope"){
+                console.log("Cant update until later! :< ");
+            }else{
+                if(data != "" && data != "[null]"){
+                    //console.log(data);
+                    var parsedData = JSON.parse(data);
+                    //var parsedData = JSON.parse(parsedData);// Det blir visst
+                    if(parsedData.length !=  1){
+                        // Om JSON.parse(data) blir 1 så innerbär det att den bara innehåller MetroID,
+                        // Då vill vi inte skriva ut något, utan bara berätta att det ej finns några konserter här.
+                        placeConcertsOnMap(parsedData);
+                        if(objects.MultiMarkers.length !== 0){
+                            objects.map.setCenter(new google.maps.LatLng(objects.MultiMarkers[objects.MultiMarkers.length-1].position.k, objects.MultiMarkers[objects.MultiMarkers.length-1].position.D))
+                            objects.map.setZoom(10);
+                        }else{
+                            objects.map.setCenter(new google.maps.LatLng(objects.markers[objects.markers.length-1].position.k, objects.markers[objects.markers.length-1].position.D))
+                            objects.map.setZoom(10);
+                        }
+
+                    }else{
+                        var pos = new google.maps.LatLng(
+                            lat,
+                            lng);
+
+                        var infowindow = new InfoBubble({
+                            map: objects.map,
+                            position: pos,
+                            content: 'Tyvärr, inga uppkommande event här :('
+                        });
+                        infowindow.open();
+
+                    }
+                    console.log("Location Populated! :D ");
+                }
+            }
+            //objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
+            prepareLoadingScreen();
+
+        }
+    });
+}
 
 prepareLoadingScreen = function(){
     if(document.getElementById("loadOverlay") == null){

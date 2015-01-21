@@ -9,6 +9,36 @@ require_once("dbstuff.php");
 session_start();
 
 
+if($_POST["function"] == "searchCity" && isset($_POST["searchTerm"]) && isset($_POST["metroArr"])){
+    $db = new DOA_dbMaster();
+    $locationDataFromDB = $db->searchCityInDB($_POST["searchTerm"]);
+
+    $todaysDate = new DateTime($todaysDate);
+    $timeStampToday = $todaysDate->getTimestamp();
+
+    $dbDate = new DateTime($locationDataFromDB["BestBefore"]);
+    $timeStampFromDB = $dbDate->getTimestamp();
+
+    //Kollar om datan i databasen är äldre än idag, om den är det ska ny data hämtas... annars används datan från databasen
+    if($timeStampFromDB < $timeStampToday || $locationDataFromDB == null){
+        //Annars hämtar vi data för detta ställe med vårt metroID
+        $locationData = getSongkickLocationByName($_POST["searchTerm"]); // haha "getSonKick <- kick Son xD ;)
+        $db = new DOA_dbMaster();
+        $_SESSION["LatestCheckedLocationName"] = $locationData["resultsPage"]["results"]["location"][0]["city"]["displayName"];
+        $metroId = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["id"];
+        $metroAreaLat = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["lat"];
+        $metroAreaLng = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["lng"];
+        $metroAreaName = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["displayName"];
+
+        $LocationStatus = $db->checkIfLocationNeedsUpdate($metroId);
+
+        getEventFromLocation($db,$LocationStatus,$metroId,$metroAreaLat,$metroAreaLng,$metroAreaName);
+    }else{
+        echo $locationDataFromDB["LocationJSON"];
+    }
+
+}
+
 if($_GET["function"] == "isUserOnline"){
     if(isset($_SESSION["OnlineUser"])){
         echo ($_SESSION["OnlineUser"]);
@@ -107,9 +137,15 @@ if($_POST["function"] == "getLocationForConcerts" && isset($_POST["longtidue"]) 
     $metroId = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["id"];
     $metroAreaLat = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["lat"];
     $metroAreaLng = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["lng"];
+    $metroAreaName = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["displayName"];
 
     $LocationStatus = $db->checkIfLocationNeedsUpdate($metroId);
 
+    getEventFromLocation($db,$LocationStatus,$metroId,$metroAreaLat,$metroAreaLng,$metroAreaName);
+
+}
+
+function getEventFromLocation($db,$LocationStatus,$metroId,$metroAreaLat,$metroAreaLng,$metroAreaName){
     if($LocationStatus === true || $LocationStatus === "new"){
 
         // Vi går in i if-satsen om
@@ -122,42 +158,7 @@ if($_POST["function"] == "getLocationForConcerts" && isset($_POST["longtidue"]) 
             $songkickConcertOnSpecificArea = getSongkickEventsBySongkickLocation($metroId);
 
             $eventArray = [];
-            $counter = 1;
-            do{
-                $songkickConcertOnSpecificArea = getSongkickEventsBySongkickLocation($metroId,$counter);
-                $counter++;
-                $toAdd = $songkickConcertOnSpecificArea["resultsPage"]["results"];
-
-
-                if(count($toAdd) >= 1){
-                    for($j = 0; $j <count($toAdd["event"]); $j++ ){
-
-                        if($toAdd["event"][$j]["location"]["lng"] == null && $toAdd["event"][$j]["location"]["lat"] == null){
-                            //Om positionen lng och lat är null så får vi hämta dem på nytt... (orsakade att, tex, inga konserter från köpenhamn kunde visas...)
-                            $cityGeo = getSongkickLocationByName($toAdd["event"][$j]["location"]["city"]);
-                            $toAdd["event"][$j]["location"]["lat"] = $cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lat"];
-                            $toAdd["event"][$j]["location"]["lng"] = $cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lng"];
-
-                            if($cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lat"] != null &&
-                                $cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lng"] != null){
-                                // Om inga kordinater hittas så ignoreras denna konsert.
-                                array_push($eventArray, $toAdd["event"][$j]);
-                            }
-                        }else{
-                            //om inga problem, så läggs den till som vanligt
-                            array_push($eventArray, $toAdd["event"][$j]);
-                        }
-                    }
-                }
-                if($counter == 10){
-                    //om $Counter har gått upp till 10, Då har vi hämtat 10 sidor med data
-                    //Det är ungefär konserter en månad frammåt.
-                    // För att Servern inte ska krascha så begränsar vi oss här, vi kör en break
-                    // Och Låter det vara den hämtade datan
-                    // Inget går ju förlorat då Data hämtas varrje dag (eller var 4 timme om trycks på, rättare sagt..)
-                    break;
-                }
-            }while(count($toAdd) != 0);
+            $eventArray = getEventArrayFromMetroID($metroId);
 
             //$eventsInArea = $songkickConcertOnSpecificArea["resultsPage"]["results"]["event"];
             array_push($eventArray,$metroId); //sista i arrayen är metroID....
@@ -168,7 +169,7 @@ if($_POST["function"] == "getLocationForConcerts" && isset($_POST["longtidue"]) 
             //Här bästmmer jag om jag uppdaterar eller lägger till ny.
             if($LocationStatus === "new"){
 
-                $db->addLocationDataToDB($metroId ,$eventJSON, $metroAreaLat, $metroAreaLng);
+                $db->addLocationDataToDB($metroId ,$eventJSON, $metroAreaLat, $metroAreaLng,$metroAreaName);
             }elseif($LocationStatus === true){
                 $db->updateLocationDataToDB($metroId ,$eventJSON);
             }
@@ -193,7 +194,47 @@ if($_POST["function"] == "getLocationForConcerts" && isset($_POST["longtidue"]) 
         }
 
     }
+}
 
+function getEventArrayFromMetroID($metroId){
+    $counter = 1;
+    $eventArray = [];
+    do{
+        $songkickConcertOnSpecificArea = getSongkickEventsBySongkickLocation($metroId,$counter);
+        $counter++;
+        $toAdd = $songkickConcertOnSpecificArea["resultsPage"]["results"];
+
+
+        if(count($toAdd) >= 1){
+            for($j = 0; $j <count($toAdd["event"]); $j++ ){
+
+                if($toAdd["event"][$j]["location"]["lng"] == null && $toAdd["event"][$j]["location"]["lat"] == null){
+                    //Om positionen lng och lat är null så får vi hämta dem på nytt... (orsakade att, tex, inga konserter från köpenhamn kunde visas...)
+                    $cityGeo = getSongkickLocationByName($toAdd["event"][$j]["location"]["city"]);
+                    $toAdd["event"][$j]["location"]["lat"] = $cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lat"];
+                    $toAdd["event"][$j]["location"]["lng"] = $cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lng"];
+
+                    if($cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lat"] != null &&
+                        $cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lng"] != null){
+                        // Om inga kordinater hittas så ignoreras denna konsert.
+                        array_push($eventArray, $toAdd["event"][$j]);
+                    }
+                }else{
+                    //om inga problem, så läggs den till som vanligt
+                    array_push($eventArray, $toAdd["event"][$j]);
+                }
+            }
+        }
+        if($counter == 10){
+            //om $Counter har gått upp till 10, Då har vi hämtat 10 sidor med data
+            //Det är ungefär konserter en månad frammåt.
+            // För att Servern inte ska krascha så begränsar vi oss här, vi kör en break
+            // Och Låter det vara den hämtade datan
+            // Inget går ju förlorat då Data hämtas varrje dag (eller var 4 timme om trycks på, rättare sagt..)
+            break;
+        }
+    }while(count($toAdd) != 0);
+    return $eventArray;
 }
 
 
@@ -482,3 +523,105 @@ function getUserPlaylist($custom = ""){ // hämtar ut 50 playlists åt gången
 
 
 }*/
+
+
+// LONG BACKUP
+
+/*
+if($_POST["function"] == "getLocationForConcerts" && isset($_POST["longtidue"]) && isset($_POST["latitude"])){
+    $locationData = getSonkickLocationByLngNLat($_POST["longtidue"],$_POST["latitude"]); // haha "getSonKick <- kick Son xD ;)
+    $db = new DOA_dbMaster();
+    $_SESSION["LatestCheckedLocationName"] = $locationData["resultsPage"]["results"]["location"][0]["city"]["displayName"];
+    $metroId = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["id"];
+    $metroAreaLat = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["lat"];
+    $metroAreaLng = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["lng"];
+    $metroAreaName = $locationData["resultsPage"]["results"]["location"][0]["metroArea"]["displayName"];
+
+    $LocationStatus = $db->checkIfLocationNeedsUpdate($metroId);
+
+    if($LocationStatus === true || $LocationStatus === "new"){
+
+        // Vi går in i if-satsen om
+        // $LocationStatus == TRUE  : Platsen fanns och ska UPPDATERAS
+        // $LocationStatus == "new"  : Platsen fanns inte innan och ska LÄGGAS till
+
+        if(in_array($metroId, json_decode($_POST["metroArr"])) == false && $metroId != NULL ){ // denna är lite gammal, den kanske hjälper mot något fortfarande.. typ om något blir null(?)
+            //För att undvika onödiga request.. Är metroID null så finns inget metro = onödig request... om den redan finns på klienten = onödig request.
+
+            $songkickConcertOnSpecificArea = getSongkickEventsBySongkickLocation($metroId);
+
+            $eventArray = [];
+            $counter = 1;
+            do{
+                $songkickConcertOnSpecificArea = getSongkickEventsBySongkickLocation($metroId,$counter);
+                $counter++;
+                $toAdd = $songkickConcertOnSpecificArea["resultsPage"]["results"];
+
+
+                if(count($toAdd) >= 1){
+                    for($j = 0; $j <count($toAdd["event"]); $j++ ){
+
+                        if($toAdd["event"][$j]["location"]["lng"] == null && $toAdd["event"][$j]["location"]["lat"] == null){
+                            //Om positionen lng och lat är null så får vi hämta dem på nytt... (orsakade att, tex, inga konserter från köpenhamn kunde visas...)
+                            $cityGeo = getSongkickLocationByName($toAdd["event"][$j]["location"]["city"]);
+                            $toAdd["event"][$j]["location"]["lat"] = $cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lat"];
+                            $toAdd["event"][$j]["location"]["lng"] = $cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lng"];
+
+                            if($cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lat"] != null &&
+                                $cityGeo["resultsPage"]["results"]["location"][0]["metroArea"]["lng"] != null){
+                                // Om inga kordinater hittas så ignoreras denna konsert.
+                                array_push($eventArray, $toAdd["event"][$j]);
+                            }
+                        }else{
+                            //om inga problem, så läggs den till som vanligt
+                            array_push($eventArray, $toAdd["event"][$j]);
+                        }
+                    }
+                }
+                if($counter == 10){
+                    //om $Counter har gått upp till 10, Då har vi hämtat 10 sidor med data
+                    //Det är ungefär konserter en månad frammåt.
+                    // För att Servern inte ska krascha så begränsar vi oss här, vi kör en break
+                    // Och Låter det vara den hämtade datan
+                    // Inget går ju förlorat då Data hämtas varrje dag (eller var 4 timme om trycks på, rättare sagt..)
+                    break;
+                }
+            }while(count($toAdd) != 0);
+
+            //$eventsInArea = $songkickConcertOnSpecificArea["resultsPage"]["results"]["event"];
+            array_push($eventArray,$metroId); //sista i arrayen är metroID....
+
+            $eventJSON = json_encode($eventArray, JSON_UNESCAPED_SLASHES);
+
+
+            //Här bästmmer jag om jag uppdaterar eller lägger till ny.
+            if($LocationStatus === "new"){
+
+                $db->addLocationDataToDB($metroId ,$eventJSON, $metroAreaLat, $metroAreaLng,$metroAreaName);
+            }elseif($LocationStatus === true){
+                $db->updateLocationDataToDB($metroId ,$eventJSON);
+            }
+
+            echo $eventJSON;
+        }
+    }else{
+        //echo "nope";
+        //Eftersom pplikationen är ändrd här så ska vi istället se till att hämta ner datan på nytt...
+        //Vi behöver tänka igenom det här men vi testar oss fram.. ändå! <- vi måste ju på något sätt
+        //Inte hätma data varje gång.. liksom.. öhm.. ah.. hmm..
+
+        $MetroIDArr = json_decode($_POST["metroArr"]);
+
+        if(in_array($metroId, $MetroIDArr) == false){
+
+            $LocationEventData = $db->getLocationsConcertsByMetroID($metroId);//Hämta från databas...
+
+            echo $LocationEventData[0]["LocationJson"];//json_encode($LocationEventData["LocationJson"], JSON_UNESCAPED_SLASHES);
+        }else{
+            echo "nope";
+        }
+
+    }
+
+}
+*/
