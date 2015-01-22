@@ -112,6 +112,32 @@ class DOA_dbMaster{
 
     }
 
+    public function getUsersArtistJSON($userId){
+        try{
+            $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databaseHandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            $query= "
+            SELECT UserArtists
+            FROM Users
+            WHERE UserID = ?
+            ";
+            $paramArr = [$userId];
+
+            $stmt = $databaseHandler->prepare($query);
+            $stmt->execute($paramArr);
+            if($stmt->execute($paramArr)){
+                $result = $stmt->fetchColumn(0);
+            }
+
+            return $result;
+
+        }catch (PDOException $e){
+            throw new \Exception("Sorry Could not get users Artists from Database..." . $e->getMessage());
+        }
+
+    }
+
     public function updateLocationDataToDB($metroID, $locationJSON)
     {
         try{//För säkerhet

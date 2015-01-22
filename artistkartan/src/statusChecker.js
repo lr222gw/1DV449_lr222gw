@@ -259,9 +259,9 @@ $.ajax({
             showMeArtists.setAttribute("id", "relevantArtists");
             showMeArtists.setAttribute("href", "#")
             showMeArtists.onclick = function(){
+                stopAllAnimations();
                 populateUserWithArtistData();
-                spotifyFunctionSomething();
-                objects.map.setZoom(5);
+
             }
             var pTagg = document.createElement("p");
             pTagg.innerHTML = "Visa relevanta artister";
@@ -1204,20 +1204,27 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
 PopulatePlaylistButton.setAttribute("value", "Logga ut, ");
 PopulatePlaylistButton.setAttribute("type", "submit");*/
 populateUserWithArtistData = function(){
+    prepareLoadingScreen();
     $.ajax({
         type: "get",
         url: "getstuff.php",
         async: true,
         data: {function: "getUsersArtists"},
         success: function(data){
-            if( data == "nope"){
+            if( data === "nope"){
                 console.log("Cant update until later! :< ");
+                spotifyFunctionSomething();
+                objects.map.setZoom(5);
             }else{
                 console.log("Artist Populated! :D ");
                 var name = localStorage["UserID"];
-                localStorage[name + "ArtistArr"] = data;
+                localStorage[name + "ArtistArr"] =  JSON.parse(data);
+                spotifyFunctionSomething();
+                objects.map.setZoom(5);
 
             }
+
+            prepareLoadingScreen();
 
             //var div = document.createElement("div");
             //div.setAttribute("")

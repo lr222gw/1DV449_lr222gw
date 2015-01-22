@@ -454,7 +454,7 @@ if($_GET["function"] == "getUsersArtists"){ //Artister på användarens listor b
         echo $ArtistListJson;
 
     }else{
-        echo "nope";
+        echo json_encode($db->getUsersArtistJSON($_SESSION["OnlineUser"]),JSON_UNESCAPED_SLASHES);
     }
 
     //header("Location: index.html");
