@@ -8,6 +8,28 @@
 require_once("dbstuff.php");
 session_start();
 
+if($_POST["function"] == "getArtistEventDataFromCalenderURL" && isset($_POST["artistCalenderURL"])){
+
+    $AristsConcertResults = getArtistCalenderFromArtistCalenderURL($_POST["artistCalenderURL"]);
+
+    if(count($AristsConcertResults["resultsPage"]["results"]) !== 0){
+        $AristsConcertResults = $AristsConcertResults["resultsPage"]["results"]["event"];
+    }else{
+        $AristsConcertResults = "no Events Planned";
+    }
+
+
+
+    echo json_encode($AristsConcertResults, JSON_UNESCAPED_SLASHES);
+}
+
+if($_POST["function"] == "searchArtists" && isset($_POST["searchTerm"]) && isset($_POST["metroArr"])){
+
+    $AristsResults = searchArtistOnSonkick($_POST["searchTerm"]);
+    $AristsResults = $AristsResults["resultsPage"]["results"]["artist"];
+
+    echo json_encode($AristsResults, JSON_UNESCAPED_SLASHES);
+}
 
 if($_POST["function"] == "searchCity" && isset($_POST["searchTerm"]) && isset($_POST["metroArr"])){
     $db = new DOA_dbMaster();
@@ -194,6 +216,23 @@ function getEventFromLocation($db,$LocationStatus,$metroId,$metroAreaLat,$metroA
         }
 
     }
+}
+function getArtistCalenderFromArtistCalenderURL($url){
+
+    $url = $url . "?apikey=O2uaF4oPnY6ujGCJ";
+
+
+    $cu = curl_init();
+
+    curl_setopt($cu, CURLOPT_URL, $url);
+    curl_setopt($cu, CURLOPT_RETURNTRANSFER, TRUE); // ser till att resultatet kommer ner istället för om det lyckades eller ej
+
+    $userResult = curl_exec($cu);
+    $userResultDecoded = json_decode($userResult,true);
+    curl_close($cu);
+
+
+    return $userResultDecoded;
 }
 
 function getEventArrayFromMetroID($metroId){

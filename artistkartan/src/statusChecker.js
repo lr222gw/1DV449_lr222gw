@@ -57,8 +57,34 @@ searchLocationButton.onclick = function(){
 }
 document.getElementById("logga").appendChild(searchLocationButton);
 
+var searchArtistButton = document.createElement("button");
+searchArtistButton.setAttribute("id", "searchArtistButton");
+searchArtistButton.innerHTML = "Sök Artist";
+searchArtistButton.onclick = function(){
+    var searchBoxContent = document.getElementById("searchBox").value;
+    if(searchBoxContent.trim() !== "" ){
+        searchArtists(searchBoxContent);
+    }
+
+}
+document.getElementById("logga").appendChild(searchArtistButton);
+
 
 var AboutButton = document.createElement("button");
+
+
+var onclickRegular = function(target){
+    if(document.getElementById("searchResult") !== null && target !== document.getElementById("searchResult")){
+        document.getElementById("searchResult").parentNode.removeChild(document.getElementById("searchResult"));
+    }
+}
+document.onclick = function(e){
+    onclickRegular(e.target);
+}
+document.ontouch = function(e){
+    onclickRegular(e.target);
+}
+
 AboutButton.id = "aboutSite";
 AboutButton.innerHTML = "<p>Om Sidan</p>";
 
@@ -236,6 +262,176 @@ $.ajax({
     }
 
 }*/
+searchArtists = function(searchTerm){
+    prepareLoadingScreen();
+    $.ajax({
+        type: "post",
+        url: "getstuff.php",
+        async: true,
+        data: {function: "searchArtists", searchTerm: searchTerm, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
+        success: function(data){
+
+            if(data != "" && data != "[null]" && data !== null && data !== 'null'){
+
+                var parsedData = JSON.parse(data);
+
+                handleArtistData(parsedData);
+
+                console.log("Artist search complete! ");
+            }
+
+            prepareLoadingScreen();
+
+        }
+    });
+}
+
+goTroughArtistEvent = function(){
+
+    var center = objects.artistEventFromSearch[0].getPosition();
+    objects.artistEventFromSearch[0].infoWindow.open(objects.map,objects.artistEventFromSearch[0] );
+    objects.map.setCenter(center);
+    objects.activeArtistEventScrollerNumber = 0;
+    if(document.getElementById("closePrevNext") !== null){
+        document.getElementById("closePrevNext").click();
+    }
+
+
+    var prevEventButton = document.createElement("button");
+    prevEventButton.setAttribute("id", "prevEvent");
+    prevEventButton.innerHTML = "Gå till föregående event";
+    prevEventButton.onclick = function(){
+
+        if(objects.activeArtistEventScrollerNumber !== 0){
+            var center = objects.artistEventFromSearch[objects.activeArtistEventScrollerNumber - 1].getPosition();
+            objects.map.setCenter(center);
+            objects.artistEventFromSearch[objects.activeArtistEventScrollerNumber - 1].infoWindow.open(objects.map,objects.artistEventFromSearch[objects.activeArtistEventScrollerNumber - 1] );
+            objects.activeArtistEventScrollerNumber = objects.activeArtistEventScrollerNumber - 1;
+        }else{
+            var center = objects.artistEventFromSearch[objects.artistEventFromSearch.length -1].getPosition();
+            objects.map.setCenter(center);
+            objects.artistEventFromSearch[objects.artistEventFromSearch.length -1].infoWindow.open(objects.map,objects.artistEventFromSearch[objects.artistEventFromSearch.length-1] );
+            objects.activeArtistEventScrollerNumber = objects.artistEventFromSearch.length -1 ;
+        }
+
+
+
+    }
+
+
+    var closeNextPrevEventButton = document.createElement("button");
+    closeNextPrevEventButton.setAttribute("id", "closePrevNext");
+    closeNextPrevEventButton.innerHTML = "avsluta denna artist";
+    closeNextPrevEventButton.onclick = function(){
+        document.getElementById("searchBox").innerHTML = "";
+        document.getElementById("prevEvent").parentNode.removeChild(document.getElementById("prevEvent"));
+        document.getElementById("nextEvent").parentNode.removeChild(document.getElementById("nextEvent"));
+        document.getElementById("nextprevcancel").parentNode.removeChild(document.getElementById("nextprevcancel"));
+    }
+
+    var nextprevcancelBox = document.createElement("div");
+    nextprevcancelBox.setAttribute("id", "nextprevcancel");
+
+    var nextEventButton = document.createElement("button");
+    nextEventButton.setAttribute("id", "nextEvent");
+    nextEventButton.innerHTML = "Gå till nästa event";
+    nextEventButton.onclick = function(){
+
+        if(objects.activeArtistEventScrollerNumber !== objects.artistEventFromSearch.length-1){
+            var center = objects.artistEventFromSearch[objects.activeArtistEventScrollerNumber + 1].getPosition();
+            objects.map.setCenter(center);
+            objects.artistEventFromSearch[objects.activeArtistEventScrollerNumber + 1].infoWindow.open(objects.map,objects.artistEventFromSearch[objects.activeArtistEventScrollerNumber + 1] );
+            objects.activeArtistEventScrollerNumber = objects.activeArtistEventScrollerNumber + 1;
+        }else{
+            var center = objects.artistEventFromSearch[0].getPosition();
+            objects.map.setCenter(center);
+            objects.artistEventFromSearch[0].infoWindow.open(objects.map,objects.artistEventFromSearch[0] );
+            objects.activeArtistEventScrollerNumber = 0;
+        }
+
+
+
+    }
+    nextprevcancelBox.appendChild(prevEventButton);
+    nextprevcancelBox.appendChild(closeNextPrevEventButton);
+    nextprevcancelBox.appendChild(nextEventButton);
+
+    document.body.appendChild(nextprevcancelBox);
+
+}
+
+handleArtistData = function(artistsData){
+
+    var resultDiv = document.createElement("div");
+    resultDiv.setAttribute("id", "searchResult");
+
+    for(var i = 0; i < artistsData.length; i++){
+        var artistToAdd = artistsData[i];
+        var aTag = document.createElement("a");
+        aTag.artistId = artistToAdd.id;
+        aTag.setAttribute("value", artistToAdd.displayName);
+        aTag.innerHTML = artistToAdd.displayName;
+        var calenderURI = artistToAdd.identifier[0];
+        if(calenderURI === undefined){
+            calenderURI = "noConcerts";
+            aTag.innerHTML +="<p class='sorryNoPlannedEvents'>Tyvärr, denna artist har ingen aktiv eventkalender</p>";
+        }else{
+            calenderURI = artistToAdd.identifier[0].eventsHref;
+        }
+        aTag.calenderUrl = calenderURI;
+        aTag.OnTourUntil = artistToAdd.onTourUntil;
+        aTag.setAttribute("class", "artistSearchClass");
+        aTag.onclick = function(e){
+            getArtistDataFromThisArtist(e.target);
+        }
+        resultDiv.appendChild(aTag);
+    }
+
+    document.getElementById("topBanner").parentNode.insertBefore((resultDiv),document.getElementById("topBanner").nextSibling );
+
+}
+
+getArtistDataFromThisArtist = function(artistATag){
+    prepareLoadingScreen();
+    $.ajax({
+        type: "post",
+        url: "getstuff.php",
+        async: true,
+        data: {function: "getArtistEventDataFromCalenderURL", artistCalenderURL: artistATag.calenderUrl},
+        success: function(data){
+
+            if(data != "" && data != "[null]"&& data !== null && data !== 'null'){
+
+                var parsedData = JSON.parse(data);
+
+                if(parsedData !== "no Events Planned"){
+                    FastPlaceArtistEvents(parsedData);
+                    goTroughArtistEvent();
+                    console.log("Event of artist found!");
+                }else{
+                    alert("Artisten du sökt efter har tyvärr inga planerade event! (Enligt Songkick.com) :(");
+                }
+
+            }
+
+            prepareLoadingScreen();
+
+        }
+    });
+}
+FastPlaceArtistEvents = function(ArrayOfArtistEvents){
+    //Den här funktionen gör lite onödigt mycket... den var inte tänkt att användas såhär från början
+    var arrayForPlaceConcertsOnMap = [];
+    objects.artistEventFromSearch = [];
+    for(var i = 0; i < ArrayOfArtistEvents.length; i++){
+        arrayForPlaceConcertsOnMap.push(ArrayOfArtistEvents[i]);
+        //arrayForPlaceConcertsOnMap.push(ArrayOfArtistEvents[i].id);
+
+    }
+    placeConcertsOnMap(arrayForPlaceConcertsOnMap, true);
+
+
+}
 
 searchLocation = function(searchTerm){
     prepareLoadingScreen();
@@ -519,13 +715,16 @@ FastPlaceConcertWithArrayOfLocationsWithConcerts = function(ArrayOfLocationsWith
     getConcertsNearYourLocation();
 
 }
-placeConcertsOnMap = function(ConcertData){
+placeConcertsOnMap = function(ConcertData, isSearch){
 
-    if(objects.LocationMapMetroIDOnMap.indexOf(ConcertData[ConcertData.length]) == -1){ // ConcertData[ConcertData.length] == MetroID
-        //Om det är första gången denna location trycts på så ska den läggas in, nästa gång så ska den ej skrivas ut..
-        objects.LocationMapMetroIDOnMap.push(ConcertData[ConcertData.length-1]);
-        //delete ConcertData.LocationMapMetroID;
-        ConcertData.pop(ConcertData.length); //Tar bort sista i arrayen, alltså MetroID't...
+    if(objects.LocationMapMetroIDOnMap.indexOf(ConcertData[ConcertData.length]) == -1 || isSearch === true){ // ConcertData[ConcertData.length] == MetroID
+        if(isSearch !== true){
+            //Om det är första gången denna location trycts på så ska den läggas in, nästa gång så ska den ej skrivas ut..
+            objects.LocationMapMetroIDOnMap.push(ConcertData[ConcertData.length-1]);
+            //delete ConcertData.LocationMapMetroID;
+            ConcertData.pop(ConcertData.length); //Tar bort sista i arrayen, alltså MetroID't...
+        }
+
 
         var positionsLat = [];
         var positionsLng = [];
@@ -533,7 +732,7 @@ placeConcertsOnMap = function(ConcertData){
         var ConcertThatHasSameLatNLng = [];
         var ConcertThatDoesNotHaveSameLatNLng = [];
         var sameLatNLngID;// = 840; // används för att identifera Konsärer som har samma Lng och Lat... (används i funktionen MultiMakeMarkerAndInfoWindowOfConcertData)...
-        for(var i = 0; i < ConcertData.length;i++){ //Ska hitta om det finns Konsärer på Samma Position.. Om det finns = ska lösas..
+        for(var i = 0; i < ConcertData.length;i++){ //Ska hitta om det finns Konserter på Samma Position.. Om det finns = ska lösas..
 
             var Counter = 0;
             for(var j=0; j < ConcertData.length; j++){
@@ -566,11 +765,17 @@ placeConcertsOnMap = function(ConcertData){
             //Notera att om jag hade kört koden i denna loop så hade saker skitit sig:
             //om man tryckt på en marker så skulle bara Data från den sista markern att skrivas ut, på dens possition..
             //genoom att jag låter en annan funktion ta  hand om det så försvinner problemet.. hur?
-            Single_MakeMarkerAndInfoWindowOfConcertData(ConcertThatDoesNotHaveSameLatNLng[i]);
+            var marker = Single_MakeMarkerAndInfoWindowOfConcertData(ConcertThatDoesNotHaveSameLatNLng[i]);
+            if(isSearch){
+                objects.artistEventFromSearch.push(marker);
+            }
         }
 
         for(var i = 0; i < positions.length; i++){
-            MakeMultiMarker(positions[i]);
+            var marker = MakeMultiMarker(positions[i]);
+            if(isSearch){
+                objects.artistEventFromSearch.push(marker);
+            }
         }
 
         for(var i = 0; i < ConcertThatHasSameLatNLng.length;i++){
@@ -786,7 +991,8 @@ function MakeMultiMarker(positions){
         objects.lastOpenWindow = ConcertMarker.infoWindow;
 
     });
-
+    //nästa rad är bara till för att sökning ska fungera, annars ignorerars om något retuenrars...
+    return ConcertMarker;
 }
 
 function createInfoWindowWithConcertData(ConcertData){
@@ -936,6 +1142,8 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
         objects.lastOpenWindow = ConcertMarker.infoWindow;
 
     });
+    //nästa rad är bara till för att sökning ska fungera, annars ignorerars om något retuenrars...
+    return ConcertMarker;
 }
 
 /*var PopulatePlaylistButton = document.createElement("input");

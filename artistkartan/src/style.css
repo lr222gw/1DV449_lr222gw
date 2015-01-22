@@ -191,10 +191,43 @@ input#loginButton, #logout, #relevantArtists {
         font-size: 15px;
     }
 }
+
+@media all and   (max-width: 1050px) {
+    div#LastChecked{
+        z-index: -1;
+        margin-top: 5px;
+        padding-top: 45px;
+
+    }
+    a#relevantArtists span{
+        font-size: 1.1vw;
+        margin-left: -170px;
+
+    }
+    div#LastChecked {
+        padding-top: 50px;
+    }
+    button#searchLocationButton, button#searchArtistButton {
+        width: 30%;
+    }
+    input#searchBox {
+        width: 50%;
+    }
+    div#logga {
+        padding-bottom: 45px;
+    }
+    #relevantArtists:hover#relevantArtists span {
+        width: 115px;
+        font-size: small;
+        height: 225px;
+    }
+}
+
+
 div#hideOrShow {
     background-color: rgb(192, 192, 192);
     background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0) 0%, #FFF 28%, #FFF 47%, #E2E2E2 99%) repeat scroll 0% 0% transparent;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(226, 226, 226, 0)), color-stop(28%,rgb(255, 255, 255)), color-stop(125%,rgb(226, 226, 226)), color-stop(99%,rgb(204, 204, 204)));;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(226, 226, 226, 0)), color-stop(28%,rgb(255, 255, 255)), color-stop(125%,rgb(226, 226, 226)), color-stop(99%,rgb(204, 204, 204)));
     width: 38px;
     height: 20px;
     border-radius: 0px 0px 10px 10px;
@@ -206,10 +239,12 @@ div#hideOrShow {
     font-size: 0.7em;
     font-weight: 600;
     text-align: center;
-    padding-top: 45px;
+    padding-top: 52px;
+    bottom: 0;
+    margin-bottom: -50px;
     cursor: pointer;
 }
-div#LastChecked {
+#LastChecked {
     background-color: rgb(192, 192, 192);
     background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0) 0%, #FFF 28%, #FFF 47%, #E2E2E2 99%) repeat scroll 0% 0% transparent;
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(226, 226, 226, 0)), color-stop(0.28, rgb(255, 255, 255)), color-stop(0.99, rgb(225, 225, 225)), color-stop(1.25, rgb(255, 255, 255)));
@@ -539,7 +574,165 @@ button#goBackButtonHref {
     cursor: pointer;
     box-shadow: rgb(0, 0, 0) 0 0 20px -2px;
     height: 15px;
+
 }
+
+div#searchResult {
+    height: 400px;
+    position: relative;
+    width: 35%;
+    display: block;
+    padding-left: 10px;
+    margin: 0 auto;
+    padding-right: 10px;
+    z-index: 9999;
+    background-color: rgb(214, 234, 241);
+    overflow: auto;
+    margin-bottom: -400px;
+    margin-top: -10px;
+}
+
+a.artistSearchClass {
+    height: 20px;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    position: relative;
+    z-index: 999;
+    background-color: rgb(64, 170, 223);
+    font-family: Oswald;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+div#nextprevcancel {
+    display: flex;
+    position: fixed;
+    z-index: 200;
+    bottom: 0px;
+    width: 31%;
+    margin: 0 auto;
+    margin-top: -25px;
+    left: 35%;
+}
+button#prevEvent {
+    background-color: rgb(132, 189, 0);
+    border: none;
+    font-family: Oswald;
+    font-size: large;
+    cursor: pointer;
+}
+button#nextEvent {
+    background-color: rgb(132, 189, 0);
+    border: none;
+    font-family: Oswald;
+    font-size: large;
+}
+button#closePrevNext {
+    border: none;
+    background-color: rgb(247, 122, 122);
+    font-size: large;
+    font-family: Oswald;
+    cursor: pointer;
+}
+
+#searchBox {
+    display: block;
+    margin: 0 auto;
+    width: 20%;
+}
+#searchLocationButton {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 10%;
+    border: none;
+    background-color: rgb(64, 170, 223);
+    margin-top: 5px;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-family: Oswald;
+}
+#searchArtistButton {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 10%;
+    border: none;
+    background-color: rgb(64, 170, 223);
+    margin-top: 0px;
+    cursor: pointer;
+    border-radius: 0 0 10px 10px;
+    font-family: Oswald;
+}
+
+button#ShowFestivals {
+    position: absolute;
+    bottom: 0px;
+    display: block;
+    background-color: rgb(132, 189, 0);
+    border: none;
+    cursor: pointer;
+    font-family: Oswald;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 10px;
+}
+button#showConcertsPlayingToday {
+    position: absolute;
+    bottom: 0px;
+    display: block;
+    background-color: rgb(132, 189, 0);
+    border: none;
+    font-family: Oswald;
+    right: 0px;
+    cursor: pointer;
+    z-index: 1;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+p.sorryNoPlannedEvents {
+    display: none;
+}
+/*button#nextEvent {
+    height: 100px;
+    width: 125px;
+    display: block;
+    background-color: rgb(132, 189, 0);
+    border: none;
+    font-family: oswald;
+    float: right;
+    font-size: larger;
+    border-radius: 0 65px 0 0;
+    box-shadow: rgb(0, 0, 0) 0 0 35px -5px;
+}
+button#prevEvent {
+    height: 100px;
+    width: 125px;
+    display: block;
+    background-color: rgb(132, 189, 0);
+    border: none;
+    font-family: oswald;
+    font-size: larger;
+    border-radius: 0 65px 0 0;
+    box-shadow: rgb(0, 0, 0) 0 0 35px -5px;
+}
+button#closePrevNext {
+    height: 100px;
+    width: 125px;
+    display: block;
+    background-color: rgb(132, 189, 0);
+    border: none;
+    font-family: oswald;
+    font-size: larger;
+    border-radius: 0 65px 0 0;
+    box-shadow: rgb(0, 0, 0) 0 0 35px -5px;
+}*/
 
 /* ej min kod, har bar modifierat den :3 */
 /* Let's get this party started */
