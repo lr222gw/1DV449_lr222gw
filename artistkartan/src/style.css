@@ -6,6 +6,7 @@
 html, body, #mapcanvas{
     height: 100%;
     margin: 0px;
+    overflow: hidden;
 
 }
 #mapcanvas{
@@ -346,9 +347,12 @@ div#AboutContentBox {
     border-radius: 5px;
     margin-bottom: 10px;
     width: 40%;
+    font-family: Oswald;
+    font-weight: lighter;
 }
 #AboutContentBox h1 {
     padding-top: 10px;
+    font-family: Oswald;
 }
 
 button#closeAboutScreen {
@@ -363,7 +367,7 @@ button#closeAboutScreen {
     font-family: sans-serif;
     font-size: inherit;
     font-weight: bold;
-    box-shadow: 0 0 25px -5px;
+    /*box-shadow: 0 0 25px -5px;*/
 }
 
 p.thanksTo {
@@ -577,7 +581,7 @@ button#goBackButtonHref {
     position: absolute;
     top: 0;
     z-index: 500;
-    background-color: rgb(27, 231, 39);
+    background-color: rgb(255, 255, 255);
     border: none;
     border-radius: 0 0 5px 3px;
     font-family: Oswald;
@@ -677,6 +681,36 @@ button#closePrevNext {
     cursor: pointer;
     border-radius: 0 0 10px 10px;
     font-family: Oswald;
+    background-image: url("/pic/arrowForArtist.png");
+}
+img#divForArrow {
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    left: 50%;
+    padding-left: 75px;
+    top: 140px;
+}
+img#arrowForArtist {
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    left: 50%;
+    padding-left: 75px;
+    top: 140px;
+}
+p#arrowText {
+    position: absolute;
+    width: 140px;
+    font-family: Oswald;
+    left: 50%;
+    top: 115px;
+    font-size: smaller;
+    text-align: center;
+    transform: rotate(-19deg);
+    padding-left: 85px;
 }
 
 button#ShowFestivals {

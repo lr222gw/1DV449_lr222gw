@@ -233,10 +233,11 @@ function init(){
 }
 
 window.onload = function(){
-    init();
-    checkApiStatus();
     // Körs när man laddar sidan; vill hämta datan! :D
     prepareLoadingScreen();
+    init();
+    checkApiStatus();
+
 
     //↓Är flyttat till geolocation funktionen, då den bara anropas om geolocation är igång..
     //getConcertsFromCache();

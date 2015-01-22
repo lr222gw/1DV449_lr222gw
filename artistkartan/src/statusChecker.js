@@ -59,10 +59,33 @@ function toggleSubItems(){
 var searchBox = document.createElement("input");
 searchBox.setAttribute("id", "searchBox");
 searchBox.setAttribute("type", "search");
+searchBox.setAttribute("placeholder", "Sök efter Plats eller Artist...");
 searchBox.innerHTML = "Sök Platser";
 
-
 document.getElementById("logga").appendChild(searchBox);
+
+document.getElementById("searchBox").addEventListener("keydown", function(e) {
+    if (!e) { var e = window.event; }
+
+    if(document.getElementById("divForArrow") === null){
+        var imageArrow = document.createElement("img");
+        imageArrow.setAttribute("id", "arrowForArtist");
+        imageArrow.setAttribute("src", "/pic/arrowForArtist.png");
+        var DivImageArrow = document.createElement("div");
+        DivImageArrow.setAttribute("id", "divForArrow");
+        DivImageArrow.appendChild(imageArrow);
+        DivImageArrow.innerHTML += "<p id='arrowText'>Tryck på knappen för att söka artister!</p>";
+        document.getElementById("logga").insertBefore(DivImageArrow, document.getElementById("searchArtistButton").nextSibling);
+    }
+
+    // Enter is pressed
+    if (e.keyCode == 13) { window.setTimeout(function () {
+        document.getElementById("divForArrow").parentNode.removeChild(document.getElementById("divForArrow"));
+        document.getElementById('searchLocationButton').click();
+    }, 0);  }
+}, false);
+
+
 
 var searchLocationButton = document.createElement("button");
 searchLocationButton.setAttribute("id", "searchLocationButton");
@@ -124,6 +147,7 @@ AboutButton.onclick = function(){
         "<p class='thanksTo'>Google Maps, För kartan och dess funktioner.</p>" +
         "<p class='thanksTo'>Spotify, För att ta fram intressanta artister till användare.</p>" +
         "<p class='contactMe'>Vill du kontakta mig av någon anledning är min Email här: <address><a href='mailto:lowe.raivio@gmail.com'>lowe.raivio@gmail.com</a></address></p>" +
+        "<div id='songkickstuff'><a href='http://www.songkick.com'><img src='pic/songkick.png'></a></div>" +
         "</div>";
 
     var CloseButton = document.createElement("button");
