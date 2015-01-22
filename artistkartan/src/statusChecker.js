@@ -14,6 +14,9 @@ hideOrShow.setAttribute("status", "show");
 hideOrShow.innerHTML = "DÖLJ";
 document.getElementById("logga").appendChild(hideOrShow);
 
+
+var ShowTodaysConcertListObj = document.createElement("li");
+
 var ShowTodaysConcertButton = document.createElement("button");
 ShowTodaysConcertButton.setAttribute("id", "showConcertsPlayingToday");
 ShowTodaysConcertButton.innerHTML = "Visa konserter som spelar idag";
@@ -23,8 +26,10 @@ ShowTodaysConcertButton.onclick = function(){
         showAllTodaysConcerts();
     },200)
 }
-document.getElementById("logga").appendChild(ShowTodaysConcertButton);
+ShowTodaysConcertListObj.appendChild(ShowTodaysConcertButton);
+//document.getElementById("logga").appendChild(ShowTodaysConcertListObj);
 
+var ShowFestivalsListObj = document.createElement("li");
 var ShowFestivalsButton = document.createElement("button");
 ShowFestivalsButton.setAttribute("id", "ShowFestivals");
 ShowFestivalsButton.innerHTML = "Visa Festivalevent på kartan";
@@ -35,7 +40,21 @@ ShowFestivalsButton.onclick = function(){
     },200)
 
 }
-document.getElementById("logga").appendChild(ShowFestivalsButton);
+
+ShowFestivalsListObj.appendChild(ShowFestivalsButton);
+
+document.getElementById("menuItems").appendChild(ShowFestivalsListObj);
+document.getElementById("menuItems").appendChild(ShowTodaysConcertListObj);
+
+$(function(){
+    $('menuTitle').click(toggleSubItems);
+});
+
+function toggleSubItems(){
+    $('menuTitle').parentNode.not($(this).children('menuTitle').parentNode).hide();
+    $(this).children('menuTitle').parentNode.toggle(400);
+}
+
 
 var searchBox = document.createElement("input");
 searchBox.setAttribute("id", "searchBox");
@@ -63,6 +82,7 @@ searchArtistButton.innerHTML = "Sök Artist";
 searchArtistButton.onclick = function(){
     var searchBoxContent = document.getElementById("searchBox").value;
     if(searchBoxContent.trim() !== "" ){
+
         searchArtists(searchBoxContent);
     }
 
@@ -382,6 +402,7 @@ handleArtistData = function(artistsData){
         aTag.OnTourUntil = artistToAdd.onTourUntil;
         aTag.setAttribute("class", "artistSearchClass");
         aTag.onclick = function(e){
+
             getArtistDataFromThisArtist(e.target);
         }
         resultDiv.appendChild(aTag);
@@ -392,6 +413,9 @@ handleArtistData = function(artistsData){
 }
 
 getArtistDataFromThisArtist = function(artistATag){
+    if(document.getElementById("hideOrShow").innerHTML === "DÖLJ"){
+        document.getElementById("hideOrShow").click();
+    }
     prepareLoadingScreen();
     $.ajax({
         type: "post",
@@ -409,7 +433,13 @@ getArtistDataFromThisArtist = function(artistATag){
                     goTroughArtistEvent();
                     console.log("Event of artist found!");
                 }else{
-                    alert("Artisten du sökt efter har tyvärr inga planerade event! (Enligt Songkick.com) :(");
+                    var alert = document.createElement("div");
+                    alert.innerHTML = "<p>Artisten du sökt efter har tyvärr inga planerade event! (Enligt Songkick.com) :(</p>";
+                    alert.setAttribute("id", "alertBox");
+                    alert.style.display = "none";
+                    alert.setAttribute("title", "Det här var ju tråkigt...");
+                    document.body.appendChild(alert);
+                    $( "#alertBox" ).dialog();//alert("Artisten du sökt efter har tyvärr inga planerade event! (Enligt Songkick.com) :(");
                 }
 
             }
@@ -941,10 +971,10 @@ function isDateTodayOrNear(dateTocheckAgainst){
 function MakeMultiMarker(positions){
 
     var InfoWindowContent =
+        '<div class="content">' +
         '<div class="MultiBoxHeader">' +
             '<h1>Samtliga event händer här:</h1>' +
         '</div>'+
-        '<div class="content">' +
             '<div class="insideContent">'; //Konstigt? hm, ne. Detta är så att jag lättare kan schystera CSS...
 
     var infoWindowForMarker = new InfoBubble({
@@ -1056,10 +1086,10 @@ function createInfoWindowWithConcertData(ConcertData){
             '<div class="eventInfo">'+
                 '<div class="EventInfoBoxes">'+
                 '<div class="EventContent" ><h2>Eventtyp: '+'</h2><p>'+eventTyp+'</p></div>' +
-                '<div class="EventContent"><h2>Åldersgräns: </h2><p>'+ageRestriction+'</p></div>' +
-                '<div class="EventContent" ><h2>Status: </h2><p>'+status+'</p></div>' +
-                '<div class="EventContent"><h2>Plats: </h2><p>'+plats+'</p></div>'+
                 '<div class="EventContent" '+DateMark+'><h2>Tid och Datum: </h2><p>'+dateToUse + ' ' +time +' till ' + endDate + ' ' + endtime + '</p></div>' +
+                '<div class="EventContent" ><h2>Status: </h2><p>'+status+'</p></div>' +
+                '<div class="EventContent"><h2>Åldersgräns: </h2><p>'+ageRestriction+'</p></div>' +
+                '<div class="EventContent"><h2>Plats: </h2><p>'+plats+'</p></div>'+
                 '</div>' +
             '</div>'+
             '<div class="preformances">' + eventContent + '</div>' +
