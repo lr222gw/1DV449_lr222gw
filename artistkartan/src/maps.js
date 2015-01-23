@@ -235,6 +235,11 @@ function init(){
 
 window.onload = function(){
     // Körs när man laddar sidan; vill hämta datan! :D
+    if(localStorage["hasDoneTutorial"] === undefined){
+
+        firstTimeTutorial();
+    }
+
     prepareLoadingScreen();
     init();
     checkApiStatus();

@@ -2,8 +2,6 @@
 //Obs vissa saker finns i maps.js, maps.js kör vissa funktioner på statusChecker.js! :D
 //Onload functionen finns där :3
 
-
-
 if(localStorage["CachadeKonserter"] == undefined){
     localStorage["CachadeKonserter"] = [];
 }
@@ -142,6 +140,7 @@ AboutButton.onclick = function(){
         "<p>eller på ett ställe där du är nyfiken att kika efter event på. Kanske ska du åka utomlands och snabbt vill se exakt vart</p>" +
         "<p>du kan hitta festivaler och konserter i närheten av ditt hotell.</p>" +
         "<p>Vad ska jag mer skriva här? Hoppas du har kul med sidan! :)</p>" +
+        "<p class='italicWierd'>(Ursäkta grammatiken, energidrycken tog slut och jag var trött...)</p>" +
         "<p class='thanksTo'>Tack till, för följande resurser:</p>" +
         "<p class='thanksTo'>Songkick.com, För datan om konserter och event som dom står för.</p>" +
         "<p class='thanksTo'>Nicolas Mollet, För ikonen till kartmarkören.</p>" +
@@ -149,6 +148,7 @@ AboutButton.onclick = function(){
         "<p class='thanksTo'>Spotify, För att ta fram intressanta artister till användare.</p>" +
         "<p class='contactMe'>Vill du kontakta mig av någon anledning är min Email här: <address><a href='mailto:lowe.raivio@gmail.com'>lowe.raivio@gmail.com</a></address></p>" +
         "<div id='songkickstuff'><a href='http://www.songkick.com'><img src='pic/songkick.png'></a></div>" +
+        "<p>PS. Sidan använder Cookies och Localstorage... Men det har du redan accepterat, skriver det här bara för att ha det på två ställen...</p>" +
         "</div>";
 
     var CloseButton = document.createElement("button");
@@ -158,6 +158,14 @@ AboutButton.onclick = function(){
         document.getElementById("aboutSiteDiv").parentNode.removeChild(document.getElementById("aboutSiteDiv"));
     }
     AboutDiv.appendChild(CloseButton);
+    var StartToturialButton = document.createElement("button");
+    StartToturialButton.id = "startBasicGuide";
+    StartToturialButton.innerHTML = "Kör Guiden!";
+    StartToturialButton.onclick = function(){
+        document.getElementById("aboutSiteDiv").parentNode.removeChild(document.getElementById("aboutSiteDiv"));
+        basicTutoral();
+    }
+    AboutDiv.appendChild(StartToturialButton);
 
 
     document.body.insertBefore(AboutDiv, document.body.firstChild);
@@ -227,7 +235,6 @@ hideOrShow.onclick = function(e){
 
 
 }
-
 
 
 $.ajax({
@@ -326,6 +333,105 @@ $.ajax({
     }
 
 }*/
+
+firstTimeTutorial = function(){
+    var tutorialdiv = document.getElementById("tutorial");
+    tutorialdiv.style.display = "block";
+    tutorialdiv.innerHTML = '' +
+        '<div id="tutorialContent">' +
+        '<h1>Hej och välkommen till KonsertKartan.com!</h1>' +
+        '<p>Detta är första gången du besöker sidan va? Då ska vi bara gå över ett par saker.</p>' +
+        '<p class="unnecessaryBusiness">För det första, Sidan använder Cookies och LocalStorage. PGA svensk lag så måste jag berätta det.<p>(majoriteten av sidor på nätet berättar inte sånt, då ingen egentligen bryr sig...)</p> </p>' +
+        '<button id="agreeButton">Jag fattar och godkänner, cookies/localStorage används...</button>' +
+        '' +
+        '</div>';
+    document.getElementById("agreeButton").onclick = function(){
+        document.getElementById("tutorial").style.display = "none";
+        localStorage["hasDoneTutorial"] = "done";
+        basicTutoral();
+    }
+}
+basicTutoral = function(){
+    var tutorialdiv = document.getElementById("tutorial");
+    tutorialdiv.style.display = "block";
+    tutorialdiv.innerHTML = '' +
+        '<div id="tutorialContent">' +
+        '<h1>Basics 1/4 - Hämta konserter från en stad!</h1>' +
+        '<img class="basicGuideImg" src="pic/tutorialpics/GIFRightClickORTouch.gif">' +
+        '<p>Du kan hämta event från en plats på två sätt, det ena är att söka efter platsen.</p>' +
+        '<p>Det andra är att högerklicka (håll in i 1.5 sec på touchmobil) på en stad på kartan som du vill hämta ifrån.</p>' +
+        '<button id="NextButton">Ok, fattar, hämtar event med höger/håll in...</button>' +
+        '' +
+        '</div>';
+    document.getElementById("NextButton").onclick = function(){
+        document.getElementById("tutorial").innerHTML = '' +
+            '<div id="tutorialContent">' +
+            '<h1>Basics 2/4 - Markera festivaler eller konserter som spelar idag!</h1>' +
+            '<img class="basicGuideImg" src="pic/tutorialpics/GIF-hoppandepilar.gif">' +
+            '<p>Om du snabbt vill se vilka event som pågår eller ska börja idag kan du välja "markera..." och sen alternativ.</p>' +
+            '<p>Det är viktigt att veta; bara de markörer på kartan som du redan ser kommer att röra sig.</p>' +
+            '<p>(Exempel: om du bara ser markörer från linköping och trycker på "visa festivaler" så kommer du ej se festivaler från norrköping)</p>' +
+            '<button id="NextButton">Ok, bara markörer som syns dansar...</button>' +
+            '' +
+            '</div>';
+        document.getElementById("NextButton").onclick = function(){
+            document.getElementById("tutorial").innerHTML = '' +
+                '<div id="tutorialContent">' +
+                '<h1>Basics 3/4 - Dina favoritstäder!</h1>' +
+                '<img class="basicGuideImg" src="pic/tutorialpics/MyTowns.gif">' +
+                '<p>Om du är inloggad har du tillgång till ett par saker. Du kan snabbt se artister av ditt intresse i närheten (det du lyssnar på genom spotify).</p>' +
+                '<p>Du kan också lägga till favoritplatser, från dessa kommer det automatiskt att hämtas event från när du loggar in.</p>' +
+                '' +
+                '<button id="NextButton">ok, Bra att logga in med spotify, got it!...</button>' +
+                '' +
+                '</div>';
+            document.getElementById("NextButton").onclick = function(){
+                document.getElementById("tutorial").innerHTML = '' +
+                    '<div id="tutorialContent">' +
+                    '<h1>Basics 4/4 - Kolla innehållet på event!</h1>' +
+                    '<img class="basicGuideImg" src="pic/tutorialpics/PNgonclick.png">' +
+                    '<p>Tryck på markör för att se innehållet av eventet.</p>' +
+                    '<p>Markören med en grön "+"-symbol (multi markör) visar att detta är en plats där flera event kommer hållas, trycker man på den får man en lista över eventen.</p>' +
+                    '<p>Markören som saknar "+"-symbolen (singel markör) visar eventet och artisterna som kommer, detta syns även om du klickar på ett event i multi markörens lista får du samma info</p>' +
+                    '' +
+                    '<button id="NextButton">ok, hade nog klarat mig utan guide. Men ok!</button>' +
+                    '' +
+                    '</div>';
+                document.getElementById("NextButton").onclick = function(){
+                    document.getElementById("tutorial").style.display = "none";
+                }
+                var cancel = document.createElement("button");
+                cancel.innerHTML = "Jag vill inte ha någon tutorial, jag kan väl själv..."
+                cancel.setAttribute("id", "cancelToturial")
+                cancel.onclick = function(){
+                    document.getElementById("tutorial").style.display = "none";
+                }
+                document.getElementById("tutorial").appendChild(cancel);
+            }
+            var cancel = document.createElement("button");
+            cancel.innerHTML = "Jag vill inte ha någon tutorial, jag kan väl själv..."
+            cancel.setAttribute("id", "cancelToturial")
+            cancel.onclick = function(){
+                document.getElementById("tutorial").style.display = "none";
+            }
+            document.getElementById("tutorial").appendChild(cancel);
+        }
+        var cancel = document.createElement("button");
+        cancel.innerHTML = "Jag vill inte ha någon tutorial, jag kan väl själv..."
+        cancel.setAttribute("id", "cancelToturial")
+        cancel.onclick = function(){
+            document.getElementById("tutorial").style.display = "none";
+        }
+        document.getElementById("tutorial").appendChild(cancel);
+    }
+    var cancel = document.createElement("button");
+    cancel.innerHTML = "Jag vill inte ha någon tutorial, jag kan väl själv..."
+    cancel.setAttribute("id", "cancelToturial")
+    cancel.onclick = function(){
+        document.getElementById("tutorial").style.display = "none";
+    }
+    document.getElementById("tutorial").appendChild(cancel);
+}
 
 getUsersTownsDiv = function(){
     var townDiv = document.getElementById("myFavoriteTowns");

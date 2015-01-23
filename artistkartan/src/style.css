@@ -56,7 +56,7 @@ div#songkickstuff {
 div#songkickstuff img {
     margin: 0 auto;
     display: table-caption;
-    width: 15vw;
+    width: 50%;
 }
 
 /*#logga img {
@@ -222,6 +222,7 @@ input#loginButton, #logout, #relevantArtists {
         font-size: small;
         height: 225px;
     }
+
 }
 
 
@@ -355,7 +356,7 @@ div#AboutContentBox {
     font-family: Oswald;
 }
 
-button#closeAboutScreen {
+button#closeAboutScreen, #startBasicGuide {
     margin: 0 auto;
     width: 10%;
     display: block;
@@ -367,6 +368,7 @@ button#closeAboutScreen {
     font-family: sans-serif;
     font-size: inherit;
     font-weight: bold;
+    margin-top: 10px;
     /*box-shadow: 0 0 25px -5px;*/
 }
 
@@ -378,13 +380,28 @@ p.thanksTo {
     padding-top: 15px;
     margin-bottom: 5px;
 }
+p.italicWierd {
+    font-style: italic;
+    font-family: serif;
+}
 
 @media (min-width: 0px) and (max-width: 950px) {
     div#AboutContentBox {
         width: 85%;
     }
-    button#closeAboutScreen {
+    button#closeAboutScreen, #startBasicGuide {
         width: 25%;
+    }
+    div#tutorialContent {
+        width: 90%;
+        text-align: center;
+        margin: 0 auto;
+        font-family: Oswald;
+        text-shadow: rgb(255, 255, 255) 0 0 6px;
+        background-color: rgb(255, 255, 255);
+        padding: 15px;
+        margin-top: 25px;
+        padding-top: 10px;
     }
 }
 
@@ -876,7 +893,7 @@ div#myFavoriteTowns {
     font-family: Oswald;
     padding: 10px;
     transform: rotate(10deg);
-    right: -45%;
+    right: -50%;
     background-image: url("/pic/oldPaper.png");
 }
 #myFavoriteTowns h1 {
@@ -914,6 +931,70 @@ input#favoritCityButton {
     font-size: 15px;
 }
 
+div#tutorial {
+    background-color: rgba(78, 182, 200, 0.72);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 130;
+    margin-top: -5px;
+    display: none;
+    overflow: auto;
+}
+
+#tutorialContent {
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
+    font-family: Oswald;
+    text-shadow: rgb(255, 255, 255) 0 0 6px;
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    margin-top: 25px;
+    padding-top: 10px;
+}
+button#agreeButton {
+    background-color: rgb(24, 167, 205);
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    height: 90px;
+    font-family: Oswald;
+    box-shadow: rgb(255, 255, 255) 0 0 8px 0px, inset rgb(255, 255, 255) 10px 5px 69px -5px;
+    font-size: 25px;
+}
+img.basicGuideImg {
+    width: 100%;
+    border: rgb(255, 255, 255) solid;
+}
+button#NextButton {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 50px;
+    /*height: 45px;*/
+    font-family: Oswald;
+    font-size: larger;
+    cursor: pointer;
+    padding: 10px;
+    box-shadow: rgb(0, 0, 0) 0 0 40px -5px;
+}
+#cancelToturial{
+    background-color: rgb(231, 112, 112);
+    border: none;
+    height: 65px;
+    display: block;
+    width: 130px;
+    font-family: Oswald;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 15px;
+    cursor: pointer;
+    box-shadow: rgb(0, 0, 0) 0 0 25px -5px;
+}
+img.basicGuideImg {
+    border: rgb(0, 0, 0) solid 2px;
+    border-radius: 3px;
+}
 /* ej min kod, har bar modifierat den :3 */
 /* Let's get this party started */
 ::-webkit-scrollbar {
