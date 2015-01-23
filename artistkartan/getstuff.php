@@ -8,6 +8,44 @@
 require_once("dbstuff.php");
 session_start();
 
+
+if($_POST["function"] == "saveUsersTowns" &&
+    isset($_POST["TownOne"]) &&
+    isset($_POST["TownTwo"]) &&
+    isset($_POST["TownThree"]) &&
+    isset($_POST["TownFour"]) &&
+    isset($_POST["TownFive"]) &&
+    isset($_POST["userID"])){
+    $db = new DOA_dbMaster();
+    $townArr = [$_POST["TownOne"],
+    $_POST["TownTwo"],
+    $_POST["TownThree"],
+    $_POST["TownFour"],
+    $_POST["TownFive"]];
+
+    for($i = 0 ; $i < count($townArr); $i++){
+        //if(trim($townArr[$i]) !== ""){
+            if(!($db->isRowUsedInUserDB($i,$_POST["userID"]))){
+                $db->addUsersTown(trim($townArr[$i]) ,$_POST["userID"], $i);
+            }else{
+                $db->editUsersTown(trim($townArr[$i]),$_POST["userID"],$i);
+            }
+        //}
+    }
+
+
+    echo json_encode($usersTowns, JSON_UNESCAPED_SLASHES);
+}
+
+if($_GET["function"] == "getUsersTowns" && isset($_GET["userID"])){
+    $db = new DOA_dbMaster();
+
+    $usersTowns = $db->getUsersTowns($_GET["userID"]);
+
+
+    echo json_encode($usersTowns, JSON_UNESCAPED_SLASHES);
+}
+
 if($_POST["function"] == "getArtistEventDataFromCalenderURL" && isset($_POST["artistCalenderURL"])){
 
     $AristsConcertResults = getArtistCalenderFromArtistCalenderURL($_POST["artistCalenderURL"]);
@@ -37,7 +75,7 @@ if($_POST["function"] == "searchCity" && isset($_POST["searchTerm"]) && isset($_
 
     $todaysDate = new DateTime($todaysDate);
     $timeStampToday = $todaysDate->getTimestamp();
-
+    $_SESSION["LatestCheckedLocationName"] = $_POST["searchTerm"];
     $dbDate = new DateTime($locationDataFromDB["BestBefore"]);
     $timeStampFromDB = $dbDate->getTimestamp();
 
@@ -62,10 +100,11 @@ if($_POST["function"] == "searchCity" && isset($_POST["searchTerm"]) && isset($_
 }
 
 if($_GET["function"] == "isUserOnline"){
-    if(isset($_SESSION["OnlineUser"])){
+
+    if(isset($_SESSION["OnlineUser"]) && $_SESSION["OnlineUser"] !== null){
         echo ($_SESSION["OnlineUser"]);
     }else{
-        echo false;
+        echo "false";
     }
 }
 
@@ -449,8 +488,9 @@ if($_GET["function"] == "getUsersArtists"){ //Artister på användarens listor b
         //Säkerhet, vill inte att användaren ska behöva vänta
         //om spotify inte lyckades hämta listorna.. HAR HÄNT!
             echo "nope";
+        }else{
+            $db->addArtistJSONToUser($userID, $ArtistListJson);
         }
-        $db->addArtistJSONToUser($userID, $ArtistListJson);
         echo $ArtistListJson;
 
     }else{

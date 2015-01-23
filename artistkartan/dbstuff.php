@@ -5,7 +5,7 @@
  * Date: 2015-01-15
  * Time: 00:35
  */
-
+//session_start();
 class DOA_dbMaster{
     private static $pdoString = 'mysql:host=konsertkartan-199508.mysql.binero.se;dbname=199508-konsertkartan;';
     private static $pdoUserName = '199508_yk43421';
@@ -13,6 +13,106 @@ class DOA_dbMaster{
 
     public function __construct(){
 
+    }
+
+    public function editUsersTown($townName, $userID, $row)
+    {
+        try{
+            $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databaseHandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            $query= "
+            UPDATE usersTowns
+            set TownName = ?
+            Where UserID = ? AND row = ?
+
+            ";
+            $param = [$townName,$userID, $row];
+            $stmt = $databaseHandler->prepare($query);
+
+            if($stmt->execute($param)){
+            }
+
+
+        }catch (PDOException $e){
+            throw new \Exception("Sorry Could look for users towns in Database..." . $e->getMessage());
+        }
+    }
+
+    public function addUsersTown($townName, $userID, $rowNumber)
+    {
+        try{
+            $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databaseHandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            $query= "
+            INSERT INTO usersTowns (TownName, UserID, row)
+            Values (?,?, ?)
+            ";
+            $param = [$townName,$userID, $rowNumber];
+            $stmt = $databaseHandler->prepare($query);
+
+            if($stmt->execute($param)){
+            }
+
+
+
+        }catch (PDOException $e){
+            throw new \Exception("Sorry could not add towns in Database..." . $e->getMessage());
+        }
+    }
+    public function isRowUsedInUserDB($row,$userID)
+    {
+        try{
+            $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databaseHandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            $query= "
+            SELECT row
+            FROM usersTowns
+            WHERE UserID = ? AND row = ?
+            ";
+            $param = [$userID, (string)$row];
+            $stmt = $databaseHandler->prepare($query);
+
+            if($stmt->execute($param)){
+                $result = $stmt->fetchColumn(0);
+            }
+
+
+            if($result === false){
+                return false;
+            }else{ return true;}
+
+        }catch (PDOException $e){
+            throw new \Exception("Sorry Could look for users towns in Database..." . $e->getMessage());
+        }
+    }
+
+
+    public function getUsersTowns($userID)
+    {
+        try{
+            $databaseHandler = new PDO(self::$pdoString, self::$pdoUserName, self::$pdoUserPass);
+            $databaseHandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            $query= "
+            SELECT TownName
+            FROM usersTowns
+            WHERE UserID = ?
+            ";
+            $param = [$userID];
+            $stmt = $databaseHandler->prepare($query);
+
+            if($stmt->execute($param)){
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+
+            return $result;
+
+        }catch (PDOException $e){
+            throw new \Exception("Sorry Could look for users towns in Database..." . $e->getMessage());
+        }
     }
 
     public function searchCityInDB($searchTerm)

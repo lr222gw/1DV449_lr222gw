@@ -93,6 +93,7 @@ searchLocationButton.innerHTML = "Sök Platser";
 searchLocationButton.onclick = function(){
     var searchBoxContent = document.getElementById("searchBox").value;
     if(searchBoxContent.trim() !== "" ){
+        prepareLoadingScreen();
         searchLocation(searchBoxContent);
     }
 
@@ -236,7 +237,7 @@ $.ajax({
     data: {function: "isUserOnline"},
     success: function(data){
 
-        if(data != false){
+        if(data !== "false"){
             var login = document.getElementById("loginspotify");
 
             login.style.display = "none";
@@ -274,6 +275,22 @@ $.ajax({
 
             localStorage["UserID"] = data;
 
+
+
+            var usersFavoriteCitiesButton = document.createElement("input");
+            usersFavoriteCitiesButton.setAttribute("value", "Dina Favoritplatser");
+            usersFavoriteCitiesButton.setAttribute("type", "submit");
+            usersFavoriteCitiesButton.setAttribute("id", "favoritCityButton");
+            usersFavoriteCitiesButton.onclick = function(){
+                getUsersTownsDiv();
+            }
+            PopulateUsersTowns();
+
+            document.body.insertBefore(usersFavoriteCitiesButton, document.getElementById("myFavoriteTowns"));
+
+
+        }else{
+            localStorage["UserID"] = "notOnline";
         }
     }
 });
@@ -306,6 +323,132 @@ $.ajax({
     }
 
 }*/
+
+getUsersTownsDiv = function(){
+    var townDiv = document.getElementById("myFavoriteTowns");
+    townDiv.style.transition = "right 1s ease-in-out 0s";
+    townDiv.style.right = "0%";
+    if(document.getElementById("cancelCityButton") === null){
+
+        var TownfieldOne = document.createElement("input");
+        TownfieldOne.setAttribute("type", "text");
+        TownfieldOne.setAttribute("id", "TownfieldOne");
+
+        var TownfieldTwo = document.createElement("input");
+        TownfieldTwo.setAttribute("type", "text");
+        TownfieldTwo.setAttribute("id", "TownfieldTwo");
+
+        var TownfieldThree = document.createElement("input");
+        TownfieldThree.setAttribute("type", "text");
+        TownfieldThree.setAttribute("id", "TownfieldThree");
+
+        var TownfieldFour = document.createElement("input");
+        TownfieldFour.setAttribute("type", "text");
+        TownfieldFour.setAttribute("id", "TownfieldFour");
+
+        var TownfieldFive = document.createElement("input");
+        TownfieldFive.setAttribute("type", "text");
+        TownfieldFive.setAttribute("id", "TownfieldFive");
+
+        townDiv.appendChild(TownfieldOne);
+        townDiv.appendChild(TownfieldTwo);
+        townDiv.appendChild(TownfieldThree);
+        townDiv.appendChild(TownfieldFour);
+        townDiv.appendChild(TownfieldFive);
+
+        var SaveButton = document.createElement("button");
+        SaveButton.setAttribute("id", "SaveCityButton")
+        SaveButton.innerHTML = "Spara"
+        SaveButton.onclick = function(){
+            prepareLoadingScreen();
+            $.ajax({
+                type: "post",
+                url: "getstuff.php",
+                async: true,
+                data: {function: "saveUsersTowns", userID : localStorage["UserID"],
+                    TownOne: document.getElementById("TownfieldOne").value,
+                    TownTwo: document.getElementById("TownfieldTwo").value,
+                    TownThree: document.getElementById("TownfieldThree").value,
+                    TownFour: document.getElementById("TownfieldFour").value,
+                    TownFive: document.getElementById("TownfieldFive").value},
+                success: function(data){
+                    prepareLoadingScreen();
+                }
+            });
+        }
+
+        townDiv.appendChild(SaveButton);
+        var cancelButton = document.createElement("button");
+        cancelButton.setAttribute("id", "cancelCityButton")
+        cancelButton.innerHTML = "Stäng"
+        cancelButton.onclick = function(){
+            var townDiv = document.getElementById("myFavoriteTowns");
+            townDiv.style.transition = "right 1s ease-in-out 0s";
+            townDiv.style.right = "-50%";
+        }
+        townDiv.appendChild(cancelButton);
+    }
+
+
+    getUsersTowns();
+
+}
+PopulateUsersTowns = function(){
+    if(localStorage["UserID"] !== "notOnline"){
+        prepareLoadingScreen();
+        $.ajax({
+            type: "get",
+            url: "getstuff.php",
+            async: true,
+            data: {function: "getUsersTowns", userID: localStorage["UserID"]},
+            success: function(data){
+
+                if(data != "" && data != "[null]" && data !== null && data !== 'null'){
+
+                    var parsedData = JSON.parse(data);
+                    for(var i= 0 ; i < parsedData.length; i++){
+                        searchLocation(parsedData[i].TownName, "ignore");
+                    }
+                    setTimeout(function(){
+                        prepareLoadingScreen();
+                        console.log("favoriteTowns Populated complete! ");
+                    }, 5000);
+
+                }
+            }
+        });
+    }
+}
+
+getUsersTowns = function(){
+    if(localStorage["UserID"] !== "notOnline"){
+        prepareLoadingScreen();
+        $.ajax({
+            type: "get",
+            url: "getstuff.php",
+            async: true,
+            data: {function: "getUsersTowns", userID: localStorage["UserID"]},
+            success: function(data){
+
+                if(data != "" && data != "[null]" && data !== null && data !== 'null'){
+
+                    var parsedData = JSON.parse(data);
+
+                    document.getElementById("TownfieldOne").value = (parsedData[0] == undefined) ? "" : parsedData[0].TownName;
+                    document.getElementById("TownfieldTwo").value = (parsedData[1] == undefined) ? "" : parsedData[1].TownName;
+                    document.getElementById("TownfieldThree").value = (parsedData[2] == undefined) ? "" : parsedData[2].TownName;
+                    document.getElementById("TownfieldFour").value = (parsedData[3] == undefined) ? "" : parsedData[3].TownName;
+                    document.getElementById("TownfieldFive").value = (parsedData[4] == undefined) ? "" : parsedData[4].TownName;
+
+                    console.log("favoriteTowns complete! ");
+                }
+
+                prepareLoadingScreen();
+            }
+        });
+    }
+}
+
 searchArtists = function(searchTerm){
     prepareLoadingScreen();
     $.ajax({
@@ -487,8 +630,8 @@ FastPlaceArtistEvents = function(ArrayOfArtistEvents){
 
 }
 
-searchLocation = function(searchTerm){
-    prepareLoadingScreen();
+searchLocation = function(searchTerm, ignoreShow){
+    //prepareLoadingScreen();
     $.ajax({
         type: "post",
         url: "getstuff.php",
@@ -507,13 +650,17 @@ searchLocation = function(searchTerm){
                         // Om JSON.parse(data) blir 1 så innerbär det att den bara innehåller MetroID,
                         // Då vill vi inte skriva ut något, utan bara berätta att det ej finns några konserter här.
                         placeConcertsOnMap(parsedData);
-                        if(objects.MultiMarkers.length !== 0){
-                            objects.map.setCenter(new google.maps.LatLng(objects.MultiMarkers[objects.MultiMarkers.length-1].position.k, objects.MultiMarkers[objects.MultiMarkers.length-1].position.D))
-                            objects.map.setZoom(10);
-                        }else{
-                            objects.map.setCenter(new google.maps.LatLng(objects.markers[objects.markers.length-1].position.k, objects.markers[objects.markers.length-1].position.D))
-                            objects.map.setZoom(10);
+                        if(ignoreShow !== "ignore"){
+                            if(objects.MultiMarkers.length !== 0){
+                                objects.map.setCenter(new google.maps.LatLng(objects.MultiMarkers[objects.MultiMarkers.length-1].position.k, objects.MultiMarkers[objects.MultiMarkers.length-1].position.D))
+                                objects.map.setZoom(10);
+                            }else{
+                                objects.map.setCenter(new google.maps.LatLng(objects.markers[objects.markers.length-1].position.k, objects.markers[objects.markers.length-1].position.D))
+                                objects.map.setZoom(10);
+                            }
+                            prepareLoadingScreen();
                         }
+
 
                     }else{
                         var pos = new google.maps.LatLng(
@@ -526,13 +673,17 @@ searchLocation = function(searchTerm){
                             content: 'Tyvärr, inga uppkommande event här :('
                         });
                         infowindow.open();
-
+                        prepareLoadingScreen();
                     }
                     console.log("Location Populated! :D ");
+                }else{
+                    prepareLoadingScreen();
+
                 }
+
             }
             //objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
-            prepareLoadingScreen();
+
 
         }
     });
@@ -564,7 +715,7 @@ prepareLoadingScreen = function(){
 
 }
 
-setLastCheckedLocationName = function(){
+setLastCheckedLocationName = function(isUsersTown){
     $.ajax({
         type: "get",
         url: "getstuff.php",
@@ -573,14 +724,20 @@ setLastCheckedLocationName = function(){
         success: function(data){
 
             if(document.getElementById("LastChecked") == null){
+                if(isUsersTown === true){
+                    objects.usersTownPos = data;
+                }
                 var LastChecked = document.createElement("div");
                 LastChecked.setAttribute("id", "LastChecked");
                 LastChecked.innerHTML = data;
                 document.getElementById("logga").appendChild(LastChecked);
             }else{
+
                 document.getElementById("LastChecked").innerHTML = data;
 
-
+                if(data === "" || data === null){
+                    document.getElementById("LastChecked").innerHTML = "Inga konserter hittades :(";
+                }
 
                 document.getElementById("LastChecked").style.transition = "padding-top 0.4s ease-in 0s";
                 document.getElementById("LastChecked").style.paddingTop = "45" + "px";
@@ -621,7 +778,13 @@ getConcertsNearYourLocation = function(lat, lng){
         async: true,
         data: {function: "getLocationForConcerts", longtidue: lng ,latitude: lat, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
         success: function(data){
-            setLastCheckedLocationName();
+
+            var isTrueOrNot;
+            if(lat === undefined && lng === undefined ){
+                isTrueOrNot = true;
+            }else{ isTrueOrNot  = false;}
+
+            setLastCheckedLocationName(isTrueOrNot);
             if( data == "nope"){
                 console.log("Cant update until later! :< ");
             }else{

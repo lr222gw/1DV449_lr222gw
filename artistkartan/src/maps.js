@@ -6,6 +6,7 @@ var objects = {
     map : "",
     mapOption: "",
     userPosition: null,
+    usersTownPos : null,
     markers : [],
     MultiMarkers : [],
     lastUsedMarker : null,
