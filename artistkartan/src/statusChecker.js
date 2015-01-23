@@ -93,7 +93,7 @@ searchLocationButton.innerHTML = "Sök Platser";
 searchLocationButton.onclick = function(){
     var searchBoxContent = document.getElementById("searchBox").value;
     if(searchBoxContent.trim() !== "" ){
-        prepareLoadingScreen();
+        prepareLoadingScreen("Sökknappen för platser trycktes");
         searchLocation(searchBoxContent);
     }
 
@@ -282,6 +282,9 @@ $.ajax({
             usersFavoriteCitiesButton.setAttribute("type", "submit");
             usersFavoriteCitiesButton.setAttribute("id", "favoritCityButton");
             usersFavoriteCitiesButton.onclick = function(){
+                if(document.getElementById("hideOrShow").innerHTML === "DÖLJ"){
+                    document.getElementById("hideOrShow").click();
+                }
                 getUsersTownsDiv();
             }
             PopulateUsersTowns();
@@ -360,7 +363,7 @@ getUsersTownsDiv = function(){
         SaveButton.setAttribute("id", "SaveCityButton")
         SaveButton.innerHTML = "Spara"
         SaveButton.onclick = function(){
-            prepareLoadingScreen();
+            prepareLoadingScreen("GetUsersTownDiv påbörjas");
             $.ajax({
                 type: "post",
                 url: "getstuff.php",
@@ -372,7 +375,7 @@ getUsersTownsDiv = function(){
                     TownFour: document.getElementById("TownfieldFour").value,
                     TownFive: document.getElementById("TownfieldFive").value},
                 success: function(data){
-                    prepareLoadingScreen();
+                    prepareLoadingScreen("GetUsersTownDiv Avslutas");
                 }
             });
         }
@@ -395,7 +398,7 @@ getUsersTownsDiv = function(){
 }
 PopulateUsersTowns = function(){
     if(localStorage["UserID"] !== "notOnline"){
-        prepareLoadingScreen();
+        //prepareLoadingScreen("PopulateUsersTowns påbörjas");
         $.ajax({
             type: "get",
             url: "getstuff.php",
@@ -410,7 +413,8 @@ PopulateUsersTowns = function(){
                         searchLocation(parsedData[i].TownName, "ignore");
                     }
                     setTimeout(function(){
-                        prepareLoadingScreen();
+                        //prepareLoadingScreen("PopulateUsersTowns Avslutas");
+                        //^Denna tar jag bort då den gör att det blir en paus i laddningen när sidan laddas...
                         console.log("favoriteTowns Populated complete! ");
                     }, 5000);
 
@@ -422,7 +426,7 @@ PopulateUsersTowns = function(){
 
 getUsersTowns = function(){
     if(localStorage["UserID"] !== "notOnline"){
-        prepareLoadingScreen();
+        prepareLoadingScreen("GetUsersTowns Påbörjas");
         $.ajax({
             type: "get",
             url: "getstuff.php",
@@ -443,14 +447,14 @@ getUsersTowns = function(){
                     console.log("favoriteTowns complete! ");
                 }
 
-                prepareLoadingScreen();
+                prepareLoadingScreen("GetUsersTowns Avslutas");
             }
         });
     }
 }
 
 searchArtists = function(searchTerm){
-    prepareLoadingScreen();
+    prepareLoadingScreen("searchArtists påbörjas");
     $.ajax({
         type: "post",
         url: "getstuff.php",
@@ -467,7 +471,7 @@ searchArtists = function(searchTerm){
                 console.log("Artist search complete! ");
             }
 
-            prepareLoadingScreen();
+            prepareLoadingScreen("SearchArtist avlustas");
 
         }
     });
@@ -583,7 +587,7 @@ getArtistDataFromThisArtist = function(artistATag){
     if(document.getElementById("hideOrShow").innerHTML === "DÖLJ"){
         document.getElementById("hideOrShow").click();
     }
-    prepareLoadingScreen();
+    prepareLoadingScreen("GetArtistDataFromThisArtist påbörjas");
     $.ajax({
         type: "post",
         url: "getstuff.php",
@@ -611,7 +615,7 @@ getArtistDataFromThisArtist = function(artistATag){
 
             }
 
-            prepareLoadingScreen();
+            prepareLoadingScreen("GetArtistDataFromThisArtist Avslutas");
 
         }
     });
@@ -658,7 +662,7 @@ searchLocation = function(searchTerm, ignoreShow){
                                 objects.map.setCenter(new google.maps.LatLng(objects.markers[objects.markers.length-1].position.k, objects.markers[objects.markers.length-1].position.D))
                                 objects.map.setZoom(10);
                             }
-                            prepareLoadingScreen();
+                            prepareLoadingScreen("SearchLocation Avslutas i If-satsen 'parsedData.length !=  1'");
                         }
 
 
@@ -673,11 +677,11 @@ searchLocation = function(searchTerm, ignoreShow){
                             content: 'Tyvärr, inga uppkommande event här :('
                         });
                         infowindow.open();
-                        prepareLoadingScreen();
+                        prepareLoadingScreen("SearchLocation Avslutas i Else-satsen 'parsedData.length !=  1'");
                     }
                     console.log("Location Populated! :D ");
                 }else{
-                    prepareLoadingScreen();
+                    prepareLoadingScreen("SearchLocation Avslutas i Else-satsen 'data !=  && data != [null]'");
 
                 }
 
@@ -689,7 +693,8 @@ searchLocation = function(searchTerm, ignoreShow){
     });
 }
 
-prepareLoadingScreen = function(){
+prepareLoadingScreen = function(reasonForLog){
+    console.log(reasonForLog);
     if(document.getElementById("loadOverlay") == null){
         var overlay = document.createElement("div");
         overlay.id = "loadOverlay";
@@ -763,7 +768,10 @@ setLastCheckedLocationName = function(isUsersTown){
 getConcertsNearYourLocation = function(lat, lng){
 //namenet är lite missvisande, det den gör är att den hämtar Konserter för en viss location,
 //Om inget annat anges hämtas location från geolocation...
-    prepareLoadingScreen();
+    if(lat !== undefined && lng !== undefined){
+        prepareLoadingScreen("getConcertsNearYourLocation påbörjas");
+    }
+
     if(lat != null && lng != null){
         lat = lat;
         lng = lng;
@@ -813,7 +821,10 @@ getConcertsNearYourLocation = function(lat, lng){
                 }
             }
             //objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
-            prepareLoadingScreen();
+            if(lat !== undefined && lng !== undefined){
+                prepareLoadingScreen("GetConcertsNearYouAvslutas");
+            }
+
 
         }
     });
@@ -898,7 +909,7 @@ getConcertsFromCache = function(){
 
         }*/
 
-        prepareLoadingScreen();
+        //prepareLoadingScreen("GetConcertsFromCache Påbörjas");
         $.ajax({
             type: "get",
             url: "getstuff.php",
@@ -916,7 +927,7 @@ getConcertsFromCache = function(){
             }
         });
     }else{
-        prepareLoadingScreen();
+        //prepareLoadingScreen("GetConcertFromCache avslutas i Else-satsen 'objects.userPosition !== null'");
     }
 
 }
@@ -1367,7 +1378,7 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
 PopulatePlaylistButton.setAttribute("value", "Logga ut, ");
 PopulatePlaylistButton.setAttribute("type", "submit");*/
 populateUserWithArtistData = function(){
-    prepareLoadingScreen();
+    prepareLoadingScreen("PopulateUserWithArtistsData påbörjas");
     $.ajax({
         type: "get",
         url: "getstuff.php",
@@ -1387,7 +1398,7 @@ populateUserWithArtistData = function(){
 
             }
 
-            prepareLoadingScreen();
+            prepareLoadingScreen("PopulateUserWithArtistsData Avslutas");
 
             //var div = document.createElement("div");
             //div.setAttribute("")

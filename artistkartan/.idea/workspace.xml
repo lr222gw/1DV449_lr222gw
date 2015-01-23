@@ -28,7 +28,7 @@
           <file leaf-file-name="maps.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/maps.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="16" selection-start="133" selection-end="145" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5440">
+                <state line="237" column="4" selection-start="9278" selection-end="9278" vertical-scroll-proportion="0.0" vertical-offset="3825" max-vertical-offset="5440">
                   <folding />
                 </state>
               </provider>
@@ -91,7 +91,7 @@
           <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="685" column="3" selection-start="14537" selection-end="14537" vertical-scroll-proportion="-7.423077" vertical-offset="11452" max-vertical-offset="16014">
+                <state line="671" column="17" selection-start="14231" selection-end="14231" vertical-scroll-proportion="-14.730769" vertical-offset="11024" max-vertical-offset="16048">
                   <folding />
                 </state>
               </provider>
@@ -100,7 +100,7 @@
           <file leaf-file-name="statusChecker.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="787" column="32" selection-start="30896" selection-end="30896" vertical-scroll-proportion="0.4885321" vertical-offset="13166" max-vertical-offset="26843">
+                <state line="400" column="10" selection-start="15390" selection-end="15390" vertical-scroll-proportion="-0.05733945" vertical-offset="6825" max-vertical-offset="27030">
                   <folding />
                 </state>
               </provider>
@@ -188,9 +188,9 @@
         <option value="$PROJECT_DIR$/getLogin.php" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/dbstuff.php" />
-        <option value="$PROJECT_DIR$/src/style.css" />
         <option value="$PROJECT_DIR$/getstuff.php" />
         <option value="$PROJECT_DIR$/src/maps.js" />
+        <option value="$PROJECT_DIR$/src/style.css" />
         <option value="$PROJECT_DIR$/src/statusChecker.js" />
       </list>
     </option>
@@ -741,13 +741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="685" column="3" selection-start="14537" selection-end="14537" vertical-scroll-proportion="-7.423077" vertical-offset="11452" max-vertical-offset="16014">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/getstuff.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="496" column="98" selection-start="18677" selection-end="18677" vertical-scroll-proportion="0.0" vertical-offset="7357" max-vertical-offset="12087">
@@ -755,16 +748,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="671" column="17" selection-start="14231" selection-end="14231" vertical-scroll-proportion="-14.730769" vertical-offset="11024" max-vertical-offset="16048">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/maps.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="16" selection-start="133" selection-end="145" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5440">
+        <state line="237" column="4" selection-start="9278" selection-end="9278" vertical-scroll-proportion="0.0" vertical-offset="3825" max-vertical-offset="5440">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="787" column="32" selection-start="30896" selection-end="30896" vertical-scroll-proportion="0.4885321" vertical-offset="13166" max-vertical-offset="26843">
+        <state line="400" column="10" selection-start="15390" selection-end="15390" vertical-scroll-proportion="-0.05733945" vertical-offset="6825" max-vertical-offset="27030">
           <folding />
         </state>
       </provider>

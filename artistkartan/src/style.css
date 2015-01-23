@@ -669,6 +669,7 @@ button#closePrevNext {
     margin-bottom: 5px;
     cursor: pointer;
     font-family: Oswald;
+    z-index: 300;
 }
 #searchArtistButton {
     position: relative;
@@ -682,6 +683,7 @@ button#closePrevNext {
     border-radius: 0 0 10px 10px;
     font-family: Oswald;
     background-image: url("/pic/arrowForArtist.png");
+    z-index: 300;
 }
 img#divForArrow {
     width: 100px;
