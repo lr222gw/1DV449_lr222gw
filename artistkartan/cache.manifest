@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 19
+# rev 31
 
 CACHE:
 /favicon.ico
@@ -14,16 +14,37 @@ CACHE:
 /src/maps.js
 /src/statusChecker.js
 /src/style.css
-
-
+/pic/tutorialpics/GIF-hoppandepilar.gif
+/pic/tutorialpics/GIFRightClickORTouch.gif
+/pic/tutorialpics/MyTowns.gif
+/pic/tutorialpics/PNgonclick.png
+/pic/arrowForArtist.png
+/pic/oldPaper.png
+/pic/onGoing.png
+/apple-touch-icon.png
+/apple-touch-icon-57x57.png
+/apple-touch-icon-60x60.png
+/apple-touch-icon-72x72.png
+/apple-touch-icon-76x76.png
+/apple-touch-icon-precomposed.png
+/browserconfig.xml
+/favicon-16x16.png
+/favicon-32x32.png
+/favicon-96x96.png
+/mstile-70x70.png
+/mstile-150x150.png
+/mstile-310x150.png
+/Oswald-Regular.ttf
+/src/jquery-ui.js
+/pic/LoadingNormalSpeed.gif
+/pic/CloseButton.png
 
 NETWORK:
-/dbstuff.php
-/getAccess.php
 /getLogin.php
 /getstuff.php
-/login.php
 /logout.php
+/login.php
+/dbstuff.php
 http://maps.gstatic.com/
 http://maps.google.com/
 http://maps.googleapis.com/
@@ -38,6 +59,7 @@ http://cbk1.googleapis.com/
 http://www.google-analytics.com/
 http://gg.google.com/
 http://csi.gstatic.com/
+http://fonts.googleapis.com/
 *
 FALLBACK:
 # tomt 

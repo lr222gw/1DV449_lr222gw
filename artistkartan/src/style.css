@@ -995,6 +995,13 @@ img.basicGuideImg {
     border: rgb(0, 0, 0) solid 2px;
     border-radius: 3px;
 }
+div#offlineMessage {
+    width: 85%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Oswald;
+}
 /* ej min kod, har bar modifierat den :3 */
 /* Let's get this party started */
 ::-webkit-scrollbar {

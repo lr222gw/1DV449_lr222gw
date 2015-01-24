@@ -135,7 +135,7 @@ AboutButton.onclick = function(){
     AboutDiv.id = "aboutSiteDiv";
     AboutDiv.innerHTML = "" +
         "<div id='AboutContentBox'><h1>Om Sidan</h1>" +
-        "<p>Konsertkartan.com är en gratis tjänst byggd med GoogleMaps Api och Songkicks Api.</p>" +
+        "<p>Konsertkartan.com är en gratis tjänst byggd med GoogleMaps Api och Songkicks Api. Tjänsten täcker Europa och Amerika.</p>" +
         "<p>Konsertkartan.com är till för att hjälpa dig att hitta ett musikevent (konsert, festival, etc) i närheten av dig,</p>" +
         "<p>eller på ett ställe där du är nyfiken att kika efter event på. Kanske ska du åka utomlands och snabbt vill se exakt vart</p>" +
         "<p>du kan hitta festivaler och konserter i närheten av ditt hotell.</p>" +
@@ -145,10 +145,11 @@ AboutButton.onclick = function(){
         "<p class='thanksTo'>Songkick.com, För datan om konserter och event som dom står för.</p>" +
         "<p class='thanksTo'>Nicolas Mollet, För ikonen till kartmarkören.</p>" +
         "<p class='thanksTo'>Google Maps, För kartan och dess funktioner.</p>" +
-        "<p class='thanksTo'>Spotify, För att ta fram intressanta artister till användare.</p>" +
+        "<p class='thanksTo'>Spotify, För att ta fram intressanta artister till användare och tar hand om användarinloggning.</p>" +
         "<p class='contactMe'>Vill du kontakta mig av någon anledning är min Email här: <address><a href='mailto:lowe.raivio@gmail.com'>lowe.raivio@gmail.com</a></address></p>" +
         "<div id='songkickstuff'><a href='http://www.songkick.com'><img src='pic/songkick.png'></a></div>" +
         "<p>PS. Sidan använder Cookies och Localstorage... Men det har du redan accepterat, skriver det här bara för att ha det på två ställen...</p>" +
+        "<p>PPS. Sidan funkar bäst med Google Chrome-webbläsaren...</p>" +
         "</div>";
 
     var CloseButton = document.createElement("button");
@@ -237,74 +238,91 @@ hideOrShow.onclick = function(e){
 }
 
 
-$.ajax({
-    type: "get",
-    url: "getstuff.php",
-    async: true,
-    data: {function: "isUserOnline"},
-    success: function(data){
+    $.ajax({
+        type: "get",
+        url: "getstuff.php",
+        async: true,
+        data: {function: "isUserOnline"},
+        success: function(data){
+            localStorage["isOffline"] = "false";
+            if(data !== "false"){
+                var login = document.getElementById("loginspotify");
 
-        if(data !== "false"){
-            var login = document.getElementById("loginspotify");
+                login.style.display = "none";
 
-            login.style.display = "none";
+                var body = document.getElementById("body");
 
-            var body = document.getElementById("body");
+                var logout = document.createElement("form");
+                logout.setAttribute("method", "GET");
+                logout.setAttribute("action", "logout.php");
+                var logoutButton = document.createElement("input");
+                logoutButton.setAttribute("value", "Logga ut, " + data);
+                logoutButton.setAttribute("type", "submit");
+                logoutButton.setAttribute("id", "logout");
 
-            var logout = document.createElement("form");
-            logout.setAttribute("method", "GET");
-            logout.setAttribute("action", "logout.php");
-            var logoutButton = document.createElement("input");
-            logoutButton.setAttribute("value", "Logga ut, " + data);
-            logoutButton.setAttribute("type", "submit");
-            logoutButton.setAttribute("id", "logout");
+                logout.appendChild(logoutButton);
 
-            logout.appendChild(logoutButton);
+                document.getElementById("logga").insertBefore(logout, document.getElementById("loginspotify"));
 
-            document.getElementById("logga").insertBefore(logout, document.getElementById("loginspotify"));
+                var showMeArtists = document.createElement("a");
+                showMeArtists.setAttribute("id", "relevantArtists");
+                showMeArtists.setAttribute("href", "#")
+                showMeArtists.onclick = function(){
+                    stopAllAnimations();
+                    populateUserWithArtistData();
 
-            var showMeArtists = document.createElement("a");
-            showMeArtists.setAttribute("id", "relevantArtists");
-            showMeArtists.setAttribute("href", "#")
-            showMeArtists.onclick = function(){
-                stopAllAnimations();
-                populateUserWithArtistData();
-
-            }
-            var pTagg = document.createElement("p");
-            pTagg.innerHTML = "Visa relevanta artister";
-            showMeArtists.appendChild(pTagg);
-
-            var toolTipSpan = document.createElement("span");
-            toolTipSpan.innerHTML = "<p>Visar konserter av dina intressen.</p> <p>(av dom som syns på kartan)</p><p>Hämta konserter genom att <b>högerklicka</b> på plats av intresse.</p> <p>:)</p>";
-            showMeArtists.appendChild(toolTipSpan);
-            document.getElementById("logga").insertBefore(showMeArtists, document.getElementById("loginspotify"));
-
-            localStorage["UserID"] = data;
-
-
-
-            var usersFavoriteCitiesButton = document.createElement("input");
-            usersFavoriteCitiesButton.setAttribute("value", "Dina Favoritplatser");
-            usersFavoriteCitiesButton.setAttribute("type", "submit");
-            usersFavoriteCitiesButton.setAttribute("id", "favoritCityButton");
-            usersFavoriteCitiesButton.onclick = function(){
-                if(document.getElementById("hideOrShow").innerHTML === "DÖLJ"){
-                    document.getElementById("hideOrShow").click();
                 }
-                getUsersTownsDiv();
+                var pTagg = document.createElement("p");
+                pTagg.innerHTML = "Visa relevanta artister";
+                showMeArtists.appendChild(pTagg);
+
+                var toolTipSpan = document.createElement("span");
+                toolTipSpan.innerHTML = "<p>Visar konserter av dina intressen.</p> <p>(av dom som syns på kartan)</p><p>Hämta konserter genom att <b>högerklicka</b> på plats av intresse.</p> <p>:)</p>";
+                showMeArtists.appendChild(toolTipSpan);
+                document.getElementById("logga").insertBefore(showMeArtists, document.getElementById("loginspotify"));
+
+                localStorage["UserID"] = data;
+
+
+
+                var usersFavoriteCitiesButton = document.createElement("input");
+                usersFavoriteCitiesButton.setAttribute("value", "Dina Favoritplatser");
+                usersFavoriteCitiesButton.setAttribute("type", "submit");
+                usersFavoriteCitiesButton.setAttribute("id", "favoritCityButton");
+                usersFavoriteCitiesButton.onclick = function(){
+                    if(document.getElementById("hideOrShow").innerHTML === "DÖLJ"){
+                        document.getElementById("hideOrShow").click();
+                    }
+                    getUsersTownsDiv();
+                }
+                PopulateUsersTowns();
+
+                document.body.insertBefore(usersFavoriteCitiesButton, document.getElementById("myFavoriteTowns"));
+
+
+            }else{
+                localStorage["UserID"] = "notOnline";
             }
-            PopulateUsersTowns();
-
-            document.body.insertBefore(usersFavoriteCitiesButton, document.getElementById("myFavoriteTowns"));
-
-
-        }else{
-            localStorage["UserID"] = "notOnline";
+        },
+        error : function(){
+            //Om vi kommer hit så är anslutningen nere. då ska vi ändra allt till offline läge...
+            localStorage["isOffline"] = "true";
+            prepareLoadingScreen();//stänger av laddningen
+            setStuffOffline();
         }
-    }
-});
+    });
 
+setStuffOffline = function(){
+    document.getElementById("loginButton").disabled = true;
+    document.getElementById("loginButton").style.backgroundColor = "grey";
+    document.getElementById("searchLocationButton").style.backgroundColor = "grey";
+    document.getElementById("searchArtistButton").style.backgroundColor = "grey"
+    var message = document.createElement("div")
+    message.setAttribute("id", "offlineMessage")
+    message.innerHTML = "<h1>Du är offline, sidan är offline</h1><p>Hejsan kära användare, det verkar som du är offline.</p><p>Konsertkartan behöver internetuppkoppling för att kunna hämta data, tyvärr får vi inte cacha datan längre än i ett par timmar, så vi kan inte heller lista den här.</p><p>Vänligen kom tillbaka när ditt internet har uppkoppling igen :)</p>" +
+        "<p>Men om du väldigt gärna vill kan du gå in och läsa om sidan eller köra guiden.</p>"
+    document.body.insertBefore(message, document.getElementById("myFavoriteTowns"));
+}
 // Icke användbart, ny lösning ska implementeras... Denna är för krävande
 /*getConcertsFromYourCountry = function(lat, lng){
 
@@ -434,153 +452,165 @@ basicTutoral = function(){
 }
 
 getUsersTownsDiv = function(){
-    var townDiv = document.getElementById("myFavoriteTowns");
-    townDiv.style.transition = "right 1s ease-in-out 0s";
-    townDiv.style.right = "0%";
-    if(document.getElementById("cancelCityButton") === null){
+    if(localStorage["isOffline"] !== "true"){
+        var townDiv = document.getElementById("myFavoriteTowns");
+        townDiv.style.transition = "right 1s ease-in-out 0s";
+        townDiv.style.right = "0%";
+        if(document.getElementById("cancelCityButton") === null){
 
-        var TownfieldOne = document.createElement("input");
-        TownfieldOne.setAttribute("type", "text");
-        TownfieldOne.setAttribute("id", "TownfieldOne");
+            var TownfieldOne = document.createElement("input");
+            TownfieldOne.setAttribute("type", "text");
+            TownfieldOne.setAttribute("id", "TownfieldOne");
 
-        var TownfieldTwo = document.createElement("input");
-        TownfieldTwo.setAttribute("type", "text");
-        TownfieldTwo.setAttribute("id", "TownfieldTwo");
+            var TownfieldTwo = document.createElement("input");
+            TownfieldTwo.setAttribute("type", "text");
+            TownfieldTwo.setAttribute("id", "TownfieldTwo");
 
-        var TownfieldThree = document.createElement("input");
-        TownfieldThree.setAttribute("type", "text");
-        TownfieldThree.setAttribute("id", "TownfieldThree");
+            var TownfieldThree = document.createElement("input");
+            TownfieldThree.setAttribute("type", "text");
+            TownfieldThree.setAttribute("id", "TownfieldThree");
 
-        var TownfieldFour = document.createElement("input");
-        TownfieldFour.setAttribute("type", "text");
-        TownfieldFour.setAttribute("id", "TownfieldFour");
+            var TownfieldFour = document.createElement("input");
+            TownfieldFour.setAttribute("type", "text");
+            TownfieldFour.setAttribute("id", "TownfieldFour");
 
-        var TownfieldFive = document.createElement("input");
-        TownfieldFive.setAttribute("type", "text");
-        TownfieldFive.setAttribute("id", "TownfieldFive");
+            var TownfieldFive = document.createElement("input");
+            TownfieldFive.setAttribute("type", "text");
+            TownfieldFive.setAttribute("id", "TownfieldFive");
 
-        townDiv.appendChild(TownfieldOne);
-        townDiv.appendChild(TownfieldTwo);
-        townDiv.appendChild(TownfieldThree);
-        townDiv.appendChild(TownfieldFour);
-        townDiv.appendChild(TownfieldFive);
+            townDiv.appendChild(TownfieldOne);
+            townDiv.appendChild(TownfieldTwo);
+            townDiv.appendChild(TownfieldThree);
+            townDiv.appendChild(TownfieldFour);
+            townDiv.appendChild(TownfieldFive);
 
-        var SaveButton = document.createElement("button");
-        SaveButton.setAttribute("id", "SaveCityButton")
-        SaveButton.innerHTML = "Spara"
-        SaveButton.onclick = function(){
-            prepareLoadingScreen("GetUsersTownDiv påbörjas");
-            $.ajax({
-                type: "post",
-                url: "getstuff.php",
-                async: true,
-                data: {function: "saveUsersTowns", userID : localStorage["UserID"],
-                    TownOne: document.getElementById("TownfieldOne").value,
-                    TownTwo: document.getElementById("TownfieldTwo").value,
-                    TownThree: document.getElementById("TownfieldThree").value,
-                    TownFour: document.getElementById("TownfieldFour").value,
-                    TownFive: document.getElementById("TownfieldFive").value},
-                success: function(data){
-                    prepareLoadingScreen("GetUsersTownDiv Avslutas");
-                }
-            });
+            var SaveButton = document.createElement("button");
+            SaveButton.setAttribute("id", "SaveCityButton")
+            SaveButton.innerHTML = "Spara"
+            SaveButton.onclick = function(){
+                prepareLoadingScreen("GetUsersTownDiv påbörjas");
+                $.ajax({
+                    type: "post",
+                    url: "getstuff.php",
+                    async: true,
+                    data: {function: "saveUsersTowns", userID : localStorage["UserID"],
+                        TownOne: document.getElementById("TownfieldOne").value,
+                        TownTwo: document.getElementById("TownfieldTwo").value,
+                        TownThree: document.getElementById("TownfieldThree").value,
+                        TownFour: document.getElementById("TownfieldFour").value,
+                        TownFive: document.getElementById("TownfieldFive").value},
+                    success: function(data){
+                        prepareLoadingScreen("GetUsersTownDiv Avslutas");
+                    }
+                });
+            }
+
+            townDiv.appendChild(SaveButton);
+            var cancelButton = document.createElement("button");
+            cancelButton.setAttribute("id", "cancelCityButton")
+            cancelButton.innerHTML = "Stäng"
+            cancelButton.onclick = function(){
+                var townDiv = document.getElementById("myFavoriteTowns");
+                townDiv.style.transition = "right 1s ease-in-out 0s";
+                townDiv.style.right = "-50%";
+            }
+            townDiv.appendChild(cancelButton);
         }
 
-        townDiv.appendChild(SaveButton);
-        var cancelButton = document.createElement("button");
-        cancelButton.setAttribute("id", "cancelCityButton")
-        cancelButton.innerHTML = "Stäng"
-        cancelButton.onclick = function(){
-            var townDiv = document.getElementById("myFavoriteTowns");
-            townDiv.style.transition = "right 1s ease-in-out 0s";
-            townDiv.style.right = "-50%";
-        }
-        townDiv.appendChild(cancelButton);
+
+        getUsersTowns();
     }
 
-
-    getUsersTowns();
 
 }
 PopulateUsersTowns = function(){
-    if(localStorage["UserID"] !== "notOnline"){
-        //prepareLoadingScreen("PopulateUsersTowns påbörjas");
-        $.ajax({
-            type: "get",
-            url: "getstuff.php",
-            async: true,
-            data: {function: "getUsersTowns", userID: localStorage["UserID"]},
-            success: function(data){
+    if(localStorage["isOffline"] !== "true"){
+        if(localStorage["UserID"] !== "notOnline"){
+            //prepareLoadingScreen("PopulateUsersTowns påbörjas");
+            $.ajax({
+                type: "get",
+                url: "getstuff.php",
+                async: true,
+                data: {function: "getUsersTowns", userID: localStorage["UserID"]},
+                success: function(data){
 
-                if(data != "" && data != "[null]" && data !== null && data !== 'null'){
+                    if(data != "" && data != "[null]" && data !== null && data !== 'null'){
 
-                    var parsedData = JSON.parse(data);
-                    for(var i= 0 ; i < parsedData.length; i++){
-                        searchLocation(parsedData[i].TownName, "ignore");
+                        var parsedData = JSON.parse(data);
+                        for(var i= 0 ; i < parsedData.length; i++){
+                            searchLocation(parsedData[i].TownName, "ignore");
+                        }
+                        setTimeout(function(){
+                            //prepareLoadingScreen("PopulateUsersTowns Avslutas");
+                            //^Denna tar jag bort då den gör att det blir en paus i laddningen när sidan laddas...
+                            console.log("favoriteTowns Populated complete! ");
+                        }, 5000);
+
                     }
-                    setTimeout(function(){
-                        //prepareLoadingScreen("PopulateUsersTowns Avslutas");
-                        //^Denna tar jag bort då den gör att det blir en paus i laddningen när sidan laddas...
-                        console.log("favoriteTowns Populated complete! ");
-                    }, 5000);
-
                 }
-            }
-        });
+            });
+        }
     }
+
 }
 
 getUsersTowns = function(){
-    if(localStorage["UserID"] !== "notOnline"){
-        prepareLoadingScreen("GetUsersTowns Påbörjas");
+    if(localStorage["isOffline"] !== "true"){
+        if(localStorage["UserID"] !== "notOnline"){
+            prepareLoadingScreen("GetUsersTowns Påbörjas");
+            $.ajax({
+                type: "get",
+                url: "getstuff.php",
+                async: true,
+                data: {function: "getUsersTowns", userID: localStorage["UserID"]},
+                success: function(data){
+
+                    if(data != "" && data != "[null]" && data !== null && data !== 'null'){
+
+                        var parsedData = JSON.parse(data);
+
+                        document.getElementById("TownfieldOne").value = (parsedData[0] == undefined) ? "" : parsedData[0].TownName;
+                        document.getElementById("TownfieldTwo").value = (parsedData[1] == undefined) ? "" : parsedData[1].TownName;
+                        document.getElementById("TownfieldThree").value = (parsedData[2] == undefined) ? "" : parsedData[2].TownName;
+                        document.getElementById("TownfieldFour").value = (parsedData[3] == undefined) ? "" : parsedData[3].TownName;
+                        document.getElementById("TownfieldFive").value = (parsedData[4] == undefined) ? "" : parsedData[4].TownName;
+
+                        console.log("favoriteTowns complete! ");
+                    }
+
+                    prepareLoadingScreen("GetUsersTowns Avslutas");
+                }
+            });
+        }
+    }
+
+}
+
+searchArtists = function(searchTerm){
+    if(localStorage["isOffline"] !== "true"){
+        prepareLoadingScreen("searchArtists påbörjas");
         $.ajax({
-            type: "get",
+            type: "post",
             url: "getstuff.php",
             async: true,
-            data: {function: "getUsersTowns", userID: localStorage["UserID"]},
+            data: {function: "searchArtists", searchTerm: searchTerm, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
             success: function(data){
 
                 if(data != "" && data != "[null]" && data !== null && data !== 'null'){
 
                     var parsedData = JSON.parse(data);
 
-                    document.getElementById("TownfieldOne").value = (parsedData[0] == undefined) ? "" : parsedData[0].TownName;
-                    document.getElementById("TownfieldTwo").value = (parsedData[1] == undefined) ? "" : parsedData[1].TownName;
-                    document.getElementById("TownfieldThree").value = (parsedData[2] == undefined) ? "" : parsedData[2].TownName;
-                    document.getElementById("TownfieldFour").value = (parsedData[3] == undefined) ? "" : parsedData[3].TownName;
-                    document.getElementById("TownfieldFive").value = (parsedData[4] == undefined) ? "" : parsedData[4].TownName;
+                    handleArtistData(parsedData);
 
-                    console.log("favoriteTowns complete! ");
+                    console.log("Artist search complete! ");
                 }
 
-                prepareLoadingScreen("GetUsersTowns Avslutas");
+                prepareLoadingScreen("SearchArtist avlustas");
+
             }
         });
     }
-}
 
-searchArtists = function(searchTerm){
-    prepareLoadingScreen("searchArtists påbörjas");
-    $.ajax({
-        type: "post",
-        url: "getstuff.php",
-        async: true,
-        data: {function: "searchArtists", searchTerm: searchTerm, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
-        success: function(data){
-
-            if(data != "" && data != "[null]" && data !== null && data !== 'null'){
-
-                var parsedData = JSON.parse(data);
-
-                handleArtistData(parsedData);
-
-                console.log("Artist search complete! ");
-            }
-
-            prepareLoadingScreen("SearchArtist avlustas");
-
-        }
-    });
 }
 
 goTroughArtistEvent = function(){
@@ -690,41 +720,44 @@ handleArtistData = function(artistsData){
 }
 
 getArtistDataFromThisArtist = function(artistATag){
-    if(document.getElementById("hideOrShow").innerHTML === "DÖLJ"){
-        document.getElementById("hideOrShow").click();
-    }
-    prepareLoadingScreen("GetArtistDataFromThisArtist påbörjas");
-    $.ajax({
-        type: "post",
-        url: "getstuff.php",
-        async: true,
-        data: {function: "getArtistEventDataFromCalenderURL", artistCalenderURL: artistATag.calenderUrl},
-        success: function(data){
+    if(localStorage["isOffline"] !== "true"){
+        if(document.getElementById("hideOrShow").innerHTML === "DÖLJ"){
+            document.getElementById("hideOrShow").click();
+        }
+        prepareLoadingScreen("GetArtistDataFromThisArtist påbörjas");
+        $.ajax({
+            type: "post",
+            url: "getstuff.php",
+            async: true,
+            data: {function: "getArtistEventDataFromCalenderURL", artistCalenderURL: artistATag.calenderUrl},
+            success: function(data){
 
-            if(data != "" && data != "[null]"&& data !== null && data !== 'null'){
+                if(data != "" && data != "[null]"&& data !== null && data !== 'null'){
 
-                var parsedData = JSON.parse(data);
+                    var parsedData = JSON.parse(data);
 
-                if(parsedData !== "no Events Planned"){
-                    FastPlaceArtistEvents(parsedData);
-                    goTroughArtistEvent();
-                    console.log("Event of artist found!");
-                }else{
-                    var alert = document.createElement("div");
-                    alert.innerHTML = "<p>Artisten du sökt efter har tyvärr inga planerade event! (Enligt Songkick.com) :(</p>";
-                    alert.setAttribute("id", "alertBox");
-                    alert.style.display = "none";
-                    alert.setAttribute("title", "Det här var ju tråkigt...");
-                    document.body.appendChild(alert);
-                    $( "#alertBox" ).dialog();//alert("Artisten du sökt efter har tyvärr inga planerade event! (Enligt Songkick.com) :(");
+                    if(parsedData !== "no Events Planned"){
+                        FastPlaceArtistEvents(parsedData);
+                        goTroughArtistEvent();
+                        console.log("Event of artist found!");
+                    }else{
+                        var alert = document.createElement("div");
+                        alert.innerHTML = "<p>Artisten du sökt efter har tyvärr inga planerade event! (Enligt Songkick.com) :(</p>";
+                        alert.setAttribute("id", "alertBox");
+                        alert.style.display = "none";
+                        alert.setAttribute("title", "Det här var ju tråkigt...");
+                        document.body.appendChild(alert);
+                        $( "#alertBox" ).dialog();//alert("Artisten du sökt efter har tyvärr inga planerade event! (Enligt Songkick.com) :(");
+                    }
+
                 }
 
+                prepareLoadingScreen("GetArtistDataFromThisArtist Avslutas");
+
             }
+        });
+    }
 
-            prepareLoadingScreen("GetArtistDataFromThisArtist Avslutas");
-
-        }
-    });
 }
 FastPlaceArtistEvents = function(ArrayOfArtistEvents){
     //Den här funktionen gör lite onödigt mycket... den var inte tänkt att användas såhär från början
@@ -741,62 +774,65 @@ FastPlaceArtistEvents = function(ArrayOfArtistEvents){
 }
 
 searchLocation = function(searchTerm, ignoreShow){
-    //prepareLoadingScreen();
-    $.ajax({
-        type: "post",
-        url: "getstuff.php",
-        async: true,
-        data: {function: "searchCity", searchTerm: searchTerm, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
-        success: function(data){
-            setLastCheckedLocationName();
-            if( data == "nope"){
-                console.log("Cant update until later! :< ");
-            }else{
-                if(data != "" && data != "[null]"){
-                    //console.log(data);
-                    var parsedData = JSON.parse(data);
-                    //var parsedData = JSON.parse(parsedData);// Det blir visst
-                    if(parsedData.length !=  1){
-                        // Om JSON.parse(data) blir 1 så innerbär det att den bara innehåller MetroID,
-                        // Då vill vi inte skriva ut något, utan bara berätta att det ej finns några konserter här.
-                        placeConcertsOnMap(parsedData);
-                        if(ignoreShow !== "ignore"){
-                            if(objects.MultiMarkers.length !== 0){
-                                objects.map.setCenter(new google.maps.LatLng(objects.MultiMarkers[objects.MultiMarkers.length-1].position.k, objects.MultiMarkers[objects.MultiMarkers.length-1].position.D))
-                                objects.map.setZoom(10);
-                            }else{
-                                objects.map.setCenter(new google.maps.LatLng(objects.markers[objects.markers.length-1].position.k, objects.markers[objects.markers.length-1].position.D))
-                                objects.map.setZoom(10);
-                            }
-                            prepareLoadingScreen("SearchLocation Avslutas i If-satsen 'parsedData.length !=  1'");
-                        }
-
-
-                    }else{
-                        var pos = new google.maps.LatLng(
-                            lat,
-                            lng);
-
-                        var infowindow = new InfoBubble({
-                            map: objects.map,
-                            position: pos,
-                            content: 'Tyvärr, inga uppkommande event här :('
-                        });
-                        infowindow.open();
-                        prepareLoadingScreen("SearchLocation Avslutas i Else-satsen 'parsedData.length !=  1'");
-                    }
-                    console.log("Location Populated! :D ");
+    if(localStorage["isOffline"] !== "true"){
+        //prepareLoadingScreen();
+        $.ajax({
+            type: "post",
+            url: "getstuff.php",
+            async: true,
+            data: {function: "searchCity", searchTerm: searchTerm, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
+            success: function(data){
+                setLastCheckedLocationName();
+                if( data == "nope"){
+                    console.log("Cant update until later! :< ");
                 }else{
-                    prepareLoadingScreen("SearchLocation Avslutas i Else-satsen 'data !=  && data != [null]'");
+                    if(data != "" && data != "[null]"){
+                        //console.log(data);
+                        var parsedData = JSON.parse(data);
+                        //var parsedData = JSON.parse(parsedData);// Det blir visst
+                        if(parsedData.length !=  1){
+                            // Om JSON.parse(data) blir 1 så innerbär det att den bara innehåller MetroID,
+                            // Då vill vi inte skriva ut något, utan bara berätta att det ej finns några konserter här.
+                            placeConcertsOnMap(parsedData);
+                            if(ignoreShow !== "ignore"){
+                                if(objects.MultiMarkers.length !== 0){
+                                    objects.map.setCenter(new google.maps.LatLng(objects.MultiMarkers[objects.MultiMarkers.length-1].position.k, objects.MultiMarkers[objects.MultiMarkers.length-1].position.D))
+                                    objects.map.setZoom(10);
+                                }else{
+                                    objects.map.setCenter(new google.maps.LatLng(objects.markers[objects.markers.length-1].position.k, objects.markers[objects.markers.length-1].position.D))
+                                    objects.map.setZoom(10);
+                                }
+                                prepareLoadingScreen("SearchLocation Avslutas i If-satsen 'parsedData.length !=  1'");
+                            }
+
+
+                        }else{
+                            var pos = new google.maps.LatLng(
+                                lat,
+                                lng);
+
+                            var infowindow = new InfoBubble({
+                                map: objects.map,
+                                position: pos,
+                                content: 'Tyvärr, inga uppkommande event här :('
+                            });
+                            infowindow.open();
+                            prepareLoadingScreen("SearchLocation Avslutas i Else-satsen 'parsedData.length !=  1'");
+                        }
+                        console.log("Location Populated! :D ");
+                    }else{
+                        prepareLoadingScreen("SearchLocation Avslutas i Else-satsen 'data !=  && data != [null]'");
+
+                    }
 
                 }
+                //objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
+
 
             }
-            //objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
+        });
+    }
 
-
-        }
-    });
 }
 
 prepareLoadingScreen = function(reasonForLog){
@@ -827,113 +863,119 @@ prepareLoadingScreen = function(reasonForLog){
 }
 
 setLastCheckedLocationName = function(isUsersTown){
-    $.ajax({
-        type: "get",
-        url: "getstuff.php",
-        async: true,
-        data: {function: "getLastCheckedLocationName"},
-        success: function(data){
+    if(localStorage["isOffline"] !== "true"){
+        $.ajax({
+            type: "get",
+            url: "getstuff.php",
+            async: true,
+            data: {function: "getLastCheckedLocationName"},
+            success: function(data){
 
-            if(document.getElementById("LastChecked") == null){
-                if(isUsersTown === true){
-                    objects.usersTownPos = data;
+                if(document.getElementById("LastChecked") == null){
+                    if(isUsersTown === true){
+                        objects.usersTownPos = data;
+                    }
+                    var LastChecked = document.createElement("div");
+                    LastChecked.setAttribute("id", "LastChecked");
+                    LastChecked.innerHTML = data;
+                    document.getElementById("logga").appendChild(LastChecked);
+                }else{
+
+                    document.getElementById("LastChecked").innerHTML = data;
+
+                    if(data === "" || data === null){
+                        document.getElementById("LastChecked").innerHTML = "Inga konserter hittades :(";
+                    }
+
+                    document.getElementById("LastChecked").style.transition = "padding-top 0.4s ease-in 0s";
+                    document.getElementById("LastChecked").style.paddingTop = "45" + "px";
+                    /*setTimeout(function(){
+                     document.getElementById("LastChecked").style.transition = "padding-top 0.1s ease-in-out 0s";
+                     document.getElementById("LastChecked").style.paddingTop = "55" + "px";
+                     },400);*/
+                    setTimeout(function(){
+                        document.getElementById("LastChecked").style.transition = "padding-top 0.4s ease-out 0s";
+                        document.getElementById("LastChecked").style.paddingTop = "25" + "px";
+                    },400);
+
+
+
+
                 }
-                var LastChecked = document.createElement("div");
-                LastChecked.setAttribute("id", "LastChecked");
-                LastChecked.innerHTML = data;
-                document.getElementById("logga").appendChild(LastChecked);
-            }else{
-
-                document.getElementById("LastChecked").innerHTML = data;
-
-                if(data === "" || data === null){
-                    document.getElementById("LastChecked").innerHTML = "Inga konserter hittades :(";
-                }
-
-                document.getElementById("LastChecked").style.transition = "padding-top 0.4s ease-in 0s";
-                document.getElementById("LastChecked").style.paddingTop = "45" + "px";
-                /*setTimeout(function(){
-                    document.getElementById("LastChecked").style.transition = "padding-top 0.1s ease-in-out 0s";
-                    document.getElementById("LastChecked").style.paddingTop = "55" + "px";
-                },400);*/
-                setTimeout(function(){
-                    document.getElementById("LastChecked").style.transition = "padding-top 0.4s ease-out 0s";
-                    document.getElementById("LastChecked").style.paddingTop = "25" + "px";
-                },400);
-
-
 
 
             }
+        });
+    }
 
-
-        }
-    });
 }
 
 getConcertsNearYourLocation = function(lat, lng){
-//namenet är lite missvisande, det den gör är att den hämtar Konserter för en viss location,
-//Om inget annat anges hämtas location från geolocation...
-    if(lat !== undefined && lng !== undefined){
-        prepareLoadingScreen("getConcertsNearYourLocation påbörjas");
-    }
-
-    if(lat != null && lng != null){
-        lat = lat;
-        lng = lng;
-    }else{
-        lat = objects.userPosition.k;
-        lng = objects.userPosition.D;
-    }
-
-    $.ajax({
-        type: "post",
-        url: "getstuff.php",
-        async: true,
-        data: {function: "getLocationForConcerts", longtidue: lng ,latitude: lat, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
-        success: function(data){
-
-            var isTrueOrNot;
-            if(lat === undefined && lng === undefined ){
-                isTrueOrNot = true;
-            }else{ isTrueOrNot  = false;}
-
-            setLastCheckedLocationName(isTrueOrNot);
-            if( data == "nope"){
-                console.log("Cant update until later! :< ");
-            }else{
-                if(data != "" && data != "[null]"){
-                    //console.log(data);
-                    var parsedData = JSON.parse(data);
-                    if(parsedData.length !=  1){
-                        // Om JSON.parse(data) blir 1 så innerbär det att den bara innehåller MetroID,
-                        // Då vill vi inte skriva ut något, utan bara berätta att det ej finns några konserter här.
-                    placeConcertsOnMap(parsedData);
-
-                    }else{
-                        var pos = new google.maps.LatLng(
-                            lat,
-                            lng);
-
-                        var infowindow = new InfoBubble({
-                            map: objects.map,
-                            position: pos,
-                            content: 'Tyvärr, inga uppkommande event här :('
-                        });
-                        infowindow.open();
-
-                    }
-                    console.log("Location Populated! :D ");
-                }
-            }
-            //objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
-            if(lat !== undefined && lng !== undefined){
-                prepareLoadingScreen("GetConcertsNearYouAvslutas");
-            }
-
-
+    if(localStorage["isOffline"] !== "true"){
+    //namenet är lite missvisande, det den gör är att den hämtar Konserter för en viss location,
+    //Om inget annat anges hämtas location från geolocation...
+        if(lat !== undefined && lng !== undefined){
+            prepareLoadingScreen("getConcertsNearYourLocation påbörjas");
         }
-    });
+
+        if(lat != null && lng != null){
+            lat = lat;
+            lng = lng;
+        }else{
+            lat = objects.userPosition.k;
+            lng = objects.userPosition.D;
+        }
+
+        $.ajax({
+            type: "post",
+            url: "getstuff.php",
+            async: true,
+            data: {function: "getLocationForConcerts", longtidue: lng ,latitude: lat, metroArr: JSON.stringify(objects.LocationMapMetroIDOnMap)},
+            success: function(data){
+
+                var isTrueOrNot;
+                if(lat === undefined && lng === undefined ){
+                    isTrueOrNot = true;
+                }else{ isTrueOrNot  = false;}
+
+                setLastCheckedLocationName(isTrueOrNot);
+                if( data == "nope"){
+                    console.log("Cant update until later! :< ");
+                }else{
+                    if(data != "" && data != "[null]"){
+                        //console.log(data);
+                        var parsedData = JSON.parse(data);
+                        if(parsedData.length !=  1){
+                            // Om JSON.parse(data) blir 1 så innerbär det att den bara innehåller MetroID,
+                            // Då vill vi inte skriva ut något, utan bara berätta att det ej finns några konserter här.
+                            placeConcertsOnMap(parsedData);
+
+                        }else{
+                            var pos = new google.maps.LatLng(
+                                lat,
+                                lng);
+
+                            var infowindow = new InfoBubble({
+                                map: objects.map,
+                                position: pos,
+                                content: 'Tyvärr, inga uppkommande event här :('
+                            });
+                            infowindow.open();
+
+                        }
+                        console.log("Location Populated! :D ");
+                    }
+                }
+                //objects.map.setOptions({draggableCursor: 'url(pic/openhand.ico), move'});
+                if(lat !== undefined && lng !== undefined){
+                    prepareLoadingScreen("GetConcertsNearYouAvslutas");
+                }
+
+
+            }
+        });
+    }
+
 
 
 
@@ -948,93 +990,98 @@ apiIsDownErrorScreen = function(){
 }
 
 checkApiStatus = function(){
-    $.ajax({
-        type: "get",
-        url: "getstuff.php",
-        async: true,
-        data: {function: "checkStatusOnApi"},
-        success: function(data){
-            var parsedData = JSON.parse(data);
-            if(parsedData.spotifyStatus == "fail" || parsedData.songKickStatus == "fail" || !(typeof google === 'object') || !(typeof google.maps === 'object')){
-                //här kontrollerar vi så att våra Apier är som de ska.
-                //Kontrollerar Sonkick och Google..
-                apiIsDownErrorScreen();
-                throw new Error("Något är fel på songkick eller google!");
-
-            }
-
-        }
-    });
-}
-
-getConcertsFromCache = function(){
-
-    if(objects.userPosition !== null){
-    //Cache hämtas bara om geoLocation är satt. Då kan vi räkna ut ett område att hämta datan från..
-
-        //Med google maps skapar vien cirkel som ska sträcka sig över en viss radie,
-        //Då kan vi hämta ut data som kan hjälpa oss att hämta data som är indom den radien (radie, är det rätt ord?)
-
-
-        objects.myPositionMarker = new google.maps.Marker({
-            map: objects.map,
-            position: new google.maps.LatLng(objects.userPosition.k, objects.userPosition.D),
-            title: 'Norrköping'
-        });
-
-        objects.myPositionCicle = new google.maps.Circle({
-            map: objects.map,
-            radius: 1000 * 200,    // 20mil
-            fillColor: '#AA0000'
-        });
-        objects.myPositionCicle.bindTo('center', objects.myPositionMarker, 'position');
-
-        var bounds = objects.myPositionCicle.getBounds()
-
-        var TopOfCircle = bounds.getNorthEast().k;
-        var BottomOfCircle = bounds.getSouthWest().k;
-        var LeftOfCircle = bounds.getSouthWest().D;
-        var rightOfCircle = bounds.getNorthEast().D;
-
-        objects.myPositionMarker.setVisible(false);
-        objects.myPositionCicle.setMap(null);
-
-        google.maps.event.addListener(objects.myPositionCicle, "rightclick", function(event){
-
-            google.maps.event.trigger(objects.map, 'rightclick', event);
-        });
-
-        //exempel för uträkning av "Vad finns inne i cirkeln"
-        /*var XnrkLat = 58.43048192568003;
-        var YnrkLng = 15.66375732421875;
-
-        if(XnrkLat <  TopOfCircle    && YnrkLng <  rightOfCircle &&
-           XnrkLat >  BottomOfCircle && YnrkLng >  LeftOfCircle){
-
-                alert();
-
-        }*/
-
-        //prepareLoadingScreen("GetConcertsFromCache Påbörjas");
+    if(localStorage["isOffline"] !== "true"){
         $.ajax({
             type: "get",
             url: "getstuff.php",
             async: true,
-            data: {function: "getLocationsFromCache", top:TopOfCircle, bottom:BottomOfCircle,left:LeftOfCircle, right:rightOfCircle},//, lat: objects.userPosition.k, lng : objects.userPosition.D},
+            data: {function: "checkStatusOnApi"},
             success: function(data){
-                localStorage["CachadeKonserter"] = data;
-
                 var parsedData = JSON.parse(data);
+                if(parsedData.spotifyStatus == "fail" || parsedData.songKickStatus == "fail" || !(typeof google === 'object') || !(typeof google.maps === 'object')){
+                    //här kontrollerar vi så att våra Apier är som de ska.
+                    //Kontrollerar Sonkick och Google..
+                    apiIsDownErrorScreen();
+                    throw new Error("Något är fel på songkick eller google!");
 
-                data = parsedData;//.data; <- onödigt men bara omskriven kod..
+                }
 
-                var ArrayOfLocationsWithConcerts = data;//JSON.parse(data);
-                FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
             }
         });
-    }else{
-        //prepareLoadingScreen("GetConcertFromCache avslutas i Else-satsen 'objects.userPosition !== null'");
     }
+
+}
+
+getConcertsFromCache = function(){
+    if(localStorage["isOffline"] !== "true"){
+        if(objects.userPosition !== null){
+            //Cache hämtas bara om geoLocation är satt. Då kan vi räkna ut ett område att hämta datan från..
+
+            //Med google maps skapar vien cirkel som ska sträcka sig över en viss radie,
+            //Då kan vi hämta ut data som kan hjälpa oss att hämta data som är indom den radien (radie, är det rätt ord?)
+
+
+            objects.myPositionMarker = new google.maps.Marker({
+                map: objects.map,
+                position: new google.maps.LatLng(objects.userPosition.k, objects.userPosition.D),
+                title: 'Norrköping'
+            });
+
+            objects.myPositionCicle = new google.maps.Circle({
+                map: objects.map,
+                radius: 1000 * 200,    // 20mil
+                fillColor: '#AA0000'
+            });
+            objects.myPositionCicle.bindTo('center', objects.myPositionMarker, 'position');
+
+            var bounds = objects.myPositionCicle.getBounds()
+
+            var TopOfCircle = bounds.getNorthEast().k;
+            var BottomOfCircle = bounds.getSouthWest().k;
+            var LeftOfCircle = bounds.getSouthWest().D;
+            var rightOfCircle = bounds.getNorthEast().D;
+
+            objects.myPositionMarker.setVisible(false);
+            objects.myPositionCicle.setMap(null);
+
+            google.maps.event.addListener(objects.myPositionCicle, "rightclick", function(event){
+
+                google.maps.event.trigger(objects.map, 'rightclick', event);
+            });
+
+            //exempel för uträkning av "Vad finns inne i cirkeln"
+            /*var XnrkLat = 58.43048192568003;
+             var YnrkLng = 15.66375732421875;
+
+             if(XnrkLat <  TopOfCircle    && YnrkLng <  rightOfCircle &&
+             XnrkLat >  BottomOfCircle && YnrkLng >  LeftOfCircle){
+
+             alert();
+
+             }*/
+
+            //prepareLoadingScreen("GetConcertsFromCache Påbörjas");
+            $.ajax({
+                type: "get",
+                url: "getstuff.php",
+                async: true,
+                data: {function: "getLocationsFromCache", top:TopOfCircle, bottom:BottomOfCircle,left:LeftOfCircle, right:rightOfCircle},//, lat: objects.userPosition.k, lng : objects.userPosition.D},
+                success: function(data){
+                    localStorage["CachadeKonserter"] = data;
+
+                    var parsedData = JSON.parse(data);
+
+                    data = parsedData;//.data; <- onödigt men bara omskriven kod..
+
+                    var ArrayOfLocationsWithConcerts = data;//JSON.parse(data);
+                    FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
+                }
+            });
+        }else{
+            //prepareLoadingScreen("GetConcertFromCache avslutas i Else-satsen 'objects.userPosition !== null'");
+        }
+    }
+
 
 }
 FastPlaceConcertWithArrayOfLocationsWithConcerts = function(ArrayOfLocationsWithConcerts){
@@ -1484,38 +1531,41 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
 PopulatePlaylistButton.setAttribute("value", "Logga ut, ");
 PopulatePlaylistButton.setAttribute("type", "submit");*/
 populateUserWithArtistData = function(){
-    prepareLoadingScreen("PopulateUserWithArtistsData påbörjas");
-    $.ajax({
-        type: "get",
-        url: "getstuff.php",
-        async: true,
-        data: {function: "getUsersArtists"},
-        success: function(data){
-            if( data === "nope"){
-                console.log("Cant update until later! :< ");
-                spotifyFunctionSomething();
-                objects.map.setZoom(5);
-            }else{
-                console.log("Artist Populated! :D ");
-                var name = localStorage["UserID"];
-                localStorage[name + "ArtistArr"] =  JSON.parse(data);
-                spotifyFunctionSomething();
-                objects.map.setZoom(5);
+    if(localStorage["isOffline"] !== "true"){
+        prepareLoadingScreen("PopulateUserWithArtistsData påbörjas");
+        $.ajax({
+            type: "get",
+            url: "getstuff.php",
+            async: true,
+            data: {function: "getUsersArtists"},
+            success: function(data){
+                if( data === "nope"){
+                    console.log("Cant update until later! :< ");
+                    spotifyFunctionSomething();
+                    objects.map.setZoom(5);
+                }else{
+                    console.log("Artist Populated! :D ");
+                    var name = localStorage["UserID"];
+                    localStorage[name + "ArtistArr"] =  JSON.parse(data);
+                    spotifyFunctionSomething();
+                    objects.map.setZoom(5);
 
+                }
+
+                prepareLoadingScreen("PopulateUserWithArtistsData Avslutas");
+
+                //var div = document.createElement("div");
+                //div.setAttribute("")
+
+                //div.innerHTML = data;
+                /*for(var i = 0; i < data.length; i++){
+                 div.innerHTML += data[i];
+                 }*/
+                //document.body.insertBefore(div, document.body.firstChild);
             }
+        });
+    }
 
-            prepareLoadingScreen("PopulateUserWithArtistsData Avslutas");
-
-            //var div = document.createElement("div");
-            //div.setAttribute("")
-
-            //div.innerHTML = data;
-            /*for(var i = 0; i < data.length; i++){
-             div.innerHTML += data[i];
-             }*/
-            //document.body.insertBefore(div, document.body.firstChild);
-        }
-    });
 }
 
 function stopAllAnimations(){
