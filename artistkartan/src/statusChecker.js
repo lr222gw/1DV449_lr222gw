@@ -71,7 +71,7 @@ document.getElementById("logga").appendChild(searchBox);
 document.getElementById("searchBox").addEventListener("keydown", function(e) {
     if (!e) { var e = window.event; }
 
-    if(document.getElementById("divForArrow") === null){
+    /*if(document.getElementById("divForArrow") === null){
         var imageArrow = document.createElement("img");
         imageArrow.setAttribute("id", "arrowForArtist");
         imageArrow.setAttribute("src", "/pic/arrowForArtist.png");
@@ -80,11 +80,11 @@ document.getElementById("searchBox").addEventListener("keydown", function(e) {
         DivImageArrow.appendChild(imageArrow);
         DivImageArrow.innerHTML += "<p id='arrowText'>Tryck på knappen för att söka artister!</p>";
         document.getElementById("logga").insertBefore(DivImageArrow, document.getElementById("searchArtistButton").nextSibling);
-    }
+    }*/
 
     // Enter is pressed
     if (e.keyCode == 13) { window.setTimeout(function () {
-        document.getElementById("divForArrow").parentNode.removeChild(document.getElementById("divForArrow"));
+        /*document.getElementById("divForArrow").parentNode.removeChild(document.getElementById("divForArrow"));*/
         document.getElementById('searchLocationButton').click();
     }, 0);  }
 }, false);
