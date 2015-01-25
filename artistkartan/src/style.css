@@ -195,6 +195,10 @@ p.tinyText {
     padding: 1px;
     padding-top: 2px;
 }
+.fb-like.fb_iframe_widget {
+    position: absolute;
+}
+
 
 /*@keyframes hideMe{
     from{bottom: 0%;}
@@ -210,6 +214,7 @@ p.tinyText {
         font-size: 15px;
     }
 }
+
 
 @media all and   (max-width: 1050px) {
     div#LastChecked{
@@ -243,6 +248,11 @@ p.tinyText {
 
 }
 
+@media all and  (min-width: 1520px) {
+    #relevantArtists, #loginButton input{
+        font-size: 18px;
+    }
+}
 
 div#hideOrShow {
     background-color: rgb(192, 192, 192);
@@ -1020,6 +1030,17 @@ div#offlineMessage {
     text-align: center;
     font-family: Oswald;
 }
+
+@media all and  (max-width: 1000px) {
+    .fb-like.fb_iframe_widget {
+        position: static;
+    }
+
+
+}
+
+
+
 /* ej min kod, har bar modifierat den :3 */
 /* Let's get this party started */
 ::-webkit-scrollbar {

@@ -324,7 +324,7 @@ $.ajax({
             showMeArtists.appendChild(pTagg);
 
             var toolTipSpan = document.createElement("span");
-            toolTipSpan.innerHTML = "<p>Visar konserter av dina intressen.</p> <p>(av dom som syns på kartan)</p><p>Hämta konserter genom att <b>högerklicka</b> på plats av intresse.</p> <p>:)</p>";
+            toolTipSpan.innerHTML = "<p>Visar konserter av dina intressen.</p> <p>(av dom som syns på kartan)</p><p> OBS. du måste ha publika listor för att detta ska fungera!</p>";
             showMeArtists.appendChild(toolTipSpan);
             document.getElementById("logga").insertBefore(showMeArtists, document.getElementById("loginspotify"));
 
@@ -1595,8 +1595,11 @@ populateUserWithArtistData = function(){
             success: function(data){
                 if( data === "nope"){
                     console.log("Cant update until later! :< ");
-                    spotifyFunctionSomething();
-                    objects.map.setZoom(5);
+                    if(localStorage[localStorage["UserID"] + "ArtistArr"] !== undefined){
+                        spotifyFunctionSomething();
+                        objects.map.setZoom(5);
+                    }
+
                 }else{
                     console.log("Artist Populated! :D ");
                     var name = localStorage["UserID"];
