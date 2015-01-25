@@ -187,6 +187,14 @@ div#CheckBoxDiv {
     right: 0px;
     padding-right: 10px;
 }
+p.tinyText {
+    position: absolute;
+    top: -13px;
+    font-size: 9px;
+    right: 3px;
+    padding: 1px;
+    padding-top: 2px;
+}
 
 /*@keyframes hideMe{
     from{bottom: 0%;}

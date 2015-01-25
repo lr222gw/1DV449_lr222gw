@@ -81,11 +81,17 @@ document.getElementById("searchBox").addEventListener("keydown", function(e) {
         DivImageArrow.innerHTML += "<p id='arrowText'>Tryck på knappen för att söka artister!</p>";
         document.getElementById("logga").insertBefore(DivImageArrow, document.getElementById("searchArtistButton").nextSibling);
     }*/
-
+    //document.getElementById('searchArtistButton').outerHTML = document.getElementById('searchArtistButton').outerHTML + "<p class='arrowP'><-- Tryck här för att söka artist!</p>";
     // Enter is pressed
-    if (e.keyCode == 13) { window.setTimeout(function () {
+    if (e.keyCode == 13 && e.ctrlKey === false) { window.setTimeout(function () {
         /*document.getElementById("divForArrow").parentNode.removeChild(document.getElementById("divForArrow"));*/
+
         document.getElementById('searchLocationButton').click();
+    }, 0);  }
+    if (e.keyCode == 13 && e.ctrlKey === true) { window.setTimeout(function () {
+        /*document.getElementById("divForArrow").parentNode.removeChild(document.getElementById("divForArrow"));*/
+
+        document.getElementById('searchArtistButton').click();
     }, 0);  }
 }, false);
 
@@ -93,7 +99,7 @@ document.getElementById("searchBox").addEventListener("keydown", function(e) {
 
 var searchLocationButton = document.createElement("button");
 searchLocationButton.setAttribute("id", "searchLocationButton");
-searchLocationButton.innerHTML = "Sök Platser";
+searchLocationButton.innerHTML = "Sök Platser <p class='tinyText'>Enter</p>";
 searchLocationButton.onclick = function(){
     var searchBoxContent = document.getElementById("searchBox").value;
     if(searchBoxContent.trim() !== "" ){
@@ -109,7 +115,7 @@ document.getElementById("logga").appendChild(searchLocationButton);
 
 var searchArtistButton = document.createElement("button");
 searchArtistButton.setAttribute("id", "searchArtistButton");
-searchArtistButton.innerHTML = "Sök Artist";
+searchArtistButton.innerHTML = "Sök Artist <p class='tinyText'>Ctrl+Enter</p>";
 searchArtistButton.onclick = function(){
     var searchBoxContent = document.getElementById("searchBox").value;
     if(searchBoxContent.trim() !== "" ){
