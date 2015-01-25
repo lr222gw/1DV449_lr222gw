@@ -170,12 +170,22 @@ input#loginButton, #logout, #relevantArtists {
     letter-spacing: 1.2px;
     cursor: pointer;
     height: 5vw;
-    font-size: 1.4vw;
+    font-size: 1.2vw;
     max-height: 55px;
     position: absolute;
     max-width: 300px;
     border-radius: 500px;
     transition: background-color .15s ease,border-color .15s ease;
+}
+
+div#CheckBoxDiv {
+    position: absolute;
+    z-index: 200;
+    bottom: 0;
+    font-family: Oswald;
+    display: inline-flex;
+    right: 0px;
+    padding-right: 10px;
 }
 
 /*@keyframes hideMe{

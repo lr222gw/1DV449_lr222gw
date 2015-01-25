@@ -19,6 +19,9 @@ var ShowTodaysConcertButton = document.createElement("button");
 ShowTodaysConcertButton.setAttribute("id", "showConcertsPlayingToday");
 ShowTodaysConcertButton.innerHTML = "Visa konserter som spelar idag";
 ShowTodaysConcertButton.onclick = function(){
+    if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+        document.getElementById("hideOrShow").click();
+    }
     stopAllAnimations();
     setTimeout(function(){
         showAllTodaysConcerts();
@@ -32,6 +35,9 @@ var ShowFestivalsButton = document.createElement("button");
 ShowFestivalsButton.setAttribute("id", "ShowFestivals");
 ShowFestivalsButton.innerHTML = "Visa Festivalevent på kartan";
 ShowFestivalsButton.onclick = function(){
+    if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+        document.getElementById("hideOrShow").click();
+    }
     stopAllAnimations();
     setTimeout(function(){
         showAllFestivals();
@@ -91,6 +97,9 @@ searchLocationButton.innerHTML = "Sök Platser";
 searchLocationButton.onclick = function(){
     var searchBoxContent = document.getElementById("searchBox").value;
     if(searchBoxContent.trim() !== "" ){
+        if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+            document.getElementById("hideOrShow").click();
+        }
         prepareLoadingScreen("Sökknappen för platser trycktes");
         searchLocation(searchBoxContent);
     }
@@ -236,81 +245,113 @@ hideOrShow.onclick = function(e){
 
 
 }
+var checkBox = document.createElement("input");
+checkBox.type = "checkbox";
+checkBox.id = "AutoCloseCheck";
+if(localStorage["autoHide"] !== "false"){
+    checkBox.checked = "true";
+    localStorage["autoHide"] = "true";
+}
+checkBox.onchange = function(e){
+    /*if(e.target.checked === "false"){
+        localStorage["autoHide"] = "false";
+    }else{
+        localStorage["autoHide"] = "false";
+    }*/
+    if(e.target.checked === true){
+        localStorage["autoHide"] = "true";
+    }else{
+        localStorage["autoHide"] = "false";
+    }
+}
+
+var divForCheckbox = document.createElement("div");
+divForCheckbox.id = "CheckBoxDiv";
+divForCheckbox.innerHTML = "<p id='checkBoxP'>Auto Dölj</p>";
+divForCheckbox.appendChild(checkBox);
+document.getElementById("logga").appendChild(divForCheckbox)
 
 
-    $.ajax({
-        type: "get",
-        url: "getstuff.php",
-        async: true,
-        data: {function: "isUserOnline"},
-        success: function(data){
-            localStorage["isOffline"] = "false";
-            if(data !== "false"){
-                var login = document.getElementById("loginspotify");
 
-                login.style.display = "none";
 
-                var body = document.getElementById("body");
 
-                var logout = document.createElement("form");
-                logout.setAttribute("method", "GET");
-                logout.setAttribute("action", "logout.php");
-                var logoutButton = document.createElement("input");
-                logoutButton.setAttribute("value", "Logga ut, " + data);
-                logoutButton.setAttribute("type", "submit");
-                logoutButton.setAttribute("id", "logout");
 
-                logout.appendChild(logoutButton);
+$.ajax({
+    type: "get",
+    url: "getstuff.php",
+    async: true,
+    data: {function: "isUserOnline"},
+    success: function(data){
+        localStorage["isOffline"] = "false";
+        if(data !== "false"){
+            var login = document.getElementById("loginspotify");
 
-                document.getElementById("logga").insertBefore(logout, document.getElementById("loginspotify"));
+            login.style.display = "none";
 
-                var showMeArtists = document.createElement("a");
-                showMeArtists.setAttribute("id", "relevantArtists");
-                showMeArtists.setAttribute("href", "#")
-                showMeArtists.onclick = function(){
-                    stopAllAnimations();
-                    populateUserWithArtistData();
+            var body = document.getElementById("body");
 
+            var logout = document.createElement("form");
+            logout.setAttribute("method", "GET");
+            logout.setAttribute("action", "logout.php");
+            var logoutButton = document.createElement("input");
+            logoutButton.setAttribute("value", "Logga ut, " + data);
+            logoutButton.setAttribute("type", "submit");
+            logoutButton.setAttribute("id", "logout");
+
+            logout.appendChild(logoutButton);
+
+            document.getElementById("logga").insertBefore(logout, document.getElementById("loginspotify"));
+
+            var showMeArtists = document.createElement("a");
+            showMeArtists.setAttribute("id", "relevantArtists");
+            showMeArtists.setAttribute("href", "#")
+            showMeArtists.onclick = function(){
+                if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+                    document.getElementById("hideOrShow").click();
                 }
-                var pTagg = document.createElement("p");
-                pTagg.innerHTML = "Visa relevanta artister";
-                showMeArtists.appendChild(pTagg);
+                stopAllAnimations();
+                populateUserWithArtistData();
 
-                var toolTipSpan = document.createElement("span");
-                toolTipSpan.innerHTML = "<p>Visar konserter av dina intressen.</p> <p>(av dom som syns på kartan)</p><p>Hämta konserter genom att <b>högerklicka</b> på plats av intresse.</p> <p>:)</p>";
-                showMeArtists.appendChild(toolTipSpan);
-                document.getElementById("logga").insertBefore(showMeArtists, document.getElementById("loginspotify"));
-
-                localStorage["UserID"] = data;
-
-
-
-                var usersFavoriteCitiesButton = document.createElement("input");
-                usersFavoriteCitiesButton.setAttribute("value", "Dina Favoritplatser");
-                usersFavoriteCitiesButton.setAttribute("type", "submit");
-                usersFavoriteCitiesButton.setAttribute("id", "favoritCityButton");
-                usersFavoriteCitiesButton.onclick = function(){
-                    if(document.getElementById("hideOrShow").innerHTML === "DÖLJ"){
-                        document.getElementById("hideOrShow").click();
-                    }
-                    getUsersTownsDiv();
-                }
-                PopulateUsersTowns();
-
-                document.body.insertBefore(usersFavoriteCitiesButton, document.getElementById("myFavoriteTowns"));
-
-
-            }else{
-                localStorage["UserID"] = "notOnline";
             }
-        },
-        error : function(){
-            //Om vi kommer hit så är anslutningen nere. då ska vi ändra allt till offline läge...
-            localStorage["isOffline"] = "true";
-            prepareLoadingScreen();//stänger av laddningen
-            setStuffOffline();
+            var pTagg = document.createElement("p");
+            pTagg.innerHTML = "Visa relevanta artister";
+            showMeArtists.appendChild(pTagg);
+
+            var toolTipSpan = document.createElement("span");
+            toolTipSpan.innerHTML = "<p>Visar konserter av dina intressen.</p> <p>(av dom som syns på kartan)</p><p>Hämta konserter genom att <b>högerklicka</b> på plats av intresse.</p> <p>:)</p>";
+            showMeArtists.appendChild(toolTipSpan);
+            document.getElementById("logga").insertBefore(showMeArtists, document.getElementById("loginspotify"));
+
+            localStorage["UserID"] = data;
+
+
+
+            var usersFavoriteCitiesButton = document.createElement("input");
+            usersFavoriteCitiesButton.setAttribute("value", "Dina Favoritplatser");
+            usersFavoriteCitiesButton.setAttribute("type", "submit");
+            usersFavoriteCitiesButton.setAttribute("id", "favoritCityButton");
+            usersFavoriteCitiesButton.onclick = function(){
+                if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+                    document.getElementById("hideOrShow").click();
+                }
+                getUsersTownsDiv();
+            }
+            PopulateUsersTowns();
+
+            document.body.insertBefore(usersFavoriteCitiesButton, document.getElementById("myFavoriteTowns"));
+
+
+        }else{
+            localStorage["UserID"] = "notOnline";
         }
-    });
+    },
+    error : function(){
+        //Om vi kommer hit så är anslutningen nere. då ska vi ändra allt till offline läge...
+        localStorage["isOffline"] = "true";
+        prepareLoadingScreen();//stänger av laddningen
+        setStuffOffline();
+    }
+});
 
 setStuffOffline = function(){
     document.getElementById("loginButton").disabled = true;
@@ -323,6 +364,7 @@ setStuffOffline = function(){
         "<p>Men om du väldigt gärna vill kan du gå in och läsa om sidan eller köra guiden.</p>"
     document.body.insertBefore(message, document.getElementById("myFavoriteTowns"));
 }
+
 // Icke användbart, ny lösning ska implementeras... Denna är för krävande
 /*getConcertsFromYourCountry = function(lat, lng){
 
@@ -721,7 +763,7 @@ handleArtistData = function(artistsData){
 
 getArtistDataFromThisArtist = function(artistATag){
     if(localStorage["isOffline"] !== "true"){
-        if(document.getElementById("hideOrShow").innerHTML === "DÖLJ"){
+        if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
             document.getElementById("hideOrShow").click();
         }
         prepareLoadingScreen("GetArtistDataFromThisArtist påbörjas");
@@ -775,6 +817,7 @@ FastPlaceArtistEvents = function(ArrayOfArtistEvents){
 
 searchLocation = function(searchTerm, ignoreShow){
     if(localStorage["isOffline"] !== "true"){
+
         //prepareLoadingScreen();
         $.ajax({
             type: "post",
@@ -1361,7 +1404,9 @@ function MakeMultiMarker(positions){
     objects.MultiMarkers.push(ConcertMarker);
 
     google.maps.event.addListener(ConcertMarker, 'click', function(){
-
+        if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+            document.getElementById("hideOrShow").click();
+        }
         if(objects.lastOpenWindow != null){
             objects.lastOpenWindow.close();
         }
@@ -1512,6 +1557,9 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
 
 
     google.maps.event.addListener(ConcertMarker, 'click', function(){
+        if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+            document.getElementById("hideOrShow").click();
+        }
 
         if(objects.lastOpenWindow != null){
             objects.lastOpenWindow.close();
