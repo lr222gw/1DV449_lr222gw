@@ -21,7 +21,8 @@ var objects = {
     lastMultiMarker : null,
     artistEventFromSearch : [],
     activeArtistEventScrollerNumber : null,
-    FestivalList : []
+    FestivalList : [],
+    RelevantArtistList : []
 
 }
 var mouse = {x: 0, y: 0}; //HÄR

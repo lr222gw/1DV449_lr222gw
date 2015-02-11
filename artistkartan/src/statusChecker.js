@@ -1356,6 +1356,7 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
     //Vi hoppar över sådanna event genom att använda denna if-sats..
     if(markerToUse != undefined){
         markerToUse.infoWindow.eventTypes.push([ConcertData.type, ("event"+ConcertData.id)]);
+        markerToUse.infoWindow.artistOnMarker.push([ConcertData.performance, ("event"+ConcertData.id)]);
         markerToUse.arrOfArtists.push(ConcertData.performance);
 
         var strToAddToEnd = "</div></div>"; //Detta görs för att Sätta innehållet inom en divtagg...
@@ -1485,7 +1486,8 @@ function MakeMultiMarker(positions, place){
         minHeight: 100,
         paddingLeft: 20,
         backgroundColor: "rgb(162, 200, 236)",
-        eventTypes : []
+        eventTypes : [],
+        artistOnMarker : []
     });
 
 
@@ -1525,6 +1527,7 @@ function MakeMultiMarker(positions, place){
 
         setTimeout(function(){
             colorFestival();
+            colorRelevantArtists()
         },500)
 
 
@@ -1536,7 +1539,15 @@ function MakeMultiMarker(positions, place){
 function colorFestival(){
     for(var i = 0; i < objects.FestivalList.length; i++){
         if(document.getElementById(objects.FestivalList[i]) !== null){
-            document.getElementById(objects.FestivalList[i]).firstChild.style.border = "5px solid rgb(197, 0, 172)";
+            document.getElementById(objects.FestivalList[i]).firstChild.style.border = "10px solid rgb(197, 0, 172)";
+        }
+    }
+}
+
+function colorRelevantArtists(){
+    for(var i = 0; i < objects.RelevantArtistList.length; i++){
+        if(document.getElementById(objects.RelevantArtistList[i]) !== null){
+            document.getElementById(objects.RelevantArtistList[i]).firstChild.style.border = "10px solid rgb(132, 189, 0)";
         }
     }
 }
@@ -1816,12 +1827,16 @@ function spotifyFunctionSomething(){
     }
 
     for(var i = 0; i < objects.MultiMarkers.length;i++){
-        for(var j=0; j< objects.MultiMarkers[i].arrOfArtists.length;j++){
-            for(var l = 0; l < objects.MultiMarkers[i].arrOfArtists[j].length; l++){
+        for(var j=0; j< objects.MultiMarkers[i].infoWindow.artistOnMarker.length;j++){
+            for(var l = 0; l < objects.MultiMarkers[i].infoWindow.artistOnMarker[j][0].length; l++){
+
                 for(var k =0; k< artistsFromSpotify.length;k++){
-                    if(objects.MultiMarkers[i].arrOfArtists[j][l].displayName == artistsFromSpotify[k][0]){
+                    if(objects.MultiMarkers[i].infoWindow.artistOnMarker[j][0][l].displayName == artistsFromSpotify[k][0]){
                         //alert(objects.MultiMarkers[i].arrOfArtists[j][l].displayName);
                         objects.MultiMarkers[i].setAnimation(google.maps.Animation.BOUNCE);
+
+                        objects.RelevantArtistList.push(objects.MultiMarkers[i].infoWindow.artistOnMarker[j][1])
+                        //Eventtype kanske inte är bästa stället att ha idt... men det ligger där just nu...
                     }
                 }
             }
