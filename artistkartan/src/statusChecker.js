@@ -197,26 +197,29 @@ window.onresize = function(){
     var topBanner = document.getElementById("topBanner");
     var mapcanvas = document.getElementById("mapcanvas");
 
+
     if(hideOrShow.innerHTML == "DÖLJ"){
         hideOrShow.innerHTML = "DÖLJ";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
-        mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
+        mapcanvas.style.transition = "bottom 1s ease-in-out 0s, height 1s ease-in-out 0s";
         if(document.getElementById("loadOverlay") != null){
             document.getElementById("loadOverlay").style.transition = "margin-top 1s ease-in-out 0s";
             document.getElementById("loadOverlay").style.marginTop = "-5px";
         }
         topBanner.style.bottom = "0" + "px";
         mapcanvas.style.bottom = "0" + "px";
+        mapcanvas.style.height = document.body.clientHeight - topBanner.clientHeight + "px";
     }else{
         hideOrShow.innerHTML = "DÖLJ";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
-        mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
+        mapcanvas.style.transition = "bottom 1s ease-in-out 0s, height 1s ease-in-out 0s";
         if(document.getElementById("loadOverlay") != null){
             document.getElementById("loadOverlay").style.transition = "margin-top 1s ease-in-out 0s";
             document.getElementById("loadOverlay").style.marginTop = "-5px";
         }
         topBanner.style.bottom = "0" + "px";
         mapcanvas.style.bottom = "0" + "px";
+        mapcanvas.style.height = document.body.clientHeight - topBanner.clientHeight + "px";
     }
 
 }
@@ -228,37 +231,43 @@ hideOrShow.onclick = function(e){
     if(e.target.innerHTML == "DÖLJ"){
         e.target.innerHTML = "VISA";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
-        mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
+        mapcanvas.style.transition = "bottom 1s ease-in-out 0s, height 1s ease-in-out 0s";
+        //mapcanvas.style.transition = "height 1s ease-in-out 0s";
         if(document.getElementById("loadOverlay") != null){
             document.getElementById("loadOverlay").style.transition = "margin-top 1s ease-in-out 0s";
             document.getElementById("loadOverlay").style.marginTop = "-"+ (topBanner.clientHeight + 5) + "px";
         }
         topBanner.style.bottom = topBanner.clientHeight + "px";
         mapcanvas.style.bottom = topBanner.clientHeight + "px";
+        mapcanvas.style.height = document.body.clientHeight + "px";
 
 
     }else{
         e.target.innerHTML = "DÖLJ";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
-        mapcanvas.style.transition = "bottom 1s ease-in-out 0s";
+        mapcanvas.style.transition = "bottom 1s ease-in-out 0s, height 1s ease-in-out 0s";
+        //mapcanvas.style.transition = "height 1s ease-in-out 0s";
         if(document.getElementById("loadOverlay") != null){
             document.getElementById("loadOverlay").style.transition = "margin-top 1s ease-in-out 0s";
             document.getElementById("loadOverlay").style.marginTop = "-5px";
         }
         topBanner.style.bottom = "0%";
         mapcanvas.style.bottom = "0%";
-
+        mapcanvas.style.height = document.body.clientHeight - topBanner.clientHeight + "px";
 
     }
-
-
-
 }
+mapcanvas.style.height = document.body.clientHeight - topBanner.clientHeight + "px"; //när sidan laddas in ska detta ställas in som standard...
+
+
 var checkBox = document.createElement("input");
 checkBox.type = "checkbox";
 checkBox.id = "AutoCloseCheck";
-if(localStorage["autoHide"] !== "false"){
-    checkBox.checked = "true";
+if(localStorage["autoHide"] !== "true"){
+    checkBox.checked = false;
+    localStorage["autoHide"] = "false";
+}else{
+    checkBox.checked = true;
     localStorage["autoHide"] = "true";
 }
 checkBox.onchange = function(e){
