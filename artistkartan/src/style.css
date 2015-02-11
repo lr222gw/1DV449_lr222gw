@@ -359,7 +359,7 @@ button#aboutSite {
 
 div#aboutSiteDiv {
     position: fixed;
-    background-color: rgba(64, 170, 223, 0.88);
+    background-color: rgba(78, 182, 200, 0.72);
     z-index: 200;
     width: 100%;
     height: 100%;
@@ -968,6 +968,7 @@ div#tutorial {
     margin-top: -5px;
     display: none;
     overflow: auto;
+    padding-bottom: 5px;
 }
 
 #tutorialContent {
@@ -986,7 +987,6 @@ button#agreeButton {
     border: none;
     cursor: pointer;
     border-radius: 50px;
-    height: 90px;
     font-family: Oswald;
     box-shadow: rgb(255, 255, 255) 0 0 8px 0px, inset rgb(255, 255, 255) 10px 5px 69px -5px;
     font-size: 25px;

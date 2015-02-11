@@ -1,0 +1,1066 @@
+@font-face{
+    font-family: Oswald;
+    src:url(/Oswald-Regular.ttf)
+}
+
+html, body, #mapcanvas{
+    height: 100%;
+    margin: 0px;
+    overflow: hidden;
+
+}
+#mapcanvas{
+    position: relative;
+    z-index: 20;
+    margin-top: -10px;
+    bottom: 0%;
+/*    animation: hideMe 1s;
+    -webkit-animation: hideMe 1s
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;*/
+}
+
+a.concertPlus {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    display: block;
+    position: relative;
+    text-decoration: none;
+    z-index: 10;
+    padding: 5px;
+    background: rgb(78, 127, 180);
+    font-family: Oswald;
+    margin-bottom: 15px;
+
+}
+a.concertPlus:hover {
+    cursor: pointer;
+    color: rgb(65, 69, 157);
+    background-color: rgb(0, 101, 211);
+
+}
+
+div#logga {
+    box-shadow: 0px 0px 15px 4px rgb(0, 0, 0);
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+div#songkickstuff {
+    display: flex;
+}
+#songkickstuff a {
+    margin: 0 auto;
+}
+
+div#songkickstuff img {
+    margin: 0 auto;
+    display: table-caption;
+    width: 50%;
+}
+
+/*#logga img {
+    margin: 0 auto;
+    width: 60%;
+    display: block;
+    max-width: 40%;
+}*/
+
+img#loggaimg {
+    margin: 0 auto;
+    width: 60%;
+    display: block;
+    max-width: 40%;
+}
+/*div#loginspotify {
+    position: absolute;
+}*/
+input#loginButton:hover {
+    background-color: rgb(100, 143, 0);
+    border-color: rgb(100, 143, 0);
+}
+
+div#topBanner {
+    box-shadow: 0px 0px 15px 4px rgb(0, 0, 0);
+    position: relative;
+    z-index: 110;
+    bottom: 0%;
+/*    animation: hideMe 1s;
+    -webkit-animation: hideMe 1s;
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+    -webkit-animation-fill-mode: forwards;*/
+}
+
+#relevantArtists{
+    right: 0px;
+}
+
+#relevantArtists {
+    position: relative;
+    display: inline;
+}
+#relevantArtists span {
+    position: absolute;
+    width: 200px;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    margin-left: -55px;
+    border: 2px solid rgb(132, 189, 0);
+    height: 70px;
+    line-height: 40px;
+    text-align: center;
+    visibility: hidden;
+    border-radius: 13px;
+}
+#relevantArtists span:before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -12px;
+    width: 0; height: 0;
+    border-bottom: 12px solid rgb(132, 189, 0);
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+}
+#relevantArtists span:after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -8px;
+    width: 0; height: 0;
+    border-bottom: 8px solid #FFFFFF;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+}
+#relevantArtists:hover#relevantArtists span {
+    visibility: visible;
+    opacity: 1;
+    left: 40%;
+    margin-top: 10px;
+    line-height: 15px;
+    font-family: sans-serif;
+    padding: 10px;
+    height: 150px;
+    text-align: -webkit-center;
+    padding-top: 10px;
+    font-size: .8em;
+    margin-left: -76px;
+    z-index: 999;
+    text-transform: initial;
+}
+a#relevantArtists {
+    text-decoration: none;
+}
+
+input#loginButton, #logout, #relevantArtists {
+    background-color: rgb(132, 189, 0);
+    border: rgb(132, 189, 0);
+    height: 50px;
+    width: 27%;
+    color: rgb(255, 255, 255);
+    font-family: sans-serif;
+    font-weight: 600;
+    font-variant-ligatures: inherit;
+    text-align: center;
+    margin: 2% 1%;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    height: 5vw;
+    font-size: 1.2vw;
+    max-height: 55px;
+    position: absolute;
+    max-width: 300px;
+    border-radius: 500px;
+    transition: background-color .15s ease,border-color .15s ease;
+}
+
+div#CheckBoxDiv {
+    position: absolute;
+    z-index: 200;
+    bottom: 0;
+    font-family: Oswald;
+    display: inline-flex;
+    right: 0px;
+    padding-right: 10px;
+}
+p.tinyText {
+    position: absolute;
+    top: -13px;
+    font-size: 9px;
+    right: 3px;
+    padding: 1px;
+    padding-top: 2px;
+}
+.fb-like.fb_iframe_widget {
+    position: absolute;
+}
+
+
+/*@keyframes hideMe{
+    from{bottom: 0%;}
+    to{bottom: 36%;}
+}
+@-webkit-keyframes hideMe {
+    from{bottom: 0%;}
+    to{bottom: 36%;}
+}*/
+
+@media all and   (min-width: 1123px) {
+    input#loginButton{
+        font-size: 15px;
+    }
+}
+
+
+@media all and   (max-width: 1050px) {
+    div#LastChecked{
+        z-index: -1;
+        margin-top: 5px;
+        padding-top: 45px;
+
+    }
+    a#relevantArtists span{
+        font-size: 1.1vw;
+        margin-left: -170px;
+
+    }
+    div#LastChecked {
+        padding-top: 10px;
+    }
+    button#searchLocationButton, button#searchArtistButton {
+        width: 30%;
+    }
+    input#searchBox {
+        width: 50%;
+    }
+    div#logga {
+        /*padding-bottom: 45px;*/
+    }
+    #relevantArtists:hover#relevantArtists span {
+        width: 115px;
+        font-size: small;
+        height: 225px;
+    }
+
+}
+
+@media all and  (min-width: 1520px) {
+    #relevantArtists, #loginButton input{
+        font-size: 18px;
+    }
+}
+
+div#hideOrShow {
+    background-color: rgb(192, 192, 192);
+    background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0) 0%, #FFF 28%, #FFF 47%, #E2E2E2 99%) repeat scroll 0% 0% transparent;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(226, 226, 226, 0)), color-stop(28%,rgb(255, 255, 255)), color-stop(125%,rgb(226, 226, 226)), color-stop(99%,rgb(204, 204, 204)));
+    width: 38px;
+    height: 20px;
+    border-radius: 0px 0px 10px 10px;
+    position: absolute;
+    margin-top: -20px;
+    display: block;
+    right: 100px;
+    font-family: sans-serif;
+    font-size: 0.7em;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 52px;
+    bottom: 0;
+    margin-bottom: -50px;
+    cursor: pointer;
+}
+#LastChecked {
+    background-color: rgb(192, 192, 192);
+    background: -moz-linear-gradient(center top , rgba(255, 255, 255, 0) 0%, #FFF 28%, #FFF 47%, #E2E2E2 99%) repeat scroll 0% 0% transparent;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(226, 226, 226, 0)), color-stop(0.28, rgb(255, 255, 255)), color-stop(0.99, rgb(225, 225, 225)), color-stop(1.25, rgb(255, 255, 255)));
+    width: 152px;
+    height: 20px;
+    border-radius: 0px 0px 10px 10px;
+    position: absolute;
+    margin-top: -20px;
+    display: block;
+    right: 148px;
+    font-family: sans-serif;
+    font-size: 0.7em;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 21px;
+}
+div#loadOverlay {
+    background-color: rgba(78, 159, 200, 0.74);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+    margin-top: -5px;
+}
+img#loadImg {
+    margin: 0 auto;
+    display: block;
+    opacity: 0.8;
+    margin-top: 5%;
+    border-radius: 150px;
+    box-shadow: 0 0 110px 60px rgb(6, 147, 217);
+}
+div#overlayImg:after {
+    content: "Laddar...";
+    font-family: sans-serif;
+    font-size: x-large;
+    width: 5%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 70px;
+}
+div#ApiErroOverlay {
+    background-color: rgba(200, 78, 78, 0.741176);
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-bottom: 12%;
+    z-index: 200;
+}
+div#ApiErroOverlay:after {
+    content: "Ett fel från Songkick, Spotify Eller Google maps har inträffat. Vänligen kontakta skaparen av KonsertKartan.com på Gmail: lowe.raivio@gmail.com";
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    font-family: sans-serif;
+    font-size: xx-large;
+    padding-top: 20%;
+}
+
+button#aboutSite {
+    position: fixed;
+    bottom: 0;
+    margin-left: 15px;
+    z-index: 120;
+    right: 0;
+    cursor: pointer;
+    border: none;
+    background-color: rgb(64, 170, 223);
+    border-radius: 65px 0 0 0;
+    height: 75px;
+}
+
+#aboutSite p {
+    transform: rotate(-45deg);
+    font-family: Oswald;
+    font-size: medium;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+div#aboutSiteDiv {
+    position: fixed;
+    background-color: rgba(64, 170, 223, 0.88);
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+div#AboutContentBox {
+    margin: 0 auto;
+    font-family: sans-serif;
+    box-shadow: rgb(255, 255, 255) 0 0 25px -5px;
+    background: rgba(255, 255, 255, 0.55);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 40%;
+    font-family: Oswald;
+    font-weight: lighter;
+}
+#AboutContentBox h1 {
+    padding-top: 10px;
+    font-family: Oswald;
+}
+
+button#closeAboutScreen, #startBasicGuide {
+    margin: 0 auto;
+    width: 10%;
+    display: block;
+    border: none;
+    background-color: rgb(42, 194, 235);
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: inherit;
+    font-weight: bold;
+    margin-top: 10px;
+    /*box-shadow: 0 0 25px -5px;*/
+}
+
+p.thanksTo {
+    font-weight: bolder;
+    font-size: small;
+}
+.contactMe {
+    padding-top: 15px;
+    margin-bottom: 5px;
+}
+p.italicWierd {
+    font-style: italic;
+    font-family: serif;
+}
+
+@media (min-width: 0px) and (max-width: 950px) {
+    div#AboutContentBox {
+        width: 85%;
+    }
+    button#closeAboutScreen, #startBasicGuide {
+        width: 25%;
+    }
+    div#tutorialContent {
+        width: 90%;
+        text-align: center;
+        margin: 0 auto;
+        font-family: Oswald;
+        text-shadow: rgb(255, 255, 255) 0 0 6px;
+        background-color: rgb(255, 255, 255);
+        padding: 15px;
+        margin-top: 25px;
+        padding-top: 10px;
+    }
+}
+
+.content {
+    /* width: 500px; */
+    margin: -10px;
+    padding: 10px;
+    background-color: rgb(162, 200, 236);
+}
+.insideContent {
+    margin-top: 40px;
+}
+.content h3 a {
+    font-size: 20px;
+    color: rgb(0, 101, 211);
+}
+.eventOfBox {
+    margin-top: 5px;
+    font-size: 15px;
+    margin: 0px -10px 5px -10px;
+}
+
+.preformances {
+    background-color: rgb(114, 181, 255);
+    margin: -10px;
+    padding: 10px;
+    padding-top: 15px;
+    font-size: 1.5em;
+    text-shadow: rgb(154, 156, 195) 0px 0px 5px;
+    padding-bottom: 5px;
+    min-height: 175px;
+}
+.preformances h3 {
+    background-color: rgb(171, 213, 253);
+    width: 100%;
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    margin: -10px;
+}
+.eventInfo {
+    background-color: rgb(64, 170, 223);
+    margin: -10px;
+    padding: 10px;
+    padding-top: 1px;
+    font-size: 1.1em;
+    padding-bottom: 5px;
+    box-shadow: rgb(0, 0, 0) 0px -5px 20px 5px;
+    z-index: 400;
+    position: relative;
+}
+.EventHeader {
+    margin: -10px;
+    padding: 10px;
+    background-color: rgb(156, 193, 211);
+    position: relative;
+    z-index: 500;
+    box-shadow: inset rgb(64, 170, 223) 0 0 30px 15px;
+}
+
+.eventInfo h2 {
+    font-size: 1.2em;
+    font-weight: lighter;
+    font-family: Oswald;
+}
+
+h1#firstHeading {
+    font-size: 2.5em;
+    margin-bottom: -10px;
+    margin-left: 10px;
+    margin-top: 0px;
+    font-family: Oswald;
+}
+.MultiBoxHeader h1 {
+    font-size: 2.5em;
+    margin-bottom: -10px;
+    margin-left: 10px;
+    margin-top: 0px;
+    font-family: Oswald;
+}
+.MultiBoxHeader {
+
+    margin: -10px;
+    padding: 10px;
+    background-color: rgb(156, 193, 211);
+    position: absolute;
+    width: 96%;
+    z-index: 500;
+    box-shadow: inset rgb(64, 170, 223) 0 0 30px 15px;
+}
+.EventContent {
+    background-color: rgb(72, 172, 222);
+    padding: 5px;
+    margin: 5px;
+    margin-top: -10px;
+    line-height: 2px;
+    box-shadow: rgb(0, 0, 0) 0 0 15px -5px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.EventInfoBoxes {
+    float: right;
+    padding-top: 15px;
+    max-width: 165px;
+}
+.EventContent p {
+    line-height: 15px;
+}
+
+.ArtistBox {
+    background-color: rgb(78, 127, 180);
+    width: 95%;
+    padding-left: 5px;
+    margin: -5px;
+    margin-bottom: 5px;
+    margin-top: -10px;
+    padding-top: 0px;
+    height: 25px;
+    padding-bottom: 0px;
+    border-radius: 5px 0 0 0;
+    height: 100%;
+}
+.ArtistBox:hover {
+    background-color: rgb(0, 101, 211);
+}
+
+.ArtistBox a {
+    text-decoration: none;
+    font-size: large;
+    color: rgb(232, 232, 232);
+}
+.ArtistBox a p {
+    margin-bottom: 5px;
+}
+
+.DateOfEvent {
+    position: absolute;
+    right: 0px;
+    width: 25%;
+    top: 0px;
+    font-size: 65%;
+    line-height: 10px;
+    background-color: rgb(72, 172, 222);
+    padding: 5px;
+    margin-top: 0px;
+    border-radius: 0 0 0 5px;
+    box-shadow: rgba(0, 0, 0, 0.61) -5px 5px 10px -5px;
+    padding-bottom: 0px;
+}
+p.eventContentHeader {
+    font-family: Oswald;
+    font-size: 15px;
+    margin-bottom: -5px;
+    margin-top: 0px;
+
+}
+p.ToOwnLine {
+    line-height: 1px;
+    text-transform: capitalize;
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+p.JustDateFrom {
+    line-height: 15px;
+    font-size: small;
+}
+.eventType {
+    font-size: 65%;
+    line-height: 5px;
+    background-color: rgb(72, 172, 222);
+    padding: 5px;
+    margin-top: 0px;
+    box-shadow: rgba(0, 0, 0, 0.61) 0px 5px 4px -5px, inset rgba(156, 193, 211, 0.79) 0 0 35px 6px;
+    padding-bottom: 0px;
+    margin: -5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-top: 5px;
+}
+
+p.eventTypeHeader {
+    font-family: Oswald;
+    font-size: small;
+}
+p.eventTypeContent {
+    font-family: sans-serif;
+}
+.eventHeaderMultiMarker {
+    width: 73%;
+    color: rgb(244, 244, 244);
+}
+
+button#goBackButtonHref {
+    position: absolute;
+    top: 0;
+    z-index: 500;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0 0 5px 3px;
+    font-family: Oswald;
+    line-height: 0px;
+    cursor: pointer;
+    box-shadow: rgb(0, 0, 0) 0 0 20px -2px;
+    height: 15px;
+
+}
+
+div#searchResult {
+    height: 400px;
+    position: relative;
+    width: 35%;
+    display: block;
+    padding-left: 10px;
+    margin: 0 auto;
+    padding-right: 10px;
+    z-index: 9999;
+    background-color: rgb(214, 234, 241);
+    overflow: auto;
+    margin-bottom: -400px;
+    margin-top: -10px;
+}
+
+a.artistSearchClass {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    position: relative;
+    z-index: 999;
+    background-color: rgb(64, 170, 223);
+    font-family: Oswald;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+div#nextprevcancel {
+    display: flex;
+    position: fixed;
+    z-index: 200;
+    bottom: 0px;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: -25px;
+    left: 10%;
+}
+button#prevEvent {
+    background-color: rgb(132, 189, 0);
+    border: none;
+    font-family: Oswald;
+    font-size: large;
+    cursor: pointer;
+}
+button#nextEvent {
+    background-color: rgb(132, 189, 0);
+    border: none;
+    font-family: Oswald;
+    font-size: large;
+}
+button#closePrevNext {
+    border: none;
+    background-color: rgb(247, 122, 122);
+    font-size: large;
+    font-family: Oswald;
+    cursor: pointer;
+}
+
+#searchBox {
+    display: block;
+    margin: 0 auto;
+    width: 20%;
+}
+#searchLocationButton {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 10%;
+    border: none;
+    background-color: rgb(64, 170, 223);
+    margin-top: 5px;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-family: Oswald;
+    z-index: 300;
+}
+#searchArtistButton {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 10%;
+    border: none;
+    background-color: rgb(64, 170, 223);
+    margin-top: 0px;
+    cursor: pointer;
+    border-radius: 0 0 10px 10px;
+    font-family: Oswald;
+    background-image: url("/pic/arrowForArtist.png");
+    z-index: 300;
+}
+img#divForArrow {
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    left: 50%;
+    padding-left: 75px;
+    top: 140px;
+}
+img#arrowForArtist {
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    left: 50%;
+    padding-left: 75px;
+    top: 140px;
+}
+p#arrowText {
+    position: absolute;
+    width: 140px;
+    font-family: Oswald;
+    left: 50%;
+    top: 115px;
+    font-size: smaller;
+    text-align: center;
+    transform: rotate(-19deg);
+    padding-left: 85px;
+}
+
+button#ShowFestivals {
+    display: block;
+    background-color: rgb(64, 170, 223);
+    border: none;
+    cursor: pointer;
+    font-family: Oswald;
+    margin: -15px;
+    padding: 5px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+button#showConcertsPlayingToday {
+    display: block;
+    background-color: rgb(64, 170, 223);
+    border: none;
+    cursor: pointer;
+    font-family: Oswald;
+    margin: -15px;
+    padding: 5px;
+    margin-left: -20px;
+    margin-right: -20px;
+    border-radius: 10px;
+}
+button#showConcertsPlayingToday:hover, button#ShowFestivals:hover {
+    background-color: rgb(53, 136, 177);
+}
+
+button#ShowFestivals:active, button#showConcertsPlayingToday:active {
+    background-color: rgb(46, 119, 155);
+}
+
+p.sorryNoPlannedEvents {
+    display: none;
+}
+
+ul#menuItems {
+    border-radius: 0 20px 20px 20px;
+    padding: 10px;
+    background-color: rgb(64, 170, 223);
+    height: 115px;
+}
+
+ul#menuItems li:hover {
+    background-color: rgb(64, 170, 223);
+}
+#menuItems li {
+    position: initial;
+}
+
+ul {
+    text-align: left;
+    display: inline;
+    margin: 0;
+    padding: 15px 4px 17px 0;
+    list-style: none;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+ul li {
+    font: bold 12px/18px sans-serif;
+    display: inline-block;
+    margin-right: -4px;
+    position: relative;
+    padding: 15px 20px;
+    background: rgb(64, 170, 223);
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+    position: absolute;
+    bottom: 0px;
+    left: 10px;
+    font-size: medium;
+    font-weight: lighter;
+    font-family: Oswald;
+}
+ul li:hover {
+    background: #555;
+    color: #fff;
+    background: rgb(64, 170, 223);
+    color: rgb(255, 255, 255);
+    border-radius: 10px 10px 0 0;
+
+}
+ul li ul {
+    padding: 0;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 150px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transiton: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    -ms-transition: opacity 0.2s;
+    -o-transition: opacity 0.2s;
+    -transition: opacity 0.2s;
+}
+ul li ul li {
+    background-color: rgb(64, 170, 223);
+    display: block;
+    color: #fff;
+    text-shadow: 0 -1px 0 #000;
+    margin-left: -5px;
+}
+ul li ul li:hover { background: #666; }
+ul li:hover ul {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.ui-draggable.ui-resizable{
+    background-color: rgb(226, 96, 96);
+    padding: 10px;
+    z-index: 300;
+    border-radius: 10px;
+}
+.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix.ui-draggable-handle {
+    background-color: rgb(255, 0, 0);
+    padding: 10px;
+    margin: -10px;
+    border-radius: 10px 10px 0 0;
+    border-bottom: rgb(173, 0, 0) solid;
+    font-family: Oswald;
+}
+div#alertBox {
+    font-family: sans-serif;
+    padding-top: 10px;
+}
+button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close {
+    background-color: rgb(255, 0, 0);
+    border: rgb(0, 0, 0) solid;
+    border-radius: 15px;
+    cursor: pointer;
+    right: 5px;
+    top: 5px;
+    position: absolute;
+}
+
+div#myFavoriteTowns {
+    width: 40%;
+    display: block;
+    position: fixed;
+    z-index: 95;
+    background-color: rgb(253, 255, 212);
+    border: 1px rgb(178, 176, 143) solid;
+    font-family: Oswald;
+    padding: 10px;
+    transform: rotate(10deg);
+    right: -50%;
+    background-image: url("/pic/oldPaper.png");
+}
+#myFavoriteTowns h1 {
+    margin-top: 0px;
+    margin-bottom: -25px;
+}
+#myFavoriteTowns h3 {
+    font-style: italic;
+}
+button#cancelCityButton {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px -1px;
+}
+button#SaveCityButton {
+    display: block;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px -1px;
+}
+input#favoritCityButton {
+    position: fixed;
+    z-index: 90;
+    top: 40%;
+    right: 0;
+    transform: rotate(-90deg);
+    cursor: pointer;
+    height: 50px;
+    margin-right: -35px;
+    background-color: rgb(64, 170, 223);
+    border: none;
+    font-family: Oswald;
+    border-radius: 5px 5px 0 0;
+    font-size: 15px;
+}
+
+div#tutorial {
+    background-color: rgba(78, 182, 200, 0.72);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 130;
+    margin-top: -5px;
+    display: none;
+    overflow: auto;
+}
+
+#tutorialContent {
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
+    font-family: Oswald;
+    text-shadow: rgb(255, 255, 255) 0 0 6px;
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    margin-top: 25px;
+    padding-top: 10px;
+}
+button#agreeButton {
+    background-color: rgb(24, 167, 205);
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    height: 90px;
+    font-family: Oswald;
+    box-shadow: rgb(255, 255, 255) 0 0 8px 0px, inset rgb(255, 255, 255) 10px 5px 69px -5px;
+    font-size: 25px;
+}
+img.basicGuideImg {
+    width: 100%;
+    border: rgb(255, 255, 255) solid;
+}
+button#NextButton {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 50px;
+    /*height: 45px;*/
+    font-family: Oswald;
+    font-size: larger;
+    cursor: pointer;
+    padding: 10px;
+    box-shadow: rgb(0, 0, 0) 0 0 40px -5px;
+}
+#cancelToturial{
+    background-color: rgb(231, 112, 112);
+    border: none;
+    height: 65px;
+    display: block;
+    width: 130px;
+    font-family: Oswald;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 15px;
+    cursor: pointer;
+    box-shadow: rgb(0, 0, 0) 0 0 25px -5px;
+}
+img.basicGuideImg {
+    border: rgb(0, 0, 0) solid 2px;
+    border-radius: 3px;
+}
+div#offlineMessage {
+    width: 85%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Oswald;
+}
+
+@media all and  (max-width: 1000px) {
+    .fb-like.fb_iframe_widget {
+        position: static;
+    }
+
+
+}
+
+
+
+/* ej min kod, har bar modifierat den :3 */
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgb(114, 181, 255);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgb(25, 111, 173);
+    -webkit-box-shadow: inset 0 0 6px rgb(64, 170, 223);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgb(25, 111, 173);
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html manifest="/cache.manifest">
+<head>
+    <title>KonsertKartan</title>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCTuUr4lXyaXvZAuSLQJah1DWNmDxuyDb4" ></script>
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <meta name="apple-mobile-web-app-title" content="KonsertKartan">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#22bdff">
+    <meta name="application-name" content="KonsertKartan">
+    <script src="src/jquery.min.js"></script>
+    <script src="src/jquery-ui.js"></script>
+    <script src="src/infobubble.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+</head>
+<body id="body">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/sv_SE/sdk.js#xfbml=1&appId=503307773140871&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div id="tutorial"></div>
+<div id="topBanner">
+    <div id="logga">
+        <div class="fb-like" data-href="http://konsertkartan.com" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+        <div id="loginspotify">
+            <form action="https://accounts.spotify.com/authorize/" method="get">
+                <input type="hidden" name="client_id" value="32d69ac656814a37bc890e0840076720">
+                <input type="hidden" name="redirect_uri" value="http://konsertkartan.com/getLogin.php">
+                <input type="hidden" name="response_type" value="code">
+                <input type="hidden" name="scope" value="user-read-private user-read-email">
+                <input type="hidden" name="state" value="34fFs29kd09">
+                <input type="hidden" name="show_dialog" value="true">
+
+                <input type="submit" value="Login With Spotify" id="loginButton">
+            </form>
+        </div>
+        <a href="http://konsertkartan.com"><img id="loggaimg" src="pic/KonsertKartanPSD.png"></a>
+        <ul>
+            <li id="menuTitle">
+                Markera...
+                <ul id="menuItems">
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="myFavoriteTowns">
+    <h1>Mina favoritstäder</h1>
+    <h3>Städer som ej finns eller hittas kommer ignoreras...(max 5 städer)</h3>
+</div>
+<div id="mapcanvas">
+
+</div>
+<script src="src/statusChecker.js" ></script>
+<script src="src/maps.js"></script>
+</body>
+</html>

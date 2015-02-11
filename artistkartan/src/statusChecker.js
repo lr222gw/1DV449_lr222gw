@@ -407,7 +407,8 @@ firstTimeTutorial = function(){
         '<div id="tutorialContent">' +
         '<h1>Hej och välkommen till KonsertKartan.com!</h1>' +
         '<p>Detta är första gången du besöker sidan va? Då ska vi bara gå över ett par saker.</p>' +
-        '<p class="unnecessaryBusiness">För det första, Sidan använder Cookies och LocalStorage. PGA svensk lag så måste jag berätta det.<p>(majoriteten av sidor på nätet berättar inte sånt, då ingen egentligen bryr sig...)</p> </p>' +
+        '<p>För det första, du måste antingen Tillåta ELLER Neka GeoLocation (se toppen av din webbläsare på sidan).</p>' +
+        '<p class="unnecessaryBusiness">För det andra, sidan använder Cookies och LocalStorage. PGA svensk lag så måste jag berätta det.</p><p>(majoriteten av sidor på nätet berättar inte sånt, då ingen egentligen bryr sig...)</p> ' +
         '<button id="agreeButton">Jag fattar och godkänner, cookies/localStorage används...</button>' +
         '' +
         '</div>';
@@ -1602,8 +1603,13 @@ populateUserWithArtistData = function(){
 
                 }else{
                     console.log("Artist Populated! :D ");
+                    data = JSON.parse(data);
                     var name = localStorage["UserID"];
-                    localStorage[name + "ArtistArr"] =  JSON.parse(data);
+                    if(typeof data === "object"){ // Beroende på vart datan kommer ifrån behövs den parsas olika... tar reda på hur här
+                        localStorage[name + "ArtistArr"] =  JSON.stringify(data);
+                    }else{
+                        localStorage[name + "ArtistArr"] =  data;
+                    }
                     spotifyFunctionSomething();
                     objects.map.setZoom(5);
 

@@ -1,0 +1,2980 @@
+[
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/carbonbasedlifeforms/playlist/0txwLesfjfMoSEk4hGEAUn"
+        },
+        "href": "https://api.spotify.com/v1/users/carbonbasedlifeforms/playlists/0txwLesfjfMoSEk4hGEAUn",
+        "id": "0txwLesfjfMoSEk4hGEAUn",
+        "images": [],
+        "name": "Other projects by CBL",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/carbonbasedlifeforms"
+            },
+            "href": "https://api.spotify.com/v1/users/carbonbasedlifeforms",
+            "id": "carbonbasedlifeforms",
+            "type": "user",
+            "uri": "spotify:user:carbonbasedlifeforms"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/carbonbasedlifeforms/playlists/0txwLesfjfMoSEk4hGEAUn/tracks",
+            "total": 99
+        },
+        "type": "playlist",
+        "uri": "spotify:user:carbonbasedlifeforms:playlist:0txwLesfjfMoSEk4hGEAUn"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/118835767/playlist/5DV4awiIoORL1BM9nQTVES"
+        },
+        "href": "https://api.spotify.com/v1/users/118835767/playlists/5DV4awiIoORL1BM9nQTVES",
+        "id": "5DV4awiIoORL1BM9nQTVES",
+        "images": [],
+        "name": "Carbon Based",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/118835767"
+            },
+            "href": "https://api.spotify.com/v1/users/118835767",
+            "id": "118835767",
+            "type": "user",
+            "uri": "spotify:user:118835767"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/118835767/playlists/5DV4awiIoORL1BM9nQTVES/tracks",
+            "total": 57
+        },
+        "type": "playlist",
+        "uri": "spotify:user:118835767:playlist:5DV4awiIoORL1BM9nQTVES"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/spotify_uk_/playlist/1iHelgbMaB7G1bjMbABPRe"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify_uk_/playlists/1iHelgbMaB7G1bjMbABPRe",
+        "id": "1iHelgbMaB7G1bjMbABPRe",
+        "images": [
+            {
+                "url": "https://i.scdn.co/image/f3449a02e3ab0f99442fdad04f14aff016747cc7"
+            }
+        ],
+        "name": "Music For Concentration",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/spotify_uk_"
+            },
+            "href": "https://api.spotify.com/v1/users/spotify_uk_",
+            "id": "spotify_uk_",
+            "type": "user",
+            "uri": "spotify:user:spotify_uk_"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/spotify_uk_/playlists/1iHelgbMaB7G1bjMbABPRe/tracks",
+            "total": 54
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify_uk_:playlist:1iHelgbMaB7G1bjMbABPRe"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/spotify_germany/playlist/2nKFnGNFvHX9hG5Kv7Bm3G"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify_germany/playlists/2nKFnGNFvHX9hG5Kv7Bm3G",
+        "id": "2nKFnGNFvHX9hG5Kv7Bm3G",
+        "images": [
+            {
+                "url": "https://i.scdn.co/image/3eca3e5398a4c070d4d4288dcb4493e07f98bebf"
+            }
+        ],
+        "name": "Beats To Think To",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/spotify_germany"
+            },
+            "href": "https://api.spotify.com/v1/users/spotify_germany",
+            "id": "spotify_germany",
+            "type": "user",
+            "uri": "spotify:user:spotify_germany"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/spotify_germany/playlists/2nKFnGNFvHX9hG5Kv7Bm3G/tracks",
+            "total": 50
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify_germany:playlist:2nKFnGNFvHX9hG5Kv7Bm3G"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/spotify/playlist/67nMZWgcUxNa5uaiyLDR2x"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/67nMZWgcUxNa5uaiyLDR2x",
+        "id": "67nMZWgcUxNa5uaiyLDR2x",
+        "images": [
+            {
+                "url": "https://i.scdn.co/image/a69b2bd382b17654cb57c42ab276097c9a7367da"
+            }
+        ],
+        "name": "Brain Food",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/spotify"
+            },
+            "href": "https://api.spotify.com/v1/users/spotify",
+            "id": "spotify",
+            "type": "user",
+            "uri": "spotify:user:spotify"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/spotify/playlists/67nMZWgcUxNa5uaiyLDR2x/tracks",
+            "total": 91
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify:playlist:67nMZWgcUxNa5uaiyLDR2x"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/5NNCIqA2YGt67AjBPc9x4r"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/5NNCIqA2YGt67AjBPc9x4r",
+        "id": "5NNCIqA2YGt67AjBPc9x4r",
+        "images": [],
+        "name": "Serieskolan",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/5NNCIqA2YGt67AjBPc9x4r/tracks",
+            "total": 69
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:5NNCIqA2YGt67AjBPc9x4r"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/2TgCRsio8vBEHJ4dFAgQwI"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/2TgCRsio8vBEHJ4dFAgQwI",
+        "id": "2TgCRsio8vBEHJ4dFAgQwI",
+        "images": [],
+        "name": "inspiration",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/2TgCRsio8vBEHJ4dFAgQwI/tracks",
+            "total": 6
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:2TgCRsio8vBEHJ4dFAgQwI"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/1SWH34KJDu0ynTDsF9f7IR"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/1SWH34KJDu0ynTDsF9f7IR",
+        "id": "1SWH34KJDu0ynTDsF9f7IR",
+        "images": [],
+        "name": "Myuu",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/1SWH34KJDu0ynTDsF9f7IR/tracks",
+            "total": 16
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:1SWH34KJDu0ynTDsF9f7IR"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/kent1337/playlist/6IjDl5eRczFdgZkKYXhuHZ"
+        },
+        "href": "https://api.spotify.com/v1/users/kent1337/playlists/6IjDl5eRczFdgZkKYXhuHZ",
+        "id": "6IjDl5eRczFdgZkKYXhuHZ",
+        "images": [
+            {
+                "url": "https://i.scdn.co/image/9843cafd53f750853e98e586da96cc707f1cd041"
+            }
+        ],
+        "name": "ChillStep",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/kent1337"
+            },
+            "href": "https://api.spotify.com/v1/users/kent1337",
+            "id": "kent1337",
+            "type": "user",
+            "uri": "spotify:user:kent1337"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/kent1337/playlists/6IjDl5eRczFdgZkKYXhuHZ/tracks",
+            "total": 450
+        },
+        "type": "playlist",
+        "uri": "spotify:user:kent1337:playlist:6IjDl5eRczFdgZkKYXhuHZ"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/spotify/playlist/66oi6TpdQHk3kS7ZHOx8gX"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/66oi6TpdQHk3kS7ZHOx8gX",
+        "id": "66oi6TpdQHk3kS7ZHOx8gX",
+        "images": [
+            {
+                "url": "https://i.scdn.co/image/765095b5dae47d8fbfd19071b78f80e86ec4e16d"
+            }
+        ],
+        "name": "Tranquility With a Beat",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/spotify"
+            },
+            "href": "https://api.spotify.com/v1/users/spotify",
+            "id": "spotify",
+            "type": "user",
+            "uri": "spotify:user:spotify"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/spotify/playlists/66oi6TpdQHk3kS7ZHOx8gX/tracks",
+            "total": 43
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify:playlist:66oi6TpdQHk3kS7ZHOx8gX"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/spotify/playlist/2BgVZaiDigaqxTbZEI2TpE"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/2BgVZaiDigaqxTbZEI2TpE",
+        "id": "2BgVZaiDigaqxTbZEI2TpE",
+        "images": [
+            {
+                "url": "https://i.scdn.co/image/1ea73dc4a640537a4647079c4b623838f7573049"
+            }
+        ],
+        "name": "Tr\u00e4ning",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/spotify"
+            },
+            "href": "https://api.spotify.com/v1/users/spotify",
+            "id": "spotify",
+            "type": "user",
+            "uri": "spotify:user:spotify"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/spotify/playlists/2BgVZaiDigaqxTbZEI2TpE/tracks",
+            "total": 47
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify:playlist:2BgVZaiDigaqxTbZEI2TpE"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/3w3E4vavBTkar7vmoZOjMf"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/3w3E4vavBTkar7vmoZOjMf",
+        "id": "3w3E4vavBTkar7vmoZOjMf",
+        "images": [],
+        "name": "Programmera",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/3w3E4vavBTkar7vmoZOjMf/tracks",
+            "total": 17
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:3w3E4vavBTkar7vmoZOjMf"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/6oxmNfsogJLsS6ILF36tcN"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/6oxmNfsogJLsS6ILF36tcN",
+        "id": "6oxmNfsogJLsS6ILF36tcN",
+        "images": [],
+        "name": "L\u00e4ser book addar musik",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/6oxmNfsogJLsS6ILF36tcN/tracks",
+            "total": 3
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:6oxmNfsogJLsS6ILF36tcN"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/67oC5jQekXlgMpfPYrMByp"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/67oC5jQekXlgMpfPYrMByp",
+        "id": "67oC5jQekXlgMpfPYrMByp",
+        "images": [],
+        "name": "null \u2014 Swingu\u00fc",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/67oC5jQekXlgMpfPYrMByp/tracks",
+            "total": 1
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:67oC5jQekXlgMpfPYrMByp"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/spotify/playlist/0rvcWf8qidEbzpy2QacI0J"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/0rvcWf8qidEbzpy2QacI0J",
+        "id": "0rvcWf8qidEbzpy2QacI0J",
+        "images": [
+            {
+                "url": "https://i.scdn.co/image/aaef90384d8b8f5f3bccee12807ca823c8667795"
+            }
+        ],
+        "name": "Lounge: Beats & Breaks",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/spotify"
+            },
+            "href": "https://api.spotify.com/v1/users/spotify",
+            "id": "spotify",
+            "type": "user",
+            "uri": "spotify:user:spotify"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/spotify/playlists/0rvcWf8qidEbzpy2QacI0J/tracks",
+            "total": 52
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify:playlist:0rvcWf8qidEbzpy2QacI0J"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/7wk8GyaW8Mwa2ZPChrs8d8"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/7wk8GyaW8Mwa2ZPChrs8d8",
+        "id": "7wk8GyaW8Mwa2ZPChrs8d8",
+        "images": [],
+        "name": "SSSAVV",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/7wk8GyaW8Mwa2ZPChrs8d8/tracks",
+            "total": 8
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:7wk8GyaW8Mwa2ZPChrs8d8"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/5Gxi7jWEF7pAGNsCTuFmE8"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/5Gxi7jWEF7pAGNsCTuFmE8",
+        "id": "5Gxi7jWEF7pAGNsCTuFmE8",
+        "images": [],
+        "name": "Djupt-Alpha l\u00e5tar(Lite s\u00e4mre...)",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/5Gxi7jWEF7pAGNsCTuFmE8/tracks",
+            "total": 13
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:5Gxi7jWEF7pAGNsCTuFmE8"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/1gL5DE4N9tmC4KuZGl1V2Z"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/1gL5DE4N9tmC4KuZGl1V2Z",
+        "id": "1gL5DE4N9tmC4KuZGl1V2Z",
+        "images": [],
+        "name": "Djupt",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/1gL5DE4N9tmC4KuZGl1V2Z/tracks",
+            "total": 25
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:1gL5DE4N9tmC4KuZGl1V2Z"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/6e3htEKTuhmLCC4B3GIhgM"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/6e3htEKTuhmLCC4B3GIhgM",
+        "id": "6e3htEKTuhmLCC4B3GIhgM",
+        "images": [],
+        "name": "Efter Emmaboda 2014! ",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/6e3htEKTuhmLCC4B3GIhgM/tracks",
+            "total": 4
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:6e3htEKTuhmLCC4B3GIhgM"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/emmabodafestivalen/playlist/3YJ5vtwhhi1kdMlrSUYJcY"
+        },
+        "href": "https://api.spotify.com/v1/users/emmabodafestivalen/playlists/3YJ5vtwhhi1kdMlrSUYJcY",
+        "id": "3YJ5vtwhhi1kdMlrSUYJcY",
+        "images": [],
+        "name": "Emmabodafestivalen 2014",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/emmabodafestivalen"
+            },
+            "href": "https://api.spotify.com/v1/users/emmabodafestivalen",
+            "id": "emmabodafestivalen",
+            "type": "user",
+            "uri": "spotify:user:emmabodafestivalen"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/emmabodafestivalen/playlists/3YJ5vtwhhi1kdMlrSUYJcY/tracks",
+            "total": 320
+        },
+        "type": "playlist",
+        "uri": "spotify:user:emmabodafestivalen:playlist:3YJ5vtwhhi1kdMlrSUYJcY"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0zjs8QhKUKGK7pKRDVy8Xz"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0zjs8QhKUKGK7pKRDVy8Xz",
+        "id": "0zjs8QhKUKGK7pKRDVy8Xz",
+        "images": [],
+        "name": "Dem sjunger om gr\u00f6na drakar",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0zjs8QhKUKGK7pKRDVy8Xz/tracks",
+            "total": 1
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0zjs8QhKUKGK7pKRDVy8Xz"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/6tykVWWNqZqdrrcVk8ZpfG"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/6tykVWWNqZqdrrcVk8ZpfG",
+        "id": "6tykVWWNqZqdrrcVk8ZpfG",
+        "images": [],
+        "name": "Bara en lista",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/6tykVWWNqZqdrrcVk8ZpfG/tracks",
+            "total": 29
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:6tykVWWNqZqdrrcVk8ZpfG"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/2CGmP91KK9fPawDyUQs71x"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/2CGmP91KK9fPawDyUQs71x",
+        "id": "2CGmP91KK9fPawDyUQs71x",
+        "images": [],
+        "name": "Study 2",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/2CGmP91KK9fPawDyUQs71x/tracks",
+            "total": 3
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:2CGmP91KK9fPawDyUQs71x"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/4hNXgQRn3Zauf7ASL4saMq"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/4hNXgQRn3Zauf7ASL4saMq",
+        "id": "4hNXgQRn3Zauf7ASL4saMq",
+        "images": [],
+        "name": "Lugnt",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/4hNXgQRn3Zauf7ASL4saMq/tracks",
+            "total": 37
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:4hNXgQRn3Zauf7ASL4saMq"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/3MUtDpm2JdxwCFHQVwbhck"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/3MUtDpm2JdxwCFHQVwbhck",
+        "id": "3MUtDpm2JdxwCFHQVwbhck",
+        "images": [],
+        "name": "Bra gammalt",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/3MUtDpm2JdxwCFHQVwbhck/tracks",
+            "total": 8
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:3MUtDpm2JdxwCFHQVwbhck"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/3cKLhVzRJmgyDu4WLe5qZE"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/3cKLhVzRJmgyDu4WLe5qZE",
+        "id": "3cKLhVzRJmgyDu4WLe5qZE",
+        "images": [],
+        "name": "Listor fr\u00e5n mamma ReVamped",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/3cKLhVzRJmgyDu4WLe5qZE/tracks",
+            "total": 1959
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:3cKLhVzRJmgyDu4WLe5qZE"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/4DtnOWBx5JJLVQRPTE2PR7"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/4DtnOWBx5JJLVQRPTE2PR7",
+        "id": "4DtnOWBx5JJLVQRPTE2PR7",
+        "images": [],
+        "name": "lowes",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/4DtnOWBx5JJLVQRPTE2PR7/tracks",
+            "total": 68
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:4DtnOWBx5JJLVQRPTE2PR7"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/2XaOuzSCMogdlu6dG9iZmf"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/2XaOuzSCMogdlu6dG9iZmf",
+        "id": "2XaOuzSCMogdlu6dG9iZmf",
+        "images": [],
+        "name": "lowes ipod",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/2XaOuzSCMogdlu6dG9iZmf/tracks",
+            "total": 244
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:2XaOuzSCMogdlu6dG9iZmf"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/playlistpro/playlist/3Uo1BqDSkw7rHKxQ4L2miK"
+        },
+        "href": "https://api.spotify.com/v1/users/playlistpro/playlists/3Uo1BqDSkw7rHKxQ4L2miK",
+        "id": "3Uo1BqDSkw7rHKxQ4L2miK",
+        "images": [],
+        "name": "Trippy Trax",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/playlistpro"
+            },
+            "href": "https://api.spotify.com/v1/users/playlistpro",
+            "id": "playlistpro",
+            "type": "user",
+            "uri": "spotify:user:playlistpro"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/playlistpro/playlists/3Uo1BqDSkw7rHKxQ4L2miK/tracks",
+            "total": 190
+        },
+        "type": "playlist",
+        "uri": "spotify:user:playlistpro:playlist:3Uo1BqDSkw7rHKxQ4L2miK"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/7pvQQPUqVSEYTfmF3D79Ev"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/7pvQQPUqVSEYTfmF3D79Ev",
+        "id": "7pvQQPUqVSEYTfmF3D79Ev",
+        "images": [],
+        "name": "Lowes Lista",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/7pvQQPUqVSEYTfmF3D79Ev/tracks",
+            "total": 93
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:7pvQQPUqVSEYTfmF3D79Ev"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/6NrUcxvO8LcvEnDbE5f4K5"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/6NrUcxvO8LcvEnDbE5f4K5",
+        "id": "6NrUcxvO8LcvEnDbE5f4K5",
+        "images": [],
+        "name": "rumps",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/6NrUcxvO8LcvEnDbE5f4K5/tracks",
+            "total": 119
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:6NrUcxvO8LcvEnDbE5f4K5"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/1CwiAFhLYocKz1K88Re8d6"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/1CwiAFhLYocKz1K88Re8d6",
+        "id": "1CwiAFhLYocKz1K88Re8d6",
+        "images": [],
+        "name": "Sommar 2013",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/1CwiAFhLYocKz1K88Re8d6/tracks",
+            "total": 92
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:1CwiAFhLYocKz1K88Re8d6"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/5Kyw9XGxaUlYcnMMEMPLs2"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/5Kyw9XGxaUlYcnMMEMPLs2",
+        "id": "5Kyw9XGxaUlYcnMMEMPLs2",
+        "images": [],
+        "name": "Music without Lyrics",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/5Kyw9XGxaUlYcnMMEMPLs2/tracks",
+            "total": 18
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:5Kyw9XGxaUlYcnMMEMPLs2"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/6C2ER4cWExPgjlWkA5sXjQ"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/6C2ER4cWExPgjlWkA5sXjQ",
+        "id": "6C2ER4cWExPgjlWkA5sXjQ",
+        "images": [],
+        "name": "INF\u00d6\u00d6\u00d6",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/6C2ER4cWExPgjlWkA5sXjQ/tracks",
+            "total": 73
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:6C2ER4cWExPgjlWkA5sXjQ"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/kalle.windefalk/playlist/1731N7jjxkRsPS79GWteWi"
+        },
+        "href": "https://api.spotify.com/v1/users/kalle.windefalk/playlists/1731N7jjxkRsPS79GWteWi",
+        "id": "1731N7jjxkRsPS79GWteWi",
+        "images": [],
+        "name": "Indie Dance:Nu Disco:Bitpop:Electro:Dubstep",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/kalle.windefalk"
+            },
+            "href": "https://api.spotify.com/v1/users/kalle.windefalk",
+            "id": "kalle.windefalk",
+            "type": "user",
+            "uri": "spotify:user:kalle.windefalk"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/kalle.windefalk/playlists/1731N7jjxkRsPS79GWteWi/tracks",
+            "total": 730
+        },
+        "type": "playlist",
+        "uri": "spotify:user:kalle.windefalk:playlist:1731N7jjxkRsPS79GWteWi"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/3DEDIByufpEUfZC1GzPOWV"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/3DEDIByufpEUfZC1GzPOWV",
+        "id": "3DEDIByufpEUfZC1GzPOWV",
+        "images": [],
+        "name": "bellivalo",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/3DEDIByufpEUfZC1GzPOWV/tracks",
+            "total": 22
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:3DEDIByufpEUfZC1GzPOWV"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/spotify/playlist/20OmnJiCBUgP23z5g1xlqx"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/20OmnJiCBUgP23z5g1xlqx",
+        "id": "20OmnJiCBUgP23z5g1xlqx",
+        "images": [
+            {
+                "url": "https://i.scdn.co/image/1c8741a3f53bb760da0ff24b4d894d7e8faa4b8b"
+            }
+        ],
+        "name": "Enter the Trance",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/spotify"
+            },
+            "href": "https://api.spotify.com/v1/users/spotify",
+            "id": "spotify",
+            "type": "user",
+            "uri": "spotify:user:spotify"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/spotify/playlists/20OmnJiCBUgP23z5g1xlqx/tracks",
+            "total": 81
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify:playlist:20OmnJiCBUgP23z5g1xlqx"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/0uI4HOmuSA4NGRGgk5MMl5"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/0uI4HOmuSA4NGRGgk5MMl5",
+        "id": "0uI4HOmuSA4NGRGgk5MMl5",
+        "images": [],
+        "name": "lowes nya",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/0uI4HOmuSA4NGRGgk5MMl5/tracks",
+            "total": 42
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:0uI4HOmuSA4NGRGgk5MMl5"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/6VSjuRq73lvSIhKeYvrdfP"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/6VSjuRq73lvSIhKeYvrdfP",
+        "id": "6VSjuRq73lvSIhKeYvrdfP",
+        "images": [],
+        "name": "Lovely Lovely",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/6VSjuRq73lvSIhKeYvrdfP/tracks",
+            "total": 4
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:6VSjuRq73lvSIhKeYvrdfP"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/0JHN4unXQ1UUjZCUBvxD8O"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/0JHN4unXQ1UUjZCUBvxD8O",
+        "id": "0JHN4unXQ1UUjZCUBvxD8O",
+        "images": [],
+        "name": "Lowes Barrrrk",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/0JHN4unXQ1UUjZCUBvxD8O/tracks",
+            "total": 18
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:0JHN4unXQ1UUjZCUBvxD8O"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/4mHksaVlNRPEMRbWgZoh28"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/4mHksaVlNRPEMRbWgZoh28",
+        "id": "4mHksaVlNRPEMRbWgZoh28",
+        "images": [],
+        "name": "Steampunk",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/4mHksaVlNRPEMRbWgZoh28/tracks",
+            "total": 10
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:4mHksaVlNRPEMRbWgZoh28"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/2s2oYvcJpMb2b2LYoPFsVC"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/2s2oYvcJpMb2b2LYoPFsVC",
+        "id": "2s2oYvcJpMb2b2LYoPFsVC",
+        "images": [],
+        "name": "Lowes gothrock? ",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/2s2oYvcJpMb2b2LYoPFsVC/tracks",
+            "total": 23
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:2s2oYvcJpMb2b2LYoPFsVC"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/5BIIGlkkgh3d66H2ysNGgd"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/5BIIGlkkgh3d66H2ysNGgd",
+        "id": "5BIIGlkkgh3d66H2ysNGgd",
+        "images": [],
+        "name": "Lowes musik utan s\u00e5ng",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/5BIIGlkkgh3d66H2ysNGgd/tracks",
+            "total": 11
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:5BIIGlkkgh3d66H2ysNGgd"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/6y3X6TzeglrPR6V26RSQTa"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/6y3X6TzeglrPR6V26RSQTa",
+        "id": "6y3X6TzeglrPR6V26RSQTa",
+        "images": [],
+        "name": "Kent",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/6y3X6TzeglrPR6V26RSQTa/tracks",
+            "total": 161
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:6y3X6TzeglrPR6V26RSQTa"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/glitterguts/playlist/2YyKUn9GwrjohhqZEoBnAw"
+        },
+        "href": "https://api.spotify.com/v1/users/glitterguts/playlists/2YyKUn9GwrjohhqZEoBnAw",
+        "id": "2YyKUn9GwrjohhqZEoBnAw",
+        "images": [],
+        "name": "Lowes LISTAAST",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/glitterguts"
+            },
+            "href": "https://api.spotify.com/v1/users/glitterguts",
+            "id": "glitterguts",
+            "type": "user",
+            "uri": "spotify:user:glitterguts"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/glitterguts/playlists/2YyKUn9GwrjohhqZEoBnAw/tracks",
+            "total": 96
+        },
+        "type": "playlist",
+        "uri": "spotify:user:glitterguts:playlist:2YyKUn9GwrjohhqZEoBnAw"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/4i0nDSGGPQ1eHvsEftDJth"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/4i0nDSGGPQ1eHvsEftDJth",
+        "id": "4i0nDSGGPQ1eHvsEftDJth",
+        "images": [],
+        "name": "Mer musik IPod Touch!",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/4i0nDSGGPQ1eHvsEftDJth/tracks",
+            "total": 132
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:4i0nDSGGPQ1eHvsEftDJth"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/7LY9XOua9mIfcv2RBkOxgL"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/7LY9XOua9mIfcv2RBkOxgL",
+        "id": "7LY9XOua9mIfcv2RBkOxgL",
+        "images": [],
+        "name": "Gammal Rock Typ",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/7LY9XOua9mIfcv2RBkOxgL/tracks",
+            "total": 71
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:7LY9XOua9mIfcv2RBkOxgL"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/4vr1jdNjq5J6n9TwN5Vi2a"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/4vr1jdNjq5J6n9TwN5Vi2a",
+        "id": "4vr1jdNjq5J6n9TwN5Vi2a",
+        "images": [],
+        "name": "Stuffsssss A Bit Like",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/4vr1jdNjq5J6n9TwN5Vi2a/tracks",
+            "total": 54
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:4vr1jdNjq5J6n9TwN5Vi2a"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/arlaa/playlist/0n0KiNqM2ZqlXmoJbSNbJ8"
+        },
+        "href": "https://api.spotify.com/v1/users/arlaa/playlists/0n0KiNqM2ZqlXmoJbSNbJ8",
+        "id": "0n0KiNqM2ZqlXmoJbSNbJ8",
+        "images": [],
+        "name": "Pluggmusik",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/arlaa"
+            },
+            "href": "https://api.spotify.com/v1/users/arlaa",
+            "id": "arlaa",
+            "type": "user",
+            "uri": "spotify:user:arlaa"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/arlaa/playlists/0n0KiNqM2ZqlXmoJbSNbJ8/tracks",
+            "total": 362
+        },
+        "type": "playlist",
+        "uri": "spotify:user:arlaa:playlist:0n0KiNqM2ZqlXmoJbSNbJ8"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/1LiQO6xVNNPItz4UcGwUWI"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/1LiQO6xVNNPItz4UcGwUWI",
+        "id": "1LiQO6xVNNPItz4UcGwUWI",
+        "images": [],
+        "name": "Lite Rockigt..",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/1LiQO6xVNNPItz4UcGwUWI/tracks",
+            "total": 3
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:1LiQO6xVNNPItz4UcGwUWI"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/2RRuoHc9AK2WXg0KIef2oE"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/2RRuoHc9AK2WXg0KIef2oE",
+        "id": "2RRuoHc9AK2WXg0KIef2oE",
+        "images": [],
+        "name": "Skummigt",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/2RRuoHc9AK2WXg0KIef2oE/tracks",
+            "total": 6
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:2RRuoHc9AK2WXg0KIef2oE"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/5zeTTANoH7OgKQPsjVUdgr"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/5zeTTANoH7OgKQPsjVUdgr",
+        "id": "5zeTTANoH7OgKQPsjVUdgr",
+        "images": [],
+        "name": "Electro Swing",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/5zeTTANoH7OgKQPsjVUdgr/tracks",
+            "total": 26
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:5zeTTANoH7OgKQPsjVUdgr"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/polkanils/playlist/4Ax7eQ44DNmmFXtGF2lyKM"
+        },
+        "href": "https://api.spotify.com/v1/users/polkanils/playlists/4Ax7eQ44DNmmFXtGF2lyKM",
+        "id": "4Ax7eQ44DNmmFXtGF2lyKM",
+        "images": [],
+        "name": "Sonic Boom",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/polkanils"
+            },
+            "href": "https://api.spotify.com/v1/users/polkanils",
+            "id": "polkanils",
+            "type": "user",
+            "uri": "spotify:user:polkanils"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/polkanils/playlists/4Ax7eQ44DNmmFXtGF2lyKM/tracks",
+            "total": 71
+        },
+        "type": "playlist",
+        "uri": "spotify:user:polkanils:playlist:4Ax7eQ44DNmmFXtGF2lyKM"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/1141436226/playlist/09bK82swx6nrylix3UxW2g"
+        },
+        "href": "https://api.spotify.com/v1/users/1141436226/playlists/09bK82swx6nrylix3UxW2g",
+        "id": "09bK82swx6nrylix3UxW2g",
+        "images": [],
+        "name": "Electro Swing Housy Version Mixtape Nr. 2",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/1141436226"
+            },
+            "href": "https://api.spotify.com/v1/users/1141436226",
+            "id": "1141436226",
+            "type": "user",
+            "uri": "spotify:user:1141436226"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/1141436226/playlists/09bK82swx6nrylix3UxW2g/tracks",
+            "total": 16
+        },
+        "type": "playlist",
+        "uri": "spotify:user:1141436226:playlist:09bK82swx6nrylix3UxW2g"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/%23_simon/playlist/1iy7aOXpKwnzr1sQTAeN3M"
+        },
+        "href": "https://api.spotify.com/v1/users/%23_simon/playlists/1iy7aOXpKwnzr1sQTAeN3M",
+        "id": "1iy7aOXpKwnzr1sQTAeN3M",
+        "images": [],
+        "name": "#E.L.E.C.T.R.O <3 | :** HOUSE:DUBSTEP:DRUMSTEP:DNB :P #shuffle!",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/%23_simon"
+            },
+            "href": "https://api.spotify.com/v1/users/%23_simon",
+            "id": "#_simon",
+            "type": "user",
+            "uri": "spotify:user:%23_simon"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/%23_simon/playlists/1iy7aOXpKwnzr1sQTAeN3M/tracks",
+            "total": 10
+        },
+        "type": "playlist",
+        "uri": "spotify:user:%23_simon:playlist:1iy7aOXpKwnzr1sQTAeN3M"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/jahamer27/playlist/115UF9EaKce189NxjnVZPo"
+        },
+        "href": "https://api.spotify.com/v1/users/jahamer27/playlists/115UF9EaKce189NxjnVZPo",
+        "id": "115UF9EaKce189NxjnVZPo",
+        "images": [],
+        "name": "Electro Swing UPBEAT: Parov Stelar \u2013 Catgroove / Lionel Hampton \u2013 It Don\u2019t Mean a Thing (If It Ain\u2019t That Swing) / Caravan Palace \u2013 Jolie Coquine / Parov Stelar \u2013 Booty Swing / Get A Move On! \u2013 Mr. Scruff / Biboulakis",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/jahamer27"
+            },
+            "href": "https://api.spotify.com/v1/users/jahamer27",
+            "id": "jahamer27",
+            "type": "user",
+            "uri": "spotify:user:jahamer27"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/jahamer27/playlists/115UF9EaKce189NxjnVZPo/tracks",
+            "total": 62
+        },
+        "type": "playlist",
+        "uri": "spotify:user:jahamer27:playlist:115UF9EaKce189NxjnVZPo"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0oUqDpjfoXt7GsUwx3Wjhz"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0oUqDpjfoXt7GsUwx3Wjhz",
+        "id": "0oUqDpjfoXt7GsUwx3Wjhz",
+        "images": [],
+        "name": "new new new",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0oUqDpjfoXt7GsUwx3Wjhz/tracks",
+            "total": 11
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0oUqDpjfoXt7GsUwx3Wjhz"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/00WKoWYfx2wNvWeCNjvGmD"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/00WKoWYfx2wNvWeCNjvGmD",
+        "id": "00WKoWYfx2wNvWeCNjvGmD",
+        "images": [],
+        "name": "Surround",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/00WKoWYfx2wNvWeCNjvGmD/tracks",
+            "total": 0
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:00WKoWYfx2wNvWeCNjvGmD"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/glitterguts/playlist/4ZDwvASMRPbWwbPTC7512N"
+        },
+        "href": "https://api.spotify.com/v1/users/glitterguts/playlists/4ZDwvASMRPbWwbPTC7512N",
+        "id": "4ZDwvASMRPbWwbPTC7512N",
+        "images": [],
+        "name": "GLiTTERGUTS",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/glitterguts"
+            },
+            "href": "https://api.spotify.com/v1/users/glitterguts",
+            "id": "glitterguts",
+            "type": "user",
+            "uri": "spotify:user:glitterguts"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/glitterguts/playlists/4ZDwvASMRPbWwbPTC7512N/tracks",
+            "total": 206
+        },
+        "type": "playlist",
+        "uri": "spotify:user:glitterguts:playlist:4ZDwvASMRPbWwbPTC7512N"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/glitterguts/playlist/5HFJrGnTtGUH90vcOm7oOR"
+        },
+        "href": "https://api.spotify.com/v1/users/glitterguts/playlists/5HFJrGnTtGUH90vcOm7oOR",
+        "id": "5HFJrGnTtGUH90vcOm7oOR",
+        "images": [],
+        "name": "J-Rock",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/glitterguts"
+            },
+            "href": "https://api.spotify.com/v1/users/glitterguts",
+            "id": "glitterguts",
+            "type": "user",
+            "uri": "spotify:user:glitterguts"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/glitterguts/playlists/5HFJrGnTtGUH90vcOm7oOR/tracks",
+            "total": 372
+        },
+        "type": "playlist",
+        "uri": "spotify:user:glitterguts:playlist:5HFJrGnTtGUH90vcOm7oOR"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/chrizzlol/playlist/4oxSoXdOHoUiqGf1pPlicn"
+        },
+        "href": "https://api.spotify.com/v1/users/chrizzlol/playlists/4oxSoXdOHoUiqGf1pPlicn",
+        "id": "4oxSoXdOHoUiqGf1pPlicn",
+        "images": [],
+        "name": "\u27292014\u2729",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/chrizzlol"
+            },
+            "href": "https://api.spotify.com/v1/users/chrizzlol",
+            "id": "chrizzlol",
+            "type": "user",
+            "uri": "spotify:user:chrizzlol"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/chrizzlol/playlists/4oxSoXdOHoUiqGf1pPlicn/tracks",
+            "total": 11
+        },
+        "type": "playlist",
+        "uri": "spotify:user:chrizzlol:playlist:4oxSoXdOHoUiqGf1pPlicn"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/chrizzlol/playlist/726lnMMWUYLJtnUFkoKkJH"
+        },
+        "href": "https://api.spotify.com/v1/users/chrizzlol/playlists/726lnMMWUYLJtnUFkoKkJH",
+        "id": "726lnMMWUYLJtnUFkoKkJH",
+        "images": [],
+        "name": "\u27292013\u2729",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/chrizzlol"
+            },
+            "href": "https://api.spotify.com/v1/users/chrizzlol",
+            "id": "chrizzlol",
+            "type": "user",
+            "uri": "spotify:user:chrizzlol"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/chrizzlol/playlists/726lnMMWUYLJtnUFkoKkJH/tracks",
+            "total": 64
+        },
+        "type": "playlist",
+        "uri": "spotify:user:chrizzlol:playlist:726lnMMWUYLJtnUFkoKkJH"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/chrizzlol/playlist/279xjwE6wJnXD2tfXW07UK"
+        },
+        "href": "https://api.spotify.com/v1/users/chrizzlol/playlists/279xjwE6wJnXD2tfXW07UK",
+        "id": "279xjwE6wJnXD2tfXW07UK",
+        "images": [],
+        "name": "Chill ~(\uffe3\u25bd\uffe3)~*",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/chrizzlol"
+            },
+            "href": "https://api.spotify.com/v1/users/chrizzlol",
+            "id": "chrizzlol",
+            "type": "user",
+            "uri": "spotify:user:chrizzlol"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/chrizzlol/playlists/279xjwE6wJnXD2tfXW07UK/tracks",
+            "total": 32
+        },
+        "type": "playlist",
+        "uri": "spotify:user:chrizzlol:playlist:279xjwE6wJnXD2tfXW07UK"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/chrizzlol/playlist/5lUmGTRA92Wxps7UisY5Na"
+        },
+        "href": "https://api.spotify.com/v1/users/chrizzlol/playlists/5lUmGTRA92Wxps7UisY5Na",
+        "id": "5lUmGTRA92Wxps7UisY5Na",
+        "images": [],
+        "name": "\u03df\u039b\u221a\u039b\u019d\u2533\u2192",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/chrizzlol"
+            },
+            "href": "https://api.spotify.com/v1/users/chrizzlol",
+            "id": "chrizzlol",
+            "type": "user",
+            "uri": "spotify:user:chrizzlol"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/chrizzlol/playlists/5lUmGTRA92Wxps7UisY5Na/tracks",
+            "total": 32
+        },
+        "type": "playlist",
+        "uri": "spotify:user:chrizzlol:playlist:5lUmGTRA92Wxps7UisY5Na"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/vnhimself/playlist/7vd4QcRSRK9DRIeDt5S7tE"
+        },
+        "href": "https://api.spotify.com/v1/users/vnhimself/playlists/7vd4QcRSRK9DRIeDt5S7tE",
+        "id": "7vd4QcRSRK9DRIeDt5S7tE",
+        "images": [],
+        "name": "Lo-Fi/Lounge/Chill/Bossanova/Jazz/Deep House ( Musique Relaxante )",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/vnhimself"
+            },
+            "href": "https://api.spotify.com/v1/users/vnhimself",
+            "id": "vnhimself",
+            "type": "user",
+            "uri": "spotify:user:vnhimself"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/vnhimself/playlists/7vd4QcRSRK9DRIeDt5S7tE/tracks",
+            "total": 646
+        },
+        "type": "playlist",
+        "uri": "spotify:user:vnhimself:playlist:7vd4QcRSRK9DRIeDt5S7tE"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/12sNLcMTmZZtpyx0kWUWaV"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/12sNLcMTmZZtpyx0kWUWaV",
+        "id": "12sNLcMTmZZtpyx0kWUWaV",
+        "images": [],
+        "name": "Lowe bitpop",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/12sNLcMTmZZtpyx0kWUWaV/tracks",
+            "total": 41
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:12sNLcMTmZZtpyx0kWUWaV"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0lghAsSBVLDnLQpctuuQRZ"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0lghAsSBVLDnLQpctuuQRZ",
+        "id": "0lghAsSBVLDnLQpctuuQRZ",
+        "images": [],
+        "name": "Various Artists \u2013 Music for Dining in Space: Compiled by DJ Darkhorse",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0lghAsSBVLDnLQpctuuQRZ/tracks",
+            "total": 16
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0lghAsSBVLDnLQpctuuQRZ"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/3gtgv7mhRl7Cu8SXfDb8SW"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/3gtgv7mhRl7Cu8SXfDb8SW",
+        "id": "3gtgv7mhRl7Cu8SXfDb8SW",
+        "images": [],
+        "name": "Various Artists \u2013 Music For Moving Images (Volume 4)",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/3gtgv7mhRl7Cu8SXfDb8SW/tracks",
+            "total": 17
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:3gtgv7mhRl7Cu8SXfDb8SW"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/juliusk/playlist/7czDZxa1U1EwRQa0FDC5qv"
+        },
+        "href": "https://api.spotify.com/v1/users/juliusk/playlists/7czDZxa1U1EwRQa0FDC5qv",
+        "id": "7czDZxa1U1EwRQa0FDC5qv",
+        "images": [],
+        "name": "Dinner Music // Constantly updated for your eating pleasure",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/juliusk"
+            },
+            "href": "https://api.spotify.com/v1/users/juliusk",
+            "id": "juliusk",
+            "type": "user",
+            "uri": "spotify:user:juliusk"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/juliusk/playlists/7czDZxa1U1EwRQa0FDC5qv/tracks",
+            "total": 253
+        },
+        "type": "playlist",
+        "uri": "spotify:user:juliusk:playlist:7czDZxa1U1EwRQa0FDC5qv"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/spotify/playlist/3kjNcwrUClSp1Iatukq3TC"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/3kjNcwrUClSp1Iatukq3TC",
+        "id": "3kjNcwrUClSp1Iatukq3TC",
+        "images": [
+            {
+                "url": "https://i.scdn.co/image/6380edde6726e9247709be673788fb8f5d585a69"
+            }
+        ],
+        "name": "Lounge - Soft House",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/spotify"
+            },
+            "href": "https://api.spotify.com/v1/users/spotify",
+            "id": "spotify",
+            "type": "user",
+            "uri": "spotify:user:spotify"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/spotify/playlists/3kjNcwrUClSp1Iatukq3TC/tracks",
+            "total": 67
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify:playlist:3kjNcwrUClSp1Iatukq3TC"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/spotify/playlist/0gPn4YVshxz6XoXZaRowGC"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/0gPn4YVshxz6XoXZaRowGC",
+        "id": "0gPn4YVshxz6XoXZaRowGC",
+        "images": [
+            {
+                "url": "https://i.scdn.co/image/370cb65adba3793e66c68c6b6ed317d5222bf76a"
+            }
+        ],
+        "name": "Lighten Up, Man!",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/spotify"
+            },
+            "href": "https://api.spotify.com/v1/users/spotify",
+            "id": "spotify",
+            "type": "user",
+            "uri": "spotify:user:spotify"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/spotify/playlists/0gPn4YVshxz6XoXZaRowGC/tracks",
+            "total": 47
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify:playlist:0gPn4YVshxz6XoXZaRowGC"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/4yfP7ZgNrfxMp1iQ5hrI9F"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/4yfP7ZgNrfxMp1iQ5hrI9F",
+        "id": "4yfP7ZgNrfxMp1iQ5hrI9F",
+        "images": [],
+        "name": "Plugg",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/4yfP7ZgNrfxMp1iQ5hrI9F/tracks",
+            "total": 29
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:4yfP7ZgNrfxMp1iQ5hrI9F"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/59Gudkn67VoC5nVM1KNSBJ"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/59Gudkn67VoC5nVM1KNSBJ",
+        "id": "59Gudkn67VoC5nVM1KNSBJ",
+        "images": [],
+        "name": "Hissmusik",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/59Gudkn67VoC5nVM1KNSBJ/tracks",
+            "total": 2
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:59Gudkn67VoC5nVM1KNSBJ"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/5Toej5CZODdrNia3EUOIux"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/5Toej5CZODdrNia3EUOIux",
+        "id": "5Toej5CZODdrNia3EUOIux",
+        "images": [],
+        "name": "spooky",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/5Toej5CZODdrNia3EUOIux/tracks",
+            "total": 13
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:5Toej5CZODdrNia3EUOIux"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/29DHhJBEL8ITOuIgu7mYAl"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/29DHhJBEL8ITOuIgu7mYAl",
+        "id": "29DHhJBEL8ITOuIgu7mYAl",
+        "images": [],
+        "name": "Musik imorgon",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/29DHhJBEL8ITOuIgu7mYAl/tracks",
+            "total": 1
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:29DHhJBEL8ITOuIgu7mYAl"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0T9a4tbtLviK1uM1uq7vki"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0T9a4tbtLviK1uM1uq7vki",
+        "id": "0T9a4tbtLviK1uM1uq7vki",
+        "images": [],
+        "name": "Liked from Radio",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0T9a4tbtLviK1uM1uq7vki/tracks",
+            "total": 68
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0T9a4tbtLviK1uM1uq7vki"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/7ti9BOcAoEvEej0lIs0FZb"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/7ti9BOcAoEvEej0lIs0FZb",
+        "id": "7ti9BOcAoEvEej0lIs0FZb",
+        "images": [],
+        "name": "Fr\u00e5n Mammas konto",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/7ti9BOcAoEvEej0lIs0FZb/tracks",
+            "total": 0
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:7ti9BOcAoEvEej0lIs0FZb"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0KY23UBiKtJFPTVeYxuPji"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0KY23UBiKtJFPTVeYxuPji",
+        "id": "0KY23UBiKtJFPTVeYxuPji",
+        "images": [],
+        "name": "Lowes savantlista",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0KY23UBiKtJFPTVeYxuPji/tracks",
+            "total": 18
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0KY23UBiKtJFPTVeYxuPji"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/5VFsfqXbyzhvgKRCcAkUXP"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/5VFsfqXbyzhvgKRCcAkUXP",
+        "id": "5VFsfqXbyzhvgKRCcAkUXP",
+        "images": [],
+        "name": "Casual",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/5VFsfqXbyzhvgKRCcAkUXP/tracks",
+            "total": 43
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:5VFsfqXbyzhvgKRCcAkUXP"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/6m7fbzK5cNe41KqvbaldpY"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/6m7fbzK5cNe41KqvbaldpY",
+        "id": "6m7fbzK5cNe41KqvbaldpY",
+        "images": [],
+        "name": "Fr\u00e4\u00e4shnt",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/6m7fbzK5cNe41KqvbaldpY/tracks",
+            "total": 41
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:6m7fbzK5cNe41KqvbaldpY"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/johannesraivio/playlist/3GptcObbp1CRrDf7hqjpVr"
+        },
+        "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/3GptcObbp1CRrDf7hqjpVr",
+        "id": "3GptcObbp1CRrDf7hqjpVr",
+        "images": [],
+        "name": "Mobilfr\u00e4schnt",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/johannesraivio"
+            },
+            "href": "https://api.spotify.com/v1/users/johannesraivio",
+            "id": "johannesraivio",
+            "type": "user",
+            "uri": "spotify:user:johannesraivio"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/johannesraivio/playlists/3GptcObbp1CRrDf7hqjpVr/tracks",
+            "total": 88
+        },
+        "type": "playlist",
+        "uri": "spotify:user:johannesraivio:playlist:3GptcObbp1CRrDf7hqjpVr"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/1Qld3Oe5Uzn7tzLHLdVIgE"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/1Qld3Oe5Uzn7tzLHLdVIgE",
+        "id": "1Qld3Oe5Uzn7tzLHLdVIgE",
+        "images": [],
+        "name": "Fr\u00e4\u00e4shnt 2",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/1Qld3Oe5Uzn7tzLHLdVIgE/tracks",
+            "total": 24
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:1Qld3Oe5Uzn7tzLHLdVIgE"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/kristoferbengtsson/playlist/44DmSuV1cA3Wftn61nwP3g"
+        },
+        "href": "https://api.spotify.com/v1/users/kristoferbengtsson/playlists/44DmSuV1cA3Wftn61nwP3g",
+        "id": "44DmSuV1cA3Wftn61nwP3g",
+        "images": [],
+        "name": "Inf\u00f6r provet",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/kristoferbengtsson"
+            },
+            "href": "https://api.spotify.com/v1/users/kristoferbengtsson",
+            "id": "kristoferbengtsson",
+            "type": "user",
+            "uri": "spotify:user:kristoferbengtsson"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/kristoferbengtsson/playlists/44DmSuV1cA3Wftn61nwP3g/tracks",
+            "total": 13
+        },
+        "type": "playlist",
+        "uri": "spotify:user:kristoferbengtsson:playlist:44DmSuV1cA3Wftn61nwP3g"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/68pUnu22UiWkSmxh6j3a2q"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/68pUnu22UiWkSmxh6j3a2q",
+        "id": "68pUnu22UiWkSmxh6j3a2q",
+        "images": [],
+        "name": "COOL",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/68pUnu22UiWkSmxh6j3a2q/tracks",
+            "total": 109
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:68pUnu22UiWkSmxh6j3a2q"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/rakelj/playlist/1BQss9MKyQFKkYNKAgAZRV"
+        },
+        "href": "https://api.spotify.com/v1/users/rakelj/playlists/1BQss9MKyQFKkYNKAgAZRV",
+        "id": "1BQss9MKyQFKkYNKAgAZRV",
+        "images": [],
+        "name": "Weeds",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/rakelj"
+            },
+            "href": "https://api.spotify.com/v1/users/rakelj",
+            "id": "rakelj",
+            "type": "user",
+            "uri": "spotify:user:rakelj"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/rakelj/playlists/1BQss9MKyQFKkYNKAgAZRV/tracks",
+            "total": 42
+        },
+        "type": "playlist",
+        "uri": "spotify:user:rakelj:playlist:1BQss9MKyQFKkYNKAgAZRV"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0Jlq1MnQgNeJtAf1UosuR6"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0Jlq1MnQgNeJtAf1UosuR6",
+        "id": "0Jlq1MnQgNeJtAf1UosuR6",
+        "images": [],
+        "name": "Slenderman",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0Jlq1MnQgNeJtAf1UosuR6/tracks",
+            "total": 1
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0Jlq1MnQgNeJtAf1UosuR6"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/1DNUHYVRpWNdafRHHfiA9U"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/1DNUHYVRpWNdafRHHfiA9U",
+        "id": "1DNUHYVRpWNdafRHHfiA9U",
+        "images": [],
+        "name": "NYa",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/1DNUHYVRpWNdafRHHfiA9U/tracks",
+            "total": 38
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:1DNUHYVRpWNdafRHHfiA9U"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/3kmIYtm5fVMh2E6nKD2Rqe"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/3kmIYtm5fVMh2E6nKD2Rqe",
+        "id": "3kmIYtm5fVMh2E6nKD2Rqe",
+        "images": [],
+        "name": "Soul",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/3kmIYtm5fVMh2E6nKD2Rqe/tracks",
+            "total": 11
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:3kmIYtm5fVMh2E6nKD2Rqe"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0Xrs1FsSFhmr4IqDKiyioN"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0Xrs1FsSFhmr4IqDKiyioN",
+        "id": "0Xrs1FsSFhmr4IqDKiyioN",
+        "images": [],
+        "name": "Annat bra som jag inte har namn p\u00e5 xD",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0Xrs1FsSFhmr4IqDKiyioN/tracks",
+            "total": 4
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0Xrs1FsSFhmr4IqDKiyioN"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/1mHn2Z0I2Qe9HZd0IGwJad"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/1mHn2Z0I2Qe9HZd0IGwJad",
+        "id": "1mHn2Z0I2Qe9HZd0IGwJad",
+        "images": [],
+        "name": "alternative Pop",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/1mHn2Z0I2Qe9HZd0IGwJad/tracks",
+            "total": 5
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:1mHn2Z0I2Qe9HZd0IGwJad"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/6WfPDLZ4t9zEjAKVSdXnyT"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/6WfPDLZ4t9zEjAKVSdXnyT",
+        "id": "6WfPDLZ4t9zEjAKVSdXnyT",
+        "images": [],
+        "name": "Alternativ techno pop",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/6WfPDLZ4t9zEjAKVSdXnyT/tracks",
+            "total": 2
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:6WfPDLZ4t9zEjAKVSdXnyT"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0Glfl7aAIQNWcQPXo4kCIN"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0Glfl7aAIQNWcQPXo4kCIN",
+        "id": "0Glfl7aAIQNWcQPXo4kCIN",
+        "images": [],
+        "name": "techno Hiphop",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0Glfl7aAIQNWcQPXo4kCIN/tracks",
+            "total": 4
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0Glfl7aAIQNWcQPXo4kCIN"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/3Edfm5I1i86mpp3bFi8QOD"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/3Edfm5I1i86mpp3bFi8QOD",
+        "id": "3Edfm5I1i86mpp3bFi8QOD",
+        "images": [],
+        "name": "Musik utan s\u00e5ng",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/3Edfm5I1i86mpp3bFi8QOD/tracks",
+            "total": 6
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:3Edfm5I1i86mpp3bFi8QOD"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/5J7u2xw2CMlr4GIKrPaZ1m"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/5J7u2xw2CMlr4GIKrPaZ1m",
+        "id": "5J7u2xw2CMlr4GIKrPaZ1m",
+        "images": [],
+        "name": "hiphop Rock tyP?",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/5J7u2xw2CMlr4GIKrPaZ1m/tracks",
+            "total": 2
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:5J7u2xw2CMlr4GIKrPaZ1m"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/5YCEJeZqKr4Sy0aEGmKWkx"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/5YCEJeZqKr4Sy0aEGmKWkx",
+        "id": "5YCEJeZqKr4Sy0aEGmKWkx",
+        "images": [],
+        "name": "Techno PoP",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/5YCEJeZqKr4Sy0aEGmKWkx/tracks",
+            "total": 4
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:5YCEJeZqKr4Sy0aEGmKWkx"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/2teu8uHjY1FreeuzeHl1tj"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/2teu8uHjY1FreeuzeHl1tj",
+        "id": "2teu8uHjY1FreeuzeHl1tj",
+        "images": [],
+        "name": "pop",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/2teu8uHjY1FreeuzeHl1tj/tracks",
+            "total": 2
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:2teu8uHjY1FreeuzeHl1tj"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/2d87zJlOi7MluACefUF8B4"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/2d87zJlOi7MluACefUF8B4",
+        "id": "2d87zJlOi7MluACefUF8B4",
+        "images": [],
+        "name": "indie pop",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/2d87zJlOi7MluACefUF8B4/tracks",
+            "total": 17
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:2d87zJlOi7MluACefUF8B4"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/6FgWbboM9b2KcmegL8qi6c"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/6FgWbboM9b2KcmegL8qi6c",
+        "id": "6FgWbboM9b2KcmegL8qi6c",
+        "images": [],
+        "name": "awsome",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/6FgWbboM9b2KcmegL8qi6c/tracks",
+            "total": 10
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:6FgWbboM9b2KcmegL8qi6c"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/3Q1tL19AtjwxMcDCD4epx3"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/3Q1tL19AtjwxMcDCD4epx3",
+        "id": "3Q1tL19AtjwxMcDCD4epx3",
+        "images": [],
+        "name": "Technoo",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/3Q1tL19AtjwxMcDCD4epx3/tracks",
+            "total": 14
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:3Q1tL19AtjwxMcDCD4epx3"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0zh6R3ZBkLnTBXILVIJtxE"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0zh6R3ZBkLnTBXILVIJtxE",
+        "id": "0zh6R3ZBkLnTBXILVIJtxE",
+        "images": [],
+        "name": "hip hop",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0zh6R3ZBkLnTBXILVIJtxE/tracks",
+            "total": 16
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0zh6R3ZBkLnTBXILVIJtxE"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/7L30zUFS3eTlrDZUjgd7OP"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/7L30zUFS3eTlrDZUjgd7OP",
+        "id": "7L30zUFS3eTlrDZUjgd7OP",
+        "images": [],
+        "name": "calm rock stream",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/7L30zUFS3eTlrDZUjgd7OP/tracks",
+            "total": 7
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:7L30zUFS3eTlrDZUjgd7OP"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/57BMX9wbXsMRMhFZX7KkDY"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/57BMX9wbXsMRMhFZX7KkDY",
+        "id": "57BMX9wbXsMRMhFZX7KkDY",
+        "images": [],
+        "name": "Rock alternativ",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/57BMX9wbXsMRMhFZX7KkDY/tracks",
+            "total": 11
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:57BMX9wbXsMRMhFZX7KkDY"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/5bzhehYtsovTBhPyqEuWP6"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/5bzhehYtsovTBhPyqEuWP6",
+        "id": "5bzhehYtsovTBhPyqEuWP6",
+        "images": [],
+        "name": "b\u00e4ttre musik",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/5bzhehYtsovTBhPyqEuWP6/tracks",
+            "total": 85
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:5bzhehYtsovTBhPyqEuWP6"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/6D86VTXpMWkq6YCr9wcR53"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/6D86VTXpMWkq6YCr9wcR53",
+        "id": "6D86VTXpMWkq6YCr9wcR53",
+        "images": [],
+        "name": "Musik Jag Tycker om (innan 2010)",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/6D86VTXpMWkq6YCr9wcR53/tracks",
+            "total": 57
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:6D86VTXpMWkq6YCr9wcR53"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0YHOMMopA3JqHGg9ucuq6E"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0YHOMMopA3JqHGg9ucuq6E",
+        "id": "0YHOMMopA3JqHGg9ucuq6E",
+        "images": [],
+        "name": "St\u00f6Rd (skit.. ..)",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0YHOMMopA3JqHGg9ucuq6E/tracks",
+            "total": 9
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0YHOMMopA3JqHGg9ucuq6E"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0GIdn3Uibmw2bxTLd1slS7"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0GIdn3Uibmw2bxTLd1slS7",
+        "id": "0GIdn3Uibmw2bxTLd1slS7",
+        "images": [],
+        "name": "Lars Winnerb\u00e4ck",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0GIdn3Uibmw2bxTLd1slS7/tracks",
+            "total": 100
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0GIdn3Uibmw2bxTLd1slS7"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/3k6m1iOcx7sH2BIU6qD4uu"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/3k6m1iOcx7sH2BIU6qD4uu",
+        "id": "3k6m1iOcx7sH2BIU6qD4uu",
+        "images": [],
+        "name": "Tv-Themes",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/3k6m1iOcx7sH2BIU6qD4uu/tracks",
+            "total": 0
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:3k6m1iOcx7sH2BIU6qD4uu"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/3yzRaFqxX8KmVlIBfQ66BB"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/3yzRaFqxX8KmVlIBfQ66BB",
+        "id": "3yzRaFqxX8KmVlIBfQ66BB",
+        "images": [],
+        "name": "Mys",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/3yzRaFqxX8KmVlIBfQ66BB/tracks",
+            "total": 16
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:3yzRaFqxX8KmVlIBfQ66BB"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/5o6xEZ9BAAY1ZYp1vY6vwr"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/5o6xEZ9BAAY1ZYp1vY6vwr",
+        "id": "5o6xEZ9BAAY1ZYp1vY6vwr",
+        "images": [],
+        "name": "SKOJJ",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/5o6xEZ9BAAY1ZYp1vY6vwr/tracks",
+            "total": 4
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:5o6xEZ9BAAY1ZYp1vY6vwr"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/3Vv9KoKki26NuKe2hV2trl"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/3Vv9KoKki26NuKe2hV2trl",
+        "id": "3Vv9KoKki26NuKe2hV2trl",
+        "images": [],
+        "name": "S\u00e5nt jag borde g\u00f6ra musikvideor p\u00e5 :)",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/3Vv9KoKki26NuKe2hV2trl/tracks",
+            "total": 0
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:3Vv9KoKki26NuKe2hV2trl"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0fG9FIiKwkZ1TqOKkgkM9z"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0fG9FIiKwkZ1TqOKkgkM9z",
+        "id": "0fG9FIiKwkZ1TqOKkgkM9z",
+        "images": [],
+        "name": "RitMusik",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0fG9FIiKwkZ1TqOKkgkM9z/tracks",
+            "total": 307
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0fG9FIiKwkZ1TqOKkgkM9z"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/0CjjBpMSFwilVOYEHPtJdQ"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/0CjjBpMSFwilVOYEHPtJdQ",
+        "id": "0CjjBpMSFwilVOYEHPtJdQ",
+        "images": [],
+        "name": "NUvarande",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/0CjjBpMSFwilVOYEHPtJdQ/tracks",
+            "total": 2
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:0CjjBpMSFwilVOYEHPtJdQ"
+    },
+    {
+        "collaborative": false,
+        "external_urls": {
+            "spotify": "http://open.spotify.com/user/grayfish/playlist/06qQubYmVhwqmeABGpgGWZ"
+        },
+        "href": "https://api.spotify.com/v1/users/grayfish/playlists/06qQubYmVhwqmeABGpgGWZ",
+        "id": "06qQubYmVhwqmeABGpgGWZ",
+        "images": [],
+        "name": "gammal Techno",
+        "owner": {
+            "external_urls": {
+                "spotify": "http://open.spotify.com/user/grayfish"
+            },
+            "href": "https://api.spotify.com/v1/users/grayfish",
+            "id": "grayfish",
+            "type": "user",
+            "uri": "spotify:user:grayfish"
+        },
+        "public": true,
+        "tracks": {
+            "href": "https://api.spotify.com/v1/users/grayfish/playlists/06qQubYmVhwqmeABGpgGWZ/tracks",
+            "total": 1
+        },
+        "type": "playlist",
+        "uri": "spotify:user:grayfish:playlist:06qQubYmVhwqmeABGpgGWZ"
+    }
+]
