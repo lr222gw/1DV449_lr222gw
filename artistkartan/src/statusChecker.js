@@ -1355,7 +1355,7 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
     //Möjligtvis är det ett event som inte fått all nödvändig data,
     //Vi hoppar över sådanna event genom att använda denna if-sats..
     if(markerToUse != undefined){
-        markerToUse.infoWindow.eventTypes.push(ConcertData.type);
+        markerToUse.infoWindow.eventTypes.push([ConcertData.type, ("event"+ConcertData.id)]);
         markerToUse.arrOfArtists.push(ConcertData.performance);
 
         var strToAddToEnd = "</div></div>"; //Detta görs för att Sätta innehållet inom en divtagg...
@@ -1392,7 +1392,7 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
         var endDate = arrWithTimes[1];
 
         markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
-            '<div class="eventOfBox" ><a class="concertPlus" '+DateMark+' onclick="document.getElementById(\''+ id +'\').click();  return false;" ><div class="eventHeaderMultiMarker">'+displayName+'</div> <div class="eventType"><p class="eventTypeHeader">Typ av event: </p><p class="eventTypeContent">'+ eventTyp + '</p></div>' +
+            '<div class="eventOfBox" id="'+"event"+ConcertData.id+'" ><a class="concertPlus" '+DateMark+' onclick="document.getElementById(\''+ id +'\').click();  return false;" ><div class="eventHeaderMultiMarker">'+displayName+'</div> <div class="eventType"><p class="eventTypeHeader">Typ av event: </p><p class="eventTypeContent">'+ eventTyp + '</p></div>' +
             '<div class="DateOfEvent"><p class="eventContentHeader">'+'Eventstart: </p><p class="JustDateFrom">'+dateToUse + ' ' +time+ '</p> <p class="ToOwnLine">till</p> <p class="JustDateFrom">'+endDate +' '+ endtime+'</p></div>' +
             '</a></div>'+strToAddToEnd);
 
@@ -1523,9 +1523,22 @@ function MakeMultiMarker(positions, place){
         objects.lastUsedMarker = ConcertMarker;
         objects.lastOpenWindow = ConcertMarker.infoWindow;
 
+        setTimeout(function(){
+            colorFestival();
+        },500)
+
+
     });
     //nästa rad är bara till för att sökning ska fungera, annars ignorerars om något retuenrars...
     return ConcertMarker;
+}
+
+function colorFestival(){
+    for(var i = 0; i < objects.FestivalList.length; i++){
+        if(document.getElementById(objects.FestivalList[i]) !== null){
+            document.getElementById(objects.FestivalList[i]).firstChild.style.border = "5px solid rgb(197, 0, 172)";
+        }
+    }
 }
 
 function createInfoWindowWithConcertData(ConcertData){
@@ -1759,8 +1772,11 @@ function stopAllAnimations(){
 function showAllFestivals(){
     for(var i = 0; i < objects.MultiMarkers.length; i++){
         for(var j = 0; j < objects.MultiMarkers[i].infoWindow.eventTypes.length; j++){
-            if(objects.MultiMarkers[i].infoWindow.eventTypes[j] === "Festival"){
+            if(objects.MultiMarkers[i].infoWindow.eventTypes[j][0] === "Festival"){
                 objects.MultiMarkers[i].setAnimation(google.maps.Animation.BOUNCE);
+
+                objects.FestivalList.push(objects.MultiMarkers[i].infoWindow.eventTypes[j][1]);
+
             }
         }
 

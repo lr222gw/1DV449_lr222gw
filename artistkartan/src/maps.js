@@ -20,7 +20,8 @@ var objects = {
     ConcertsTodayMarkers : [],
     lastMultiMarker : null,
     artistEventFromSearch : [],
-    activeArtistEventScrollerNumber : null
+    activeArtistEventScrollerNumber : null,
+    FestivalList : []
 
 }
 var mouse = {x: 0, y: 0}; //HÄR
