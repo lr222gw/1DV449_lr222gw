@@ -83,16 +83,19 @@ document.getElementById("searchBox").addEventListener("keydown", function(e) {
     }*/
     //document.getElementById('searchArtistButton').outerHTML = document.getElementById('searchArtistButton').outerHTML + "<p class='arrowP'><-- Tryck här för att söka artist!</p>";
     // Enter is pressed
-    if (e.keyCode == 13 && e.ctrlKey === false) { window.setTimeout(function () {
-        /*document.getElementById("divForArrow").parentNode.removeChild(document.getElementById("divForArrow"));*/
+    if(localStorage["isOffline"] === "false"){
+        if (e.keyCode == 13 && e.ctrlKey === false) { window.setTimeout(function () {
+            /*document.getElementById("divForArrow").parentNode.removeChild(document.getElementById("divForArrow"));*/
 
-        document.getElementById('searchLocationButton').click();
-    }, 0);  }
-    if (e.keyCode == 13 && e.ctrlKey === true) { window.setTimeout(function () {
-        /*document.getElementById("divForArrow").parentNode.removeChild(document.getElementById("divForArrow"));*/
+            document.getElementById('searchLocationButton').click();
+        }, 0);  }
+        if (e.keyCode == 13 && e.ctrlKey === true) { window.setTimeout(function () {
+            /*document.getElementById("divForArrow").parentNode.removeChild(document.getElementById("divForArrow"));*/
 
-        document.getElementById('searchArtistButton').click();
-    }, 0);  }
+            document.getElementById('searchArtistButton').click();
+        }, 0);  }
+    }
+
 }, false);
 
 
