@@ -846,16 +846,24 @@ searchLocation = function(searchTerm, ignoreShow){
                         if(parsedData.length !=  1){
                             // Om JSON.parse(data) blir 1 så innerbär det att den bara innehåller MetroID,
                             // Då vill vi inte skriva ut något, utan bara berätta att det ej finns några konserter här.
+                            var markerToCenterID;
+                            var MultimarkerToCenterID;
                             if(concertsNotAlreadyPlaced(parsedData[0].location.city) === true){
                                 placeConcertsOnMap(parsedData);
+                                markerToCenterID = objects.markers[objects.markers.length-1];
+                                MultimarkerToCenterID = objects.MultiMarkers[objects.MultiMarkers.length-1];
+                            }else{
+                                markerobj = getMarkerFromPlace(parsedData[0].location.city);
+                                markerToCenterID = markerobj.Marker;
+                                MultimarkerToCenterID = markerobj.MultiMarker;
                             }
 
                             if(ignoreShow !== "ignore"){
                                 if(objects.MultiMarkers.length !== 0){
-                                    objects.map.setCenter(new google.maps.LatLng(objects.MultiMarkers[objects.MultiMarkers.length-1].position.k, objects.MultiMarkers[objects.MultiMarkers.length-1].position.D))
+                                    objects.map.setCenter(new google.maps.LatLng(MultimarkerToCenterID.position.k, MultimarkerToCenterID.position.D))
                                     objects.map.setZoom(10);
                                 }else{
-                                    objects.map.setCenter(new google.maps.LatLng(objects.markers[objects.markers.length-1].position.k, objects.markers[objects.markers.length-1].position.D))
+                                    objects.map.setCenter(new google.maps.LatLng(markerToCenterID.position.k, markerToCenterID.position.D))
                                     objects.map.setZoom(10);
                                 }
                                 prepareLoadingScreen("SearchLocation Avslutas i If-satsen 'parsedData.length !=  1'");
@@ -889,6 +897,23 @@ searchLocation = function(searchTerm, ignoreShow){
         });
     }
 
+}
+
+getMarkerFromPlace = function(place){
+    markerObj = {};
+    for(var i = 0; i < objects.MultiMarkers.length; i++){
+        if(objects.MultiMarkers[i].thisPlace === place){
+            markerObj.MultiMarker = objects.MultiMarkers[i];
+            break;
+        }
+    }
+    for(var i = 0; i < objects.markers.length; i++){
+        if(objects.markers[i].thisPlace === place){
+            markerObj.Marker = objects.MultiMarkers[i];
+            break;
+        }
+    }
+    return markerObj;
 }
 concertsNotAlreadyPlaced = function(place){
     for(var i = 0; i < objects.MultiMarkers.length; i++){
