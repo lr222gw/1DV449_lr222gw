@@ -25,6 +25,7 @@ ShowTodaysConcertButton.onclick = function(){
     stopAllAnimations();
     setTimeout(function(){
         showAllTodaysConcerts();
+        concertsWithinScreen();
     },200)
 }
 ShowTodaysConcertListObj.appendChild(ShowTodaysConcertButton);
@@ -41,6 +42,7 @@ ShowFestivalsButton.onclick = function(){
     stopAllAnimations();
     setTimeout(function(){
         showAllFestivals();
+        concertsWithinScreen();
     },200)
 
 }
@@ -312,9 +314,9 @@ $.ajax({
             logout.setAttribute("method", "GET");
             logout.setAttribute("action", "logout.php");
             var logoutButton = document.createElement("input");
-            logoutButton.setAttribute("value", "Logga ut, " + data);
-            logoutButton.setAttribute("type", "submit");
-            logoutButton.setAttribute("id", "logout");
+            logoutButton.setAttribute("value",  "Logga ut, " + data);
+            logoutButton.setAttribute("type",   "submit");
+            logoutButton.setAttribute("id",     "logout");
 
             logout.appendChild(logoutButton);
 
@@ -322,7 +324,7 @@ $.ajax({
 
             var showMeArtists = document.createElement("a");
             showMeArtists.setAttribute("id", "relevantArtists");
-            showMeArtists.setAttribute("href", "#")
+            showMeArtists.setAttribute("href", "#");
             showMeArtists.onclick = function(){
                 if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
                     document.getElementById("hideOrShow").click();
@@ -383,6 +385,49 @@ setStuffOffline = function(){
     document.body.insertBefore(message, document.getElementById("myFavoriteTowns"));
 }
 
+concertsWithinScreen = function(){
+    var mapbounds = objects.map.getBounds();
+    var topNright = mapbounds.getNorthEast();
+    var bottomNleft = mapbounds.getSouthWest();
+    var top = topNright.k;
+    var right = topNright.D;
+    var bottom = bottomNleft.k;
+    var left = bottomNleft.D;
+
+    for(var i = 0; i < objects.markers.length; i++){
+
+        if(objects.markers[i].position.k  <  top    && objects.markers[i].position.D <  right
+            &&
+            objects.markers[i].position.k >  bottom && objects.markers[i].position.D >  left){
+            //Om vi hittar något här inne (inom skärmen) Så ska vi visa att vi vet om att det finns. Annars ska vi visa ett felmeddelande..
+
+            if(objects.markers[i].getAnimation() !== undefined && objects.markers[i].getAnimation() !== null){
+                return true;
+            }
+        }
+    }
+
+    for(var i = 0; i < objects.MultiMarkers.length;i++){
+        if(objects.MultiMarkers[i].position.k  <  top    && objects.MultiMarkers[i].position.D <  right
+            &&
+            objects.MultiMarkers[i].position.k >  bottom && objects.MultiMarkers[i].position.D >  left){
+
+            if(objects.MultiMarkers[i].getAnimation() !== undefined && objects.MultiMarkers[i].getAnimation() !== null){
+                return true;
+            }
+        }
+    }
+
+    var alert = document.createElement("div");
+    alert.innerHTML = "<p>Tyvärr finns inte det du ville markera inom din skärm, testa att zooma ut och försöka igen.</p><p>Kom ihåg att det endast är aktiva markörer som kommer markeras, har du få markörer så kan du testa att söka på några platser av intresse.</p>";
+    alert.setAttribute("id", "alertBox");
+    alert.style.display = "none";
+    alert.setAttribute("title", "Det här var ju tråkigt...");
+    document.body.appendChild(alert);
+    $( "#alertBox" ).dialog();//alert("Artisten du sökt efter har tyvärr inga planerade event! (Enligt Songkick.com) :(");
+
+
+}
 // Icke användbart, ny lösning ska implementeras... Denna är för krävande
 /*getConcertsFromYourCountry = function(lat, lng){
 
@@ -390,7 +435,7 @@ setStuffOffline = function(){
 
         if(lat != null && lng != null){
             lat = lat;
-            lng = lng;
+            lng = lng;autoHide
         }else{
             lat = objects.userPosition.k;
             lng = objects.userPosition.D;
@@ -1654,8 +1699,21 @@ populateUserWithArtistData = function(){
                     console.log("Cant update until later! :< ");
                     if(localStorage[localStorage["UserID"] + "ArtistArr"] !== undefined){
                         spotifyFunctionSomething();
-                        objects.map.setZoom(5);
+                        //objects.map.setZoom(5);
                     }
+                    var alert = document.createElement("div");
+                    alert.innerHTML = "<p>Din spotify session har gått ut, vänligen logga in på nytt!</p>";
+                    alert.setAttribute("id", "alertBox");
+                    alert.style.display = "none";
+                    alert.setAttribute("title", "Logga in på nytt...");
+                    document.body.appendChild(alert);
+                    $( "#alertBox" ).dialog({
+                        close: function(){
+                            document.getElementById("logout").click();
+                        }
+                    });
+
+
 
                 }else{
                     console.log("Artist Populated! :D ");
@@ -1667,7 +1725,7 @@ populateUserWithArtistData = function(){
                         localStorage[name + "ArtistArr"] =  data;
                     }
                     spotifyFunctionSomething();
-                    objects.map.setZoom(5);
+                    //objects.map.setZoom(5);
 
                 }
 
@@ -1756,7 +1814,7 @@ function spotifyFunctionSomething(){
 
 
 
-
+    concertsWithinScreen();
 
     /*for(var i = 0 ; i < artistsFromCache.length; i++ ){
      artistEventJSonList = JSON.parse(artistsFromCache[i].LocationJson);

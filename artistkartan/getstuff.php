@@ -488,7 +488,7 @@ if($_GET["function"] == "getUsersArtists"){ //Artister på användarens listor b
         //Säkerhet, vill inte att användaren ska behöva vänta
         //om spotify inte lyckades hämta listorna.. HAR HÄNT!
             echo "nope";
-            return;
+            return ;
         }else{
             $db->addArtistJSONToUser($userID, $ArtistListJson);
         }
