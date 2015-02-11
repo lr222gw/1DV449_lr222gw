@@ -88,19 +88,19 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="cache.manifest" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="cache.manifest" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/cache.manifest">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1" column="9" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
+                <state line="1" column="9" selection-start="24" selection-end="24" vertical-scroll-proportion="0.02647975" vertical-offset="0" max-vertical-offset="1190">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="statusChecker.js" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="statusChecker.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="89" column="55" selection-start="3722" selection-end="3722" vertical-scroll-proportion="0.615257" vertical-offset="1142" max-vertical-offset="30804">
+                <state line="900" column="25" selection-start="40100" selection-end="40100" vertical-scroll-proportion="-10.346154" vertical-offset="15031" max-vertical-offset="31127">
                   <folding />
                 </state>
               </provider>
@@ -738,16 +738,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cache.manifest">
+    <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="9" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
+        <state line="900" column="25" selection-start="40100" selection-end="40100" vertical-scroll-proportion="-10.346154" vertical-offset="15031" max-vertical-offset="31127">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/statusChecker.js">
+    <entry file="file://$PROJECT_DIR$/cache.manifest">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="55" selection-start="3722" selection-end="3722" vertical-scroll-proportion="0.615257" vertical-offset="1142" max-vertical-offset="30804">
+        <state line="1" column="9" selection-start="24" selection-end="24" vertical-scroll-proportion="0.02647975" vertical-offset="0" max-vertical-offset="1190">
           <folding />
         </state>
       </provider>

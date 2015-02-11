@@ -846,7 +846,10 @@ searchLocation = function(searchTerm, ignoreShow){
                         if(parsedData.length !=  1){
                             // Om JSON.parse(data) blir 1 så innerbär det att den bara innehåller MetroID,
                             // Då vill vi inte skriva ut något, utan bara berätta att det ej finns några konserter här.
-                            placeConcertsOnMap(parsedData);
+                            if(concertsNotAlreadyPlaced(parsedData[0].location.city) === true){
+                                placeConcertsOnMap(parsedData);
+                            }
+
                             if(ignoreShow !== "ignore"){
                                 if(objects.MultiMarkers.length !== 0){
                                     objects.map.setCenter(new google.maps.LatLng(objects.MultiMarkers[objects.MultiMarkers.length-1].position.k, objects.MultiMarkers[objects.MultiMarkers.length-1].position.D))
@@ -886,6 +889,19 @@ searchLocation = function(searchTerm, ignoreShow){
         });
     }
 
+}
+concertsNotAlreadyPlaced = function(place){
+    for(var i = 0; i < objects.MultiMarkers.length; i++){
+        if(objects.MultiMarkers[i].thisPlace === place){
+            return false;
+        }
+    }
+    for(var i = 0; i < objects.markers.length; i++){
+        if(objects.markers[i].thisPlace === place){
+            return false;
+        }
+    }
+    return true;
 }
 
 prepareLoadingScreen = function(reasonForLog){
@@ -1159,7 +1175,7 @@ placeConcertsOnMap = function(ConcertData, isSearch){
             ConcertData.pop(ConcertData.length); //Tar bort sista i arrayen, alltså MetroID't...
         }
 
-
+        var place = "";
         var positionsLat = [];
         var positionsLng = [];
         var positions = [];
@@ -1184,6 +1200,7 @@ placeConcertsOnMap = function(ConcertData, isSearch){
                     positionsLat.push(ConcertData[i].location.lat);
                     positionsLng.push(ConcertData[i].location.lng);
                     positions.push([ConcertData[i].location.lat, ConcertData[i].location.lng, sameLatNLngID]);
+                    place = ConcertData[i].location.city;
                 }
                 ConcertData[i].sameLatNLngID = (ConcertData[i].location.lat.toString() + ConcertData[i].location.lng.toString());
                 ConcertThatHasSameLatNLng.push(ConcertData[i]);
@@ -1206,7 +1223,7 @@ placeConcertsOnMap = function(ConcertData, isSearch){
         }
 
         for(var i = 0; i < positions.length; i++){
-            var marker = MakeMultiMarker(positions[i]);
+            var marker = MakeMultiMarker(positions[i], place);
             if(isSearch){
                 objects.artistEventFromSearch.push(marker);
             }
@@ -1372,7 +1389,7 @@ function isDateTodayOrNear(dateTocheckAgainst){
     return dayToUse;
 }
 
-function MakeMultiMarker(positions){
+function MakeMultiMarker(positions, place){
 
     var InfoWindowContent =
         '<div class="content">' +
@@ -1409,7 +1426,8 @@ function MakeMultiMarker(positions){
         icon: image,
         infoWindow : infoWindowForMarker,
         sameLatNLngID : positions[2],
-        arrOfArtists : []
+        arrOfArtists : [],
+        thisPlace : place
     });
     objects.MultiMarkers.push(ConcertMarker);
 
@@ -1548,7 +1566,8 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
         map: objects.map,
         icon: image,
         infoWindow : infoWindowForMarker,
-        arrOfArtists : ConcertData.performance
+        arrOfArtists : ConcertData.performance,
+        thisPlace : ConcertData.location.city
     });
     objects.markers.push(ConcertMarker);
 
