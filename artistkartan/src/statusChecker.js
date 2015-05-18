@@ -914,10 +914,10 @@ searchLocation = function(searchTerm, ignoreShow){
 
                             if(ignoreShow !== "ignore"){
                                 if(objects.MultiMarkers.length !== 0){
-                                    objects.map.setCenter(new google.maps.LatLng(MultimarkerToCenterID.position.k, MultimarkerToCenterID.position.D))
+                                    objects.map.setCenter(new google.maps.LatLng(MultimarkerToCenterID.position.lat(), MultimarkerToCenterID.position.lng()))
                                     objects.map.setZoom(10);
                                 }else{
-                                    objects.map.setCenter(new google.maps.LatLng(markerToCenterID.position.k, markerToCenterID.position.D))
+                                    objects.map.setCenter(new google.maps.LatLng(markerToCenterID.position.lat(), markerToCenterID.position.lng()))
                                     objects.map.setZoom(10);
                                 }
                                 prepareLoadingScreen("SearchLocation Avslutas i If-satsen 'parsedData.length !=  1'");
@@ -1560,7 +1560,7 @@ function createInfoWindowWithConcertData(ConcertData){
     var preformances = "";
 
     for(var j=0;j<ConcertData.performance.length;j++){//Tar fram en sträng med artister/band per konsert...
-        preformances += "<div class='ArtistBox'><a href='"+ConcertData.performance[j].artist.uri+"'>"+"<p>"+ConcertData.performance[j].displayName+"</p></a></div>";
+        preformances += "<div class='ArtistBox'><a href='"+ConcertData.performance[j].artist.uri+"' target='_blank'  >"+"<p>"+ConcertData.performance[j].displayName+"</p></a></div>";
     }
 
 
@@ -1623,7 +1623,7 @@ function createInfoWindowWithConcertData(ConcertData){
                 '</div>' +
             '</div>'+
             '<div class="preformances">' + eventContent + '</div>' +
-    '<h3><a href='+ConcertData.uri+'>Biljetter och mer info här!</a></h3>'
+    '<h3><a href='+ConcertData.uri+' target="_blank">Biljetter och mer info här!</a></h3>'
     /*'</div>'+*/
     '</div>';
     return InfoWindowContent;
