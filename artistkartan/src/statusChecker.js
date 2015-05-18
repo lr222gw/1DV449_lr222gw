@@ -9,7 +9,7 @@ if(localStorage["CachadeKonserter"] == undefined){
 var hideOrShow = document.createElement("div");
 hideOrShow.setAttribute("id", "hideOrShow");
 hideOrShow.setAttribute("status", "show");
-hideOrShow.innerHTML = "DÖLJ";
+hideOrShow.innerHTML = "HIDE";
 document.getElementById("logga").appendChild(hideOrShow);
 
 
@@ -17,9 +17,9 @@ var ShowTodaysConcertListObj = document.createElement("li");
 
 var ShowTodaysConcertButton = document.createElement("button");
 ShowTodaysConcertButton.setAttribute("id", "showConcertsPlayingToday");
-ShowTodaysConcertButton.innerHTML = "Visa konserter som spelar idag";
+ShowTodaysConcertButton.innerHTML = "Show concerts that plays today";
 ShowTodaysConcertButton.onclick = function(){
-    if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+    if(document.getElementById("hideOrShow").innerHTML === "HIDE" && localStorage["autoHide"] === "true"){
         document.getElementById("hideOrShow").click();
     }
     stopAllAnimations();
@@ -34,9 +34,9 @@ ShowTodaysConcertListObj.appendChild(ShowTodaysConcertButton);
 var ShowFestivalsListObj = document.createElement("li");
 var ShowFestivalsButton = document.createElement("button");
 ShowFestivalsButton.setAttribute("id", "ShowFestivals");
-ShowFestivalsButton.innerHTML = "Visa Festivalevent på kartan";
+ShowFestivalsButton.innerHTML = "Show Festivals that's going on today";
 ShowFestivalsButton.onclick = function(){
-    if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+    if(document.getElementById("hideOrShow").innerHTML === "HIDE" && localStorage["autoHide"] === "true"){
         document.getElementById("hideOrShow").click();
     }
     stopAllAnimations();
@@ -65,8 +65,8 @@ function toggleSubItems(){
 var searchBox = document.createElement("input");
 searchBox.setAttribute("id", "searchBox");
 searchBox.setAttribute("type", "search");
-searchBox.setAttribute("placeholder", "Sök efter Plats eller Artist...");
-searchBox.innerHTML = "Sök Platser";
+searchBox.setAttribute("placeholder", "Search for a Place or Artist...");
+searchBox.innerHTML = "Search Places";
 
 document.getElementById("logga").appendChild(searchBox);
 
@@ -104,11 +104,11 @@ document.getElementById("searchBox").addEventListener("keydown", function(e) {
 
 var searchLocationButton = document.createElement("button");
 searchLocationButton.setAttribute("id", "searchLocationButton");
-searchLocationButton.innerHTML = "Sök Platser <p class='tinyText'>Enter</p>";
+searchLocationButton.innerHTML = "Search Places <p class='tinyText'>Enter</p>";
 searchLocationButton.onclick = function(){
     var searchBoxContent = document.getElementById("searchBox").value;
     if(searchBoxContent.trim() !== "" ){
-        if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+        if(document.getElementById("hideOrShow").innerHTML === "HIDE" && localStorage["autoHide"] === "true"){
             document.getElementById("hideOrShow").click();
         }
         prepareLoadingScreen("Sökknappen för platser trycktes");
@@ -120,7 +120,7 @@ document.getElementById("logga").appendChild(searchLocationButton);
 
 var searchArtistButton = document.createElement("button");
 searchArtistButton.setAttribute("id", "searchArtistButton");
-searchArtistButton.innerHTML = "Sök Artist <p class='tinyText'>Ctrl+Enter</p>";
+searchArtistButton.innerHTML = "Search Artist <p class='tinyText'>Ctrl+Enter</p>";
 searchArtistButton.onclick = function(){
     var searchBoxContent = document.getElementById("searchBox").value;
     if(searchBoxContent.trim() !== "" ){
@@ -148,40 +148,38 @@ document.ontouch = function(e){
 }
 
 AboutButton.id = "aboutSite";
-AboutButton.innerHTML = "<p>Om Sidan</p>";
+AboutButton.innerHTML = "<p>About Site</p>";
 
 AboutButton.onclick = function(){
     var AboutDiv = document.createElement("div");
     AboutDiv.id = "aboutSiteDiv";
     AboutDiv.innerHTML = "" +
-        "<div id='AboutContentBox'><h1>Om Sidan</h1>" +
-        "<p>Konsertkartan.com är en gratis tjänst byggd med GoogleMaps Api och Songkicks Api. Tjänsten täcker Europa och Amerika.</p>" +
-        "<p>Konsertkartan.com är till för att hjälpa dig att hitta ett musikevent (konsert, festival, etc) i närheten av dig,</p>" +
-        "<p>eller på ett ställe där du är nyfiken att kika efter event på. Kanske ska du åka utomlands och snabbt vill se exakt vart</p>" +
-        "<p>du kan hitta festivaler och konserter i närheten av ditt hotell.</p>" +
-        "<p>Vad ska jag mer skriva här? Hoppas du har kul med sidan! :)</p>" +
-        "<p class='italicWierd'>(Ursäkta grammatiken, energidrycken tog slut och jag var trött...)</p>" +
-        "<p class='thanksTo'>Tack till, för följande resurser:</p>" +
-        "<p class='thanksTo'>Songkick.com, För datan om konserter och event som dom står för.</p>" +
-        "<p class='thanksTo'>Nicolas Mollet, För ikonen till kartmarkören.</p>" +
-        "<p class='thanksTo'>Google Maps, För kartan och dess funktioner.</p>" +
-        "<p class='thanksTo'>Spotify, För att ta fram intressanta artister till användare och tar hand om användarinloggning.</p>" +
-        "<p class='contactMe'>Vill du kontakta mig av någon anledning är min Email här: <address><a href='mailto:lowe.raivio@gmail.com'>lowe.raivio@gmail.com</a></address></p>" +
+        "<div id='AboutContentBox'><h1>About KonsertKartan.com</h1>" +
+        "<p>Konsertkartan.com Is a free service built using the Google Maps API and Song Kicks API. The service covers both Europe and America and works best with Google Chrome browser.</p>" +
+        "<p>Konsertkartan.com Helps you find a music event (concert, festival, standup, etc.) near you or a place of interest,</p>" +
+        "<p>maybe you are on vacation and want to find nearby music events.</p>" +
+        "<p>We wish that this service is both fun and helpful to you!</p>" +
+        /*"<p class='italicWierd'>(Ursäkta grammatiken, energidrycken tog slut och jag var trött...)</p>" +*/
+        "<p class='thanksTo'>A thank to everyone that has provided necessary data and pictures:</p>" +
+        "<p class='thanksTo'>Songkick.com, for the data of concerts and events.</p>" +
+        "<p class='thanksTo'>Nicolas Mollet, For the icon for your map marker.</p>" +
+        "<p class='thanksTo'>Google Maps, For the map and its features.</p>" +
+        "<p class='thanksTo'>Spotify, for taking care of user login and provides users playlists.</p>" +
+        "<p class='contactMe'>If you want to contact me for any reason, try my email: <address><a href='mailto:lowe.raivio@gmail.com'>lowe.raivio@gmail.com</a></address></p>" +
         "<div id='songkickstuff'><a href='http://www.songkick.com'><img src='pic/songkick.png'></a></div>" +
-        "<p>PS. Sidan använder Cookies och Localstorage... Men det har du redan accepterat, skriver det här bara för att ha det på två ställen...</p>" +
-        "<p>PPS. Sidan funkar bäst med Google Chrome-webbläsaren...</p>" +
+        "<p>P.S. The site uses Cookies and Local Storage...</p>" +
         "</div>";
 
     var CloseButton = document.createElement("button");
     CloseButton.id = "closeAboutScreen";
-    CloseButton.innerHTML = "Stäng mig";
+    CloseButton.innerHTML = "Close";
     CloseButton.onclick = function(){
         document.getElementById("aboutSiteDiv").parentNode.removeChild(document.getElementById("aboutSiteDiv"));
     }
     AboutDiv.appendChild(CloseButton);
     var StartToturialButton = document.createElement("button");
     StartToturialButton.id = "startBasicGuide";
-    StartToturialButton.innerHTML = "Kör Guiden!";
+    StartToturialButton.innerHTML = "Tutorial!";
     StartToturialButton.onclick = function(){
         document.getElementById("aboutSiteDiv").parentNode.removeChild(document.getElementById("aboutSiteDiv"));
         basicTutoral();
@@ -200,8 +198,8 @@ window.onresize = function(){
     var mapcanvas = document.getElementById("mapcanvas");
 
 
-    if(hideOrShow.innerHTML == "DÖLJ"){
-        hideOrShow.innerHTML = "DÖLJ";
+    if(hideOrShow.innerHTML == "HIDE"){
+        hideOrShow.innerHTML = "HIDE";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
         mapcanvas.style.transition = "bottom 1s ease-in-out 0s, height 1s ease-in-out 0s";
         if(document.getElementById("loadOverlay") != null){
@@ -212,7 +210,7 @@ window.onresize = function(){
         mapcanvas.style.bottom = "0" + "px";
         mapcanvas.style.height = document.body.clientHeight - topBanner.clientHeight + "px";
     }else{
-        hideOrShow.innerHTML = "DÖLJ";
+        hideOrShow.innerHTML = "HIDE";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
         mapcanvas.style.transition = "bottom 1s ease-in-out 0s, height 1s ease-in-out 0s";
         if(document.getElementById("loadOverlay") != null){
@@ -230,8 +228,8 @@ window.onresize = function(){
 
 hideOrShow.onclick = function(e){
 
-    if(e.target.innerHTML == "DÖLJ"){
-        e.target.innerHTML = "VISA";
+    if(e.target.innerHTML == "HIDE"){
+        e.target.innerHTML = "SHOW";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
         mapcanvas.style.transition = "bottom 1s ease-in-out 0s, height 1s ease-in-out 0s";
         //mapcanvas.style.transition = "height 1s ease-in-out 0s";
@@ -245,7 +243,7 @@ hideOrShow.onclick = function(e){
 
 
     }else{
-        e.target.innerHTML = "DÖLJ";
+        e.target.innerHTML = "HIDE";
         topBanner.style.transition = "bottom 1s ease-in-out 0s";
         mapcanvas.style.transition = "bottom 1s ease-in-out 0s, height 1s ease-in-out 0s";
         //mapcanvas.style.transition = "height 1s ease-in-out 0s";
@@ -287,7 +285,7 @@ checkBox.onchange = function(e){
 
 var divForCheckbox = document.createElement("div");
 divForCheckbox.id = "CheckBoxDiv";
-divForCheckbox.innerHTML = "<p id='checkBoxP'>Auto Dölj</p>";
+divForCheckbox.innerHTML = "<p id='checkBoxP'>Auto Hide</p>";
 divForCheckbox.appendChild(checkBox);
 document.getElementById("logga").appendChild(divForCheckbox)
 
@@ -314,7 +312,7 @@ $.ajax({
             logout.setAttribute("method", "GET");
             logout.setAttribute("action", "logout.php");
             var logoutButton = document.createElement("input");
-            logoutButton.setAttribute("value",  "Logga ut, " + data);
+            logoutButton.setAttribute("value",  "Log Out, " + data);
             logoutButton.setAttribute("type",   "submit");
             logoutButton.setAttribute("id",     "logout");
 
@@ -326,7 +324,7 @@ $.ajax({
             showMeArtists.setAttribute("id", "relevantArtists");
             showMeArtists.setAttribute("href", "#");
             showMeArtists.onclick = function(){
-                if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+                if(document.getElementById("hideOrShow").innerHTML === "HIDE" && localStorage["autoHide"] === "true"){
                     document.getElementById("hideOrShow").click();
                 }
                 stopAllAnimations();
@@ -334,11 +332,11 @@ $.ajax({
 
             }
             var pTagg = document.createElement("p");
-            pTagg.innerHTML = "Visa relevanta artister";
+            pTagg.innerHTML = "Show relevant artists";
             showMeArtists.appendChild(pTagg);
 
             var toolTipSpan = document.createElement("span");
-            toolTipSpan.innerHTML = "<p>Visar konserter av dina intressen.</p> <p>(av dom som syns på kartan)</p><p> OBS. du måste ha publika listor för att detta ska fungera!</p>";
+            toolTipSpan.innerHTML = "<p>Show concerts of your interests.</p> <p>(of them visible on the map)</p><p> NOTE. You need public spotify playlists for this to work!</p>";
             showMeArtists.appendChild(toolTipSpan);
             document.getElementById("logga").insertBefore(showMeArtists, document.getElementById("loginspotify"));
 
@@ -347,11 +345,11 @@ $.ajax({
 
 
             var usersFavoriteCitiesButton = document.createElement("input");
-            usersFavoriteCitiesButton.setAttribute("value", "Dina Favoritplatser");
+            usersFavoriteCitiesButton.setAttribute("value", "Your favorite places");
             usersFavoriteCitiesButton.setAttribute("type", "submit");
             usersFavoriteCitiesButton.setAttribute("id", "favoritCityButton");
             usersFavoriteCitiesButton.onclick = function(){
-                if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+                if(document.getElementById("hideOrShow").innerHTML === "HIDE" && localStorage["autoHide"] === "true"){
                     document.getElementById("hideOrShow").click();
                 }
                 getUsersTownsDiv();
@@ -380,8 +378,8 @@ setStuffOffline = function(){
     document.getElementById("searchArtistButton").style.backgroundColor = "grey"
     var message = document.createElement("div")
     message.setAttribute("id", "offlineMessage")
-    message.innerHTML = "<h1>Du är offline, sidan är offline</h1><p>Hejsan kära användare, det verkar som du är offline.</p><p>Konsertkartan behöver internetuppkoppling för att kunna hämta data, tyvärr får vi inte cacha datan längre än i ett par timmar, så vi kan inte heller lista den här.</p><p>Vänligen kom tillbaka när ditt internet har uppkoppling igen :)</p>" +
-        "<p>Men om du väldigt gärna vill kan du gå in och läsa om sidan eller köra guiden.</p>"
+    message.innerHTML = "<h1>You are offline!</h1><p>Dear user, it seems that you don\'t have a internet connection.</p><p>KonsertKartan needs internet to work, this is because we\'re not allowed to store store concert data on our servers.</p><p>Please come back when you have internet access again! :)</p>" +
+        "<p>But if you really want to you can do the tutorial and read the 'About Site' section.</p>"
     document.body.insertBefore(message, document.getElementById("myFavoriteTowns"));
 }
 
@@ -419,10 +417,10 @@ concertsWithinScreen = function(){
     }
 
     var alert = document.createElement("div");
-    alert.innerHTML = "<p>Tyvärr finns inte det du ville markera inom din skärm, testa att zooma ut och försöka igen.</p><p>Kom ihåg att det endast är aktiva markörer som kommer markeras, har du få markörer så kan du testa att söka på några platser av intresse.</p>";
+    alert.innerHTML = "<p>Unfortunately what you want to highlight does not exist on your screen region, try zooming out and try again.</p><p>Remember that it is only active markers that will be highlighted, if you dont have any markers on the map try to search for a place of interest.</p>";
     alert.setAttribute("id", "alertBox");
     alert.style.display = "none";
-    alert.setAttribute("title", "Det här var ju tråkigt...");
+    alert.setAttribute("title", "Well, this was not fun...");
     document.body.appendChild(alert);
     $( "#alertBox" ).dialog();//alert("Artisten du sökt efter har tyvärr inga planerade event! (Enligt Songkick.com) :(");
 
@@ -462,11 +460,11 @@ firstTimeTutorial = function(){
     tutorialdiv.style.display = "block";
     tutorialdiv.innerHTML = '' +
         '<div id="tutorialContent">' +
-        '<h1>Hej och välkommen till KonsertKartan.com!</h1>' +
-        '<p>Detta är första gången du besöker sidan va? Då ska vi bara gå över ett par saker.</p>' +
-        '<p>För det första, du måste antingen Tillåta ELLER Neka GeoLocation (se toppen av din webbläsare på sidan).</p>' +
-        '<p class="unnecessaryBusiness">För det andra, sidan använder Cookies och LocalStorage. PGA svensk lag så måste jag berätta det.</p><p>(majoriteten av sidor på nätet berättar inte sånt, då ingen egentligen bryr sig...)</p> ' +
-        '<button id="agreeButton">Jag fattar och godkänner, cookies/localStorage används...</button>' +
+        '<h1>Hello and welcome to KonsertKartan.com!</h1>' +
+        '<p>This is the first time you visit the page, right? We\'ll just go through a few things.</p>' +
+        '<p>Firstly, you must either allow OR deny GeoLocation (see the top of your browser page).</p>' +
+        '<p class="unnecessaryBusiness">Second, the website uses Cookies and Local Storage. By using this service you agree with this.</p><!--<p>(majoriteten av sidor på nätet berättar inte sånt, då ingen egentligen bryr sig...)</p> -->' +
+        '<button id="agreeButton">I understand and agree...</button>' +
         '' +
         '</div>';
     document.getElementById("agreeButton").onclick = function(){
@@ -480,52 +478,52 @@ basicTutoral = function(){
     tutorialdiv.style.display = "block";
     tutorialdiv.innerHTML = '' +
         '<div id="tutorialContent">' +
-        '<h1>Basics 1/4 - Hämta konserter från en stad!</h1>' +
+        '<h1>Basics 1/4 - Get concerts from a city!</h1>' +
         '<img class="basicGuideImg" src="pic/tutorialpics/GIFRightClickORTouch.gif">' +
-        '<p>Du kan hämta event från en plats på två sätt, det ena är att söka efter platsen.</p>' +
-        '<p>Det andra är att högerklicka (håll in i 1.5 sec på touchmobil) på en stad på kartan som du vill hämta ifrån.</p>' +
-        '<button id="NextButton">Ok, fattar, hämtar event med höger/håll in...</button>' +
+        '<p>You can show events from a specific location in two ways, one is to search for the location.</p>' +
+        '<p>The other is to right click (hold for 1.5 sec on touch mobile) on a place/city on the map you want to check out!</p>' +
+        '<button id="NextButton">Fine, got it, get events by right click...</button>' +
         '' +
         '</div>';
     document.getElementById("NextButton").onclick = function(){
         document.getElementById("tutorial").innerHTML = '' +
             '<div id="tutorialContent">' +
-            '<h1>Basics 2/4 - Markera festivaler eller konserter som spelar idag!</h1>' +
+            '<h1>Basics 2/4 - Highlight festivals or concerts that play today!</h1>' +
             '<img class="basicGuideImg" src="pic/tutorialpics/GIF-hoppandepilar.gif">' +
-            '<p>Om du snabbt vill se vilka event som pågår eller ska börja idag kan du välja "markera..." och sen alternativ.</p>' +
-            '<p>Det är viktigt att veta; bara de markörer på kartan som du redan ser kommer att röra sig.</p>' +
-            '<p>(Exempel: om du bara ser markörer från linköping och trycker på "visa festivaler" så kommer du ej se festivaler från norrköping)</p>' +
-            '<button id="NextButton">Ok, bara markörer som syns dansar...</button>' +
+            '<p>If you want to quickly see which events is in progress or about to start, you can select "Highlight..." and then a option.</p>' +
+            '<p>Important; only the markers on the map that you already see will become highlighted.</p>' +
+            /*'<p>(Exempel: om du bara ser markörer från linköping och trycker på "visa festivaler" så kommer du ej se festivaler från norrköping)</p>' +*/
+            '<button id="NextButton">Ok, only visable markers will get highlighted...</button>' +
             '' +
             '</div>';
         document.getElementById("NextButton").onclick = function(){
             document.getElementById("tutorial").innerHTML = '' +
                 '<div id="tutorialContent">' +
-                '<h1>Basics 3/4 - Dina favoritstäder!</h1>' +
+                '<h1>Basics 3/4 - Favorite Places!</h1>' +
                 '<img class="basicGuideImg" src="pic/tutorialpics/MyTowns.gif">' +
-                '<p>Om du är inloggad har du tillgång till ett par saker. Du kan snabbt se artister av ditt intresse i närheten (det du lyssnar på genom spotify).</p>' +
-                '<p>Du kan också lägga till favoritplatser, från dessa kommer det automatiskt att hämtas event från när du loggar in.</p>' +
+                '<p>If you are logged in using spotify, you have access to a few things. You can highlight artists that appear on your playlists.</p>' +
+                '<p>You can also add favorite places, these will automatically be checked for events when you log in.</p>' +
                 '' +
-                '<button id="NextButton">ok, Bra att logga in med spotify, got it!...</button>' +
+                '<button id="NextButton">ok, Good to login with spotify, got it!...</button>' +
                 '' +
                 '</div>';
             document.getElementById("NextButton").onclick = function(){
                 document.getElementById("tutorial").innerHTML = '' +
                     '<div id="tutorialContent">' +
-                    '<h1>Basics 4/4 - Kolla innehållet på event!</h1>' +
+                    '<h1>Basics 4/4 - Check the contents of the event!</h1>' +
                     '<img class="basicGuideImg" src="pic/tutorialpics/PNgonclick.png">' +
-                    '<p>Tryck på markör för att se innehållet av eventet.</p>' +
-                    '<p>Markören med en grön "+"-symbol (multi markör) visar att detta är en plats där flera event kommer hållas, trycker man på den får man en lista över eventen.</p>' +
-                    '<p>Markören som saknar "+"-symbolen (singel markör) visar eventet och artisterna som kommer, detta syns även om du klickar på ett event i multi markörens lista får du samma info</p>' +
+                    '<p>Press a marker to see the content of the event.</p>' +
+                    '<p>The marker with a green "+" - symbol (multi-marker) shows that this is a place where several events will be held, press it to get a list of the events.</p>' +
+                    '<p>The marker without the "+" - symbol (Single marker) displays a single event and it\'s preformances, you can get this info from the multimarkers eventlist as well</p>' +
                     '' +
-                    '<button id="NextButton">ok, hade nog klarat mig utan guide. Men ok!</button>' +
+                    '<button id="NextButton">ok, probably would managed without the tutorial. But fine!</button>' +
                     '' +
                     '</div>';
                 document.getElementById("NextButton").onclick = function(){
                     document.getElementById("tutorial").style.display = "none";
                 }
                 var cancel = document.createElement("button");
-                cancel.innerHTML = "Jag vill inte ha någon tutorial, jag kan väl själv..."
+                cancel.innerHTML = "Don't need a guide? Cancel here!"
                 cancel.setAttribute("id", "cancelToturial")
                 cancel.onclick = function(){
                     document.getElementById("tutorial").style.display = "none";
@@ -533,7 +531,7 @@ basicTutoral = function(){
                 document.getElementById("tutorial").appendChild(cancel);
             }
             var cancel = document.createElement("button");
-            cancel.innerHTML = "Jag vill inte ha någon tutorial, jag kan väl själv..."
+            cancel.innerHTML = "Don't need a guide? Cancel here!"
             cancel.setAttribute("id", "cancelToturial")
             cancel.onclick = function(){
                 document.getElementById("tutorial").style.display = "none";
@@ -541,7 +539,7 @@ basicTutoral = function(){
             document.getElementById("tutorial").appendChild(cancel);
         }
         var cancel = document.createElement("button");
-        cancel.innerHTML = "Jag vill inte ha någon tutorial, jag kan väl själv..."
+        cancel.innerHTML = "Don't need a guide? Cancel here!"
         cancel.setAttribute("id", "cancelToturial")
         cancel.onclick = function(){
             document.getElementById("tutorial").style.display = "none";
@@ -549,7 +547,7 @@ basicTutoral = function(){
         document.getElementById("tutorial").appendChild(cancel);
     }
     var cancel = document.createElement("button");
-    cancel.innerHTML = "Jag vill inte ha någon tutorial, jag kan väl själv..."
+    cancel.innerHTML = "Don't need a guide? Cancel here!"
     cancel.setAttribute("id", "cancelToturial")
     cancel.onclick = function(){
         document.getElementById("tutorial").style.display = "none";
@@ -592,7 +590,7 @@ getUsersTownsDiv = function(){
 
             var SaveButton = document.createElement("button");
             SaveButton.setAttribute("id", "SaveCityButton")
-            SaveButton.innerHTML = "Spara"
+            SaveButton.innerHTML = "Save"
             SaveButton.onclick = function(){
                 prepareLoadingScreen("GetUsersTownDiv påbörjas");
                 $.ajax({
@@ -614,7 +612,7 @@ getUsersTownsDiv = function(){
             townDiv.appendChild(SaveButton);
             var cancelButton = document.createElement("button");
             cancelButton.setAttribute("id", "cancelCityButton")
-            cancelButton.innerHTML = "Stäng"
+            cancelButton.innerHTML = "Cancel"
             cancelButton.onclick = function(){
                 var townDiv = document.getElementById("myFavoriteTowns");
                 townDiv.style.transition = "right 1s ease-in-out 0s";
@@ -827,7 +825,7 @@ handleArtistData = function(artistsData){
 
 getArtistDataFromThisArtist = function(artistATag){
     if(localStorage["isOffline"] !== "true"){
-        if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+        if(document.getElementById("hideOrShow").innerHTML === "HIDE" && localStorage["autoHide"] === "true"){
             document.getElementById("hideOrShow").click();
         }
         prepareLoadingScreen("GetArtistDataFromThisArtist påbörjas");
@@ -932,7 +930,7 @@ searchLocation = function(searchTerm, ignoreShow){
                             var infowindow = new InfoBubble({
                                 map: objects.map,
                                 position: pos,
-                                content: 'Tyvärr, inga uppkommande event här :('
+                                content: 'Sorry, No uppcoming events here :('
                             });
                             infowindow.open();
                             prepareLoadingScreen("SearchLocation Avslutas i Else-satsen 'parsedData.length !=  1'");
@@ -996,7 +994,7 @@ prepareLoadingScreen = function(reasonForLog){
         overlayimg.appendChild(img);
         overlay.appendChild(overlayimg);
         document.body.insertBefore(overlay, document.getElementById("mapcanvas"));
-        if(document.getElementById("hideOrShow").innerHTML === "VISA"){
+        if(document.getElementById("hideOrShow").innerHTML === "SHOW"){
             document.getElementById("loadOverlay").style.marginTop = "-"+ (document.getElementById("topBanner").clientHeight + 5) + "px";
         }
     }else{
@@ -1106,7 +1104,7 @@ getConcertsNearYourLocation = function(lat, lng){
                             var infowindow = new InfoBubble({
                                 map: objects.map,
                                 position: pos,
-                                content: 'Tyvärr, inga uppkommande event här :('
+                                content: 'Sorry, No uppcoming events here :('
                             });
                             infowindow.open();
 
@@ -1396,8 +1394,8 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
         var endDate = arrWithTimes[1];
 
         markerToUse.infoWindow.setContent(markerToUse.infoWindow.content +
-            '<div class="eventOfBox" id="'+"event"+ConcertData.id+'" ><a class="concertPlus" '+DateMark+' onclick="document.getElementById(\''+ id +'\').click();  return false;" ><div class="eventHeaderMultiMarker">'+displayName+'</div> <div class="eventType"><p class="eventTypeHeader">Typ av event: </p><p class="eventTypeContent">'+ eventTyp + '</p></div>' +
-            '<div class="DateOfEvent"><p class="eventContentHeader">'+'Eventstart: </p><p class="JustDateFrom">'+dateToUse + ' ' +time+ '</p> <p class="ToOwnLine">till</p> <p class="JustDateFrom">'+endDate +' '+ endtime+'</p></div>' +
+            '<div class="eventOfBox" id="'+"event"+ConcertData.id+'" ><a class="concertPlus" '+DateMark+' onclick="document.getElementById(\''+ id +'\').click();  return false;" ><div class="eventHeaderMultiMarker">'+displayName+'</div> <div class="eventType"><p class="eventTypeHeader">Event Type: </p><p class="eventTypeContent">'+ eventTyp + '</p></div>' +
+            '<div class="DateOfEvent"><p class="eventContentHeader">'+'Starting time: </p><p class="JustDateFrom">'+dateToUse + ' ' +time+ '</p> <p class="ToOwnLine">To</p> <p class="JustDateFrom">'+endDate +' '+ endtime+'</p></div>' +
             '</a></div>'+strToAddToEnd);
 
         newWindowButton.onclick = function (e){
@@ -1442,7 +1440,7 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
 
             goBackButtonOnWindow.setAttribute("onclick",'document.getElementById(\''+ 'goBackButton' +'\').click();  return false;');
             goBackButtonOnWindow.setAttribute("id", "goBackButtonHref");
-            goBackButtonOnWindow.innerHTML = "Tillbaka";
+            goBackButtonOnWindow.innerHTML = "Go Back";
             e.target.infoWindow.contentWithoutButton = e.target.infoWindow.content;
             goBackButton.contentWithoutButton = e.target.infoWindow.content;
             e.target.infoWindow.content += goBackButtonOnWindow.outerHTML;
@@ -1516,7 +1514,7 @@ function MakeMultiMarker(positions, place){
     objects.MultiMarkers.push(ConcertMarker);
 
     google.maps.event.addListener(ConcertMarker, 'click', function(){
-        if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+        if(document.getElementById("hideOrShow").innerHTML === "HIDE" && localStorage["autoHide"] === "true"){
             document.getElementById("hideOrShow").click();
         }
         if(objects.lastOpenWindow != null){
@@ -1579,21 +1577,21 @@ function createInfoWindowWithConcertData(ConcertData){
 
     var eventContent;
     if(preformances.length == 0){
-        eventContent = "<h3>Inga bestämda uppträdanden</h3>";
+        eventContent = "<h3>No planned performances</h3>";
     }else{
-        eventContent = '<h3>Uppträdanden:</h3>'+ preformances;
+        eventContent = '<h3>Performances:</h3>'+ preformances;
     }
 
-    var eventTyp = (ConcertData.type === "Concert") ? "Konsert" :  ConcertData.type;
-    var status = (ConcertData.status === "ok") ? "Fortfarande planerat" : (ConcertData.status === "cancelled")  ? "Avbokad" : "Okänt..";
-    var ageRestriction = (ConcertData.ageRestriction === null) ? "Ingen gräns (enligt Songkick)" :  ConcertData.ageRestriction;
-    var plats = ConcertData.venue.displayName = (ConcertData.venue.displayName == null) ? "okänt för närvarande" : ConcertData.venue.displayName;
+    var eventTyp = (ConcertData.type === "Concert") ? "Concert" :  ConcertData.type;
+    var status = (ConcertData.status === "ok") ? "Still planned" : (ConcertData.status === "cancelled")  ? "Canceled" : "Unknown..";
+    var ageRestriction = (ConcertData.ageRestriction === null) ? "No age restriction  (according to Songkick)" :  ConcertData.ageRestriction;
+    var plats = ConcertData.venue.displayName = (ConcertData.venue.displayName == null) ? "Unkown for the moment" : ConcertData.venue.displayName;
     var dateToUse = isDateTodayOrNear(ConcertData.start.date);
 
     var DateMark;
-    if(dateToUse === "IDAG!!! "){
+    if(dateToUse === "TODAY!!! "){
         DateMark = "style='background-color: rgb(252, 79, 79)'"
-    }else if(dateToUse === "Imorgon! "){
+    }else if(dateToUse === "Tomorrow! "){
         DateMark = "style='background-color: rgb(221, 255, 68)'"
     }else{
         DateMark = "";
@@ -1605,7 +1603,7 @@ function createInfoWindowWithConcertData(ConcertData){
         eventStatus = "/pic/Cancelled.png"
     }
 
-    var EventTyp = "<h2>Eventtyp: "+ "" +"</h2>"
+    var EventTyp = "<h2>Event Type: "+ "" +"</h2>"
 
     var InfoWindowContent =
         '<div class="content">'+
@@ -1615,15 +1613,15 @@ function createInfoWindowWithConcertData(ConcertData){
             /*'<div id="bodyContent">'+*/
             '<div class="eventInfo">'+
                 '<div class="EventInfoBoxes">'+
-                '<div class="EventContent" ><h2>Eventtyp: '+'</h2><p>'+eventTyp+'</p></div>' +
-                '<div class="EventContent" '+DateMark+'><h2>Tid och Datum: </h2><p>'+dateToUse + ' ' +time +' till ' + endDate + ' ' + endtime + '</p></div>' +
+                '<div class="EventContent" ><h2>Event Type: '+'</h2><p>'+eventTyp+'</p></div>' +
+                '<div class="EventContent" '+DateMark+'><h2>Time and Date: </h2><p>'+dateToUse + ' ' +time +' To ' + endDate + ' ' + endtime + '</p></div>' +
                 '<div class="EventContent" ><h2>Status: </h2><p>'+status+'</p></div>' +
-                '<div class="EventContent"><h2>Åldersgräns: </h2><p>'+ageRestriction+'</p></div>' +
-                '<div class="EventContent"><h2>Plats: </h2><p>'+plats+'</p></div>'+
+                '<div class="EventContent"><h2>Age restriction: </h2><p>'+ageRestriction+'</p></div>' +
+                '<div class="EventContent"><h2>Location: </h2><p>'+plats+'</p></div>'+
                 '</div>' +
             '</div>'+
             '<div class="preformances">' + eventContent + '</div>' +
-    '<h3><a href='+ConcertData.uri+' target="_blank">Biljetter och mer info här!</a></h3>'
+    '<h3><a href='+ConcertData.uri+' target="_blank">Tickets and more info here!</a></h3>'
     /*'</div>'+*/
     '</div>';
     return InfoWindowContent;
@@ -1631,9 +1629,9 @@ function createInfoWindowWithConcertData(ConcertData){
 
 function getTimeFromConcertData(ConcertData){
     var time = ConcertData.start.time;
-    var endtime = (ConcertData.end !== undefined) ? ConcertData.end.time : "inget bestämt";
-    var endDate = (ConcertData.end !== undefined) ? ConcertData.end.date : "inget bestämt";
-    if(endtime == null || endtime === "inget bestämt"){
+    var endtime = (ConcertData.end !== undefined) ? ConcertData.end.time : "Undecided";
+    var endDate = (ConcertData.end !== undefined) ? ConcertData.end.date : "Undecided";
+    if(endtime == null || endtime === "Undecided"){
         endtime = "";
     }
     if(time == null){
@@ -1692,7 +1690,7 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
 
 
     google.maps.event.addListener(ConcertMarker, 'click', function(){
-        if(document.getElementById("hideOrShow").innerHTML === "DÖLJ" && localStorage["autoHide"] === "true"){
+        if(document.getElementById("hideOrShow").innerHTML === "HIDE" && localStorage["autoHide"] === "true"){
             document.getElementById("hideOrShow").click();
         }
 
@@ -1729,10 +1727,10 @@ populateUserWithArtistData = function(){
                         //objects.map.setZoom(5);
                     }
                     var alert = document.createElement("div");
-                    alert.innerHTML = "<p>Din spotify session har gått ut, vänligen logga in på nytt!</p>";
+                    alert.innerHTML = "<p>Your spotify session has expired, please login again!</p>";
                     alert.setAttribute("id", "alertBox");
                     alert.style.display = "none";
-                    alert.setAttribute("title", "Logga in på nytt...");
+                    alert.setAttribute("title", "login again...");
                     document.body.appendChild(alert);
                     $( "#alertBox" ).dialog({
                         close: function(){

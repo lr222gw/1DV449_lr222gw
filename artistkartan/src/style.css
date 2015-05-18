@@ -308,7 +308,7 @@ img#loadImg {
     box-shadow: 0 0 110px 60px rgb(6, 147, 217);
 }
 div#overlayImg:after {
-    content: "Laddar...";
+    content: "Loading...";
     font-family: sans-serif;
     font-size: x-large;
     width: 5%;
@@ -327,7 +327,7 @@ div#ApiErroOverlay {
     z-index: 200;
 }
 div#ApiErroOverlay:after {
-    content: "Ett fel från Songkick, Spotify Eller Google maps har inträffat. Vänligen kontakta skaparen av KonsertKartan.com på Gmail: lowe.raivio@gmail.com";
+    content: "A error from Songkick, Spotify or Google maps have occurred. Please notify the owner of this site using this email: lowe.raivio@gmail.com";
     width: 80%;
     margin: 0 auto;
     display: block;
@@ -347,6 +347,8 @@ button#aboutSite {
     background-color: rgb(64, 170, 223);
     border-radius: 65px 0 0 0;
     height: 75px;
+    padding-right: 10px;
+    padding-left: 0px;
 }
 
 #aboutSite p {

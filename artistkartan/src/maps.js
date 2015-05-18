@@ -52,7 +52,7 @@ function init(){
             objects.myPosWindow = new InfoBubble({
                 map: objects.map,
                 position: pos,
-                content: 'Du är här'
+                content: 'You are here'
             });
 
 

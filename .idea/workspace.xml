@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a8556b54-0929-4e86-bf5b-7822f8cc5ee0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artistkartan/cache.manifest" afterPath="$PROJECT_DIR$/artistkartan/cache.manifest" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artistkartan/index.html" afterPath="$PROJECT_DIR$/artistkartan/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artistkartan/src/maps.js" afterPath="$PROJECT_DIR$/artistkartan/src/maps.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artistkartan/src/statusChecker.js" afterPath="$PROJECT_DIR$/artistkartan/src/statusChecker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artistkartan/src/style.css" afterPath="$PROJECT_DIR$/artistkartan/src/style.css" />
     </list>
     <ignored path="1DV449_lr222gw.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +43,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/artistkartan/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693" vertical-offset="408" max-vertical-offset="1292">
-              <caret line="39" column="35" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
+            <state vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="1292">
+              <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -50,8 +53,8 @@
       <file leaf-file-name="maps.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/artistkartan/src/maps.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9655173" vertical-offset="650" max-vertical-offset="5559">
-              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state vertical-scroll-proportion="-96.13793" vertical-offset="0" max-vertical-offset="5559">
+              <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -60,8 +63,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/artistkartan/src/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.3103447" vertical-offset="6124" max-vertical-offset="18207">
-              <caret line="371" column="42" selection-start-line="371" selection-start-column="42" selection-end-line="371" selection-end-column="42" />
+            <state vertical-scroll-proportion="-9.965517" vertical-offset="4981" max-vertical-offset="18241">
+              <caret line="310" column="21" selection-start-line="310" selection-start-column="21" selection-end-line="310" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -70,8 +73,8 @@
       <file leaf-file-name="statusChecker.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/artistkartan/src/statusChecker.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.344828" vertical-offset="27035" max-vertical-offset="33269">
-              <caret line="1625" column="52" selection-start-line="1625" selection-start-column="52" selection-end-line="1625" selection-end-column="52" />
+            <state vertical-scroll-proportion="-3.5172415" vertical-offset="0" max-vertical-offset="33235">
+              <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -96,11 +99,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-1/index.html" />
-        <option value="$PROJECT_DIR$/artistkartan/src/style.css" />
-        <option value="$PROJECT_DIR$/artistkartan/index.html" />
         <option value="$PROJECT_DIR$/artistkartan/getstuff.php" />
+        <option value="$PROJECT_DIR$/artistkartan/src/style.css" />
         <option value="$PROJECT_DIR$/artistkartan/src/maps.js" />
         <option value="$PROJECT_DIR$/artistkartan/src/statusChecker.js" />
+        <option value="$PROJECT_DIR$/artistkartan/index.html" />
         <option value="$PROJECT_DIR$/artistkartan/cache.manifest" />
       </list>
     </option>
@@ -280,7 +283,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37944984" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -357,34 +360,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/artistkartan/src/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.3103447" vertical-offset="6124" max-vertical-offset="18207">
-          <caret line="371" column="42" selection-start-line="371" selection-start-column="42" selection-end-line="371" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/artistkartan/src/maps.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9655173" vertical-offset="650" max-vertical-offset="5559">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state vertical-scroll-proportion="-96.13793" vertical-offset="0" max-vertical-offset="5559">
+          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/artistkartan/index.html">
+    <entry file="file://$PROJECT_DIR$/artistkartan/src/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693" vertical-offset="408" max-vertical-offset="1292">
-          <caret line="39" column="35" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
+        <state vertical-scroll-proportion="-9.965517" vertical-offset="4981" max-vertical-offset="18241">
+          <caret line="310" column="21" selection-start-line="310" selection-start-column="21" selection-end-line="310" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/artistkartan/src/statusChecker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.344828" vertical-offset="27035" max-vertical-offset="33269">
-          <caret line="1625" column="52" selection-start-line="1625" selection-start-column="52" selection-end-line="1625" selection-end-column="52" />
+        <state vertical-scroll-proportion="-3.5172415" vertical-offset="0" max-vertical-offset="33235">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/artistkartan/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="1292">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
           <folding />
         </state>
       </provider>
