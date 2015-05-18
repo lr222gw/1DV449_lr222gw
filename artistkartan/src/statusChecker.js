@@ -1070,8 +1070,8 @@ getConcertsNearYourLocation = function(lat, lng){
             lat = lat;
             lng = lng;
         }else{
-            lat = objects.userPosition.k;
-            lng = objects.userPosition.D;
+            lat = objects.userPosition.lat();
+            lng = objects.userPosition.lng();
         }
 
         $.ajax({
@@ -1171,7 +1171,7 @@ getConcertsFromCache = function(){
 
             objects.myPositionMarker = new google.maps.Marker({
                 map: objects.map,
-                position: new google.maps.LatLng(objects.userPosition.k, objects.userPosition.D),
+                position: new google.maps.LatLng(objects.userPosition.lat(), objects.userPosition.lng()),
                 title: 'Norrköping'
             });
 
@@ -1184,10 +1184,10 @@ getConcertsFromCache = function(){
 
             var bounds = objects.myPositionCicle.getBounds()
 
-            var TopOfCircle = bounds.getNorthEast().k;
-            var BottomOfCircle = bounds.getSouthWest().k;
-            var LeftOfCircle = bounds.getSouthWest().D;
-            var rightOfCircle = bounds.getNorthEast().D;
+            var TopOfCircle = bounds.getNorthEast().lat();
+            var BottomOfCircle = bounds.getSouthWest().lat();
+            var LeftOfCircle = bounds.getSouthWest().lng();
+            var rightOfCircle = bounds.getNorthEast().lng();
 
             objects.myPositionMarker.setVisible(false);
             objects.myPositionCicle.setMap(null);
@@ -1215,14 +1215,17 @@ getConcertsFromCache = function(){
                 async: true,
                 data: {function: "getLocationsFromCache", top:TopOfCircle, bottom:BottomOfCircle,left:LeftOfCircle, right:rightOfCircle},//, lat: objects.userPosition.k, lng : objects.userPosition.D},
                 success: function(data){
-                    localStorage["CachadeKonserter"] = data;
 
-                    var parsedData = JSON.parse(data);
+                    if(data !== ""){ // Kanske löser problemet med JSON parse (två rader längre ner)
+                        localStorage["CachadeKonserter"] = data;
+                        var parsedData = JSON.parse(data); //<-- TODO: Denna rad är lite farlig, om datan kommer tillbaka som "" så får man felet 'Uncaught SyntaxError: Unexpected end of input'
 
-                    data = parsedData;//.data; <- onödigt men bara omskriven kod..
+                        data = parsedData;//.data; <- onödigt men bara omskriven kod..
 
-                    var ArrayOfLocationsWithConcerts = data;//JSON.parse(data);
-                    FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
+                        var ArrayOfLocationsWithConcerts = data;//JSON.parse(data);
+                        FastPlaceConcertWithArrayOfLocationsWithConcerts(ArrayOfLocationsWithConcerts);
+                    }
+
                 }
             });
         }else{

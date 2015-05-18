@@ -152,7 +152,14 @@ if($_GET["function"] == "getLocationsFromCache" &&
     }
 
     //$ArrayWithStatusAndData["data"] = $ConcertsFromDB;
-    echo json_encode($arrayToReturn, JSON_UNESCAPED_SLASHES); //$ArrayWithStatusAndData
+    echo json_encode($arrayToReturn, JSON_UNESCAPED_SLASHES);
+
+    //echo json_encode($arrayToReturn, JSON_UNESCAPED_SLASHES);
+
+    //echo json_encode($arrayToReturn, JSON_UNESCAPED_SLASHES); //$ArrayWithStatusAndData
+}else{
+    //echo "ass"; <-- Test, detta fungerade. Dock så ska det inte fungera...  det är som att IF-satsen bråkar
+
 }
 
 if($_GET["function"] == "getLastCheckedLocationName"){
