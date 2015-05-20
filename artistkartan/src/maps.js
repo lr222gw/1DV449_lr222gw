@@ -237,6 +237,9 @@ function init(){
 
 window.onload = function(){
     // Körs när man laddar sidan; vill hämta datan! :D
+
+    checkApiStatus();
+
     if(localStorage["hasDoneTutorial"] === undefined){
 
         firstTimeTutorial();
@@ -244,7 +247,7 @@ window.onload = function(){
 
     prepareLoadingScreen("Sidan Laddas första gången (loading screen)");
     init();
-    checkApiStatus();
+
 
 
     //↓Är flyttat till geolocation funktionen, då den bara anropas om geolocation är igång..

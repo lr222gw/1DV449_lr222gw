@@ -366,7 +366,7 @@ $.ajax({
     error : function(){
         //Om vi kommer hit så är anslutningen nere. då ska vi ändra allt till offline läge...
         localStorage["isOffline"] = "true";
-        prepareLoadingScreen();//stänger av laddningen
+        prepareLoadingScreen("stänger av laddningen, error Site is offline");//stänger av laddningen
         setStuffOffline();
     }
 });
@@ -387,16 +387,16 @@ concertsWithinScreen = function(){
     var mapbounds = objects.map.getBounds();
     var topNright = mapbounds.getNorthEast();
     var bottomNleft = mapbounds.getSouthWest();
-    var top = topNright.k;
-    var right = topNright.D;
-    var bottom = bottomNleft.k;
-    var left = bottomNleft.D;
+    var top = topNright.lat();
+    var right = topNright.lng();
+    var bottom = bottomNleft.lat();
+    var left = bottomNleft.lng();
 
     for(var i = 0; i < objects.markers.length; i++){
 
-        if(objects.markers[i].position.k  <  top    && objects.markers[i].position.D <  right
+        if(objects.markers[i].position.lat()  <  top    && objects.markers[i].position.lng() <  right
             &&
-            objects.markers[i].position.k >  bottom && objects.markers[i].position.D >  left){
+            objects.markers[i].position.lat() >  bottom && objects.markers[i].position.lng() >  left){
             //Om vi hittar något här inne (inom skärmen) Så ska vi visa att vi vet om att det finns. Annars ska vi visa ett felmeddelande..
 
             if(objects.markers[i].getAnimation() !== undefined && objects.markers[i].getAnimation() !== null){
@@ -406,9 +406,9 @@ concertsWithinScreen = function(){
     }
 
     for(var i = 0; i < objects.MultiMarkers.length;i++){
-        if(objects.MultiMarkers[i].position.k  <  top    && objects.MultiMarkers[i].position.D <  right
+        if(objects.MultiMarkers[i].position.lat()  <  top    && objects.MultiMarkers[i].position.lng() <  right
             &&
-            objects.MultiMarkers[i].position.k >  bottom && objects.MultiMarkers[i].position.D >  left){
+            objects.MultiMarkers[i].position.lat() >  bottom && objects.MultiMarkers[i].position.lng() >  left){
 
             if(objects.MultiMarkers[i].getAnimation() !== undefined && objects.MultiMarkers[i].getAnimation() !== null){
                 return true;
@@ -1043,13 +1043,7 @@ setLastCheckedLocationName = function(isUsersTown){
                         document.getElementById("LastChecked").style.transition = "padding-top 0.4s ease-out 0s";
                         document.getElementById("LastChecked").style.paddingTop = "25" + "px";
                     },400);
-
-
-
-
                 }
-
-
             }
         });
     }
@@ -1127,11 +1121,23 @@ getConcertsNearYourLocation = function(lat, lng){
 
 
 }
-apiIsDownErrorScreen = function(Message){
-    var overlay = document.createElement("div");
-    overlay.innerHTML = "<div id=whaterror>"+((Message !== undefined ) ? Message : "")+"</div>" +
-    "<div id='contactMeAt'>Please notify the owner of this site using this email: \n <a href='mailto:lowe.raivio@gmail.com'>lowe.raivio@gmail.com</a></div>";
-    overlay.id = "ApiErroOverlay";
+apiIsDownErrorScreen = function(Message, isARegularMessage){
+    var overlay;
+
+    if(document.getElementById("ApiErroOverlay") === null){
+        overlay = document.createElement("div");
+        overlay.id = "ApiErroOverlay";
+    }else{
+        overlay = document.getElementById("ApiErroOverlay");
+    }
+
+    if(isARegularMessage !== undefined ){
+        overlay.innerHTML = overlay.innerHTML + ((Message !== undefined ) ? Message : "")+"</div>";
+    }else{
+        overlay.innerHTML = overlay.innerHTML + "<div class=whaterror>"+((Message !== undefined ) ? Message : "")+"</div>";
+    }
+
+
 
     document.body.insertBefore(overlay, document.getElementById("mapcanvas"));
 
@@ -1146,32 +1152,64 @@ checkApiStatus = function(){
             data: {function: "checkStatusOnApi"},
             success: function(data){
                 var parsedData = JSON.parse(data);
+                var error = false;
                 if(parsedData.spotifyStatus == "fail"){
                     //här kontrollerar vi så att våra Apier är som de ska.
                     //Kontrollerar Sonkick och Google..
                     apiIsDownErrorScreen("Seems like spotify is down...");
-                    throw new Error("Something is wrong with Spotifys Api!");
 
-                } else if(!(typeof google.maps === 'object')){
+                    error = true;
 
-                    apiIsDownErrorScreen("Seems like Google.maps is down...");
-                    throw new Error("Something is wrong with Google.maps object!");
+                    /*throw new Error("Something is wrong with Spotifys Api!");*/
 
-                }else if(!(typeof google === 'object')){
-
-                    apiIsDownErrorScreen("Seems like Google is down...");
-                    throw new Error("Something is wrong with the Google object...!");
-
-                }else if( parsedData.songKickStatus == "fail" ){
-
-                    apiIsDownErrorScreen("Seems like songkick is down...");
-                    throw new Error("Something is wrong with songkick Api...!");
-                }else if( parsedData.dbStatus == "fail" ){
-
-                    apiIsDownErrorScreen("Seems like our Database is down...");
-                    throw new Error("Something is wrong with our Database...!");
                 }
 
+                if(!(typeof google.maps === 'object')){
+
+                    apiIsDownErrorScreen("Seems like Google.maps is down...");
+
+                    error = true;
+
+                    /*throw new Error("Something is wrong with Google.maps object!");*/
+
+                }
+
+                if(!(typeof google === 'object')){
+
+                    apiIsDownErrorScreen("Seems like Google is down...");
+
+                    error = true;
+
+                    /*throw new Error("Something is wrong with the Google object...!");*/
+
+                }
+
+                if( parsedData.songKickStatus == "fail" ){
+
+                    apiIsDownErrorScreen("Seems like songkick is down...");
+
+                    error = true;
+
+                    /*throw new Error("Something is wrong with songkick Api...!");*/
+                }
+
+                if( parsedData.dbStatus == "fail" ){
+
+                    apiIsDownErrorScreen("Seems like our Database is down...");
+
+                    error = true;
+
+                    /*throw new Error("Something is wrong with our Database...!");*/
+                }
+
+                if(error === true){
+                    apiIsDownErrorScreen("<div id='contactMeAt'>Please notify the owner of this site using this email: \n <a href='mailto:lowe.raivio@gmail.com'>lowe.raivio@gmail.com</a></div>", true);
+                }
+
+            },
+            error: function(data){
+                apiIsDownErrorScreen("Seems like our hosting server is down...");
+                apiIsDownErrorScreen("<div id='contactMeAt'>Please notify the owner of this site using this email: \n <a href='mailto:lowe.raivio@gmail.com'>lowe.raivio@gmail.com</a></div>", true);
             }
         });
     }

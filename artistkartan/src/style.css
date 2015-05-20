@@ -350,7 +350,7 @@ div#contactMeAt {
     color: rgb(198, 210, 242);
 }
 
-div#whaterror {
+.whaterror { /**/
     margin: 0 auto;
     display: block;
     width: 300px;
