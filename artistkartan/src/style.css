@@ -327,13 +327,42 @@ div#ApiErroOverlay {
     z-index: 200;
 }
 div#ApiErroOverlay:after {
-    content: "A error from Songkick, Spotify or Google maps have occurred. Please notify the owner of this site using this email: lowe.raivio@gmail.com";
+    /*content: "Please notify the owner of this site using this email: lowe.raivio@gmail.com";*/
     width: 80%;
     margin: 0 auto;
     display: block;
     font-family: sans-serif;
     font-size: xx-large;
     padding-top: 20%;
+}
+
+div#contactMeAt {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    font-family: sans-serif;
+    font-size: xx-large;
+    padding-top: 10%;
+    text-align: center;
+}
+
+#contactMeAt a {
+    color: rgb(198, 210, 242);
+}
+
+div#whaterror {
+    margin: 0 auto;
+    display: block;
+    width: 300px;
+    font-size: 2em;
+    font-family: sans-serif;
+    text-shadow: rgb(157, 157, 157) 0px 0px 10px;
+    background-color: rgb(161, 38, 38);
+    text-align: center;
+    padding: 25px;
+    margin-top: 20px;
+    box-shadow: black 0px 1px 10px -1px;
+    border-radius: 10px;
 }
 
 button#aboutSite {
@@ -1066,3 +1095,4 @@ div#offlineMessage {
 ::-webkit-scrollbar-thumb:window-inactive {
     background: rgb(25, 111, 173);
 }
+

@@ -124,6 +124,16 @@ if($_GET["function"] == "checkStatusOnApi"){
     }else{
         $ArrayWithStatusAndData["spotifyStatus"] = "ok";
     }
+
+    $dbStatus = getDBStatus();
+
+    if($dbStatus !== "bad"){
+        $ArrayWithStatusAndData["dbStatus"] = "ok";
+    }else{
+        $ArrayWithStatusAndData["dbStatus"] = "fail";
+    }
+
+
     echo json_encode($ArrayWithStatusAndData, JSON_UNESCAPED_SLASHES);
 
 }
@@ -180,6 +190,16 @@ function getSpotifyApiStatus(){
 
     return $userResultDecoded;
 }
+
+function getDBStatus() {
+
+   $db = new DOA_dbMaster();
+   $result = $db->checkDbStatus();
+
+   return $result;
+
+}
+
 function getSongkickApiStatus(){
 
     $url = "http://api.songkick.com/api/3.0/search/locations.json?query=null&apikey=O2uaF4oPnY6ujGCJ";

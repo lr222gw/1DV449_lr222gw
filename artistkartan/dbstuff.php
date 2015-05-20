@@ -39,6 +39,20 @@ class DOA_dbMaster{
         }
     }
 
+    public function checkDbStatus(){
+         try{
+             $dbh = new PDO( self::$pdoString, self::$pdoUserName, self::$pdoUserPass,
+                             array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+             //die(json_encode(array('outcome' => true)));
+             return "ok";
+         }
+         catch(PDOException $ex){
+             //die(json_encode(array('outcome' => false, 'message' => 'Unable to connect')));
+             return "bad";
+         }
+
+    }
+
     public function addUsersTown($townName, $userID, $rowNumber)
     {
         try{

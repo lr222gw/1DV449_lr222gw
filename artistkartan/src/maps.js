@@ -74,11 +74,11 @@ function init(){
             if(objects.geoLocationIsOn){
                 handleNoGeolocation(true);
             }
-            prepareLoadingScreen();// Om användaren ej tillåter geolocation så stänger vi av laddning här...
+            prepareLoadingScreen("Användare tillåter ej GeoLocation (loadingscreen)");// Om användaren ej tillåter geolocation så stänger vi av laddning här...
         });
 
     }else{
-        prepareLoadingScreen();// Om geolocation inte finns för webbläsaren...
+        prepareLoadingScreen("GeoLocation finns ej på webbläsaren");// Om geolocation inte finns för webbläsaren...
     }
 
 
@@ -242,7 +242,7 @@ window.onload = function(){
         firstTimeTutorial();
     }
 
-    prepareLoadingScreen();
+    prepareLoadingScreen("Sidan Laddas första gången (loading screen)");
     init();
     checkApiStatus();
 

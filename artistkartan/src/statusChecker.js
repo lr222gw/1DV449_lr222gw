@@ -34,7 +34,7 @@ ShowTodaysConcertListObj.appendChild(ShowTodaysConcertButton);
 var ShowFestivalsListObj = document.createElement("li");
 var ShowFestivalsButton = document.createElement("button");
 ShowFestivalsButton.setAttribute("id", "ShowFestivals");
-ShowFestivalsButton.innerHTML = "Show Festivals that's going on today";
+ShowFestivalsButton.innerHTML = "Show Festivals";
 ShowFestivalsButton.onclick = function(){
     if(document.getElementById("hideOrShow").innerHTML === "HIDE" && localStorage["autoHide"] === "true"){
         document.getElementById("hideOrShow").click();
@@ -730,7 +730,7 @@ goTroughArtistEvent = function(){
 
     var prevEventButton = document.createElement("button");
     prevEventButton.setAttribute("id", "prevEvent");
-    prevEventButton.innerHTML = "Gå till föregående event";
+    prevEventButton.innerHTML = "Go to previous event";
     prevEventButton.onclick = function(){
 
         if(objects.activeArtistEventScrollerNumber !== 0){
@@ -752,7 +752,7 @@ goTroughArtistEvent = function(){
 
     var closeNextPrevEventButton = document.createElement("button");
     closeNextPrevEventButton.setAttribute("id", "closePrevNext");
-    closeNextPrevEventButton.innerHTML = "avsluta denna artist";
+    closeNextPrevEventButton.innerHTML = "Exit this artist";
     closeNextPrevEventButton.onclick = function(){
         document.getElementById("searchBox").innerHTML = "";
         document.getElementById("prevEvent").parentNode.removeChild(document.getElementById("prevEvent"));
@@ -765,7 +765,7 @@ goTroughArtistEvent = function(){
 
     var nextEventButton = document.createElement("button");
     nextEventButton.setAttribute("id", "nextEvent");
-    nextEventButton.innerHTML = "Gå till nästa event";
+    nextEventButton.innerHTML = "Go to next event";
     nextEventButton.onclick = function(){
 
         if(objects.activeArtistEventScrollerNumber !== objects.artistEventFromSearch.length-1){
@@ -805,7 +805,7 @@ handleArtistData = function(artistsData){
         var calenderURI = artistToAdd.identifier[0];
         if(calenderURI === undefined){
             calenderURI = "noConcerts";
-            aTag.innerHTML +="<p class='sorryNoPlannedEvents'>Tyvärr, denna artist har ingen aktiv eventkalender</p>";
+            aTag.innerHTML +="<p class='sorryNoPlannedEvents'>Sorry, this artist doesn't have any planned events</p>";
         }else{
             calenderURI = artistToAdd.identifier[0].eventsHref;
         }
@@ -846,10 +846,10 @@ getArtistDataFromThisArtist = function(artistATag){
                         console.log("Event of artist found!");
                     }else{
                         var alert = document.createElement("div");
-                        alert.innerHTML = "<p>Artisten du sökt efter har tyvärr inga planerade event! (Enligt Songkick.com) :(</p>";
+                        alert.innerHTML = "<p>The artist you searched for have no planned events! (According to Songkick.com) :(</p>";
                         alert.setAttribute("id", "alertBox");
                         alert.style.display = "none";
-                        alert.setAttribute("title", "Det här var ju tråkigt...");
+                        alert.setAttribute("title", "Well, this was not fun...");
                         document.body.appendChild(alert);
                         $( "#alertBox" ).dialog();//alert("Artisten du sökt efter har tyvärr inga planerade event! (Enligt Songkick.com) :(");
                     }
@@ -1030,7 +1030,7 @@ setLastCheckedLocationName = function(isUsersTown){
                     document.getElementById("LastChecked").innerHTML = data;
 
                     if(data === "" || data === null){
-                        document.getElementById("LastChecked").innerHTML = "Inga konserter hittades :(";
+                        document.getElementById("LastChecked").innerHTML = "No events found :(";
                     }
 
                     document.getElementById("LastChecked").style.transition = "padding-top 0.4s ease-in 0s";
@@ -1127,8 +1127,10 @@ getConcertsNearYourLocation = function(lat, lng){
 
 
 }
-apiIsDownErrorScreen = function(){
+apiIsDownErrorScreen = function(Message){
     var overlay = document.createElement("div");
+    overlay.innerHTML = "<div id=whaterror>"+((Message !== undefined ) ? Message : "")+"</div>" +
+    "<div id='contactMeAt'>Please notify the owner of this site using this email: \n <a href='mailto:lowe.raivio@gmail.com'>lowe.raivio@gmail.com</a></div>";
     overlay.id = "ApiErroOverlay";
 
     document.body.insertBefore(overlay, document.getElementById("mapcanvas"));
@@ -1144,12 +1146,30 @@ checkApiStatus = function(){
             data: {function: "checkStatusOnApi"},
             success: function(data){
                 var parsedData = JSON.parse(data);
-                if(parsedData.spotifyStatus == "fail" || parsedData.songKickStatus == "fail" || !(typeof google === 'object') || !(typeof google.maps === 'object')){
+                if(parsedData.spotifyStatus == "fail"){
                     //här kontrollerar vi så att våra Apier är som de ska.
                     //Kontrollerar Sonkick och Google..
-                    apiIsDownErrorScreen();
-                    throw new Error("Något är fel på songkick eller google!");
+                    apiIsDownErrorScreen("Seems like spotify is down...");
+                    throw new Error("Something is wrong with Spotifys Api!");
 
+                } else if(!(typeof google.maps === 'object')){
+
+                    apiIsDownErrorScreen("Seems like Google.maps is down...");
+                    throw new Error("Something is wrong with Google.maps object!");
+
+                }else if(!(typeof google === 'object')){
+
+                    apiIsDownErrorScreen("Seems like Google is down...");
+                    throw new Error("Something is wrong with the Google object...!");
+
+                }else if( parsedData.songKickStatus == "fail" ){
+
+                    apiIsDownErrorScreen("Seems like songkick is down...");
+                    throw new Error("Something is wrong with songkick Api...!");
+                }else if( parsedData.dbStatus == "fail" ){
+
+                    apiIsDownErrorScreen("Seems like our Database is down...");
+                    throw new Error("Something is wrong with our Database...!");
                 }
 
             }
@@ -1372,16 +1392,16 @@ function Multi_MakeMarkerAndInfoWindowOfConcertData(ConcertData){
             displayName = ConcertData.displayName.substr(0,ConcertData.displayName.indexOf(" ("));
         }
         //få ut eventtypen
-        var eventTyp = (ConcertData.type === "Concert") ? "Konsert" :  ConcertData.type;
+        var eventTyp = (ConcertData.type === "Concert") ? "Concert" :  ConcertData.type;
 
        var dateToUse = isDateTodayOrNear(ConcertData.start.date)
 
         var DateMark;
-        if(dateToUse === "IDAG!!! "){
+        if(dateToUse === "TODAY!!! "){
             DateMark = "style='background-color: rgb(252, 79, 79)'"
             markerToUse.setAnimation(google.maps.Animation.BOUNCE);
             objects.ConcertsTodayMarkers.push(markerToUse);
-        }else if(dateToUse === "Imorgon! "){
+        }else if(dateToUse === "Tomorrow! "){
             DateMark = "style='background-color: rgb(187, 155, 0)'"
         }else{
             DateMark = "";
@@ -1461,9 +1481,9 @@ function isDateTodayOrNear(dateTocheckAgainst){
     //om det är dagens dag
     var dayToUse;
     if((dateTocheckAgainst === todayDate)){
-        dayToUse = "IDAG!!! "
+        dayToUse = "TODAY!!! "
     }else if(dateTocheckAgainst === tomorrowDate){
-        dayToUse = "Imorgon! "
+        dayToUse = "Tomorrow! "
     }else{
         dayToUse = dateTocheckAgainst;
     }
@@ -1475,7 +1495,7 @@ function MakeMultiMarker(positions, place){
     var InfoWindowContent =
         '<div class="content">' +
         '<div class="MultiBoxHeader">' +
-            '<h1>Samtliga event händer här:</h1>' +
+            '<h1>All events here:</h1>' +
         '</div>'+
             '<div class="insideContent">'; //Konstigt? hm, ne. Detta är så att jag lättare kan schystera CSS...
 
@@ -1678,11 +1698,11 @@ function Single_MakeMarkerAndInfoWindowOfConcertData(ConcertData){ //tar hand om
     var dateToUse = isDateTodayOrNear(ConcertData.start.date)
 
     var DateMark;
-    if(dateToUse === "IDAG!!! "){
+    if(dateToUse === "TODAY!!! "){
         DateMark = "style='background-color: rgb(252, 79, 79)'"
         ConcertMarker.setAnimation(google.maps.Animation.BOUNCE);
         objects.ConcertsTodayMarkers.push(ConcertMarker);
-    }else if(dateToUse === "Imorgon! "){
+    }else if(dateToUse === "Tomorrow! "){
         DateMark = "style='background-color: rgb(221, 255, 68)'"
     }else{
         DateMark = "";
