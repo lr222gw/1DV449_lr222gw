@@ -65,7 +65,13 @@ function init(){
 
             //Om användaren tillåter geoLocation vill vi genast fylla på data där den befinner sig
             //getConcertsNearYourLocation();
-            getConcertsFromCache();
+
+            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                //Do not load from cache!
+            }else{
+                getConcertsFromCache();
+            }
+
             // getConcertsNearYourLocation() Körs i slutet på getConcertsFromCache-metoden...
             // i FastPlaceConcertWithArrayOfLocationsWithConcerts-metoden...
 

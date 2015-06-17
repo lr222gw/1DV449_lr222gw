@@ -879,6 +879,7 @@ FastPlaceArtistEvents = function(ArrayOfArtistEvents){
 
 searchLocation = function(searchTerm, ignoreShow){
     if(localStorage["isOffline"] !== "true"){
+        searchTerm = encodeURI(searchTerm); // Encodar Söksträngen så att sökningar med mellanslag blir giltiga gällande platssökning.
 
         //prepareLoadingScreen();
         $.ajax({
